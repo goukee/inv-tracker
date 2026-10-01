@@ -1,0 +1,1025 @@
+#!/usr/bin/env python3
+"""Stock dashboard - shared scoring engine. ONE copy serves every stock.
+Usage:
+  python3 refresh_stock.py settings.json rawA.txt rawB.txt rawC.txt side.json [prev_data.json] --out data.json --macro macro.json [--mixraw rawD.txt] [--macro-in rawM.txt]
+  rawM.txt = fetch_stock.js stage M: the shared macro snapshot at the close, collected ONCE per refresh and passed to every tab.
+  rawD.txt = fetch_stock.js stage D (SEC segment revenue, US). Leave it out for manual mix (side.json mix.quarters) or no mix.
+Inputs : settings.json (the stock's choices), rawA/B/C.txt (from fetch_stock.js stages A/B/C),
+         side.json (text and on-results inputs only a person or chat can supply), previous data.json (history).
+Output : data.json for the stock tab, macro.json for the shared macro file.
+Pure computation, no network. Rules follow Framework Plan v0.5 (sheets 3 and 4; revenue mix: section "Revenue mix", not scored)."""
+import json, sys, math, re, datetime as dt, statistics as st
+_dt = dt
+
+# ---------------------------------------------------------------- framework settings (plan v0.2)
+BUCKET_W = {'Price trend': 25, 'Liquidity': 15, 'Demand': 35, 'Valuation vs peers': 25}
+LINES = {'SB': 60, 'B': 30, 'S': -30, 'SS': -60}          # composite score, -100..+100
+PERSIST = (7, 10)                                            # days in zone, window
+DIR_T, COV_FLOOR, MOVE_T = 15, 0.70, 2.0
+BUCKET_FLOOR, DRIVER_CAP = 0.50, 0.50
+SHORT_FLOOR = 0.02   # D31: LQ2 counts only when 2%+ of the float is sold short   # plan v0.5 (Kenneth, 30 Sep): bucket needs 50% of its weight live; one driver max half of Demand
+VALID = {'pe': (2, 80), 'ev': (2, 80), 'peg': (0.1, 10)}    # peer figures outside these are ignored
+UNITS = {'PT1': '%', 'PT2': '%', 'PT4': ' pts', 'LQ1': 'x', 'LQ2': '%', 'LQ3': ' pts', 'LQ4': ' pts', 'LQ6': ' pts', 'DM1': ' pts', 'DM2': '%', 'DM6': ' pts', 'VL1': '%', 'VL2': '%', 'VL3': '%', 'VL4': '%'}
+# New-listing mode (plan v0.3 OUT3, approved for SPCX 30 Sep 2026; generic for any recent listing):
+#   PT1 = price vs average of every close since listing; PT2 = 20-day average vs that since-listing average;
+#   beta = all days since listing. Needs 50 days (PT) / 60 days (beta). Switches off by itself at day 200 (PT) / 253 (beta).
+NL = {'pt_end': 200, 'beta_end': 253, 'pt_min': 50, 'beta_min': 60, 'short': 20, 'full_window': 480}
+ZONES = {'SB': 'Strong Buy', 'B': 'Buy', 'H': 'Hold', 'S': 'Sell', 'SS': 'Strong Sell'}
+
+def zone(c):
+    if c is None: return None
+    return 'SB' if c >= LINES['SB'] else 'B' if c >= LINES['B'] else 'SS' if c <= LINES['SS'] else 'S' if c <= LINES['S'] else 'H'
+
+def num(x):
+    try: return float(x) if x not in ('', None, 'None') else None
+    except ValueError: return None
+
+def parse(path):
+    out = {}
+    for line in open(path).read().strip().split('\n'):
+        if not line.strip(): continue
+        p = line.split('|'); out.setdefault(p[0], []).append(p[1:])
+    return out
+
+def pct(a, b): return None if (a is None or b in (None, 0)) else (a / b - 1) * 100
+def med(xs):
+    xs = [x for x in xs if x is not None]
+    return st.median(xs) if xs else None
+def sgn(x, d=1): return ('+' if x > 0 else '') + f'{x:.{d}f}' if x is not None else 'n/a'
+
+
+# ---------------------------------------------------------------- plain-English explanations (shown on every indicator)
+# what = what the indicator is; why = why it matters; s = what today's score means (+1 / 0 / -1)
+EXPLAIN = {
+ 'PT1': ('Whether the share price is above or below its average price over the last ~10 months.',
+         'Big funds buy and sell around this line, so being above it usually means buyers are in control. It is slow: it confirms a turn after it has happened.',
+         {1: 'The price is above its long-run average: the long-term trend is up.', 0: 'The price has slipped just under its long-run average: the trend is being tested.', -1: 'The price is well below its long-run average: the long-term trend has turned down.'}),
+ 'PT2': ('Whether the shorter trend (last ~10 weeks) is running above or below the longer trend (last ~10 months).',
+         'It shows whether the trend itself is turning, not just where the price is today.',
+         {1: 'The shorter trend is above the longer one: momentum is building upward.', 0: 'The two trends are close together: momentum is flat.', -1: 'The shorter trend has dropped below the longer one: momentum has turned down.'}),
+ 'PT4': ('Whether the stock has done better or worse than its direct competitors over the last 3 months.',
+         'It separates something specific to this company from a whole-industry move.',
+         {1: 'Beating its competitors: the market is rewarding this company in particular.', 0: 'Moving roughly in line with its competitors.', -1: 'Lagging its competitors: the market is favouring rivals right now.'}),
+ 'LQ1': ('Whether more shares change hands on days the price rises than on days it falls (last 20 trading days).',
+         'Large investors leave footprints in trading volume; heavy buying days suggest they are accumulating.',
+         {1: 'Much more trading on up days: buyers are more active than sellers.', 0: 'Trading is balanced between up and down days.', -1: 'Much more trading on down days: sellers are more active.'}),
+ 'LQ2': ('How many shares are borrowed and sold by investors betting the price will fall, and whether that is growing.',
+         'Short sellers often do deep research, so a rising number of bets against a stock is a warning worth noticing.',
+         {1: 'Bets against the stock are shrinking.', 0: 'Bets against the stock are steady.', -1: 'Bets against the stock are growing, or are unusually large.'}),
+ 'LQ3': ('Whether professional investment firms, in total, added or cut shares last quarter.',
+         'Shows whether the big money is moving in or out. It arrives late (filings come up to 45 days after the quarter).',
+         {1: 'Funds added a meaningful number of shares last quarter.', 0: 'Funds were broadly steady last quarter.', -1: 'Funds cut a meaningful number of shares last quarter.'}),
+ 'LQ4': ('Whether the US dollar has strengthened or weakened over the last month.',
+         'A strong dollar pulls money out of riskier assets worldwide and shrinks the dollar value of overseas sales.',
+         {1: 'The dollar has weakened: a tailwind for stocks.', 0: 'The dollar is broadly unchanged.', -1: 'The dollar has strengthened: a headwind for stocks.'}),
+ 'LQ6': ('Whether markets now expect the Fed to cut or raise interest rates at its next meeting, compared with a month ago.',
+         'Interest rates set the price of every other asset; expectations move long before the Fed acts.',
+         {1: 'Markets have moved towards expecting rate cuts: supportive for share prices.', 0: 'Rate expectations have barely moved.', -1: 'Markets have moved towards expecting rate rises: a headwind for share prices, especially expensive ones.'}),
+ 'DM1': ('Whether sales growth is speeding up or slowing down compared with the past year.',
+         'The plainest evidence of whether customers want more of what the company sells.',
+         {1: 'Sales growth is speeding up.', 0: 'Sales growth is steady.', -1: 'Sales growth is slowing, or sales are shrinking.'}),
+ 'DM2': ("Whether analysts have raised or cut their profit forecasts over the last 3 months.",
+         'Changes in expected profit are one of the most reliable drivers of share prices over the following months.',
+         {1: 'Analysts are raising their profit forecasts.', 0: 'Profit forecasts are broadly unchanged.', -1: 'Analysts are cutting their profit forecasts.'}),
+ 'DM3': ("Whether management's outlook for next quarter came in above or below what analysts expected.",
+         "Management knows its order book best; its outlook is an early read on demand.",
+         {1: 'Management guided above expectations: demand looks better than the market thought.', 0: 'Management guided in line with expectations.', -1: 'Management guided below expectations: demand or costs look worse than the market thought.'}),
+ 'DM6': ('Whether the share of each sales dollar kept as gross profit is rising or falling.',
+         'A company that can hold or raise its margins has pricing power, a sign of strong demand.',
+         {1: 'Margins are rising: the company is holding its prices well.', 0: 'Margins are steady.', -1: 'Margins are falling: costs are rising faster than prices.'}),
+ 'VL1': ("How much investors pay for each dollar of the company's expected profit, compared with its competitors.",
+         'Paying much more than for rivals means good news is already in the price, so there is less room for disappointment.',
+         {1: 'Cheaper than its competitors: good news may not be fully priced in.', 0: 'Priced roughly in line with its competitors.', -1: 'Much more expensive than its competitors: the price assumes things keep going very well.'}),
+ 'VL2': ('The same comparison as above, but allowing for how fast profits are expected to grow.',
+         'A higher price can be fair if profits grow faster; this checks whether they do.',
+         {1: 'Cheap even after allowing for growth.', 0: 'Its expected growth broadly explains the price.', -1: 'Still expensive after allowing for its expected growth.'}),
+ 'VL3': ("How much investors pay for each dollar of profit today, compared with this company's own usual level over 5 years.",
+         'Shows whether the stock is cheap or expensive by its own standards, which catches whole-industry re-pricing.',
+         {1: 'Cheaper than usual for this company.', 0: 'Within its normal range.', -1: 'More expensive than usual for this company.'}),
+ 'VL4': ("The company's total value (including debt) compared with its operating profit, against competitors.",
+         'Unlike the P/E, this counts debt, so an indebted company cannot look artificially cheap.',
+         {1: 'Cheaper than its competitors once debt is counted.', 0: 'In line with its competitors once debt is counted.', -1: 'More expensive than its competitors once debt is counted.'}),
+}
+SCORE_WORD = {1: 'Bullish', 0: 'Neutral', -1: 'Bearish', None: 'No data'}
+
+def explain(it, S):
+    k = it['id']
+    if k in EXPLAIN: what, why, s = EXPLAIN[k]
+    else:
+        cfg = next((d for d in (S.get('dm4', []) + ([S['dm5']] if S.get('dm5') else [])) if d['id'] == k), {})
+        what = cfg.get('what', it['name']); why = cfg.get('why', '')
+        s = {1: cfg.get('bull_means', 'Better than the bullish line.'), 0: cfg.get('neutral_means', 'Between the lines.'), -1: cfg.get('bear_means', 'Worse than the bearish line.')}
+    if k in ('PT1', 'PT2') and 'since listing' in (it.get('measured') or ''):   # new-listing mode wording
+        what = ('Whether the share price is above or below its average price since listing (the long-run average does not exist yet).' if k == 'PT1'
+                else 'Whether the last 20 trading days are running above or below the average since listing (short-history version of the trend check).')
+    return {'what': what, 'why': why, 'score': s.get(it['s'], 'No live data today, so it is left out of the score.')}
+
+# ---------------------------------------------------------------- holder display names
+ALIAS = {'fmr': 'Fidelity (FMR)', 'price t rowe associates': 'T. Rowe Price', 'blackrock': 'BlackRock', 'jpmorgan chase': 'JPMorgan Chase',
+         'geode capital management': 'Geode Capital', 'state street': 'State Street', 'ubs am': 'UBS Asset Management'}
+def clean_name(n):
+    import re
+    s = re.sub(r'/[A-Za-z]{2}/', '', n)
+    s = re.sub(r'\b(Inc|Llc|Lp|Llp|Corp|Corporation|Ltd|Plc|Co|Group Inc)\b\.?', '', s, flags=re.I)
+    s = re.sub(r'[\s,\.&]+$', '', re.sub(r'\s+', ' ', s)).strip(' ,.')
+    low = s.lower()
+    for k, v in ALIAS.items():
+        if low.startswith(k): return v
+    return s
+
+# ---------------------------------------------------------------- overnight changes (what moved since the previous refresh)
+# Materiality lines, each measured against the previous refresh:
+#   composite score moves 10+ points; a bucket moves 25+ points; any indicator score changes; the call or zone changes;
+#   peer premium on forward P/E moves 10+ percentage points; a chain status changes or its watch number crosses its line;
+#   a results date is added, confirmed or moved, or new results arrive; a holder's classification or the filing quarter changes;
+#   the quality flag count changes; an unusual price move (2x a typical day); a new flag or override.
+def changes(prev, d):
+    out = {k: [] for k in ('call', 'changers', 'move', 'calendar', 'indicators', 'valuation', 'mix', 'earnings', 'shareholders', 'chains', 'quality', 'price')}
+    if not prev or prev.get('meta', {}).get('asof') == d['meta']['asof']:
+        return {'since': None, 'first': not prev, 'sections': out, 'count': 0}
+    since = prev['meta']['asof']
+    pc, nc = prev.get('composite'), d.get('composite')
+    if pc is not None and nc is not None and abs(nc - pc) >= 10: out['call'].append(f'Composite score {pc:+d} → {nc:+d}')
+    if (prev.get('call') or {}).get('code') != (d.get('call') or {}).get('code') and d['call'].get('code'):
+        out['call'].append(f"Call changed: {prev['call'].get('label','none')} → {d['call']['label']}")
+    elif prev.get('zone') != d.get('zone'):
+        out['call'].append(f"Today's zone moved: {prev.get('zone')} → {d.get('zone')} (not yet confirmed)")
+    for b, v in d['buckets'].items():
+        pv = (prev.get('buckets') or {}).get(b)
+        if pv is not None and v is not None and abs(v - pv) >= 25: out['call'].append(f'{b} bucket {pv:+d} → {v:+d}')
+    pf = {f['code'] for f in prev.get('flags', [])}
+    for f in d['flags']:
+        if f['code'] not in pf: out['call'].append('New flag: ' + f['text'])
+    pi = {i['id']: i for i in prev.get('indicators', [])}
+    for i in d['indicators']:
+        p = pi.get(i['id'])
+        if p and p.get('s') != i['s']:
+            out['indicators'].append({'id': i['id'], 'name': i['name'], 'from': SCORE_WORD[p.get('s')], 'to': SCORE_WORD[i['s']], 'w': i['w'],
+                                      'up': (i['s'] or 0) > (p.get('s') or 0)})
+            # counted once, under Indicators (the valuation and 'what would change' sections no longer repeat it)
+    def prem(x): m = x['peers']['median'].get('fpe'); s = x['peers']['stock'].get('fpe'); return (s / m - 1) * 100 if s and m else None
+    a, b = prem(prev), prem(d)
+    if a is not None and b is not None and abs(b - a) >= 10: out['valuation'].append(f'Forward P/E premium to peers {a:+.0f}% → {b:+.0f}%')
+    if d['move'].get('unusual'): out['move'].append(f"Unusual move: {d['move']['d1']*100:+.1f}% ({d['move']['ratio']:.1f}x a typical day); classified {d['move'].get('class','n/a')}")
+    elif prev.get('move', {}).get('class') != d['move'].get('class'): out['move'].append(f"Classification {prev['move'].get('class')} → {d['move'].get('class')}")
+    pcal = {c['t'] for c in prev.get('calendar', [])}
+    for c in d['calendar']:
+        if c['t'] not in pcal: out['calendar'].append('New: ' + c['t'] + ' (' + c['d'] + ')')
+    pn = {n['q']: n for n in prev.get('earnings', {}).get('next', [])}
+    for n in d['earnings'].get('next', []):
+        p = pn.get(n['q'])
+        if not p: out['earnings'].append(f"Next results added: {n['q']}")
+        elif p.get('date') != n.get('date') or p.get('status') != n.get('status'): out['earnings'].append(f"{n['q']}: {p.get('date')} ({p.get('status')}) → {n['date']} ({n['status']})")
+    pq = [e['q'] for e in prev.get('earnings', {}).get('past', [])]
+    for e in d['earnings'].get('past', []):
+        if e['q'] not in pq: out['earnings'].append(f"New results: {e['q']}")
+    if prev.get('shareholders', {}).get('asof') != d['shareholders'].get('asof'): out['shareholders'].append(f"New filing quarter: {d['shareholders'].get('asof')}")
+    else:
+        pcls = {h['name']: h['cls'] for h in prev['shareholders'].get('top5', []) + prev['shareholders'].get('active', [])}
+        for h in d['shareholders']['top5'] + d['shareholders']['active']:
+            if h['name'] in pcls and pcls[h['name']] != h['cls']: out['shareholders'].append(f"{h['disp']}: {pcls[h['name']]} → {h['cls']}")
+    pch = {c['id']: c for c in prev.get('chains', [])}
+    for c in d['chains']:
+        p = pch.get(c['id'])
+        if p and p.get('status') != c.get('status'): out['chains'].append(f"{c['id']} {c['name']}: {p['status']} → {c['status']}")
+    out['mix'] = mix_changes(prev.get('mix'), d.get('mix'))
+    if prev.get('quality', {}).get('flags') != d['quality']['flags']: out['quality'].append(f"Red flags {prev['quality']['flags']} → {d['quality']['flags']}")
+    pc_, nc_ = (prev.get('quality', {}).get('cash') or {}), (d['quality'].get('cash') or {})
+    if nc_.get('latest') and pc_.get('latest') and nc_['latest'] != pc_['latest'] and nc_.get('ttm') is not None:
+        out['quality'].append(f"New results: free cash flow {'−' if nc_['ttm'] < 0 else ''}${abs(nc_['ttm'])/1e3:.1f}bn ({nc_['ttm_label']})")
+    if d['move'].get('unusual'): out['price'].append(f"{d['move']['d1']*100:+.1f}% on the day")
+    n = sum(len(v) for v in out.values())
+    return {'since': since, 'first': False, 'sections': out, 'count': n}
+
+# ---------------------------------------------------------------- revenue mix (plan v0.4, section "Revenue mix"; NOT scored)
+# Input : stage D bundle (SEC inline XBRL, US) or side.json mix.quarters (manual, any market) + settings.mix + side.json mix text.
+# Output: data['mix'] = quarters for the chart, one row per segment (shares, growth, margin), recurring share, mix effect on margin,
+#         automatic plus/minus signals, and the chat-written "what it means" text.
+# Windows (all stated on the page): "now" = last 4 reported quarters; "1 year ago" = the 4 quarters before that;
+#         "3 years ago" = the 4 quarters ending 12 quarters before the latest (or the earliest full 4 quarters held, labelled).
+
+MIX_MOVE = 2.0        # change flag: a segment's last-4-quarter share moves 2+ percentage points vs the previous refresh
+MIX_OTHER = 0.005     # add an "Other" slice when reported segments miss the total by more than 0.5% of revenue
+MIX_MAX = 6           # validated palette has 6 colours; smaller segments beyond that fold into "Other"
+MIX_EDGE = 3.0        # a segment/group margin counts as "higher" or "lower" margin when 3+ points away from the company figure
+
+def _d(s): return _dt.date.fromisoformat(s)
+def _qlabel(e):
+    d = _d(e)
+    if d.day <= 7: d = d - _dt.timedelta(days=d.day)   # a quarter ending 1 Apr is the March quarter
+    return d.strftime('%b %Y')   # quarter named by the month it ends (fiscal quarters differ by company)
+
+def _mwords(m):
+    return re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', m).lower().strip()
+
+def _series(D, concept):
+    """Groups the stage D lines of one concept into series keyed by the printed row label (filers' tags can be wrong).
+    If keys sharing a label disagree on a quarter (a generic label such as "cost of" used by every segment), that label is
+    split by member instead. Each series: {'Q': {end: v}, 'FY': {end: v}, 'mw': member words}. Quarter 4 = year - 3 quarters."""
+    E = D['SEGQ'][0][0].split(',') if 'SEGQ' in D else []
+    keys = {}
+    for row in D.get('SEG', []):
+        if row[0] != concept: continue
+        k = keys.setdefault(row[1], {'Q': {}, 'FY': {}})
+        for e, v in zip(E, row[2].split(',')):
+            if v != '' and e not in k['Q']: k['Q'][e] = float(v)
+    for row in D.get('SEGFY', []):
+        if row[0] != concept: continue
+        k = keys.setdefault(row[1], {'Q': {}, 'FY': {}})
+        for pair in row[2].split(' '):
+            if ':' in pair:
+                e, v = pair.split(':'); k['FY'].setdefault(e, float(v))
+    bylab = {}
+    for key, k in keys.items():
+        lab = key.split('~', 1)[1] if '~' in key else _mwords(key)
+        bylab.setdefault(lab, []).append((key, k))
+    out = {}
+    for lab, items in bylab.items():
+        clash = False
+        for kind in ('Q', 'FY'):
+            seen = {}
+            for key, k in items:
+                for e, v in k[kind].items():
+                    if e in seen and abs(seen[e] - v) > 1: clash = True
+                    seen.setdefault(e, v)
+        groups = {lab: items}
+        if clash:
+            groups = {}
+            for key, k in items: groups.setdefault(_mwords(key.split('~')[0]), []).append((key, k))
+        for name, its in groups.items():
+            s = out.setdefault(name, {'Q': {}, 'FY': {}, 'mw': set()})
+            for key, k in its:
+                s['mw'].add(_mwords(key.split('~')[0]))
+                for e, v in k['Q'].items(): s['Q'].setdefault(e, v)
+                for e, v in k['FY'].items(): s['FY'].setdefault(e, v)
+    for s in out.values():
+        for e, fy in s['FY'].items():
+            if e in s['Q']: continue
+            ins = [q for q in E if _d(e) - _dt.timedelta(days=300) < _d(q) < _d(e)]
+            if len(ins) == 3 and all(q in s['Q'] for q in ins): s['Q'][e] = fy - sum(s['Q'][q] for q in ins)
+    return E, out
+
+def _pick(series, patterns, e):
+    """First pattern that gives a complete value for quarter e; a pattern matching several series adds them up.
+    Patterns are tested on the printed label; if no label matches, on the member (tag) words."""
+    for p in patterns:
+        rx = re.compile(p, re.I); labs = [l for l in series if rx.search(l)]
+        if not labs: labs = [l for l in series if any(rx.search(w) for w in series[l]['mw'])]
+        if not labs: continue
+        vals = [series[l]['Q'].get(e) for l in labs]
+        if all(v is not None for v in vals): return sum(vals)
+    return None
+
+def build_mix(S, D, side, prev_mix=None, currency='USD'):
+    cfg = S.get('mix'); txt = side.get('mix', {}) if side else {}
+    if not cfg: return None
+    basis = cfg.get('basis', 'gross')
+    segs_cfg = cfg['segments']; groups_cfg = cfg.get('groups') or [{'id': s['id'], 'name': s['name'], 'match': s['match']} for s in segs_cfg]
+    # ---- quarterly numbers per segment / group
+    Q = []   # list of {end, total, rev{id}, grev{gid}, gprof{gid}}
+    if cfg.get('source', 'sec') == 'manual':
+        for q in txt.get('quarters', []):
+            Q.append({'end': q['end'], 'total': q.get('total') or sum(v for v in q['rev'].values() if v is not None), 'rev': q['rev'],
+                      'grev': q.get('group_rev') or {g['id']: sum(q['rev'].get(s['id']) or 0 for s in segs_cfg if s.get('group', s['id']) == g['id']) for g in groups_cfg},
+                      'gprof': q.get('profit', {})})
+        Q.sort(key=lambda x: x['end']); src = txt.get('source', 'Company results (entered by the stock chat)')
+    else:
+        if not D or 'SEGQ' not in D:
+            # stage D is only run when a new filing may have landed; otherwise carry yesterday's mix unchanged (production rule, 30 Sep 2026)
+            if prev_mix and not prev_mix.get('error'): return dict(prev_mix, carried=True)
+            return {'error': 'No segment data (stage D not run)'}
+        E, REV = _series(D, 'REV'); _, COST = _series(D, 'COST'); _, OI = _series(D, 'OI'); _, GP = _series(D, 'GP')
+        for e in E:
+            tot = _pick(REV, ['^total$'], e)
+            rev = {s['id']: _pick(REV, s['match'], e) for s in segs_cfg}
+            grev = {g['id']: _pick(REV, g['match'], e) for g in groups_cfg}
+            if basis == 'operating':
+                gprof = {g['id']: _pick(OI, g['match'], e) for g in groups_cfg}
+            else:
+                gprof = {}
+                for g in groups_cfg:
+                    c = _pick(COST, g['match'], e); gprof[g['id']] = grev[g['id']] - c if (c is not None and grev[g['id']] is not None) else _pick(GP, g['match'], e)
+            Q.append({'end': e, 'total': tot, 'rev': rev, 'grev': grev, 'gprof': gprof,
+                      'co_gp': _pick(GP, ['^total$'], e), 'co_oi': _pick(OI, ['^total$'], e)})
+        s0 = D.get('SEGSRC', [['', '', '']])[0]
+        src = f"SEC filings (10-Q / 10-K inline XBRL), {s0[0]}; quarter 4 = full year minus the first three quarters"
+    # ---- keep the latest unbroken run of quarters that have a total (and at least one segment)
+    run = []
+    for q in reversed(Q):
+        if q['total'] is None or all(v is None for v in q['rev'].values()):
+            if run: break
+            continue
+        if run and (_d(run[-1]['end']) - _d(q['end'])).days > 100: break
+        run.append(q)
+    run.reverse(); run = run[-16:]
+    # short history (fewer than 8 unbroken quarters, e.g. a new listing): show every quarter held (gaps allowed) and compare
+    # single quarters (latest vs the same quarter a year earlier) instead of 4-quarter sums
+    short = len(run) < 8
+    if short:
+        run = [q for q in Q if q['total'] is not None and any(v is not None for v in q['rev'].values())][-16:]
+    if len(run) < 2: return {'error': 'Fewer than 2 quarters of segment data'}
+    # ---- "Other" and folding beyond 6 colours
+    segs = [dict(s) for s in segs_cfg]
+    gap = max(abs(q['total'] - sum(v or 0 for v in q['rev'].values())) / q['total'] for q in run if all(v is not None for v in q['rev'].values())) if any(all(v is not None for v in q['rev'].values()) for q in run) else 0
+    fold = []
+    if len(segs) > MIX_MAX:
+        size = {s['id']: sum(q['rev'].get(s['id']) or 0 for q in run[-4:]) for s in segs}
+        keep = sorted(segs, key=lambda s: -size[s['id']])[:MIX_MAX - 1]; fold = [s for s in segs if s not in keep]; segs = [s for s in segs if s in keep]
+    if gap > MIX_OTHER or fold:
+        for q in run:
+            known = sum(q['rev'].get(s['id']) or 0 for s in segs)
+            q['rev']['OTHER'] = q['total'] - known if all(q['rev'].get(s['id']) is not None for s in segs) else None
+        segs.append({'id': 'OTHER', 'name': 'Other' + (' (' + ', '.join(s['name'] for s in fold) + ')' if fold else ''), 'recurring': None, 'group': None, 'auto': True})
+    ids = [s['id'] for s in segs]
+    # ---- windows
+    L = len(run) - 1
+    def win(k):   # 4 quarters ending k quarters before the latest; None if not held
+        a = L - k - 3
+        return run[a:L - k + 1] if a >= 0 else None
+    if short:
+        def ago(days):
+            c = [q for q in run[:-1] if abs((_d(run[-1]['end']) - _d(q['end'])).days - days) <= 20]
+            return [c[-1]] if c else None
+        W = {'now': [run[-1]], 'y1': ago(364), 'y3': ago(1092)}
+        lab = {k: ('quarter to ' + _qlabel(w[-1]['end']) if w else None) for k, w in W.items()}
+    else:
+        W = {'now': win(0), 'y1': win(4), 'y3': win(12)}
+        if W['y3'] is None and len(run) >= 12:   # earliest full 4 quarters held, labelled
+            W['y3'] = run[0:4]
+        lab = {k: ('4 quarters to ' + _qlabel(w[-1]['end']) if w else None) for k, w in W.items()}
+    def tsum(w, f):
+        if not w: return None
+        vals = [f(q) for q in w]; return sum(vals) if all(v is not None for v in vals) else None
+    tot = {k: tsum(w, lambda q: q['total']) for k, w in W.items()}
+    def share(sid, k):
+        r = tsum(W[k], lambda q: q['rev'].get(sid)); return r / tot[k] * 100 if (r is not None and tot[k]) else None
+    def growth(sid):
+        a = tsum(W['now'], lambda q: q['rev'].get(sid)); b = tsum(W['y1'], lambda q: q['rev'].get(sid))
+        return (a / b - 1) * 100 if (a is not None and b) else None
+    def qgrowth(sid):   # latest quarter vs the same quarter a year earlier
+        if short: return growth(sid)
+        if L < 4: return None
+        a, b = run[L]['rev'].get(sid), run[L - 4]['rev'].get(sid); return (a / b - 1) * 100 if (a is not None and b) else None
+    # ---- margins per group (last 4 quarters)
+    groups = []
+    for g in groups_cfg:
+        gm = {}
+        for k in ('now', 'y1', 'y3'):
+            r = tsum(W[k], lambda q: q['grev'].get(g['id'])); p = tsum(W[k], lambda q: q['gprof'].get(g['id']))
+            gm[k] = p / r * 100 if (r and p is not None) else None
+        gs = {k: tsum(W[k], lambda q: q['grev'].get(g['id'])) for k in ('now', 'y1', 'y3')}
+        groups.append({'id': g['id'], 'name': g['name'], 'margin': gm, 'rev': gs, 'segments': [s['id'] for s in segs_cfg if s.get('group', s['id']) == g['id']]})
+    # company figure on the same basis = all groups together (before costs the company does not allocate)
+    co = {}
+    for k in ('now', 'y1', 'y3'):
+        rs = [x['rev'][k] for x in groups]; ps = [tsum(W[k], lambda q, gid=x['id']: q['gprof'].get(gid)) for x in groups]
+        co[k] = sum(ps) / sum(rs) * 100 if all(v is not None for v in rs + ps) and sum(rs) else None
+    # mix effect: margin change from the shift in group weights alone, holding each group's margin at its year-earlier level
+    def gw(k): return {x['id']: (x['rev'][k] / sum(y['rev'][k] for y in groups)) if all(y['rev'][k] for y in groups) else None for x in groups}
+    def effect(k0):
+        w1, w0 = gw('now'), gw(k0)
+        if any(v is None for v in list(w1.values()) + list(w0.values())) or any(x['margin'][k0] is None for x in groups): return None
+        return sum((w1[x['id']] - w0[x['id']]) * x['margin'][k0] for x in groups)
+    mix_eff = {'y1': effect('y1'), 'y3': effect('y3') if W['y3'] else None}
+    # ---- per segment rows
+    gmap = {x['id']: x for x in groups}; tsegs = txt.get('segments', {})
+    rows = []
+    for i, s in enumerate(segs):
+        g = gmap.get(s.get('group', s['id'])) if not s.get('auto') else None
+        m_now = g['margin']['now'] if g else None
+        tag = None
+        if m_now is not None and co['now'] is not None:
+            tag = 'higher' if m_now >= co['now'] + MIX_EDGE else 'lower' if m_now <= co['now'] - MIX_EDGE else 'similar'
+        t = tsegs.get(s['id'], {})
+        rows.append({'id': s['id'], 'name': s['name'], 'slot': i, 'recurring': s.get('recurring'), 'group': g['name'] if g else None,
+                     'group_shared': bool(g and len(g['segments']) > 1),
+                     'share': {k: share(s['id'], k) for k in ('now', 'y1', 'y3')}, 'growth': growth(s['id']), 'qgrowth': qgrowth(s['id']),
+                     'margin': (g['margin'] if g else None), 'margin_tag': tag,
+                     'sells': t.get('sells', ''), 'buyers': t.get('buyers', ''), 'pos': t.get('pos', []), 'neg': t.get('neg', [])})
+    co_growth = (tot['now'] / tot['y1'] - 1) * 100 if (tot['now'] and tot['y1']) else None
+    if short: co_qg = co_growth
+    else: co_qg = (run[L]['total'] / run[L - 4]['total'] - 1) * 100 if L >= 4 and run[L - 4]['total'] else None
+    # ---- recurring share and higher-margin share
+    def rec_share(k, levels=('yes',)):
+        v = [r['share'][k] for r in rows if r['recurring'] in levels]; return sum(v) if v and all(x is not None for x in v) else (0.0 if not v else None)
+    recurring = {k: rec_share(k) for k in ('now', 'y1', 'y3')} if any(r['recurring'] == 'yes' for r in rows) else None
+    partly = {k: rec_share(k, ('partly',)) for k in ('now', 'y1', 'y3')} if any(r['recurring'] == 'partly' for r in rows) else None
+    # ---- automatic signals (facts only; the chat writes the judgement in side.json mix.shift)
+    wtxt = 'latest quarter' if short else 'last 4 quarters'
+    wcmp = (lambda l: f'latest quarter vs the same quarter {l} earlier') if short else (lambda l: f'last 4 quarters vs the 4 quarters {l} earlier')
+    pos, neg = [], []
+    basis_w = 'gross margin' if basis == 'gross' else 'segment operating margin'
+    for k, lbl in (('y1', 'a year'), ('y3', '3 years')):
+        e = mix_eff.get(k)
+        if e is None: continue
+        if e >= 0.3: pos.append(f"The shift in mix alone added {e:.1f} pts to {basis_w} vs {lbl} earlier ({wcmp(lbl)}, each part's margin held at that earlier level).")
+        elif e <= -0.3: neg.append(f"The shift in mix alone took {abs(e):.1f} pts off {basis_w} vs {lbl} earlier ({wcmp(lbl)}, each part's margin held at that earlier level).")
+    if recurring and recurring['now'] is not None and recurring['y1'] is not None:
+        dv = recurring['now'] - recurring['y1']
+        if dv >= 1: pos.append(f"Recurring revenue share up {dv:.1f} pts in a year to {recurring['now']:.0f}% of sales ({wtxt}).")
+        elif dv <= -1: neg.append(f"Recurring revenue share down {abs(dv):.1f} pts in a year to {recurring['now']:.0f}% of sales ({wtxt}).")
+    if partly and partly['now'] is not None and partly['y3'] is not None and abs(partly['now'] - partly['y3']) >= 1:
+        dv = partly['now'] - partly['y3']
+        (pos if dv > 0 else neg).append(f"Partly recurring revenue (long-life contracts or design wins) {'up' if dv > 0 else 'down'} {abs(dv):.0f} pts in 3 years to {partly['now']:.0f}% of sales ({wtxt}).")
+    fastest = max((r for r in rows if r['growth'] is not None and not r['id'] == 'OTHER'), key=lambda r: r['growth'], default=None)
+    if fastest and fastest['margin_tag'] and co_growth is not None and fastest['growth'] > co_growth:
+        if fastest['margin_tag'] == 'higher': pos.append(f"Fastest-growing part ({fastest['name']}, {fastest['growth']:+.0f}% vs a year earlier) earns above the company {basis_w}.")
+        elif fastest['margin_tag'] == 'lower': neg.append(f"Fastest-growing part ({fastest['name']}, {fastest['growth']:+.0f}% vs a year earlier) earns below the company {basis_w}.")
+    top = max((r for r in rows if r['share']['now'] is not None), key=lambda r: r['share']['now'], default=None)
+    if top and top['share']['now'] >= 50: neg.append(f"Concentration: {top['name']} is {top['share']['now']:.0f}% of sales ({wtxt}).")
+    # ---- data checks
+    checks = []
+    if gap > MIX_OTHER: checks.append(f"Reported parts miss the total by up to {gap*100:.1f}% of revenue: shown as Other.")
+    miss = [s['name'] for s in segs if any(q['rev'].get(s['id']) is None for q in run[-4:])]
+    if miss: checks.append('Missing in a recent quarter: ' + ', '.join(miss) + '.')
+    # rolling margin (last 4 quarters at each quarter end) per group and for all groups together: the margin chart (D20, 30 Sep)
+    mser = {}
+    span = 1 if short else 4   # short history: each point is one quarter
+    def roll(i, gids):
+        w = run[i - span + 1:i + 1]
+        r = [q['grev'].get(g) for q in w for g in gids]; p = [q['gprof'].get(g) for q in w for g in gids]
+        return round(sum(p) / sum(r) * 100, 2) if all(v is not None for v in r + p) and sum(r) else None
+    for g in groups: mser[g['id']] = [roll(i, [g['id']]) for i in range(span - 1, len(run))]
+    mser['_co'] = [roll(i, [g['id'] for g in groups]) for i in range(span - 1, len(run))]
+    latest = run[-1]['end']
+    out = {'unit': '$m' if currency == 'USD' else f'{currency} m', 'currency': currency, 'basis': basis, 'basis_word': basis_w, 'source': src,
+           'latest': latest, 'latest_label': _qlabel(latest), 'windows': lab, 'n': len(run),
+           'quarters': [{'end': q['end'], 'label': _qlabel(q['end']), 'total': q['total'], 'rev': {i: q['rev'].get(i) for i in ids}} for q in run],
+           'segments': rows, 'groups': [{'id': g['id'], 'name': g['name'], 'margin': g['margin'], 'segments': g['segments'],
+                                         'slot': next((i for i, s in enumerate(segs) if s['id'] in g['segments']), 0), 'series': mser[g['id']]} for g in groups],
+           'margin_series': {'ends': [run[i]['end'] for i in range(span - 1, len(run))], 'labels': [_qlabel(run[i]['end']) for i in range(span - 1, len(run))], 'company': mser['_co'], 'span': span},
+           'short': short,
+           'company_margin': co, 'company_growth': co_growth, 'company_qgrowth': co_qg, 'mix_effect': mix_eff, 'recurring': recurring, 'partly_recurring': partly,
+           'signals': {'pos': pos, 'neg': neg}, 'shift': txt.get('shift', {}), 'note': cfg.get('note', ''), 'checks': checks,
+           'scored': False}
+    return out
+
+def mix_changes(prev_mix, mix):
+    out = []
+    if not mix or 'segments' not in mix: return out
+    if not prev_mix or 'segments' not in prev_mix: return out
+    if prev_mix.get('latest') != mix['latest']: out.append(f"New results: mix now runs to the {mix['latest_label']} quarter")
+    ps = {r['id']: r['share']['now'] for r in prev_mix['segments']}
+    for r in mix['segments']:
+        a, b = ps.get(r['id']), r['share']['now']
+        if a is not None and b is not None and abs(b - a) >= MIX_MOVE: out.append(f"{r['name']} share of sales {a:.1f}% → {b:.1f}% (last 4 quarters)")
+    return out
+
+# ---------------------------------------------------------------- cash flow and interest from SEC periods (plan v0.5, S10)
+# 10-Q cash-flow statements are year-to-date: quarters are derived by difference (6 months - 3 months, 9 - 6, year - 9, and
+# half-year - its second quarter). Stage B lines: CFP|start|end|operating cash|capex|filed and INTP|start|end|op income|interest|filed ($m).
+def _days(a, b): return (_dt.date.fromisoformat(b) - _dt.date.fromisoformat(a)).days
+def _qseries(rows, idx, asof):
+    P = {}
+    for r in rows:
+        if len(r) <= idx or r[idx] in ('', None) or (len(r) > 4 and r[4] and r[4] > asof): continue
+        P[(r[0], r[1])] = float(r[idx])
+    Q = {e: {'s': s_, 'v': v} for (s_, e), v in P.items() if 80 <= _days(s_, e) <= 100}
+    for _ in range(6):
+        added = False
+        for (s_, e), v in list(P.items()):
+            if _days(s_, e) <= 100: continue
+            for (s2, e2), v2 in list(P.items()):
+                if s2 == s_ and e2 < e and 80 <= _days(e2, e) <= 100 and e not in Q:
+                    Q[e] = {'s': (_dt.date.fromisoformat(e2) + _dt.timedelta(days=1)).isoformat(), 'v': v - v2}; added = True
+            if e in Q:
+                re_ = (_dt.date.fromisoformat(Q[e]['s']) - _dt.timedelta(days=1)).isoformat()
+                if re_ > s_ and (s_, re_) not in P:
+                    P[(s_, re_)] = v - Q[e]['v']; added = True
+                    if 80 <= _days(s_, re_) <= 100 and re_ not in Q: Q[re_] = {'s': s_, 'v': v - Q[e]['v']}
+        if not added: break
+    return Q, P
+def _contig(ends):
+    """latest run of quarter ends with no gap (each 80-100 days after the previous)"""
+    run = []
+    for e in sorted(ends, reverse=True):
+        if run and not (80 <= _days(e, run[-1]) <= 100): break
+        run.append(e)
+    return list(reversed(run))
+def _plabel(s_, e):
+    m = round(_days(s_, e) / 30.4)
+    return ('quarter' if m == 3 else f'{m} months' if m != 12 else '12 months') + ' to ' + _qlabel(e)
+
+def cash_block(B, fin, asof, fq):
+    """Free cash flow history + last-12-month figure, and interest cover, from SEC; Yahoo only as a fallback for FCF."""
+    cf = B.get('CFP', []); ip = B.get('INTP', [])
+    O, OP = _qseries(cf, 2, asof); X, XP = _qseries(cf, 3, asof)
+    ends = sorted(e for e in O if e in X)
+    qs = [{'end': e, 'label': _qlabel(e), 'ocf': round(O[e]['v']), 'capex': round(X[e]['v']), 'fcf': round(O[e]['v'] - X[e]['v'])} for e in ends][-16:]
+    run = _contig([q['end'] for q in qs]); byq = {q['end']: q for q in qs}
+    for i, q in enumerate(qs):
+        w = [x for x in qs[max(0, i - 3):i + 1]]
+        q['ttm'] = sum(x['fcf'] for x in w) if len(w) == 4 and _contig([x['end'] for x in w]) == [x['end'] for x in w] else None
+    ttm = byq[run[-1]]['ttm'] if run and len(run) >= 4 else None
+    yago = None
+    if ttm is not None:
+        prev = [q for q in qs if 350 <= _days(q['end'], run[-1]) <= 380]
+        yago = prev[-1]['ttm'] if prev else None
+    periods = []
+    for (s_, e), v in sorted(OP.items(), key=lambda kv: (kv[0][1], _days(*kv[0]))):
+        if (s_, e) in XP and _days(s_, e) >= 80: periods.append({'start': s_, 'end': e, 'label': _plabel(s_, e), 'ocf': round(v), 'capex': round(XP[(s_, e)]), 'fcf': round(v - XP[(s_, e)])})
+    revq = {q['end']: q['rev'] for q in fq if q.get('rev')}
+    ttm_rev = sum(revq[e] for e in run[-4:]) if ttm is not None and all(e in revq for e in run[-4:]) else None
+    if ttm is not None:
+        fcf_v, fcf_lbl, fcf_src = ttm, f'last 12 months to {_qlabel(run[-1])}', 'SEC'
+    elif periods:
+        last = max(periods, key=lambda p: (p['end'], _days(p['start'], p['end'])))
+        fcf_v, fcf_lbl, fcf_src = last['fcf'], last['label'], 'SEC'
+    elif num(fin[2]) is not None:
+        fcf_v, fcf_lbl, fcf_src = num(fin[2]) / 1e6, 'last 12 months (Yahoo)', 'Yahoo'
+    else:
+        fcf_v = fcf_lbl = fcf_src = None
+    # interest cover
+    OI, _ = _qseries(ip, 2, asof); IE, IEP = _qseries(ip, 3, asof)
+    both = _contig([e for e in OI if e in IE])
+    last_ie = max(IE) if IE else None
+    cover = None; cov_txt = 'not reported'
+    if both and (not OI or both[-1] == max(OI)):
+        w = both[-4:]; a = sum(OI[e]['v'] for e in w); b = sum(IE[e]['v'] for e in w)
+        lbl = f'last 12 months to {_qlabel(w[-1])}' if len(w) == 4 else f'quarter to {_qlabel(w[-1])}' if len(w) == 1 else f'{len(w)} quarters to {_qlabel(w[-1])}'
+        if b > 0:
+            cover = a / b
+            cov_txt = f"{cover:.1f}x ({lbl}: operating {'profit' if a >= 0 else 'loss'} ${abs(a)/1e3:.1f}bn ÷ interest ${b/1e3:.2f}bn)" if abs(a) >= 1000 else f"{cover:.1f}x ({lbl}: operating {'profit' if a >= 0 else 'loss'} ${abs(a):.0f}m ÷ interest ${b:.0f}m)"
+    elif last_ie:
+        cov_txt = f'interest cost not reported separately since {_qlabel(last_ie)}'
+    return {'quarters': qs, 'ttm': fcf_v, 'ttm_label': fcf_lbl, 'source': fcf_src, 'ttm_year_ago': yago, 'ttm_rev': ttm_rev,
+            'periods': periods[-4:] if len(qs) < 2 else [], 'latest': run[-1] if run else (periods[-1]['end'] if periods else None),
+            'cover': cover, 'cover_text': cov_txt}
+
+# ---------------------------------------------------------------- build
+def build(S, A, B, C, side, prev, D=None):
+    code = S['code']; asof = A['ASOF'][0][0]
+    px, ma50, ma200 = map(num, A['PX'][0][:3])
+    move = list(map(num, A['MOVE'][0])); bench = A['BENCH'][0]
+    peers = {p[0]: p for p in A.get('PEER', [])}
+    val = list(map(num, A['VAL'][0])); short = A['SHORT'][0]; fin = A['FIN'][0]
+    est = {e[0]: e for e in A.get('EST', [])}
+    # shared macro (plan v0.5): one snapshot per refresh (collector stage M, pinned to the close) used by every tab; the per-stock
+    # MACRO/FED lines in rawA are only a fallback, so the same number can never show two values on different tabs
+    MS = S.get('_macro_in') or A
+    macro = {m[0]: {'sym': m[1], 'last': num(m[2]), 'ago20': num(m[3]), 'ago21': num(m[4]), 'd': m[5]} for m in MS.get('MACRO', [])}
+    fed = (MS.get('FED') or [[None] * 6])[0]
+    macro_src = 'shared snapshot' if S.get('_macro_in') else 'this tab\'s own fetch'
+    if S.get('_macro_asof') and S['_macro_asof'] != asof: macro_src += f" (dated {S['_macro_asof']}, not this tab's close {asof})"
+    Q = [{'end': q[0], 'filed': q[1], 'rev': num(q[2]), 'gp': num(q[3]), 'eps': num(q[4])} for q in B.get('Q', [])]
+    for q in Q:   # pre-split EPS (settings: splits [[date, ratio]])
+        for d, r in S.get('splits', []):
+            if q['end'] < d and q['eps'] is not None: q['eps'] /= r
+    I = {}   # indicator results
+
+    # ---- new-listing mode: how many trading days of history exist
+    lst = A.get('LISTING', [[None, None, None, None]])[0]
+    first_d, ndays, avg_since, ma20 = lst[0], int(num(lst[1]) or 0), num(lst[2]), num(lst[3])
+    listed = S.get('listed') or (first_d if ndays and ndays < NL['full_window'] else None)
+    def est_date(k):   # about k US trading days after asof (weekdays + ~9 holidays a year)
+        d = dt.date.fromisoformat(asof); left = k + round(k * 9 / 252)
+        while left > 0:
+            d += dt.timedelta(days=1)
+            if d.weekday() < 5: left -= 1
+        return d.isoformat()
+    nl_subs = []
+    pt_short = bool(listed) and ndays < NL['pt_end']
+    nlnote = lambda end: f"New-listing mode: {ndays} trading days since listing on {listed}; switches to the standard version at day {end} (about {est_date(end - ndays)})."
+
+    def put(id_, bucket, name, w, value, text, score, measured, bull, bear, timing, source, note=''):
+        I[id_] = dict(id=id_, bucket=bucket, name=name, w=w, v=value, text=text, s=score,
+                      measured=measured, bull=bull, bear=bear, timing=timing, source=source, note=note)
+
+    # ---- price trend
+    if not pt_short:
+        v = pct(px, ma200); put('PT1', 'Price trend', 'Price vs 200-day average', 10, v, f'{sgn(v)}%',
+            None if v is None else (1 if v >= 0 else -1 if v < -5 else 0), "the stock's own 200-day average",
+            'at or above', 'more than 5% below', 'Lagging', 'Yahoo Finance prices')
+        v = pct(ma50, ma200); put('PT2', 'Price trend', '50-day vs 200-day average', 8, v, f'{sgn(v)}%',
+            None if v is None else (1 if v > 0 else -1 if v < -2 else 0), "the stock's own 200-day average",
+            '50-day above 200-day', '50-day more than 2% below', 'Lagging', 'Yahoo Finance prices')
+    else:
+        ok = ndays >= NL['pt_min']
+        v = pct(px, avg_since) if ok else None
+        put('PT1', 'Price trend', 'Price vs average since listing (short-history version)', 10, v, f'{sgn(v)}%' if ok else f'n/a ({ndays} of {NL["pt_min"]} days)',
+            None if v is None else (1 if v >= 0 else -1 if v < -5 else 0), f'the average of all {ndays} closes since listing (${avg_since:.2f})' if avg_since else 'the average since listing',
+            'at or above', 'more than 5% below', 'Lagging', 'Yahoo Finance prices', nlnote(NL['pt_end']))
+        v = pct(ma20, avg_since) if ok else None
+        put('PT2', 'Price trend', '20-day vs since-listing average (short-history version)', 8, v, f'{sgn(v)}%' if ok else f'n/a ({ndays} of {NL["pt_min"]} days)',
+            None if v is None else (1 if v > 0 else -1 if v < -2 else 0), f'the average of all {ndays} closes since listing (${avg_since:.2f}); 20-day average ${ma20:.2f}' if (avg_since and ma20) else 'the average since listing',
+            '20-day above since-listing average', '20-day more than 2% below', 'Lagging', 'Yahoo Finance prices', nlnote(NL['pt_end']))
+        nl_subs += [{'id': 'PT1', 'standard': 'Price vs 200-day average', 'now': 'Price vs average of all closes since listing', 'end_day': NL['pt_end'], 'end_est': est_date(NL['pt_end'] - ndays)},
+                    {'id': 'PT2', 'standard': '50-day vs 200-day average', 'now': '20-day average vs average since listing', 'end_day': NL['pt_end'], 'end_est': est_date(NL['pt_end'] - ndays)}]
+    pr = [num(p[3]) for p in peers.values() if num(p[3]) is not None]
+    v = (move[2] - sum(pr) / len(pr)) * 100 if pr and move[2] is not None else None
+    put('PT4', 'Price trend', 'Relative strength vs peers, 3 months', 7, v, f'{sgn(v)} pts',
+        None if v is None else (1 if v > 5 else -1 if v < -5 else 0), f'equal-weighted average of {len(pr)} peers over 63 trading days',
+        'more than 5 points ahead', 'more than 5 points behind', 'Coincident', 'Yahoo Finance prices')
+    stretch = pct(px, ma200) if not pt_short else pct(px, avg_since)
+
+    # ---- liquidity
+    v = num(A['LQ1'][0][0]); put('LQ1', 'Liquidity', 'Buying vs selling volume', 6, v, f'{v:.2f}x' if v else 'n/a',
+        None if v is None else (1 if v >= 1.3 else -1 if v <= 0.77 else 0), 'volume on up days ÷ down days, last 20 trading days',
+        '1.3x or higher', '0.77x or lower', 'Coincident', 'Yahoo Finance prices')
+    s0, s1, sf = num(short[0]), num(short[1]), num(short[2])
+    v = pct(s0, s1); sc = None if v is None else (-1 if (v >= 10 or (sf or 0) > 0.10) else 1 if v <= -10 else 0)
+    lq2_note = ''
+    if sc is not None and sf is not None and sf < SHORT_FLOOR:   # D31: too few shares sold short for the change to mean much
+        sc = 0; lq2_note = f'Neutral: only {sf*100:.1f}% of freely traded shares are sold short, below the {SHORT_FLOOR*100:.0f}% minimum for a move to count.'
+    put('LQ2', 'Liquidity', 'Short interest trend', 3, v, f'{sgn(v)}% ({(sf or 0)*100:.1f}% of float)', sc,
+        f'short interest a month earlier (report {short[3]})', 'down 10%+ (with 2%+ of float sold short)', 'up 10%+ or above 10% of float', 'Leading', 'Yahoo Finance (FINRA data)', lq2_note)
+    H_dates = [h[1] for h in C.get('HOLDER', []) if h[1]]
+    q13 = max((dt.datetime.strptime(d, '%m/%d/%Y').date() for d in H_dates), default=None)
+    first_13f = bool(listed and q13 and dt.date.fromisoformat(listed) > q13 - dt.timedelta(days=92))
+    act = {a[0]: num(a[2]) for a in C.get('ACTIVE', [])}; so = num(C['INSTSUM'][0][1]) if C.get('INSTSUM') else None
+    # shares outstanding: Nasdaq's count can miss share classes (SPCX: Class A only); if it differs from market value ÷ price by
+    # more than 10%, use the implied count (millions) and say so
+    so_note = ''; mcap0 = num(A['NAME'][0][2])
+    so_impl = mcap0 / px / 1e6 if mcap0 and px else None
+    if so_impl and (not so or abs(so / so_impl - 1) > 0.10):
+        so_note = f"Shares outstanding: {so_impl:,.0f}m (market value ÷ price) used instead of Nasdaq's {so:,.0f}m, which differs by more than 10%." if so else f"Shares outstanding: {so_impl:,.0f}m (market value ÷ price)."
+        so = so_impl
+    v = ((act.get('Increased Positions') or 0) - (act.get('Decreased Positions') or 0)) / (so * 1e6) * 100 if so and act else None
+    if first_13f: v = None
+    put('LQ3', 'Liquidity', 'Institutional ownership change', 2, v, f'{sgn(v, 2)} pts of shares' if v is not None else 'n/a', None if v is None else (1 if v >= 1 else -1 if v <= -1 else 0),
+        'shares added minus shares cut by institutions last quarter, as % of shares outstanding', '+1 point or more', '−1 point or less', 'Lagging', 'Nasdaq (13F filings)',
+        'Proxy: counts changes in existing positions, not new or closed ones.' + (f' Blank: the quarter to {q13} is the first since listing on {listed}, so every holder shows as new.' if first_13f else ''))
+    dx = macro.get('DXY', {}); v = (dx['last'] - dx['ago20']) if dx.get('last') and dx.get('ago20') else None
+    put('LQ4', 'Liquidity', 'Dollar backdrop (shared macro)', 2, v, f'{sgn(v, 2)} pts', None if v is None else (1 if v <= -1 else -1 if v >= 1 else 0),
+        'the dollar index 20 trading days earlier', 'fell 1 point or more', 'rose 1 point or more', 'Leading', 'Yahoo Finance (ICE dollar index)')
+    cN, hN, cT, hT = (num(x) for x in fed[1:5]) if fed[0] else (None,) * 4
+    v = ((cN - hN) - (cT - hT)) if None not in (cN, hN, cT, hT) else None
+    put('LQ6', 'Liquidity', 'Fed rate expectations (shared macro)', 2, v, 'n/a' if v is None else f'{sgn(v)} pts ({"towards cuts" if v > 0 else "towards rises" if v < 0 else "no change"})',
+        None if v is None else (1 if v >= 15 else -1 if v <= -15 else 0), 'net odds (cut minus rise) for the next Fed meeting, 28 days earlier',
+        'moved 15+ points towards cuts', 'moved 15+ points towards rises', 'Leading', 'Polymarket', f'Now: {cN:.0f}% cut, {hN:.0f}% rise; a month ago: {cT:.0f}% cut, {hT:.0f}% rise.' if v is not None else '')
+
+    # ---- demand
+    fq = sorted([q for q in Q if q['filed'] <= asof], key=lambda q: q['end'])
+    consec = len(fq) >= 9 and all(80 <= _days(fq[k - 1]['end'], fq[k]['end']) <= 100 for k in range(len(fq) - 8, len(fq)))
+    if not (len(fq) >= 9 and all(q['rev'] for q in fq[-9:]) and consec):
+        why = f'n/a (needs 9 consecutive quarters of SEC revenue; {len(fq)} filed)' if len(fq) < 9 else 'n/a (a quarter is missing in the SEC data, so quarters cannot be compared)'
+        put('DM1', 'Demand', 'Revenue growth trend', 6, None, why, None, 'average growth of the prior 4 quarters, each vs a year earlier',
+            'speeding up 2+ points', 'slowing 2+ points or shrinking', 'Coincident', 'SEC filings')
+        put('DM6', 'Demand', 'Gross margin trend', 3, None, why.replace('revenue', 'revenue and gross profit'), None, 'gross margin of the 4 quarters a year earlier',
+            'up 1+ point', 'down 1+ point', 'Lagging', 'SEC filings')
+    else:
+        L = len(fq) - 1; yoy = lambda k: fq[k]['rev'] / fq[k - 4]['rev'] - 1
+        g = yoy(L); prior = sum(yoy(L - k) for k in range(1, 5)) / 4; v = (g - prior) * 100
+        put('DM1', 'Demand', 'Revenue growth trend', 6, v, f'{g*100:.1f}% vs {prior*100:.1f}% avg ({sgn(v)} pts)',
+            -1 if g < 0 else (1 if v >= 2 else -1 if v <= -2 else 0), 'average growth of the prior 4 quarters, each vs a year earlier',
+            'speeding up 2+ points', 'slowing 2+ points or shrinking', 'Coincident', 'SEC filings')
+        # D32: one-offs entered by the stock chat (side.json dm6_oneoffs: end, gp_add in $m, label, source) are removed before scoring
+        adj = {o['end']: float(o['gp_add']) for o in side.get('dm6_oneoffs', []) if o.get('end') and o.get('gp_add') is not None}
+        gm_rep = lambda a, b: sum(q['gp'] for q in fq[a:b]) / sum(q['rev'] for q in fq[a:b])
+        gm = lambda a, b: sum(q['gp'] + adj.get(q['end'], 0) for q in fq[a:b]) / sum(q['rev'] for q in fq[a:b])
+        if any(q['gp'] is None for q in fq[L-7:L+1]): gm = None
+        if not gm:
+          put('DM6', 'Demand', 'Gross margin trend', 3, None, 'n/a (gross profit not filed for 8 quarters)', None, 'gross margin of the 4 quarters a year earlier',
+              'up 1+ point', 'down 1+ point', 'Lagging', 'SEC filings')
+        if gm:
+          v = (gm(L - 3, L + 1) - gm(L - 7, L - 3)) * 100
+          used = [o for o in side.get('dm6_oneoffs', []) if o.get('end') in {q['end'] for q in fq[L-7:L+1]}]
+          note6 = ''
+          if used:
+              vr = (gm_rep(L - 3, L + 1) - gm_rep(L - 7, L - 3)) * 100
+              note6 = (f"Adjusted for one-offs: " + '; '.join(f"{o.get('label','one-off')} ({'+' if float(o['gp_add']) >= 0 else '−'}${abs(float(o['gp_add'])):,.0f}m to gross profit, quarter to {o['end']}; {o.get('source','')})" for o in used)
+                       + f". As reported: {gm_rep(L-3,L+1)*100:.1f}% vs {gm_rep(L-7,L-3)*100:.1f}% ({sgn(vr)} pts).")
+          put('DM6', 'Demand', 'Gross margin trend' + (' (one-offs removed)' if used else ''), 3, v, f'{gm(L-3,L+1)*100:.1f}% vs {gm(L-7,L-3)*100:.1f}% ({sgn(v)} pts)',
+              1 if v >= 1 else -1 if v <= -1 else 0, 'gross margin of the 4 quarters a year earlier', 'up 1+ point', 'down 1+ point', 'Lagging', 'SEC filings', note6)
+    e1 = est.get('+1y'); dm2_note = ''; dm2_until = None
+    now_e, ago_e = (num(e1[3]), num(e1[4])) if e1 else (None, None)
+    v = (now_e - ago_e) / abs(ago_e) * 100 if (now_e is not None and ago_e) else None   # vs |base|: a smaller loss is an upgrade
+    dm2_small = v is not None and (abs(ago_e) < 0.05 or abs(ago_e) < 0.10 * abs(now_e))
+    if dm2_small:
+        dm2_note = f'Left out: the forecast 90 days earlier (${ago_e:.2f}) is too small a base to measure a % change against (under $0.05 or under 10% of today\'s ${now_e:.2f}).'
+        v = None
+    if listed and dt.date.fromisoformat(asof) - dt.timedelta(days=90) < dt.date.fromisoformat(listed) + dt.timedelta(days=25):
+        dm2_note = (f'Caution: the forecast 90 days ago ({(dt.date.fromisoformat(asof) - dt.timedelta(days=90)).isoformat()}) predates full analyst coverage, '
+                    f'which usually starts about 25 days after listing ({listed}), so it is left out (plan P15; Kenneth, 30 Sep) until about {(dt.date.fromisoformat(listed) + dt.timedelta(days=115)).isoformat()}.')
+        if now_e is not None and ago_e: dm2_note += f' Raw reading today: ${now_e:.2f} vs ${ago_e:.2f}.'
+        if dm2_small: dm2_note += ' After that date it also stays out while the base forecast is under $0.05 or under 10% of today\'s.'
+        v = None; dm2_until = (dt.date.fromisoformat(listed) + dt.timedelta(days=115)).isoformat()
+    put('DM2', 'Demand', 'Earnings forecast revisions', 8, v, f'{sgn(v)}% (${num(e1[3]):.2f} vs ${num(e1[4]):.2f})' if v is not None else 'n/a',
+        None if v is None else (1 if v >= 3 else -1 if v <= -3 else 0), f'consensus EPS for the year to {e1[1] if e1 else "?"}, 90 days earlier',
+        'up 3%+', 'down 3%+', 'Leading', 'Yahoo Finance consensus', dm2_note)
+    g3 = side.get('dm3', {})
+    if g3.get('guide_mid') is None or g3.get('consensus') is None:
+        put('DM3', 'Demand', 'Guidance vs expectations', 6, None, 'n/a (no guidance to compare)', None,
+            g3.get('measured', "analysts' consensus for the same quarter when guidance was given"), '1+ point above', '1+ point below', 'Leading', g3.get('source', 'results call'), g3.get('note', ''))
+    else:
+        v = g3['guide_mid'] - g3['consensus']
+        put('DM3', 'Demand', 'Guidance vs expectations', 6, v, f"guided {g3['guide_mid']}% vs {g3['consensus']}% expected ({sgn(v)} pts)",
+            1 if v >= 1 else -1 if v <= -1 else 0, g3.get('measured', "analysts' consensus for the same quarter when guidance was given"),
+            '1+ point above', '1+ point below', 'Leading', g3.get('source', 'results call'), g3.get('note', ''))
+    for d in S.get('dm4', []) + ([S['dm5']] if S.get('dm5') else []):
+        inp = side.get('custom', {}).get(d['id'], {}); v = inp.get('value')
+        bull = float(d['bullish_if'].replace('>=', '').replace('%', '')); bear = float(d['bearish_if'].replace('<=', '').replace('%', ''))
+        put(d['id'], 'Demand', d['name'], d['weight'], v, f"{sgn(v)}% ({inp.get('period','')})" if v is not None else 'n/a',
+            None if v is None else (1 if v >= bull else -1 if v <= bear else 0), d['measured_against'], d['bullish_if'], d['bearish_if'],
+            'Leading' if d['id'] == 'DM5' else 'Coincident', d['source'])
+
+    # ---- valuation vs peers
+    def peer_med(col, kind):
+        vals, excl = [], []
+        for p in peers.values():
+            x = num(p[col]); lo, hi = VALID[kind]
+            if x is None: continue
+            (vals if lo <= x <= hi else excl).append((p[0], x))
+        return (st.median([x for _, x in vals]) if vals else None), excl
+    fpe, tpe, peg, ev = val
+    # D29: forward P/E on the next 12 months: this and next fiscal year's consensus EPS, weighted by the part of each year
+    # that falls in the next 12 months. Same rule for peers (PEEREST lines); Yahoo's own figure (next fiscal year) is the fallback.
+    def ntm_eps(end0, e0, end1, e1):
+        if not end0 or e0 is None or e1 is None: return None
+        w = min(1, max(0, _days(asof, end0) / 365)); return w * e0 + (1 - w) * e1
+    fpe_note = ''
+    e0r, e1r = est.get('0y'), est.get('+1y')
+    if e0r and e1r:
+        n = ntm_eps(e0r[1], num(e0r[2]), e1r[1], num(e1r[2]))
+        if n is not None:
+            fpe_y = fpe; fpe = px / n if n > 0 else -1
+            fpe_note = f'Next 12 months: blends consensus EPS for the years to {e0r[1]} and {e1r[1]} (${n:.2f}).' + (f" Yahoo's next-fiscal-year figure: {fpe_y:.1f}x." if fpe_y else '')
+    pe_ntm = {}
+    for r_ in A.get('PEEREST', []):
+        n = ntm_eps(r_[2], num(r_[3]), r_[4], num(r_[5])); pxp = num(r_[1])
+        if n is not None and pxp: pe_ntm[r_[0]] = round(pxp / n, 4) if n > 0 else None   # loss-making peer: no P/E
+    for code_p, p in peers.items():
+        if code_p in pe_ntm: p[4] = pe_ntm[code_p]
+    # own EV (plan v0.5): market value + total debt − cash, over Yahoo's EBITDA; Yahoo's EV was wrong for SPCX (Sep 2026)
+    bal = [num(x) for x in (A.get('BAL', [[None] * 4])[0] + [None] * 4)[:4]]
+    mcap_ = num(A['NAME'][0][2]); ev_note = 'Trailing EBITDA (free source).'; ev_calc = None
+    if mcap_ and bal[0] is not None and bal[1] is not None:
+        ev_calc = {'mcap': mcap_, 'debt': bal[0], 'cash': bal[1], 'ev': mcap_ + bal[0] - bal[1], 'ebitda': bal[2], 'yahoo_ev': bal[3]}
+        if bal[2] and bal[2] > 0:
+            ev = ev_calc['ev'] / bal[2]
+            ev_note = f"EV = market value + debt − cash (${ev_calc['ev']/1e9:,.0f}bn) ÷ last-12-month EBITDA (${bal[2]/1e9:,.1f}bn)."
+            if bal[3] and abs(bal[3] / ev_calc['ev'] - 1) > 0.10: ev_note += f" Yahoo's EV (${bal[3]/1e9:,.0f}bn) differs by more than 10% and is not used."
+        else:
+            ev = None; ev_note = 'EBITDA negative or missing: EV/EBITDA not meaningful.'
+    use_fwd = fpe is not None
+    m1, ex1 = peer_med(4 if use_fwd else 5, 'pe'); m2, ex2 = peer_med(6, 'peg'); m4, ex4 = peer_med(7, 'ev')
+    def vl(id_, name, w, mine, m, meas, note):
+        if mine is not None and mine <= 0:
+            mine = None; note = (note + ' ' if note else '') + 'Not meaningful: the stock\'s own figure is negative (loss-making).'
+        kind_ = 'peg' if id_ == 'VL2' else 'ev' if id_ == 'VL4' else 'pe'
+        if mine is not None and mine > VALID[kind_][1]:   # Kenneth, 30 Sep: keep scoring, add a caution
+            note = (note + ' ' if note else '') + f'Caution: {mine:.1f} is above the {VALID[kind_][1]:g}x range peers must pass; it is real (very expensive) and still scored.'
+        v = pct(mine, m)
+        put(id_, 'Valuation vs peers', name, w, v, f'{mine:.1f} vs {m:.1f} peer median ({sgn(v,0)}%)' if v is not None else 'n/a',
+            None if v is None else (1 if v <= -15 else -1 if v >= 25 else 0), meas, '15%+ below (discount)', '25%+ above (premium)', 'Coincident', 'Yahoo Finance', note)
+    vl('VL1', 'Forward P/E vs peers' if use_fwd else 'P/E vs peers (trailing fallback)', 8, fpe if use_fwd else tpe, m1, 'median of the peer set (next 12 months, same rule)' if use_fwd and pe_ntm else 'median of the peer set', fpe_note if use_fwd else '')
+    vl('VL2', 'Growth-adjusted P/E vs peers', 7, peg, m2, 'median of the peer set', '')
+    vl('VL4', 'EV/EBITDA vs peers', 4, ev, m4, 'median of the peer set', ev_note)
+    # VL3: trailing P/E vs own 5-year median, weekly
+    wk = A.get('WEEKLY')
+    if wk:
+        d0 = dt.date.fromisoformat(wk[0][0]); vals = [int(x) / 10 for x in wk[0][1].split(',')]
+        pes = []
+        for i, c in enumerate(vals):
+            d = (d0 + dt.timedelta(days=7 * i)).isoformat()
+            f4 = sorted([q for q in Q if q['filed'] <= d], key=lambda q: q['end'])[-4:]
+            if len(f4) == 4 and all(q['eps'] for q in f4) and _contig([q['end'] for q in f4]) == [q['end'] for q in f4] and sum(q['eps'] for q in f4) > 0:
+                pes.append((d, c / sum(q['eps'] for q in f4)))
+        cutoff = (dt.date.fromisoformat(asof) - dt.timedelta(days=5 * 365)).isoformat()
+        hist = [p for d, p in pes if d >= cutoff]
+        ttm = sum(q['eps'] for q in fq[-4:]) if len(fq) >= 4 and all(q['eps'] is not None for q in fq[-4:]) and _contig([q['end'] for q in fq[-4:]]) == [q['end'] for q in fq[-4:]] else None
+        now_pe = px / ttm if ttm and ttm > 0 else None
+        m = st.median(hist) if len(hist) >= 100 else None
+        v = pct(now_pe, m)
+        put('VL3', 'Valuation vs peers', 'P/E vs own 5-year history', 6, v, f'{now_pe:.1f} vs {m:.1f} 5-yr median ({sgn(v,0)}%)' if v is not None else 'n/a',
+            None if v is None else (1 if v <= -15 else -1 if v >= 25 else 0), "the stock's own median trailing P/E, last 5 years (weekly)",
+            '15%+ below', '25%+ above', 'Lagging', 'Yahoo prices ÷ SEC earnings', 'Trailing (last 12 months actual) P/E: free forward P/E history is too short.')
+
+    # ---- indicators removed for this stock (settings.removed_indicators): dropped entirely, so they are not in the score or coverage
+    removed_ids = {r['id'] for r in S.get('removed_indicators', [])}
+    for k in list(I):
+        if k in removed_ids: del I[k]
+
+    # ---- score
+    ids = [k for k in I if I[k]['s'] is not None]
+    # driver cap (Kenneth, 30 Sep): Demand indicators tagged to one driver (settings.drivers) share at most half of the Demand
+    # weight (17.5 of 35 points); their weights are scaled down inside the Demand bucket only
+    ew = {k: I[k]['w'] for k in I}; driver_notes = []
+    for drv in S.get('drivers', []):
+        mem = [k for k in drv.get('indicators', []) if k in I and I[k]['bucket'] == 'Demand']
+        tot = sum(I[k]['w'] for k in mem); cap = BUCKET_W['Demand'] * DRIVER_CAP
+        if tot > cap:
+            for k in mem: ew[k] = I[k]['w'] * cap / tot
+            driver_notes.append(f"{drv.get('name', drv.get('id'))}: {', '.join(mem)} ({tot:g} of {BUCKET_W['Demand']} Demand points) scaled to {cap:g} points inside the Demand bucket.")
+    buckets = {}; bucket_live = {}
+    for b in BUCKET_W:
+        allk = [k for k in I if I[k]['bucket'] == b]; ks = [k for k in ids if I[k]['bucket'] == b]; w = sum(ew[k] for k in ks)
+        live = sum(I[k]['w'] for k in ks) / (sum(I[k]['w'] for k in allk) or 1); bucket_live[b] = round(live, 2)
+        # bucket floor (Kenneth, 30 Sep): a bucket counts only if at least half of its indicator weight has live data
+        buckets[b] = round(100 * sum(ew[k] * I[k]['s'] for k in ks) / w) if w and live >= BUCKET_FLOOR else None
+    bw = sum(BUCKET_W[b] for b in buckets if buckets[b] is not None)
+    comp = round(sum(BUCKET_W[b] * buckets[b] for b in buckets if buckets[b] is not None) / bw) if bw else None
+    cov = sum(I[k]['w'] for k in ids) / 100
+    if cov < COV_FLOOR: comp = None
+
+    # ---- quality & cash check (S10)
+    fy = B.get('FY', []); ar = B.get('AR', [])
+    checks = []
+    cash = cash_block(B, fin, asof, fq)
+    fv = cash['ttm']
+    checks.append(('Free cash flow (operating cash − capital spending)', None if fv is None else fv < 0,
+                   'n/a' if fv is None else f"{'−' if fv < 0 else ''}${abs(fv)/1e3:.1f}bn ({cash['ttm_label']})", 'flag if negative'))
+    cv = cash['cover']
+    checks.append(('Interest cover', None if cv is None else cv < 3, cash['cover_text'], 'flag if operating profit ÷ interest cost below 3x'))
+    fy2 = [(num(f[1]), num(f[2])) for f in fy[-2:] if num(f[1]) is not None and num(f[2]) is not None]
+    if len(fy2) < 2:
+        checks.append(('Cash conversion (operating cash ÷ net profit), last 2 years', None, f'n/a (needs 2 annual reports; {len(fy2)} filed)', 'flag if below 70% both years'))
+    elif any(ni <= 0 for _, ni in fy2):
+        # a net loss makes the ratio meaningless: flag only if operating cash was also negative
+        bad = all(ocf < 0 for ocf, ni in fy2 if ni <= 0)
+        checks.append(('Cash conversion (operating cash ÷ net profit), last 2 years', bad,
+                       'net loss in ' + ('both years' if all(ni <= 0 for _, ni in fy2) else 'one year') + ('; operating cash also negative' if bad else '; operating cash positive, so not meaningful'), 'flag if below 70% both years'))
+    else:
+        cc = [ocf / ni for ocf, ni in fy2]
+        checks.append(('Cash conversion (operating cash ÷ net profit), last 2 years', all(x < 0.7 for x in cc), ', '.join(f'{x*100:.0f}%' for x in cc), 'flag if below 70% both years'))
+    ar_ok = len(ar) >= 5 and len(fq) >= 5 and 350 <= _days(ar[-5][0], ar[-1][0]) <= 380 and ar[-1][0] == fq[-1]['end'] and 350 <= _days(fq[-5]['end'], fq[-1]['end']) <= 380
+    if ar_ok:
+        arg = num(ar[-1][1]) / num(ar[-5][1]) - 1; rg = fq[-1]['rev'] / fq[-5]['rev'] - 1
+        checks.append(('Receivables vs revenue growth, vs a year earlier', arg > 2 * max(rg, 0.001), f'receivables {sgn(arg*100,0)}%, revenue {sgn(rg*100,0)}%', 'flag if receivables grow more than twice as fast'))
+    else:
+        checks.append(('Receivables vs revenue growth, vs a year earlier', None, f'n/a (needs the same quarter a year earlier; {len(ar)} receivables and {len(fq)} revenue quarters filed)', 'flag if receivables grow more than twice as fast'))
+    a4 = num(B.get('AUDITCHG', [[None]])[0][0]); checks.append(('Auditor change (last 2 years)', None if a4 is None else a4 > 0, 'no SEC data' if a4 is None else 'none' if a4 == 0 else f'{a4:.0f} filing(s)', 'flag if any'))
+    nflags = sum(1 for c in checks if c[1])
+    # information lines (Kenneth, 30 Sep: shown, never flagged): cash runway (automatic when free cash flow is negative),
+    # dilution and customer concentration (typed by the stock chat in side.json quality_info, with source)
+    info = []
+    cash_now = bal[1]
+    if fv is not None and fv < 0 and cash_now:
+        if cash['periods'] and not str(cash['ttm_label']).startswith('last 12'):
+            lp = max(cash['periods'], key=lambda p: (p['end'], _days(p['start'], p['end']))); nq = max(1, round(_days(lp['start'], lp['end']) / 91))
+        else: nq = 4
+        per_q = -fv / nq
+        info.append({'name': 'Cash runway', 'value': f"about {cash_now/1e6/per_q:.0f} quarters: cash ${cash_now/1e9:.1f}bn ÷ recent burn ${per_q/1e3:.1f}bn a quarter", 'rule': 'information only; cash ÷ average quarterly free-cash-flow burn over the period shown above'})
+    for q in side.get('quality_info', []):
+        info.append({'name': q.get('name', ''), 'value': q.get('value', ''), 'rule': 'information only' + (f"; {q['source']}" if q.get('source') else '')})
+
+    # ---- history, persistence, direction
+    hist = [h for h in (prev or {}).get('history', []) if h['d'] < asof]
+    hist.append({'d': asof, 'px': px, 'comp': comp, 'z': zone(comp)})
+    hist = hist[-260:]
+    last_call = (prev or {}).get('call', {}).get('code')
+    win = [h['z'] for h in hist[-PERSIST[1]:]]
+    zn = zone(comp)
+    if comp is None:   # SC4 coverage gate: no call today, and the previous call is not carried forward as if confirmed
+        call = {'code': None, 'label': 'Insufficient data', 'detail': f'only {cov*100:.0f}% of indicator weight has live data; a call needs {COV_FLOOR*100:.0f}%.'}
+    elif len(hist) < PERSIST[1]:
+        call = {'code': None, 'label': 'Building history', 'detail': f'{len(hist)} of {PERSIST[1]} trading days recorded; today reads {ZONES.get(zn, "n/a")}.'}
+    else:
+        # SC6: the call (first one included) changes only after 7 of the last 10 trading days in the new zone
+        code_ = last_call if last_call in ZONES else None
+        if zn != code_ and win.count(zn) >= PERSIST[0]: code_ = zn
+        if code_ is None:
+            call = {'code': None, 'label': 'No confirmed call', 'detail': f'no zone held {PERSIST[0]} of the last {PERSIST[1]} trading days; today reads {ZONES[zn]}.'}
+        else:
+            call = {'code': code_, 'label': ZONES[code_], 'detail': f'{win.count(code_)} of the last {PERSIST[1]} trading days in this zone.'}
+    hist[-1]['call'] = call['code']
+    direction = None
+    if len(hist) >= 25:
+        a5 = [h['comp'] for h in hist[-5:] if h['comp'] is not None]; b5 = [h['comp'] for h in hist[-25:-20] if h['comp'] is not None]
+        if a5 and b5:
+            dlt = sum(a5) / len(a5) - sum(b5) / len(b5)
+            direction = {'label': 'Improving' if dlt >= DIR_T else 'Deteriorating' if dlt <= -DIR_T else 'Steady', 'delta': round(dlt)}
+    signs = [buckets[b] for b in buckets if buckets[b]]
+    agree = max(sum(1 for x in signs if x > 0), sum(1 for x in signs if x < 0))
+    conf = 'High' if cov >= 0.9 and agree >= 3 else 'Low' if cov < 0.8 or agree <= 2 and len(signs) == 4 and sum(1 for x in signs if x > 0) == 2 else 'Medium'
+
+    # ---- overrides and flags
+    flags = []
+    mv = side.get('move', {})
+    if nflags >= 2: flags.append({'code': 'O3', 'text': f'Quality warning: {nflags} red flags; ' + ('call capped at Hold.' if comp is not None else 'any call will be capped at Hold.')})
+    if mv.get('class') == 'Structural' and mv.get('direction') == 'down' and not mv.get('reviewed'):
+        flags.append({'code': 'O2', 'text': 'Structural negative news: call capped at Hold until you review.'})
+    if mv.get('class') == 'Systemic' and (move[0] or 0) < 0 and (buckets.get('Demand') or 0) >= 0:
+        flags.append({'code': 'O5', 'text': 'Buy opportunity: systemic sell-off with demand intact.'})
+    # O2 / O3 cap the call at Hold (plan sheet 4): applied to the confirmed call and noted on a call still building history
+    caps = [f['code'] for f in flags if f['code'] in ('O2', 'O3')]
+    if caps:
+        if call['code'] in ('SB', 'B'):
+            call = {'code': 'H', 'label': ZONES['H'], 'detail': f"Capped at Hold by {' and '.join(caps)}; the indicators alone read {ZONES[call['code']]}.", 'capped': ZONES[call['code']]}
+            hist[-1]['call'] = 'H'
+        elif call['code'] is None and zn in ('SB', 'B'):
+            call['detail'] += f" Once confirmed it would be capped at Hold by {' and '.join(caps)}."
+    # O6 winner discipline: on a stock up since onboarding, Sell / Strong Sell needs Valuation <= -50 AND Demand deteriorating,
+    # or a structural negative move Kenneth has confirmed; otherwise it shows 'Trim consideration' (a Hold)
+    onb_px = num(S.get('onboard_price')) or (hist[0]['px'] if hist else None)
+    if call['code'] in ('S', 'SS') and onb_px and px > onb_px:
+        dem_det = (buckets.get('Demand') or 0) < 0 or (direction or {}).get('label') == 'Deteriorating'
+        ok = ((buckets.get('Valuation vs peers') or 0) <= -50 and dem_det) or (mv.get('class') == 'Structural' and mv.get('direction') == 'down' and mv.get('reviewed'))
+        if not ok:
+            flags.append({'code': 'O6', 'text': f'Trim consideration: the indicators read {ZONES[call["code"]]}, but the price is up since onboarding (${onb_px:.2f}) and the Sell conditions are not met.'})
+            call = {'code': 'H', 'label': 'Trim consideration', 'detail': f'Winner discipline (O6): indicators read {ZONES[call["code"]]}; shown as Trim consideration, not Sell.', 'capped': ZONES[call['code']]}
+            hist[-1]['call'] = 'H'
+
+    # ---- what would change it (nearest thresholds)
+    near = []
+    lim = {'PT1': (0, -5), 'PT2': (0, -2), 'PT4': (5, -5), 'LQ1': (1.3, 0.77), 'LQ2': (-10, 10), 'LQ3': (1, -1), 'LQ4': (-1, 1), 'LQ6': (15, -15),
+           'DM1': (2, -2), 'DM2': (3, -3), 'DM6': (1, -1), 'VL1': (-15, 25), 'VL2': (-15, 25), 'VL3': (-15, 25), 'VL4': (-15, 25)}
+    for k, (b1, b2) in lim.items():
+        x = I.get(k, {}).get('v')
+        if x is None: continue
+        scale = abs(b1 - b2) or 1
+        for t in (b1, b2):
+            near.append((abs(x - t) / scale, k, t, b1))
+    near.sort()
+    seen, changers = set(), []
+    for dist, k, t, bl in near:
+        if k in seen: continue
+        seen.add(k); it = I[k]
+        unit = UNITS.get(k, '')
+        now = {1: 'bullish', 0: 'neutral', -1: 'bearish'}[it['s']]
+        if t == bl: after = 'neutral' if it['s'] == 1 else 'bullish'      # crossing the bullish line
+        else: after = 'neutral' if it['s'] == -1 else 'bearish'          # crossing the bearish line
+        move_word = f"crosses {sgn(t, 2 if abs(t) < 2 else 0)}{unit}"
+        changers.append(f"<b>{it['name']}</b> ({it['w']} points): now {it['text']}, scoring {now}. It turns {after} if it {move_word}, measured against {it['measured']}.")
+        if len(changers) == 3: break
+
+    # ---- price move breakdown
+    beta = num(bench[4]); beta_n = int(num(bench[6]) or 0) if len(bench) > 6 else 252; b1d = num(bench[1]);
+    beta_short = beta is not None and beta_n < 252
+    if listed and ndays < NL['beta_end']:
+        nl_subs.append({'id': 'Beta', 'standard': 'Sensitivity to the index over the last 252 trading days', 'now': f'All {beta_n} days since listing' + ('' if beta is not None else f' (needs {NL["beta_min"]})'),
+                        'end_day': NL['beta_end'], 'end_est': est_date(NL['beta_end'] - ndays)})
+    p1d = [num(p[1]) for p in peers.values() if num(p[1]) is not None]
+    peer1 = sum(p1d) / len(p1d) if p1d else 0
+    if beta is not None and b1d is not None:
+        mkt = beta * b1d; sector = peer1 - b1d; company = move[0] - mkt - sector
+    else:
+        mkt = sector = company = None
+    typical = move[3]; ratio = abs(move[0]) / typical if typical else None
+    t5 = typical * math.sqrt(5) if typical else None; ratio5 = abs(move[1]) / t5 if t5 else None
+
+    # ---- shareholders
+    H = [{'name': h[0], 'date': h[1], 'shares': num(h[2]), 'chg': num(h[4])} for h in C.get('HOLDER', [])]
+    latest = max((h['date'] for h in H if h['date']), key=lambda d: dt.datetime.strptime(d, '%m/%d/%Y'), default=None)
+    def stale(h):
+        if not h['date'] or not latest: return False
+        return (dt.datetime.strptime(latest, '%m/%d/%Y') - dt.datetime.strptime(h['date'], '%m/%d/%Y')).days > 100   # older than the latest filing quarter = stale entity line
+    def cls(c):
+        if c is None: return 'n/a'
+        return 'Adding' if c >= 5 else 'Maintaining' if c > -5 else 'Trimming' if c > -50 else 'Selling out'
+    index_like = [s.lower() for s in S.get('index_holders', [])]
+    is_index = lambda n: any(x in n.lower() for x in index_like)
+    if first_13f: cls = lambda c: 'New holder'
+    rows = [dict(h, disp=clean_name(h['name']), pct=(h['shares'] / (so * 1e6) * 100 if so else None), cls=cls(h['chg']), index=is_index(h['name'])) for h in H if not stale(h)]
+    top5 = rows[:5]; active = [r for r in rows if not r['index']][:5]
+    ins = [{'name': i[0].title(), 'role': i[1], 'buy_sh': num(i[2]), 'buy_val': num(i[3]), 'sell_sh': num(i[4]), 'sell_val': num(i[5])} for i in A.get('INSIDER', [])]
+
+    # ---- closes for the chart
+    cl = A['CLOSE1Y'][0]; closes = {'start': cl[0], 'end': cl[1], 'v': [int(x) / 10 for x in cl[2].split(',')]}
+
+    data = {
+        'meta': {'code': code, 'name': A['NAME'][0][0], 'exchange': S.get('exchange'), 'currency': A['NAME'][0][1], 'mcap': num(A['NAME'][0][2]),
+                 'asof': asof, 'built': dt.datetime.utcnow().strftime('%Y-%m-%dT%H:%MZ'), 'status': S.get('status', 'staging'),
+                 'version': S.get('version'), 'macro_src': macro_src, 'bench': S['benchmark']['name'], 'plan': 'Framework plan v0.5'},
+        'price': {'px': px, 'd1': move[0], 'd5': move[1], 'm3': move[2], 'bench_d1': b1d, 'bench_d5': num(bench[2])},
+        'call': call, 'zone': zn, 'composite': comp, 'coverage': round(cov, 2), 'buckets': buckets, 'bucket_w': BUCKET_W, 'bucket_live': bucket_live, 'driver_notes': driver_notes, 'lines': LINES,
+        'direction': direction, 'confidence': conf, 'flags': flags, 'changers': changers,
+        'indicators': list(I.values()), 'removed': S.get('removed_indicators', []),
+        'new_listing': {'active': bool(nl_subs) or bool(dm2_until), 'listed': listed, 'days': ndays, 'subs': nl_subs, 'first_13f': first_13f, 'q13': q13.isoformat() if q13 else None, 'dm2_until': dm2_until},
+        'stretch': {'v': stretch, 'flag': stretch is not None and stretch > 25, 'measured': "the average of every close since listing" if pt_short else "the stock's own 200-day average"},
+        'peers': {'rows': [{'code': p[0], 'name': p[11] if len(p) > 11 else p[0], 'why': next((x['why'] for x in S['peers'] if x['code'] == p[0]), ''),
+                            'fpe': num(p[4]), 'tpe': num(p[5]), 'peg': num(p[6]), 'ev': num(p[7]), 'revg': num(p[8]), 'gm': num(p[9]), 'r63': num(p[3])} for p in peers.values()],
+                  'stock': {'fpe': fpe, 'tpe': tpe, 'peg': peg, 'ev': ev, 'revg': num(fin[0]), 'gm': num(fin[1])},
+                  'median': {'fpe': m1, 'peg': m2, 'ev': m4}, 'excluded': [{'code': c, 'metric': m, 'value': x} for m, lst in (('P/E', ex1), ('PEG', ex2), ('EV/EBITDA', ex4)) for c, x in lst],
+                  'plain': side.get('valuation_plain', [])},
+        'move': {'d1': move[0], 'd5': move[1], 'typical': typical, 'ratio': ratio, 'ratio5': ratio5, 'unusual': (ratio or 0) >= MOVE_T or (ratio5 or 0) >= MOVE_T,
+                 'beta': beta, 'beta_days': beta_n, 'beta_short': beta_short, 'parts': {'market': mkt, 'sector': sector, 'company': company}, **mv},
+        'quality': {'checks': [{'name': c[0], 'flag': c[1], 'value': c[2], 'rule': c[3]} for c in checks], 'flags': nflags, 'cash': cash, 'info': info},
+        'ev_calc': ev_calc,
+        'shareholders': {'top5': top5, 'active': active, 'insiders': ins, 'asof': latest, 'shares_out_m': so, 'notes': side.get('shareholder_notes', []) + ([so_note] if so_note else [])},
+        'earnings': side.get('earnings', {}), 'chains': side.get('chains', []), 'calendar': side.get('calendar', []),
+        'macro': {k: v for k, v in macro.items()}, 'fed': {'meeting': fed[5] if fed[0] else None, 'meeting_note': 'the date the Polymarket market closes; the Fed usually announces its decision the day before', 'cut': cN, 'hike': hN, 'cut28': cT, 'hike28': hT},
+        'lead': side.get('lead', ''), 'bullets': side.get('bullets', []), 'defects': side.get('defects', []) + [f"New-listing mode: {x['id']} uses a short-history version ({x['now']}) until trading day {x['end_day']} (about {x['end_est']}); short windows are noisier and include listing-related trading." for x in nl_subs] + ([f'LQ3 blank: the latest 13F quarter ({q13}) is the first since listing, so every holder shows as new.'] if first_13f else []) + ([f'DM2 left out until about {dm2_until}: the forecast 90 days ago predates analyst coverage' + (f'; after that it stays out while the base forecast is too small (${ago_e:.2f} vs ${now_e:.2f} today).' if dm2_small else '.')] if dm2_until else [f'DM2 left out: the forecast 90 days earlier (${ago_e:.2f}) is too small a base for a % change (${now_e:.2f} today).'] if dm2_small else []), 'sources': side.get('sources', []),
+        'closes': closes, 'history': hist,
+        'errors': [e for e in (A['ERRORS'][0][0], B['ERRORS'][0][0], C['ERRORS'][0][0]) if e],
+    }
+    for it in data['indicators']: it['explain'] = explain(it, S)
+    data['mix'] = build_mix(S, D, side, (prev or {}).get('mix'), currency=data['meta']['currency'] or 'USD')
+    data['changes'] = changes(prev, data)
+    macro_out = {'asof': asof, 'series': macro, 'fed': data['fed'], 'fed_slug': fed[0]}
+    return data, macro_out
+
+if __name__ == '__main__':
+    args = [a for a in sys.argv[1:] if not a.startswith('--')]
+    out = sys.argv[sys.argv.index('--out') + 1] if '--out' in sys.argv else 'data.json'
+    mout = sys.argv[sys.argv.index('--macro') + 1] if '--macro' in sys.argv else None
+    dpath = sys.argv[sys.argv.index('--mixraw') + 1] if '--mixraw' in sys.argv else None
+    mpath = sys.argv[sys.argv.index('--macro-in') + 1] if '--macro-in' in sys.argv else None
+    args = [a for a in args if a not in (out, mout, dpath, mpath)]
+    S = json.load(open(args[0])); A = parse(args[1]); B = parse(args[2]); C = parse(args[3]); side = json.load(open(args[4]))
+    if mpath:
+        if mpath.endswith('.json'):   # the shared macro.json published on staging (written by --macro)
+            mj = json.load(open(mpath)); f = mj.get('fed', {})
+            S['_macro_in'] = {'MACRO': [[k, v.get('sym'), v.get('last'), v.get('ago20'), v.get('ago21'), v.get('d')] for k, v in mj.get('series', {}).items()],
+                              'FED': [[mj.get('fed_slug'), f.get('cut'), f.get('hike'), f.get('cut28'), f.get('hike28'), f.get('meeting')]]}
+            S['_macro_asof'] = mj.get('asof')
+        else:
+            S['_macro_in'] = parse(mpath)
+    prev = json.load(open(args[5])) if len(args) > 5 else None
+    d, m = build(S, A, B, C, side, prev, parse(dpath) if dpath else None)
+    json.dump(d, open(out, 'w'), separators=(',', ':'))
+    if mout: json.dump(m, open(mout, 'w'), separators=(',', ':'))
+    print(json.dumps({'wrote': out, 'bytes': len(open(out).read()), 'asof': d['meta']['asof'], 'composite': d['composite'], 'zone': d['zone'],
+                      'call': d['call']['label'], 'coverage': d['coverage'], 'buckets': d['buckets'], 'quality_flags': d['quality']['flags'],
+                      'history': len(d['history']), 'errors': d['errors'],
+                      'mix': (d['mix'] or {}).get('error') or ((d['mix'] or {}).get('latest_label') and f"{d['mix']['n']} quarters to {d['mix']['latest_label']}")}, indent=1))

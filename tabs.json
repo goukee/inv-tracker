@@ -1,0 +1,7 @@
+{"page":"live","updated":"2026-09-30","tabs":[
+ {"id": "summary", "label": "Summary", "template": "summary", "src": "templates/summary.html", "status": "live", "folder": "01 Framework"},
+ {"id": "crypto", "label": "Crypto", "template": "crypto", "src": "crypto/index.html", "status": "live", "folder": "02 Crypto"},
+ {"id": "AAPL", "label": "AAPL", "template": "stock", "src": "templates/stock.html#AAPL", "status": "live", "folder": "03 Stocks/AAPL-US"},
+ {"id": "AMD", "label": "AMD", "template": "stock", "src": "templates/stock.html#AMD", "status": "live", "folder": "03 Stocks/AMD-US"},
+ {"id": "SPCX", "label": "SPCX", "template": "stock", "src": "templates/stock.html#SPCX", "status": "live", "folder": "03 Stocks/SPCX-US"}
+]}

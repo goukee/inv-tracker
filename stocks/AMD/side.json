@@ -1,0 +1,376 @@
+{
+ "dm3": {
+  "guide_mid": 40.6,
+  "consensus": 35.6,
+  "measured": "September-quarter revenue growth vs the Sep 2025 quarter ($9.25bn): AMD's guidance midpoint vs analysts' consensus when guidance was given (4 Aug 2026)",
+  "source": "AMD Q2 2026 results release (guidance); consensus about $12.54bn per INDmoney, a secondary source (approximate; not confirmed from LSEG or FactSet). NewsBytes (5 Aug 2026) confirms the guide was above Wall Street expectations.",
+  "note": "AMD guided about $13.0bn ± $0.3bn vs about $12.54bn expected (approximate consensus). Some analysts had hoped for about $14bn, and the shares fell 7.1% the next day. AMD guides one quarter ahead, so DM3 scores guidance vs expectations, as for AAPL."
+ },
+ "custom": {
+  "DM4a": {
+   "value": 107.3,
+   "period": "Jun 2026 quarter"
+  },
+  "DM4b": {
+   "value": 22.5,
+   "period": "Jun 2026 quarter"
+  },
+  "DM5": {
+   "value": 77.0,
+   "period": "Apr-Jun 2026, Amazon + Alphabet + Microsoft + Meta"
+  }
+ },
+ "move": {
+  "class": "Quiet",
+  "direction": "down",
+  "headline": "A flat day after a 3.6% drop on 28 Sep",
+  "evidence": [
+   {
+    "d": "29 Sep",
+    "t": "AMD closed 0.05% lower while the S&P 500 fell 0.17%: far inside AMD's normal daily range (about 4.2%), so no classification is triggered. It had fallen 3.6% on 28 Sep and is 3.7% below its highest close of the past year ($630.6 on 25 Sep).",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
+   {
+    "d": "26 Sep",
+    "t": "AMD agreed to buy AI start-up World Labs for about $8.2bn, paid entirely in new AMD shares (about 0.8% of AMD's $992bn market value). The share count will be set from the average price just before closing; no closing date given. Filed 28 Sep.",
+    "kind": "fact",
+    "src": "AMD Form 8-K, 28 Sep 2026"
+   },
+   {
+    "d": "17-22 Sep",
+    "t": "AMD rose about 22% in four sessions ($512.5 to $623.8 closing prices) and on 21 Sep passed its previous closing high of $580.9 (30 Jun). No single company announcement found for the jump; commentary pointed to AI-chip demand running ahead of supply.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices; Crypto Briefing (21 Sep 2026)"
+   },
+   {
+    "d": "29 Sep",
+    "t": "US 10-year yield 5.26% vs 4.76% 20 trading days earlier (+0.50 percentage points); markets price a 48% chance of a Fed rate rise on 28 Oct vs 27% a month earlier.",
+    "kind": "fact",
+    "src": "Yahoo Finance; Polymarket (29 Sep close)"
+   }
+  ]
+ },
+ "earnings": {
+  "past": [
+   {
+    "q": "Jun 2026 quarter (Q2 2026)",
+    "date": "Tue 4 Aug 2026, after the US close (Wed 5 Aug, about 4am Singapore)",
+    "vs": "Revenue $11.54bn, +50% vs a year earlier, vs about $11.30bn consensus (+2.1%). Adjusted EPS $1.66 vs $1.61 expected (+3.2%).",
+    "guide": "September quarter: revenue about $13.0bn ± $0.3bn (+41% vs a year earlier) vs about $12.54bn consensus; adjusted gross margin about 56%, flat.",
+    "reaction": "Shares −7.1% the next day while the S&P 500 fell 0.2%. A few analysts had been hoping for guidance closer to $14bn (Briefs).",
+    "take": [
+     "<b>Data Center doubled.</b> $6.72bn, +107% vs a year earlier; 58% of revenue in the quarter (54% over the last 4 quarters).",
+     "<b>PCs strong, gaming weak.</b> Client $3.06bn (+23%); Gaming $0.78bn (−31%); Embedded $0.98bn (+19%), all vs a year earlier.",
+     "<b>Margin stalled at a high level.</b> Adjusted gross margin 56%, up 13 points vs a year earlier, but that year-ago quarter carried a one-off $800m write-down of MI308 chips blocked for China. It is guided flat at about 56% for September; investors wanted further improvement.",
+     "<b>Helios in full production.</b> Shipments from the end of the Sep quarter, so most rack revenue lands in Q4 2026 and 2027.",
+     "<b>New AI customers.</b> Anthropic agreed to deploy up to 2 GW of MI450 chips (GW = gigawatts of data-centre power the chips draw; first 1 GW from H1 2027), and AMD will invest up to $5bn in Anthropic's shares. Management expects Data Center to more than double in 2027.",
+     "<b>Opaque mix.</b> AMD does not split AI chips from server CPUs, so the AI share of growth is not visible."
+    ],
+    "impact": "Demand indicators strong (DM3, DM4a, DM4b bullish), but the shares fell: the stock is priced for more than a normal beat."
+   },
+   {
+    "q": "Mar 2026 quarter (Q1 2026)",
+    "date": "Tue 5 May 2026, after the US close",
+    "vs": "Revenue $10.25bn, +38% vs a year earlier, above consensus. Adjusted EPS $1.37 vs $1.29 expected (+6.2%).",
+    "guide": "June quarter: revenue about $11.2bn (+46%) vs about $10.52bn consensus. Delivered $11.54bn.",
+    "reaction": "Shares +18.6% the next day vs +1.5% for the S&P 500.",
+    "take": [
+     "<b>Data Center $5.78bn, +57%</b>, on EPYC servers and Instinct AI chips.",
+     "<b>Guidance far above expectations</b>: $11.2bn vs $10.52bn.",
+     "<b>Server CPU market outlook raised</b> to more than 35% a year through 2030, from 18%.",
+     "<b>Meta commitment</b>: up to 6 GW of Instinct GPUs, first 1 GW on a custom MI450."
+    ],
+    "impact": "Started the Apr-May re-rating; guidance delivered."
+   }
+  ],
+  "next": [
+   {
+    "q": "Sep 2026 quarter (Q3 2026)",
+    "date": "Tue 3 Nov 2026 (expected), after the US close",
+    "iso": "2026-11-03",
+    "status": "Estimated",
+    "watch": [
+     "Revenue vs the $13.0bn guide, and vs the roughly $14bn some analysts hoped for.",
+     "First Helios rack shipments and Data Center growth vs the +50% line (DM4a).",
+     "Gross margin: can AMD get above 56% while memory costs rise (chain C2)? From here the year-ago comparison no longer includes the $800m China write-down.",
+     "First 1 GW shipments to OpenAI and Meta: these start vesting their share warrants (dilution)."
+    ]
+   },
+   {
+    "q": "Dec 2026 quarter (Q4 2026)",
+    "date": "Early February 2027",
+    "iso": "2027-02-03",
+    "status": "Estimated",
+    "watch": [
+     "Helios and OpenAI 1 GW revenue ramp.",
+     "2027 Data Center outlook: still 'more than double'?"
+    ]
+   }
+  ]
+ },
+ "shareholder_notes": [
+  "Nasdaq still lists an old Vanguard Group line dated 31 Dec 2025 (158.5m shares), from before Vanguard split its reporting; left out as stale.",
+  "Yahoo does not mark which insider sales were pre-scheduled trading plans, so they cannot be excluded. All insider trades in the last 6 months were sales; the CEO sold 360,000 shares (about $169m).",
+  "Potential dilution, not in any score: AMD granted OpenAI (Oct 2025) and Meta (Feb 2026) warrants for up to 160m shares each at $0.01 a share, about 20% of today's ~1.63bn shares combined. They vest as each customer takes delivery of chips (from 1 GW up to 6 GW) and as AMD's share price reaches set targets (up to $600 for OpenAI's last tranche). None had vested at 27 Jun 2026 (10-Q). The World Labs purchase adds about 0.8% more in new shares."
+ ],
+ "chains": [
+  {
+   "id": "C1",
+   "name": "AI spending cycle",
+   "path": [
+    "AI build-out speeds up or slows",
+    "cloud and OpenAI chip budgets",
+    "AMD Data Center orders",
+    "revenue and growth story"
+   ],
+   "watch": null,
+   "watch_label": "TSMC share price (pending); news scan until then",
+   "active": null,
+   "status": "Active",
+   "evidence": [
+    "Currently moving in AMD's favour: big-4 cloud capital spending about $172bn in Q2 2026, +77% vs a year earlier (Platformonomics).",
+    "TSMC August revenue +53.3% vs August 2025 (10 Sep 2026).",
+    "Multi-year deals, announced Oct 2025 to Jul 2026: OpenAI up to 6 GW over several years (first 1 GW from H2 2026); Meta up to 6 GW (first 1 GW from H2 2026); Oracle 50,000 MI450; Anthropic up to 2 GW (first 1 GW from H1 2027).",
+    "Some of this demand is supported by AMD itself: warrants for up to 160m AMD shares each to OpenAI and Meta, vesting as they take delivery, and an equity investment of up to $5bn in Anthropic. If a big buyer's funding falters, orders could slip (no such sign found)."
+   ]
+  },
+  {
+   "id": "C2",
+   "name": "Memory shortage",
+   "path": [
+    "AI soaks up memory",
+    "HBM and DRAM prices up",
+    "AI chip supply and cost; dearer PCs",
+    "margins and Client demand"
+   ],
+   "watch": "MU",
+   "watch_label": "Micron share price (stand-in for memory prices)",
+   "active": {
+    "kind": "pct",
+    "t": 10
+   },
+   "status": "Active",
+   "evidence": [
+    "Apple reportedly accepted a 2027 memory deal at about +33% per gigabit (AppleInsider, 16 Sep 2026).",
+    "Not hurting AMD yet: adjusted gross margin 56% in the Jun quarter, guided about 56% for the Sep quarter; Client revenue +23% vs a year earlier (4 Aug 2026)."
+   ]
+  },
+  {
+   "id": "C3",
+   "name": "US-China export controls",
+   "path": [
+    "US or China rule change",
+    "MI308 sales allowed, taxed or banned",
+    "China revenue, write-downs"
+   ],
+   "watch": null,
+   "watch_label": "News scan only",
+   "active": null,
+   "status": "Quiet",
+   "evidence": [
+    "US allowed AI-chip exports to approved Chinese buyers with a 25% levy; AMD holds MI308 licences (10 Dec 2025).",
+    "AMD shipped $390m of MI308 to China in the Dec 2025 quarter (4 Feb 2026). No new rule found since."
+   ]
+  },
+  {
+   "id": "C4",
+   "name": "Rates squeeze the valuation",
+   "path": [
+    "Inflation, Fed",
+    "higher bond yields",
+    "AMD's ~45x forward P/E gets squeezed; its price moves about 3x as much as the market"
+   ],
+   "watch": "TNX",
+   "watch_label": "US 10-year Treasury yield",
+   "active": {
+    "kind": "pts",
+    "t": 0.25
+   },
+   "status": "Active",
+   "evidence": [
+    "10-year yield 5.26% vs 4.76% 20 trading days earlier (Yahoo, 29 Sep 2026 close).",
+    "AMD's beta is 3.2 (last 252 trading days vs the S&P 500): on average it has moved about 3x as much as the market, so rate scares hit it harder."
+   ]
+  },
+  {
+   "id": "C5",
+   "name": "Taiwan and TSMC dependence",
+   "path": [
+    "Taiwan tension or TSMC capacity limits",
+    "AMD chips delayed or rationed",
+    "lost sales"
+   ],
+   "watch": null,
+   "watch_label": "News scan only",
+   "active": null,
+   "status": "Quiet",
+   "evidence": [
+    "No Taiwan or TSMC supply event found (checked 30 Sep 2026)."
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "d": "2026-10-02",
+   "t": "US jobs report (September)",
+   "link": "C4",
+   "note": "Confirmed (BLS): Fri 2 Oct, 8:30am ET (8:30pm Singapore). A strong report pushes up rate-rise odds."
+  },
+  {
+   "d": "2026-10-09",
+   "t": "TSMC September revenue",
+   "link": "C1",
+   "note": "About the 10th of each month; August was +53.3% vs a year earlier."
+  },
+  {
+   "d": "2026-10-14",
+   "t": "US inflation (September CPI)",
+   "link": "C4",
+   "note": "Confirmed (BLS): Wed 14 Oct, 8:30am ET (8:30pm Singapore)."
+  },
+  {
+   "d": "2026-10-28",
+   "t": "Fed rate decision",
+   "link": "C4",
+   "note": "Markets price a 34% chance of a rise vs 27% a month earlier (Polymarket, 30 Sep close)."
+  },
+  {
+   "d": "2026-10-29",
+   "t": "Big-4 cloud results (Alphabet, Microsoft, Meta, Amazon): capital spending",
+   "link": "DM5",
+   "note": "Late October; dates estimated. Feeds DM5."
+  },
+  {
+   "d": "2026-11-03",
+   "t": "AMD results (Sep quarter)",
+   "link": "all",
+   "note": "Estimated; AMD has not announced the date. After the US close; Wed 4 Nov morning in Singapore."
+  }
+ ],
+ "valuation_plain": [],
+ "lead": "AMD reads <b>Buy</b> at <b>+50</b> on a −100 to +100 scale, up from +48 yesterday (Buy line +30): demand and the price trend score the maximum, but investors already pay a steep premium, and the reading depends on AI spending and the price momentum both holding up.",
+ "bullets": [
+  "<b>Demand is at full strength, but it is one bet.</b> Demand scores +100: revenue grew 50.1% vs a year earlier, faster than its 34.8% average of the prior four quarters; Data Center grew 107% and PC chips 22.5% (Jun 2026 quarter vs a year earlier), and the big-4 cloud firms' capital spending 77%. Guidance (40.6% growth) beat the roughly 35.6% expected, and the 2027 earnings forecast rose 18.2% in 90 days ($15.58 vs $13.18 a share). Almost all of these track AI data-centre spending, so a pause there would turn them together. Gross margin is up 5.6 points (last 4 quarters vs the 4 a year earlier), but about 2.7 points of that comes from a one-off $800m China chip write-down in the year-ago figures.",
+  "<b>It is priced for it, before counting dilution.</b> Valuation scores −63: investors pay 47% more per dollar of expected next-12-month profit than the peer median (45.1x vs 30.7x forward P/E). On company value including debt vs last-12-month operating profit before depreciation (EV/EBITDA) it is 103.5x vs 30.0x, a gap overstated because AMD's revenue is growing 50% a year. Only the growth-adjusted P/E is in line (0.6 vs 0.7, 12% below the peer median). Not scored: warrants to OpenAI and Meta could add up to 320m shares (about 20% of today's), which would lift the forward P/E to about 54x if all vested.",
+  "<b>The money backdrop is mixed.</b> Liquidity scores +40: volume on up days is 2.62x that on down days (last 20 trading days) and institutions already holding AMD added a net 3.80% of shares last quarter (new and closed positions not counted), but the dollar index is 1.80 points higher than 20 trading days ago and markets now give a 34% chance of a Fed rate rise on 28 Oct, up from 27% a month earlier.",
+  "<b>The trend is strongly up, and stretched.</b> Price scores +100: AMD is 65.1% above its 200-day average and 14.7 points ahead of its peers over the last 3 months; it closed at $611.76, +0.7% on the day vs −0.25% for the S&P 500. That distance trips the stretch flag: a sign the run may be overextended and prone to sharp pullbacks (timing context only, not scored). The Buy leans on momentum: with a neutral price trend the composite would be about +25, which is Hold.",
+  "<b>Not yet a confirmed call.</b> Day 2 of the 10 trading days of score history needed. Next big test: results, expected 3 Nov (date not yet announced)."
+ ],
+ "defects": [
+  "Staging build, second day of history: the call needs 10 trading days of scores before it can be confirmed.",
+  "VL3 (P/E vs own history) is removed for AMD and left out of the score (applied by the shared engine from 30 Sep): trailing P/E is distorted by 2023 losses and Xilinx amortisation.",
+  "EV/EBITDA uses last-12-month EBITDA (free source); for a company growing 50% a year this makes AMD look expensive. Debt in EV ($4.3bn) includes leases (Yahoo); AMD reports $3.2bn of borrowings, a 0.1% effect on EV.",
+  "Forward P/E uses 2027 earnings forecasts (AMD's next fiscal year), not strictly the next 12 months; peers use their own next fiscal years, which end at different dates.",
+  "Gross margin trend (DM6) uses reported margins: the year-ago 4 quarters include a one-off $800m MI308 write-down, which adds about 2.7 of the 5.6-point rise. DM6 would still score bullish without it (about +2.9 points).",
+  "OpenAI and Meta warrants (up to 320m shares, about 20% of today's shares) are not reflected in P/E or any score; see shareholder notes.",
+  "Chain C1 has no watch number yet: TSMC's share price (TSM) is requested from the Framework chat.",
+  "Chain C2 watches Micron's share price as a stand-in for memory prices.",
+  "Guidance, Data Center, Client and cloud capex inputs (DM3, DM4a, DM4b, DM5) are entered from results releases, so they update quarterly. The DM3 consensus is from a secondary source (approximate).",
+  "Institutional change (LQ3) counts changes in existing positions only."
+ ],
+ "sources": [
+  "Yahoo Finance (prices, consensus, valuation, short interest, insiders)",
+  "SEC EDGAR (reported financials, filings: Q2 2026 10-Q warrant note; World Labs 8-K, 28 Sep 2026)",
+  "Nasdaq (13F institutional holdings)",
+  "Polymarket (Fed odds)",
+  "BLS release schedule (jobs, CPI dates)",
+  "AMD results releases (5 May, 4 Aug 2026); AMD press releases (Meta 24 Feb 2026, Anthropic 22 Jul 2026)",
+  "Platformonomics, TSMC/Pulse 2.0, INDmoney, NewsBytes, Briefs, Crypto Briefing, TIKR (news)"
+ ],
+ "mix": {
+  "updated": "2026-09-30",
+  "ported_from": "stocks/AMD/mix.json (AMD chat preview, 30 Sep 2026)",
+  "segments": {
+   "DC": {
+    "sells": "EPYC server processors, Instinct AI chips (MI350, MI450, Helios racks), Pensando networking chips and data-center FPGAs.",
+    "buyers": "Cloud giants and AI labs (Microsoft, Meta, Oracle, OpenAI, Anthropic), governments and large companies.",
+    "pos": [
+     "Highest growth: +107% in the Jun 2026 quarter vs a year earlier (+55% over the last 4 quarters); now most of AMD's revenue.",
+     "Margin rising: 29% segment operating margin over the last 4 quarters vs 21% a year earlier (31% in the latest quarter).",
+     "Multi-year supply deals (OpenAI up to 6 GW, Meta up to 6 GW, Anthropic up to 2 GW) give more visibility than one-off orders.",
+     "Server processors are sticky: customers standardise on a platform for years."
+    ],
+    "neg": [
+     "Not recurring: hardware sold per order, no subscription income.",
+     "Concentrated: a handful of very large buyers decide most orders, and they negotiate hard on price.",
+     "Some demand is supported by AMD's own shares and money: OpenAI and Meta get up to 160m AMD shares each as they take delivery, and AMD is investing up to $5bn in Anthropic alongside its 2 GW commitment.",
+     "Tied to the AI spending cycle (chain C1); a pause in AI budgets hits here first.",
+     "Export rules can wipe out profit quickly: an $800m China charge turned the segment to a loss in Q2 2025.",
+     "Full racks (Helios) include more bought-in parts such as memory, which may lower the margin percentage (a risk, not yet seen)."
+    ]
+   },
+   "CL": {
+    "sells": "Ryzen processors for desktop and laptop PCs, including AI PC chips.",
+    "buyers": "PC makers (Lenovo, HP, Dell, Asus) and PC builders; ultimately consumers and businesses.",
+    "pos": [
+     "Taking share from Intel: +23% in the Jun 2026 quarter vs a year earlier while the PC market is squeezed.",
+     "Big and familiar brand; helps AMD sell to the same business customers in servers."
+    ],
+    "neg": [
+     "Lower margin: 18% segment operating margin (Client and Gaming combined, last 4 quarters), about 11 points below Data Center.",
+     "One-off, seasonal consumer sales; nothing recurring.",
+     "Price competition from Intel, Qualcomm and now NVIDIA (RTX Spark PC chips from autumn 2026).",
+     "Memory price rises make PCs dearer, which can cut demand (chain C2)."
+    ]
+   },
+   "GA": {
+    "sells": "Custom chips for Sony PlayStation and Microsoft Xbox consoles, and Radeon graphics cards.",
+    "buyers": "Sony and Microsoft (consoles); gamers (graphics cards).",
+    "pos": [
+     "Console chips come from multi-year contracts with Sony and Microsoft: predictable volumes and little extra R&D.",
+     "A new console generation would lift revenue again (timing not announced)."
+    ],
+    "neg": [
+     "Shrinking now: −31% in the Jun 2026 quarter vs a year earlier, as current consoles are late in their life (though +30% over the last 4 quarters vs the 4 before, after the 2025 console ramp).",
+     "Thin margins: the gaming part earned 3-18% operating margin in 2022-24, when AMD still reported it separately.",
+     "Graphics cards lose share to NVIDIA."
+    ]
+   },
+   "EM": {
+    "sells": "Xilinx FPGAs and adaptive chips, plus embedded Ryzen and EPYC, for factories, cars, telecoms, medical, aerospace and defence.",
+    "buyers": "Thousands of equipment makers (industrial, auto, communications, defence).",
+    "pos": [
+     "Highest segment margin: 37% over the last 4 quarters.",
+     "The closest thing AMD has to recurring revenue: chips are designed into equipment that is built and sold for 10+ years.",
+     "Many small customers: no single buyer dominates.",
+     "Steady cash generator with low extra investment."
+    ],
+    "neg": [
+     "Slow growth: +5% over the last 4 quarters vs +40% for AMD as a whole; the latest quarter (+19% vs a year earlier) is a rebound from a low base.",
+     "Margin falling: 37% vs 50% three years earlier (last 4 quarters each).",
+     "Swings with customers' stock levels: revenue fell 46% from Q1 2023 to Q1 2024 as customers ran down inventories.",
+     "Now only 9% of revenue (last 4 quarters), so it cushions the company less than it did in 2023."
+    ]
+   }
+  },
+  "shift": {
+   "title": "What the shift means for AMD",
+   "pos": [
+    "Higher profit per dollar of sales, but not from the mix: segment operating margin rose to 26% (last 4 quarters) from 21% a year earlier because Data Center's own margin rose (29% vs 21%). The shift in mix itself took about 0.4 points off, because high-margin Embedded shrank.",
+    "Free cash flow was 18.7% of revenue over the last 4 quarters ($7.7bn) vs 11.8% a year earlier ($3.5bn).",
+    "Faster growth: revenue is up 115% in three years (Jun 2026 quarter vs Jun 2023 quarter), almost all from Data Center."
+   ],
+   "neg": [
+    "Less diversified: Data Center is 54% of revenue over the last 4 quarters (58% in the Jun 2026 quarter), up from 27% three years earlier. A slowdown in AI budgets would hit AMD harder than before.",
+    "Less recurring: the steadiest business (Embedded) fell from 26% to 9% of revenue, and Gaming from 30% to 9% (last 4 quarters vs the 4 quarters to Jun 2023).",
+    "More concentrated: a few very large customers now drive most growth, which gives them pricing power; two of them hold warrants for AMD shares."
+   ]
+  }
+ },
+ "quality_info": [
+  {
+   "name": "Dilution (possible)",
+   "value": "OpenAI and Meta warrants: up to 160m shares each at $0.01, about 20% of today's ~1.63bn shares if all vest (none vested at 27 Jun 2026)",
+   "source": "AMD 8-Ks and Jun 2026 10-Q"
+  }
+ ],
+ "dm6_oneoffs": [
+  {
+   "end": "2025-06-28",
+   "gp_add": 800,
+   "label": "MI308 inventory and related charges (US export rules)",
+   "source": "AMD Q2 2025 results release, 5 Aug 2025"
+  }
+ ]
+}

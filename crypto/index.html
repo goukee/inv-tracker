@@ -1,0 +1,1174 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Crypto regime</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E4E8EC; --panel:#EDF0F3; --ink:#151A21; --ink-2:#4A5560; --ink-3:#7C8792;
+  --rule:#C3CBD3; --rule-2:#D6DCE2;
+  --bull:#1D6B4C; --bear:#993030; --hold:#87671C; --absent:#A7B0B9;
+  --bull-bg:#CFE0D6; --bear-bg:#E8D2D2; --hold-bg:#E6DCC4;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+:root:not([data-theme="light"]){
+  @media (prefers-color-scheme: dark){
+    --paper:#12171D; --panel:#1A2029; --ink:#E6EBF0; --ink-2:#A3AEB9; --ink-3:#727D88;
+    --rule:#2E3844; --rule-2:#252E38;
+    --bull:#5FBF92; --bear:#E07777; --hold:#D4AC4C; --absent:#5A646E;
+    --bull-bg:#1B3A2C; --bear-bg:#3B2222; --hold-bg:#382F19;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#12171D; --panel:#1A2029; --ink:#E6EBF0; --ink-2:#A3AEB9; --ink-3:#727D88;
+  --rule:#2E3844; --rule-2:#252E38;
+  --bull:#5FBF92; --bear:#E07777; --hold:#D4AC4C; --absent:#5A646E;
+  --bull-bg:#1B3A2C; --bear-bg:#3B2222; --hold-bg:#382F19;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:Archivo,"Helvetica Neue",Arial,sans-serif;
+  font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;
+  line-height:1.45;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1000px;margin:0 auto;padding:22px 18px 64px}
+.masthead{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  border-bottom:2px solid var(--ink);padding-bottom:9px}
+.masthead h1{font-size:17px;font-weight:700;letter-spacing:-.01em;margin:0}
+.masthead time{font-size:14px;color:var(--ink-2);font-weight:500}
+
+/* ===== hero: the ladder ===== */
+.hero{padding:26px 0 4px}
+.state{font-size:clamp(32px,9vw,56px);font-weight:800;letter-spacing:-.035em;
+  line-height:1;margin:0 0 6px;color:var(--hold)}
+.stamp{display:inline-block;font-size:12.5px;font-weight:700;color:var(--bear);
+  border:1.5px solid var(--bear);padding:2px 8px;margin-bottom:12px}
+.gloss{font-size:15.5px;color:var(--ink-2);max-width:58ch;margin:0 0 22px}
+.gloss b{color:var(--ink);font-weight:600}
+
+.ladder{margin:0 0 6px}
+.rungs{display:flex;gap:2px;align-items:stretch;height:64px}
+.rung{flex:1;position:relative;border-radius:1px;background:var(--rule-2);
+  display:flex;align-items:flex-end;justify-content:center;min-width:0}
+.rung i{display:block;width:100%;border-radius:1px}
+.rung[data-zone="bear"] i{background:var(--bear-bg)}
+.rung[data-zone="mid"] i{background:var(--hold-bg)}
+.rung[data-zone="bull"] i{background:var(--bull-bg)}
+.rung[data-here="1"]{outline:2.5px solid var(--ink);outline-offset:1px;z-index:2}
+.rung[data-here="1"] i{background:var(--hold)}
+.rung-labels{display:flex;gap:2px;margin-top:8px}
+.rung-labels div{flex:1;font-size:11px;line-height:1.25;color:var(--ink-3);
+  text-align:center;min-width:0;hyphens:auto}
+.rung-labels div[data-here="1"]{color:var(--ink);font-weight:700}
+
+/* ===== why ===== */
+.why{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule-2);
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-top:28px}
+.why > div{background:var(--paper);padding:15px 15px 16px}
+.why h3{font-size:12.5px;color:var(--ink-3);font-weight:500;margin:0 0 5px}
+.why .big{font-size:24px;font-weight:700;letter-spacing:-.025em;margin:0 0 6px}
+.why p{font-size:13px;color:var(--ink-2);margin:0;line-height:1.45}
+.pos{color:var(--bull)}.neg{color:var(--bear)}.nil{color:var(--hold)}.abs{color:var(--absent)}
+
+/* ===== persistence chart ===== */
+.persist{margin-top:26px}
+.persist svg{width:100%;height:auto;display:block}
+.cap{font-size:12.5px;color:var(--ink-3);margin:8px 0 0;max-width:64ch}
+
+h2{font-size:14px;font-weight:700;margin:34px 0 0;padding-bottom:7px;border-bottom:1px solid var(--ink)}
+
+/* ===== gate ===== */
+.gate-box{border:1px solid var(--bear);background:var(--bear-bg);padding:15px 16px;margin-top:22px}
+.gate-box b{font-size:15px;font-weight:700;display:block;margin-bottom:6px}
+.gate-box p{font-size:13.5px;color:var(--ink-2);margin:0 0 12px;max-width:62ch}
+.bar{display:flex;gap:2px;height:30px}
+.seg{border-radius:1px}
+.seg[data-on="1"]{background:var(--bull)}
+.seg[data-on="0"]{background:var(--hold)}
+.seg[data-on="x"]{background:repeating-linear-gradient(135deg,transparent 0 3px,var(--absent) 3px 4px);
+  border:1px solid var(--rule)}
+.gmark{position:relative;height:13px;margin-top:5px;border-top:1px solid var(--rule)}
+.gmark span{position:absolute;top:-1px;left:60%;width:1px;height:13px;background:var(--ink)}
+.gmark em{position:absolute;top:1px;left:calc(60% + 6px);font-size:11.5px;font-style:normal;color:var(--ink-2)}
+
+/* ===== buckets ===== */
+.buckets{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;
+  background:var(--rule-2);border-bottom:1px solid var(--rule)}
+.bk{background:var(--paper);padding:14px 14px 15px}
+.bk .nm{font-size:13.5px;font-weight:600;margin-bottom:2px}
+.bk .wt{font-size:12px;color:var(--ink-3);margin-bottom:9px}
+.bk .val{font-size:31px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.bk .note{font-size:12.5px;color:var(--ink-2);margin-top:8px;line-height:1.4}
+
+/* ===== geo ===== */
+.geo{border:1px solid var(--rule);background:var(--panel);padding:15px 16px;margin-top:22px}
+.geo .hd{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.geo .hd b{font-size:15px;font-weight:700;color:var(--bear)}
+.geo .hd span{font-size:13px;color:var(--ink-2)}
+.geo ul{list-style:none;padding:0;margin:11px 0 0;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:8px 16px}
+.geo li{font-size:13px;display:flex;justify-content:space-between;gap:8px;
+  border-bottom:1px dotted var(--rule);padding-bottom:3px}
+.geo li b{font-weight:700}
+.geo p{font-size:12.5px;color:var(--ink-2);margin:12px 0 0;max-width:62ch}
+
+/* ===== ledger ===== */
+.ledger-intro{font-size:13px;color:var(--ink-2);margin:12px 0 14px;max-width:70ch}
+.ledger2{border-top:1px solid var(--rule)}
+.ledger2 .grp{font-size:12px;font-weight:700;color:var(--ink-2);background:var(--panel);
+  padding:7px 10px;border-bottom:1px solid var(--rule)}
+.ind{display:grid;gap:10px 22px;padding:15px 10px 17px;border-bottom:1px solid var(--rule-2);
+  grid-template-columns:1fr}
+.ind[data-missing="1"] .c-name{color:var(--ink-3)}
+.c-head{display:flex;gap:8px;align-items:baseline;min-width:0}
+.c-id{font-size:11.5px;font-weight:700;color:var(--ink-3);flex:none;width:2.2em}
+.c-name{font-size:14.5px;font-weight:600;color:var(--ink);letter-spacing:-.005em}
+.c-read{display:flex;gap:10px;align-items:baseline}
+.c-read .rv{font-size:16px;font-weight:700}
+.c-read .wt{font-size:11.5px;color:var(--ink-3)}
+.c-read .s{font-weight:700;font-size:13px;border:1px solid currentColor;padding:0 5px;border-radius:2px}
+.c-read .s.dash{color:var(--absent);border-color:var(--rule)}
+.c-x{font-size:13px;line-height:1.5;color:var(--ink-2);max-width:66ch}
+.c-x .lb{display:block;font-size:10.5px;color:var(--ink-3);margin-bottom:2px}
+.c-rat{border-left:2px solid var(--rule);padding-left:11px}
+@media (min-width:900px){
+  .ind{grid-template-columns:200px 1fr 1fr;gap:12px 24px;align-items:start}
+  .c-head{grid-column:1;grid-row:1}
+  .c-read{grid-column:1;grid-row:2;flex-direction:column;gap:4px;align-items:flex-start}
+  .c-rat{grid-column:3;grid-row:2}
+  .c-x{font-size:12.5px;line-height:1.5}
+}
+
+/* ===== history strip ===== */
+.hist-head{display:flex;justify-content:space-between;align-items:baseline;
+  font-size:12px;color:var(--ink-3);margin-bottom:6px}
+.hist-head #hsel{font-weight:700;color:var(--ink);font-size:13px}
+.strip{display:flex;gap:1px;height:66px;align-items:center;
+  border-bottom:1px solid var(--rule);padding-bottom:0}
+.day{flex:1;min-width:0;height:100%;position:relative;cursor:pointer;
+  background:none;border:0;padding:0;display:flex;flex-direction:column;justify-content:center}
+.day i{display:block;width:100%;border-radius:1px}
+.day .up{background:var(--bull);margin-top:auto}
+.day .dn{background:var(--bear);margin-bottom:auto}
+.day[aria-pressed="true"]{background:var(--rule-2)}
+.day[aria-pressed="true"] i{outline:1.5px solid var(--ink);outline-offset:0}
+.day:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.zero{height:1px;background:var(--rule)}
+.hist-detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));
+  gap:1px;background:var(--rule-2);border-bottom:1px solid var(--rule)}
+.hist-detail div{background:var(--paper);padding:10px 10px 11px}
+.hist-detail dt{font-size:11px;color:var(--ink-3);margin:0 0 2px}
+.hist-detail dd{margin:0;font-size:19px;font-weight:700;letter-spacing:-.02em}
+.hist-detail dd.sm{font-size:13px;font-weight:600;color:var(--ink-2)}
+.fold{margin-top:0}
+.fold summary{cursor:pointer;list-style:none}
+.fold summary::-webkit-details-marker{display:none}
+.fold summary h2{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.fold summary h2::after{content:"show";font-size:11.5px;font-weight:500;color:var(--ink-3)}
+.fold[open] summary h2::after{content:"hide"}
+
+/* ===== context band (tracked, not scored) ===== */
+.ctx{margin-top:26px;border:1px solid var(--rule);background:var(--panel);padding:15px 16px 16px}
+.ctx-hd{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:3px}
+.ctx-hd b{font-size:15px;font-weight:700}
+.ctx-hd span{font-size:12px;color:var(--ink-3)}
+.ctx-sub{font-size:12.5px;color:var(--ink-2);margin:0 0 13px;max-width:66ch}
+.ctx-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:1px;
+  background:var(--rule-2);margin-bottom:14px}
+.ctx-row div{background:var(--panel);padding:9px 10px 10px}
+.ctx-row dt{font-size:11px;color:var(--ink-3);margin:0 0 2px}
+.ctx-row dd{margin:0;font-size:19px;font-weight:700;letter-spacing:-.02em}
+.ctx-row dd small{font-size:12px;font-weight:500;color:var(--ink-2)}
+.ctx svg{width:100%;height:auto;display:block}
+.ctx-note{font-size:12px;color:var(--ink-3);margin:9px 0 0;max-width:70ch}
+.ctx-note b{color:var(--ink);font-weight:700}
+.block{margin-top:30px;border-left:3px solid var(--ink);padding:2px 0 2px 15px}
+.block h3{font-size:14px;font-weight:700;margin:0 0 9px}
+.block ol{margin:0;padding-left:18px;font-size:14px;color:var(--ink-2)}
+.block li{margin-bottom:7px}
+.block li b{color:var(--ink);font-weight:600}
+footer{margin-top:34px;padding-top:13px;border-top:1px solid var(--rule);
+  font-size:12px;color:var(--ink-3);max-width:70ch}
+@media (max-width:620px){
+  .why{grid-template-columns:1fr}
+  .rungs{height:52px}
+  .rung-labels div{font-size:9.5px}
+  .ledger .src{display:none}
+}
+
+
+.ind.rem{grid-template-columns:200px 1fr;padding:11px 10px 12px}
+.ind.rem .c-name{color:var(--ink-3);font-weight:500}
+.ind.rem .c-x{font-size:12.5px}
+.flip{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule-2);
+  border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);margin-top:22px}
+.flip>div{background:var(--paper);padding:15px 15px 16px}
+.flip h4{font-size:12px;color:var(--ink-3);font-weight:500;margin:0 0 4px;text-transform:uppercase;letter-spacing:.04em}
+.flip .n{font-size:30px;font-weight:800;letter-spacing:-.03em;line-height:1;margin:0 0 7px}
+.flip p{font-size:13px;color:var(--ink-2);margin:0}
+@media (max-width:620px){.flip{grid-template-columns:1fr}}
+.srcline{font-size:11.5px;color:var(--ink-3)}
+
+.flow{margin-top:26px}
+.flow-sub{font-size:12.5px;color:var(--ink-2);margin:10px 0 12px;max-width:70ch}
+.flowread{display:grid;grid-template-columns:repeat(auto-fit,minmax(122px,1fr));gap:1px;
+  background:var(--rule-2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  margin-bottom:14px}
+.flowread div{background:var(--paper);padding:9px 11px 10px}
+.flowread dt{font-size:11px;color:var(--ink-3);margin:0 0 2px}
+.flowread dd{margin:0;font-size:18px;font-weight:700;letter-spacing:-.02em}
+.flowread dd.sm{font-size:12px;font-weight:500;color:var(--ink-3)}
+.flowread dd small{display:block;font-size:11px;font-weight:500;color:var(--ink-3);letter-spacing:0}
+#flowchart svg{width:100%;height:auto;display:block;overflow:visible}
+.ch-bar{fill:var(--absent)}
+.ch-bar.up{fill:var(--bull)}
+.ch-bar.dn{fill:var(--bear)}
+.ch-bar{opacity:.62;transition:opacity .12s}
+.ch-bar.sel{opacity:1}
+.ch-grid{stroke:var(--rule-2);stroke-width:1}
+.ch-zero{stroke:var(--ink-3);stroke-width:1}
+.ch-cross{stroke:var(--ink);stroke-width:1;stroke-dasharray:2 3}
+.ch-ax{font-size:10.5px;fill:var(--ink-3);font-family:inherit}
+.ch-ttl{font-size:12.5px;font-weight:700;fill:var(--ink);font-family:inherit}
+.ch-pk{font-size:10.5px;font-weight:600;fill:var(--ink-2);font-family:inherit}
+#flowchart rect:focus-visible{outline:2px solid var(--ink);outline-offset:0}
+.flow-note{font-size:12px;color:var(--ink-3);margin:11px 0 0;max-width:72ch;line-height:1.5}
+.flow-note b{color:var(--ink-2);font-weight:600}
+
+.rung[data-zone="bear"] i{background:var(--bear);opacity:.30}
+.rung[data-zone="mid"] i{background:var(--hold);opacity:.30}
+.rung[data-zone="bull"] i{background:var(--bull);opacity:.30}
+.rung[data-here="1"] i{background:var(--hold);opacity:1}
+
+.alerts{margin:18px 0 0;border:1px solid var(--rule);background:var(--panel)}
+.alerts-hd{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;
+  padding:11px 14px;border-bottom:1px solid var(--rule)}
+.alerts-hd b{font-size:13px;font-weight:700;letter-spacing:.02em;text-transform:uppercase}
+.alerts-hd span{font-size:12px;color:var(--ink-3)}
+.al{display:grid;grid-template-columns:4px 1fr auto;gap:0 13px;align-items:start;
+  padding:13px 14px 14px;border-bottom:1px solid var(--rule-2)}
+.al:last-child{border-bottom:0}
+.al .stripe{align-self:stretch;border-radius:2px}
+.al[data-sev="1"] .stripe{background:var(--bear)}
+.al[data-sev="2"] .stripe{background:var(--hold)}
+.al[data-sev="3"] .stripe{background:var(--absent)}
+.al h4{font-size:14.5px;font-weight:700;margin:0 0 3px;letter-spacing:-.005em}
+.al .delta{font-size:12.5px;color:var(--ink-3);margin:0 0 6px;font-variant-numeric:tabular-nums}
+.al .delta b{color:var(--ink-2);font-weight:600}
+.al p.mean{font-size:13px;color:var(--ink-2);margin:0;max-width:64ch;line-height:1.5}
+.al .tags{display:flex;flex-direction:column;gap:5px;align-items:flex-end;flex:none}
+.tag{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  padding:3px 7px;border-radius:2px;white-space:nowrap;border:1px solid currentColor}
+.tag.lead{color:var(--ink);background:var(--hold-bg);border-color:transparent}
+.tag.coin{color:var(--ink-2);border-color:var(--rule)}
+.tag.lagg{color:var(--ink-3);border-color:var(--rule-2)}
+.tag.bull{color:var(--bull);background:var(--bull-bg);border-color:transparent}
+.tag.bear{color:var(--bear);background:var(--bear-bg);border-color:transparent}
+.tag.neut{color:var(--hold);border-color:var(--rule)}
+.alerts-foot{padding:11px 14px;font-size:12px;color:var(--ink-3);line-height:1.5;border-top:1px solid var(--rule)}
+.alerts-foot b{color:var(--ink-2);font-weight:600}
+.quiet{padding:15px 14px;font-size:13.5px;color:var(--ink-2)}
+@media (max-width:620px){
+  .al{grid-template-columns:4px 1fr;gap:0 11px}
+  .al .tags{grid-column:2;flex-direction:row;justify-content:flex-start;margin-top:8px}
+}
+
+.c-read .wt{font-size:11px;line-height:1.35}
+.logbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:14px 0 10px}
+.tabs{display:flex;gap:2px;background:var(--rule-2);padding:2px;border-radius:2px}
+.tabs button{font:inherit;font-size:12.5px;font-weight:600;color:var(--ink-2);background:none;
+  border:0;padding:5px 11px;border-radius:1px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--paper);color:var(--ink);box-shadow:0 0 0 1px var(--rule)}
+.tabs button:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.copy{font:inherit;font-size:12px;font-weight:600;color:var(--ink-2);background:none;
+  border:1px solid var(--rule);padding:5px 10px;border-radius:2px;cursor:pointer;margin-left:auto}
+.copy:hover{color:var(--ink);border-color:var(--ink-3)}
+.logwrap{overflow-x:auto;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);
+  -webkit-overflow-scrolling:touch}
+table.log{border-collapse:separate;border-spacing:0;font-size:12px;width:100%;min-width:max-content}
+table.log th,table.log td{padding:5px 9px;text-align:right;white-space:nowrap;
+  border-bottom:1px solid var(--rule-2)}
+table.log thead th{position:sticky;top:0;z-index:3;background:var(--panel);color:var(--ink-2);
+  font-weight:600;font-size:11px;border-bottom:1px solid var(--rule)}
+table.log th:first-child,table.log td:first-child{width:1px;position:sticky;left:0;z-index:2;
+  background:var(--paper);text-align:left;font-weight:600;color:var(--ink);
+  box-shadow:1px 0 0 var(--rule-2)}
+table.log thead th:first-child{z-index:4;background:var(--panel)}
+table.log tbody tr:nth-child(even) td{background:var(--panel)}
+table.log tbody tr:nth-child(even) td:first-child{background:var(--panel)}
+table.log tbody tr:last-child td{border-bottom:0;font-weight:700}
+table.log td.s{text-align:center;font-weight:700;width:2.6em}
+table.log td.s1{color:var(--bull);background:var(--bull-bg)!important}
+table.log td.s0{color:var(--hold)}
+table.log td.sm1{color:var(--bear);background:var(--bear-bg)!important}
+table.log td.txt{text-align:left;color:var(--ink-2)}
+.logfoot{font-size:12px;color:var(--ink-3);margin:9px 0 0;max-width:70ch}
+
+.al p.plain{font-size:13px;color:var(--ink);margin:0 0 7px;max-width:64ch;line-height:1.5;
+  background:var(--panel);border-left:2px solid var(--ink-3);padding:8px 11px}
+.al p.plain span{display:block;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:700;margin-bottom:3px}
+.geogrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule-2);
+  margin:13px 0 0;border-top:1px solid var(--rule)}
+.geogrid>.geocol{background:var(--panel);padding:12px 13px 13px}
+.geocol h4{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);
+  font-weight:700;margin:0 0 7px}
+ul.geobul{list-style:none;margin:0;padding:0;display:block}
+.geo ul.geobul li{display:block;font-size:12.5px;color:var(--ink-2);line-height:1.45;
+  padding:0 0 8px 14px;position:relative;border-bottom:0;gap:0;justify-content:flex-start}
+.geo ul.geobul li:last-child{padding-bottom:0}
+.geo ul.geobul li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;
+  border-radius:50%;background:var(--ink-3)}
+ul.geobul li b{color:var(--ink);font-weight:700}
+.geoempty{font-size:12.5px;color:var(--ink-3);margin:0;font-style:italic}
+.geofoot{font-size:12.5px;color:var(--ink-2);margin:13px 0 0;max-width:64ch;line-height:1.5}
+@media (max-width:620px){.geogrid{grid-template-columns:1fr}}
+
+.geo > p#geonote{max-width:none;margin:0}
+.geofoot{max-width:70ch}
+
+.c-x .lb{letter-spacing:.04em;text-transform:uppercase;font-weight:700}
+.ind .c-x br{content:"";display:block;margin-bottom:3px}
+.ind .c-x i{font-style:normal;text-decoration:underline;text-decoration-color:var(--rule);
+  text-underline-offset:2px}
+
+@media (min-width:900px){
+  .ind > .c-calc{grid-column:2;grid-row:1}
+  .ind > .c-mean{grid-column:3;grid-row:1}
+  .ind > .c-score{grid-column:2;grid-row:2}
+  .ind > .c-rat{grid-column:3;grid-row:2}
+}
+.ind .c-score{border-left:2px solid var(--rule);padding-left:11px}
+
+.scoreband{display:grid;grid-template-columns:auto 1fr;gap:0 26px;align-items:start;
+  margin:0 0 26px;padding:16px 0 0;border-top:1px solid var(--rule)}
+.sb-num{display:flex;flex-direction:column;gap:1px;min-width:150px}
+.sb-num .lbl{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-weight:700}
+.sb-num .big{font-size:52px;font-weight:800;letter-spacing:-.04em;line-height:1.02}
+.sb-num .scale{font-size:11.5px;color:var(--ink-3)}
+.sb-bar{padding-top:6px}
+.sb-bar .track{position:relative;height:16px;border-radius:2px;overflow:hidden;background:var(--rule-2)}
+.sb-bar .zone{position:absolute;top:0;bottom:0;display:block}
+.sb-bar .zone.bear{background:var(--bear);opacity:.28}
+.sb-bar .zone.mid{background:var(--hold);opacity:.22}
+.sb-bar .zone.bull{background:var(--bull);opacity:.28}
+.sb-bar .tick{position:absolute;top:0;bottom:0;width:1px;background:var(--paper);opacity:.75}
+.sb-bar .mark{position:absolute;top:-4px;bottom:-4px;width:3px;background:var(--ink);
+  border-radius:2px;box-shadow:0 0 0 2px var(--paper)}
+.sb-bar .ax{position:relative;height:15px;margin-top:5px}
+.sb-bar .ax span{position:absolute;top:0;font-size:11px;color:var(--ink-3);transform:translateX(-50%);
+  white-space:nowrap}
+.sb-bar .ax span:first-child{transform:none}
+.sb-bar .ax span:last-child{transform:none}
+.sb-note{font-size:12.5px;color:var(--ink-2);margin:12px 0 0;max-width:72ch;line-height:1.5}
+.sb-note b{color:var(--ink);font-weight:700}
+@media (max-width:620px){
+  .scoreband{grid-template-columns:1fr;gap:14px}
+  .sb-num .big{font-size:42px}
+  .sb-bar .ax span{font-size:10px}
+}
+
+
+
+.sb-num .mv{display:block;margin-top:9px;font-size:14.5px;font-weight:700;letter-spacing:-.01em}
+.sb-num .mv.pos{color:var(--bull)} .sb-num .mv.neg{color:var(--bear)} .sb-num .mv.nil{color:var(--hold)}
+.sb-num .mvsub{display:block;font-size:11.5px;color:var(--ink-3);margin-top:1px}
+.sb-bar .ghost{position:absolute;top:1px;bottom:1px;width:2px;background:var(--ink-3);opacity:.85}
+.sb-bar .trail{position:absolute;top:50%;height:2px;transform:translateY(-1px);
+  background:repeating-linear-gradient(90deg,var(--ink-3) 0 4px,transparent 4px 7px);opacity:.9}
+
+.gloss.asbul{max-width:none}
+.gloss .lead{font-size:16.5px;font-weight:600;color:var(--ink);margin:0 0 14px;max-width:82ch}
+ul.glossbul{list-style:none;margin:0;padding:0;max-width:none}
+ul.glossbul li{font-size:14.5px;color:var(--ink-2);line-height:1.5;padding:0 0 11px 16px;
+  position:relative;break-inside:avoid;-webkit-column-break-inside:avoid}
+ul.glossbul li:last-child{padding-bottom:0}
+@media (min-width:880px){
+  ul.glossbul{columns:2;column-gap:40px;column-fill:balance}
+  ul.glossbul li{padding-bottom:14px}
+}
+ul.glossbul li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;
+  border-radius:50%;background:var(--ink-3)}
+ul.glossbul li b{color:var(--ink);font-weight:700}
+.mxh{font-size:13px;font-weight:700;margin:20px 0 9px;letter-spacing:.01em}
+table.mx{border-collapse:separate;border-spacing:0;width:100%;font-size:12.5px;
+  border-top:1px solid var(--ink);margin-bottom:4px}
+table.mx th,table.mx td{padding:9px 11px;text-align:left;vertical-align:top;
+  border-bottom:1px solid var(--rule-2)}
+table.mx thead th{background:var(--panel);font-weight:700;color:var(--ink-2);font-size:12px;
+  border-bottom:1px solid var(--rule)}
+table.mx tbody th{font-weight:700;color:var(--ink);width:22%;background:var(--panel)}
+table.mx .sub{display:block;font-size:10.5px;font-weight:500;color:var(--ink-3);margin-top:2px;line-height:1.35}
+table.mx td{color:var(--ink-2)}
+table.mx td.here{background:var(--hold-bg);color:var(--ink);font-weight:700;
+  box-shadow:inset 0 0 0 2px var(--hold)}
+.mxnote{font-size:12.5px;color:var(--ink-2);margin:11px 0 0;max-width:74ch;line-height:1.5}
+ul.rungs-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+ul.rungs-list li{font-size:12.5px;color:var(--ink-2);line-height:1.5;padding:10px 11px;
+  border-bottom:1px solid var(--rule-2)}
+ul.rungs-list li b{display:inline;color:var(--ink);font-size:13.5px;font-weight:700;margin-right:8px}
+ul.rungs-list li .tagline{display:inline-block;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:700;margin-right:10px}
+ul.rungs-list li.here{background:var(--hold-bg);box-shadow:inset 3px 0 0 var(--hold)}
+ul.rungs-list li.here b{color:var(--ink)}
+@media (max-width:620px){
+  table.mx,table.mx thead,table.mx tbody,table.mx tr,table.mx th,table.mx td{display:block;width:auto}
+  table.mx thead{display:none}
+  table.mx tbody th{border-bottom:0;padding-bottom:4px}
+  table.mx td{padding-left:22px}
+  table.mx td::before{content:"";}
+}
+
+.viewbanner{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:14px 0 0;
+  padding:11px 14px;border:1px solid var(--hold);background:var(--hold-bg)}
+.viewbanner .vb-l{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink-2);font-weight:700}
+.viewbanner b{font-size:15.5px;font-weight:800;letter-spacing:-.01em;color:var(--ink)}
+.viewbanner .vb-x{font-size:12.5px;color:var(--ink-2);flex:1 1 280px;min-width:0}
+.viewbanner button{font:inherit;font-size:12.5px;font-weight:700;color:var(--ink);
+  background:var(--paper);border:1px solid var(--ink-3);padding:6px 12px;border-radius:2px;
+  cursor:pointer;flex:none}
+.viewbanner button:hover{border-color:var(--ink)}
+.viewbanner button:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.hd-date{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--hold);border:1px solid var(--hold);padding:2px 6px;border-radius:2px;
+  margin-left:8px;white-space:nowrap}
+.alerts-hd .hd-date{margin-left:0}
+.pastnote{font-size:14px;color:var(--ink-2);max-width:74ch;line-height:1.5;margin:0;
+  border-left:2px solid var(--rule);padding-left:12px}
+
+.histtop{margin-top:16px}
+.histtop .persist{margin-top:0}
+.histtop .hist-head{margin-bottom:6px}
+.persist{position:relative}
+.striptip{position:absolute;bottom:calc(100% - 14px);transform:translateX(-50%);z-index:5;
+  background:var(--ink);color:var(--paper);padding:5px 9px;border-radius:3px;
+  white-space:nowrap;pointer-events:none;display:flex;gap:8px;align-items:baseline;
+  box-shadow:0 2px 8px rgba(0,0,0,.28)}
+.striptip b{font-size:12.5px;font-weight:700}
+.striptip span{font-size:11.5px;opacity:.82}
+.striptip .st-st{opacity:.62}
+.striptip::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  border:5px solid transparent;border-top-color:var(--ink)}
+.day{cursor:pointer}
+.day:hover i.up{filter:brightness(1.25)}
+.day:hover i.dn{filter:brightness(1.25)}
+@media (max-width:620px){.striptip{font-size:11px}}
+
+.viewbanner[hidden]{display:none}
+.striptip[hidden]{display:none}
+
+/* --- session strip: a single shared zero line --- */
+.strip{position:relative;align-items:stretch}
+.strip::before{content:"";position:absolute;left:0;right:0;top:var(--base,100%);
+  height:1px;background:var(--rule);z-index:0}
+.day{display:block;position:relative;justify-content:initial}
+.day i{position:absolute;left:0;right:0;border-radius:1px;z-index:1}
+.day .up{background:var(--bull);margin:0}
+.day .dn{background:var(--bear);margin:0}
+.day[aria-pressed="true"]{background:var(--rule-2)}
+/* --- alert cards: use the width we have --- */
+.al p.mean{max-width:80ch}
+.al p.plain{max-width:80ch}
+.alerts-foot{max-width:none}
+
+.stale{margin:14px 0 0;padding:10px 13px;border:1px solid var(--bear);background:var(--bear-bg);
+  font-size:13px;font-weight:600;color:var(--bear)}
+.bk .note b,.bk .note span{font-weight:700}
+</style>
+<div class="wrap">
+  <header class="masthead">
+    <h1>Crypto regime</h1>
+    <time id="mdate" datetime="">—</time>
+  </header>
+  <p class="stale" id="stale" hidden></p>
+  <div class="viewbanner" id="viewbanner" hidden></div>
+
+  <section class="histtop">
+    <div class="persist">
+      <div class="hist-head"><span>Session history &mdash; select a day</span><span id="hsel"></span></div>
+      <div class="striptip" id="striptip" hidden></div>
+      <div class="strip" id="strip" role="group" aria-label="Daily composite history"></div>
+      <div class="hist-detail" id="hdet"></div>
+    </div>
+  </section>
+
+  <section class="alerts" id="alerts" aria-label="Material changes since the last session"></section>
+
+  <section class="hero">
+    <p class="state" id="state">—</p>
+    <p class="gloss" id="gloss"></p>
+    <div class="scoreband" id="scoreband"></div>
+    <div class="ladder">
+      <div class="rungs" id="rungs"></div>
+      <div class="rung-labels" id="rlabels"></div>
+    </div>
+    <div class="why">
+      <div><h3>Regime &mdash; structural</h3><p class="big nil" id="regv">—</p><p id="regn"></p></div>
+      <div><h3>Condition &mdash; directional</h3><p class="big nil" id="conv">—</p><p id="conn"></p></div>
+    </div>
+  </section>
+
+  <h2 id="bucketsh">Buckets</h2>
+  <div class="buckets" id="buckets"></div>
+
+  <div class="geo">
+    <div class="hd" id="geohd"></div>
+    <ul id="geolist"></ul>
+    <p id="geonote"></p>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-hd"><b>DeFi total value locked</b><span>tracked, not scored</span></div>
+    <p class="ctx-sub">Capital deposited in DeFi protocols, from DefiLlama. Deliberately outside the model: it is denominated in USD, so it rises when token prices rise, and only a small share sits on Bitcoin.</p>
+    <div class="ctx-row" id="tvlrow"></div>
+    <p class="ctx-note">Daily TVL and BTC returns correlate at only <b>0.18</b>, because the pegged-stablecoin share of deposits has no price component at all. Useful as corroboration that on-chain activity has not rolled over, not as a regime input.</p>
+  </div>
+
+  <section class="flow">
+    <h2>ETF flows, daily</h2>
+    <p class="flow-sub">Net creations less redemptions across every US spot fund, by session. Hover or tab through the chart to read a day; the panels share an x-axis, so the crosshair moves through both.</p>
+    <div class="flowread" id="flowread"></div>
+    <div id="flowchart"></div>
+    <p class="flow-note">Each panel has its own vertical scale &mdash; bitcoin flows run several times the size of ether&rsquo;s, so <b>bar heights are not comparable between the two panels</b>, only within one. Green is money in, red is money out; the position above or below the zero line carries that too, so the chart does not rely on colour alone. Sessions are ETF trading days, and flows publish with a one-day lag. The four-week sums in the readout are the figures D1 and D3 actually score.</p>
+  </section>
+
+  <h2>Daily log</h2>
+  <div class="logbar">
+    <div class="tabs" role="tablist" aria-label="Daily log view">
+      <button role="tab" aria-selected="true" data-v="inputs">Inputs</button>
+      <button role="tab" aria-selected="false" data-v="derived">Derived</button>
+      <button role="tab" aria-selected="false" data-v="scores">Scores</button>
+      <button role="tab" aria-selected="false" data-v="outputs">Outputs</button>
+    </div>
+    <button class="copy" id="cp" type="button">Copy this view</button>
+  </div>
+  <div class="logwrap"><table class="log" id="logt"><thead id="logthead"></thead><tbody id="logtbody"></tbody></table></div>
+  <p class="logfoot" id="logfoot"></p>
+
+  <details class="fold"><summary><h2 id="ledgerh">Indicator ledger &mdash; 15 indicators, every one with a live source</h2></summary>
+  <p class="ledger-intro">Each indicator scores &minus;1, 0 or +1 against its own thresholds; scores are weighted into bucket averages. Nothing here is hand-typed &mdash; every value comes from a free endpoint or a scrape, listed beside the weight.</p>
+  <div class="ledger2" id="ledger"></div>
+  </details>
+
+  <details class="fold"><summary><h2>How to read this &mdash; regimes, conditions and the eight readings</h2></summary>
+  <div id="howto"></div>
+  </details>
+
+  <div class="block" id="movesblock">
+    <h3 id="movesh">What moves this</h3>
+    <ol id="moves"></ol>
+  </div>
+
+  <footer id="foot"></footer>
+</div>
+<script>
+const STATIC_JSON={"ledger": [{"id": "P1", "bucket": "Price / Trend", "name": "BTC vs 50-week average", "w": 8, "val": "+6.5%", "calc": "Today's bitcoin price divided by its average closing price over the last 350 days. We use 350 rather than 250 because crypto trades every day of the week, so 50 weeks is 350 sessions.", "mean": "How far bitcoin is above or below its typical price over the past year. At +6.5%, bitcoin is trading about 6.5% higher than the average of the last twelve months.", "score": "<b>Bullish +1:</b> price is at or above the 350-day average.<br><b>Bearish &minus;1:</b> price is more than 3% <i>below</i> that same 350-day average.<br><b>Neutral 0:</b> price is between those two &mdash; below the average but by less than 3%.", "rat": "This is the most common definition of a bull market: is price above its one-year average or not. Weight 8 of 100, the largest in this group, because a bull market is simply a trend that lasts, and this is the longest-memory trend measure here. Its weakness is that it is slow &mdash; it confirms a turn long after it happened. Worth knowing today: the one-year average is itself falling, and price rising through a falling average is a weaker signal than price rising through a climbing one.", "src": "Binance spot klines, 1000 daily candles"}, {"id": "P3", "bucket": "Price / Trend", "name": "BTC vs 200-day average", "w": 7, "val": "+17.3%", "calc": "Today's bitcoin price divided by its average closing price over the last 200 days.", "mean": "How far bitcoin is above or below its typical price over roughly the past seven months.", "score": "<b>Bullish +1:</b> price is at or above the 200-day average.<br><b>Bearish &minus;1:</b> price is more than 5% <i>below</i> the 200-day average.<br><b>Neutral 0:</b> below the average but by less than 5%. The gap is wider than the one-year line's 3% because this average moves faster and would otherwise flip back and forth.", "rat": "The single most watched line in finance. Large funds buy and sell mechanically around it, which makes it partly self-fulfilling &mdash; it matters because everyone acts on it. Weight 7, just under the one-year line, because seven months is a shorter memory and changes direction more often.", "src": "Binance spot klines"}, {"id": "P4", "bucket": "Price / Trend", "name": "Higher highs and higher lows", "w": 5, "val": "rising", "calc": "Take the highest and lowest closing price of the last 20 sessions, and compare both against the highest and lowest of the 20 sessions before that.", "mean": "Whether the market is stepping up, stepping down, or going sideways &mdash; read straight from the shape of the price, with no indicator involved.", "score": "<b>Bullish +1:</b> the last month's high <i>and</i> its low are both above the previous month's.<br><b>Bearish &minus;1:</b> both are below the previous month's.<br><b>Neutral 0:</b> they disagree &mdash; one higher, one lower &mdash; which is a sideways range.", "rat": "The only price measure here that can contradict the moving averages, and when it does it is usually earlier. It needs nothing but the price itself, so there is no setting to calibrate and nothing that can break. Weight 5 because it is a blunt three-way answer that sits at neutral much of the time.", "src": "Derived from the price column"}, {"id": "P5", "bucket": "Price / Trend", "name": "Top-5 alts above their 50-day", "w": 5, "val": "4 of 5", "calc": "Of the five largest cryptocurrencies other than bitcoin and stablecoins &mdash; ether, BNB, XRP, Solana and TRON &mdash; count how many are trading above their own 50-day average.", "mean": "How broad the move is, rather than how big. A count of 5 means the whole market is joining in; a count of 1 means bitcoin is rising alone.", "score": "<b>Bullish +1:</b> 4 or 5 of the five are above their own 50-day average.<br><b>Bearish &minus;1:</b> 2 or fewer are.<br><b>Neutral 0:</b> exactly 3.", "rat": "This is what catches a hollow rally. Bitcoin can grind higher on ETF buying while everything else quietly bleeds, and that pattern has historically resolved downward. Weight 5: breadth confirms a move rather than predicting it. Five coins rather than ten so every one has a deep, reliable price history &mdash; breadth measured on thinly traded coins is noise dressed up as signal.", "src": "Binance spot klines, five symbols"}, {"id": "P6", "bucket": "Price / Trend", "name": "BTC vs 100-day average", "w": 5, "val": "+19.4%", "calc": "Today's bitcoin price divided by its average closing price over the last 100 days.", "mean": "Where bitcoin sits against its typical price over roughly the last three months.", "score": "<b>Bullish +1:</b> price is at or above the 100-day average.<br><b>Bearish &minus;1:</b> price is more than 5% <i>below</i> the 100-day average.<br><b>Neutral 0:</b> below it but by less than 5%.", "rat": "The fastest of the three trend lines, so it turns first and bridges the gap between the slow averages and short-term momentum. Weight 5, the smallest of the three, because it largely repeats what the other two already say. Known flaw: it scores the same +1 whether price is 1% or 60% above the line, so it cannot tell genuine strength from being stretched too far. The overextension note is a partial offset.", "src": "Binance spot klines"}, {"id": "L2", "bucket": "Liquidity / Macro", "name": "Synthetic dollar index, 20-day change", "w": 11, "val": "+2.21 pts", "calc": "A US dollar index rebuilt from six exchange rates using the official published weights, then the change in that index over the last 20 sessions.", "mean": "Whether the dollar has strengthened or weakened over the past month, in index points. At +2.3 the dollar is meaningfully stronger than it was a month ago.", "score": "<b>Bullish +1:</b> the dollar has <i>fallen</i> 1 point or more over 20 sessions.<br><b>Bearish &minus;1:</b> the dollar has <i>risen</i> 1 point or more.<br><b>Neutral 0:</b> it has moved less than a point either way.", "rat": "When the dollar strengthens, money gets pulled out of risky assets everywhere in the world. Crypto is about as pure a bet on loose global money as exists, so it feels this first. Weight 11 &mdash; the single largest in the model &mdash; because it is the only liquidity measure that is available daily, free, and never revised after publication.", "src": "jsdelivr currency-api, ECB-sourced, dated URLs"}, {"id": "L3", "bucket": "Liquidity / Macro", "name": "Liquidity drain: Treasury cash + reverse repo", "w": 10, "val": "+$44.6bn", "calc": "The US Treasury's cash balance plus the Federal Reserve's overnight reverse repo, compared with the same total 20 sessions ago. A rise means cash has moved out of the banking system and into government accounts.", "mean": "How many billions of dollars have been drained from, or released into, the banking system over the past month. At +$44.6bn, cash has been leaving the system.", "score": "<b>Bullish +1:</b> $25bn or more <i>released</i> back into the system over 20 sessions.<br><b>Bearish &minus;1:</b> $25bn or more <i>drained</i> out.<br><b>Neutral 0:</b> a move smaller than $25bn in either direction.", "rat": "When the government hoards cash, there is simply less money in the system to buy anything, and risk assets feel it within a few weeks. Weight 10, just behind the dollar. One honest caveat: the complete measure would also subtract the Fed's own balance sheet, but that data source blocks automated access, so this is a good proxy rather than the full picture.", "src": "US Treasury Fiscal Data API + NY Fed Markets API"}, {"id": "L4", "bucket": "Liquidity / Macro", "name": "Next-FOMC hike probability", "w": 9, "val": "65.4%", "calc": "The market-implied probability that the Federal Reserve <i>raises</i> interest rates at its next meeting, read from live betting odds on Polymarket.", "mean": "What the market currently expects the Fed to do next. 65% means roughly a two-in-three chance of a rate rise at the October meeting.", "score": "<b>Bullish +1:</b> 30% or lower &mdash; a rate rise is largely off the table.<br><b>Bearish &minus;1:</b> 55% or higher &mdash; a rise is more likely than not.<br><b>Neutral 0:</b> anywhere between 30% and 55%.", "rat": "Interest rates set the price of every other asset. What matters is not where rates are today but where the market expects them to go, and that expectation moves months before the Fed actually acts. Weight 9. We read betting markets rather than the usual Fed-watch tool because they publish a clean daily history that can be collected automatically.", "src": "Polymarket Gamma + CLOB price history"}, {"id": "D1", "bucket": "Demand", "name": "Bitcoin ETF flows, four weeks", "w": 7, "val": "$1,976m", "calc": "Money paid into US spot bitcoin ETFs minus money taken out, added up across the last 20 trading days.", "mean": "How much genuinely new money has bought bitcoin through regulated funds over the past four weeks. Not leverage, not derivatives &mdash; cash that bought actual coins.", "score": "<b>Bullish +1:</b> more than $2,000m net <i>in</i> over four weeks.<br><b>Bearish &minus;1:</b> more than $1,000m net <i>out</i>.<br><b>Neutral 0:</b> between those. Deliberately lopsided: outflows are rarer and tell you more when they do happen.", "rat": "The cleanest measure of new demand in the model, and the only input that is not calculated from price. Weight 7, the largest in this group. Known flaw: the $2,000m line is a fixed number while the ETF industry keeps growing, so it will need raising at some point.", "src": "Farside Investors, scraped"}, {"id": "D2", "bucket": "Demand", "name": "Stablecoin supply, 30-day change", "w": 5, "val": "+0.85%", "calc": "The total value of all US-dollar stablecoins in circulation, compared with 30 days ago.", "mean": "The size of the pool of dollars already sitting inside crypto, waiting to buy something. Growth means money is arriving; shrinkage means it is leaving the ecosystem altogether.", "score": "<b>Bullish +1:</b> the pool grew more than 1.5% over 30 days.<br><b>Bearish &minus;1:</b> it shrank more than 0.5%.<br><b>Neutral 0:</b> between those &mdash; including slow growth, as now.", "rat": "This is money that has committed to crypto but not yet chosen what to buy, so it tends to show up before the buying does. Weight 5. Honest caveat: I have not tested that lead time on this particular series. The weight rests on a widely held market belief rather than something I have verified, and it is on the list for the monthly review.", "src": "DefiLlama stablecoins API"}, {"id": "D3", "bucket": "Demand", "name": "Ethereum ETF flows, four weeks", "w": 4, "val": "$770m", "calc": "The same calculation as D1, applied to the US spot ether funds.", "mean": "Whether big institutional money is buying only bitcoin, or spreading out into the rest of crypto.", "score": "<b>Bullish +1:</b> more than $500m net <i>in</i> over four weeks.<br><b>Bearish &minus;1:</b> more than $250m net <i>out</i>.<br><b>Neutral 0:</b> between.", "rat": "A real bull market is not a bitcoin-only event. When the large funds start buying ether too, appetite is broadening rather than narrowing. Weight 4 &mdash; smaller than bitcoin flows because the ether funds are a fraction of the size. Note: this was meant to cover Solana and XRP funds as well, but no reliable automatic source exists for those, so the indicator was narrowed to match the data rather than left blank.", "src": "Farside Investors, scraped"}, {"id": "D4", "bucket": "Demand", "name": "Spot volume, 7-day vs 30-day", "w": 4, "val": "1.03", "calc": "Average daily bitcoin trading volume over the last 7 days, divided by the average over the last 30 days.", "mean": "Whether more or fewer people are trading than usual. 1.15 means the past week was 15% busier than the past month; 0.85 means 15% quieter.", "score": "<b>Bullish +1:</b> 1.15 or higher &mdash; the week ran at least 15% busier than the month.<br><b>Bearish &minus;1:</b> 0.85 or lower &mdash; at least 15% quieter.<br><b>Neutral 0:</b> between 0.85 and 1.15.", "rat": "Volume tells you whether a price move has real participation behind it. A rally nobody is joining tends not to last, and a thin market exaggerates whatever happens next in both directions. Weight 4. Caveat: measured on a single exchange, so it can be distorted if trading shifts to another venue.", "src": "Binance spot klines, quote volume"}, {"id": "D5", "bucket": "Demand", "name": "ETF flow trend, 7d vs 28d", "w": 5, "val": "+$197m/d", "calc": "Average daily ETF flow over the last 7 trading days, minus the average over the last 28 trading days.", "mean": "Whether ETF buying is speeding up or slowing down against its own recent pace, in dollars per day.", "score": "<b>Bullish +1:</b> running more than $50m a day <i>above</i> the four-week pace.<br><b>Bearish &minus;1:</b> more than $50m a day <i>below</i> it.<br><b>Neutral 0:</b> within $50m a day either side.", "rat": "D1 is the odometer; this is the speedometer. Without it the model cannot tell buying that is still building from buying that peaked a fortnight ago and is quietly fading. Weight 5, added specifically to close that gap.", "src": "Derived from the ETF flow column"}, {"id": "Z1", "bucket": "Positioning", "name": "Perpetual funding rate", "w": 8, "val": "0.0020%", "calc": "The funding rate on Binance's bitcoin perpetual futures, averaged across the day's three settlements. This is what traders holding leveraged positions pay each other every eight hours.", "mean": "The price of holding a leveraged bet. A small positive number is normal and healthy. A large positive number means too many people are leveraged long. A negative number means traders are being <i>paid</i> to be long, which happens when the short side is crowded.", "score": "<b>Healthy +1:</b> between 0.005% and 0.03% per eight hours &mdash; people are paying a normal price to be long.<br><b>Unhealthy &minus;1:</b> above about 0.05% (crowded longs, fragile) or below &minus;0.01% (stress).<br><b>Neutral 0:</b> everything else, including today's near-zero reading, where almost nobody is paying to be positioned either way.", "rat": "The cheapest way to see whether a move is driven by borrowed money or by cash, and crowded positioning is what precedes violent reversals. Weight 8, the larger of the two here. Known inconsistency: this indicator's +1 means \u201chealthy\u201d while every other +1 in the model means \u201cbullish\u201d, and the weighted average treats them as identical. Logged for the monthly review rather than quietly fixed.", "src": "Binance USD-M futures funding history"}, {"id": "Z2", "bucket": "Positioning", "name": "Open interest against price", "w": 7, "val": "OI &minus;13.6% / px &minus;1.1%", "calc": "The change in the total value of outstanding leveraged positions over 5 days, compared against the price change over those same 5 days.", "mean": "Whether a price move is driven by new money arriving or by old positions being closed. Price up with more positions open is fresh buying; price up with fewer positions open means people closing losing short bets, which is a weaker foundation.", "score": "<b>Bullish +1:</b> price rose <i>and</i> open positions grew more than 2% &mdash; new money committing.<br><b>Bearish &minus;1:</b> price fell <i>while</i> open positions grew more than 2% &mdash; new sellers arriving.<br><b>Neutral 0:</b> open positions shrank, whichever way price went. That is leverage being cleared out, which says nothing about direction.", "rat": "Price on its own cannot tell a genuine rally from a short squeeze. Only price together with open positions can. This is the measure that showed September's rally was partly shorts being forced to close rather than new buyers arriving. Weight 7.", "src": "Binance USD-M open interest history"}], "removed": [{"id": "P2", "name": "50-week average, slope", "why": "Removed at your request. <b>Flag:</b> this was the read that separated reclaiming a <b>rising</b> 50-week average from reclaiming a falling one &mdash; the exact distinction in your redesign brief. It is live right now: the average has fallen from 82,340 to 78,360 since 20 August while price rose through it."}, {"id": "L1", "name": "10-year real yield", "why": "Dropped &mdash; you chose L2 over it. Unsourceable in any case: FRED blocks cross-origin requests."}, {"id": "L5", "name": "High-yield credit spread", "why": "Removed at your request. No free cross-origin source found either."}, {"id": "L6", "name": "Brent crude", "why": "Removed &mdash; it overlaps L4. Oil reaches crypto through inflation and then the rate path, and L4 already prices that path directly at 65.4%. Brent closed $106.34 on 28 September, up 17.5% on the month, so the oil channel is live; it now reaches the page through the geopolitical overlay rather than through a weighted indicator."}, {"id": "L7", "name": "Diesel crack spread", "why": "Removed at your request. This was the true overlap with L6."}, {"id": "Z3", "name": "Three-month basis", "why": "Removed at your request. Also the second band-scored indicator, so removing it halves the band-versus-directional inconsistency."}, {"id": "RSI(14)", "name": "Relative strength", "why": "Demoted out of the regime score in v4 per your brief; now gone from the sheet entirely."}], "ameta": {"P1": {"n": "BTC vs 50-week average", "w": 8, "lag": "lagging", "u": "%", "dir": "hi", "bull": 0, "bear": -3, "up": "Price has taken back its one-year mean. This confirms a trend that has already been running for weeks \u2014 the 350-day average is the slowest thing in the model and it always moves last.", "dn": "Price has lost its one-year mean. By the time this flips, the move it describes is old news; treat it as the market agreeing with something the faster indicators said earlier."}, "P3": {"n": "BTC vs 200-day average", "w": 7, "lag": "lagging", "u": "%", "dir": "hi", "bull": 0, "bear": -5, "up": "Price is back above the most-watched line in finance. Partly self-fulfilling \u2014 systematic money buys this line \u2014 but it tells you where the market has been, not where it is going.", "dn": "Price has broken the 200-day. Expect follow-through selling from trend systems, but the information about why is already in the liquidity indicators."}, "P4": {"n": "Higher highs and higher lows", "w": 5, "lag": "coincident", "u": "", "dir": "hi", "bull": 1, "bear": -1, "up": "The 20-day high and low are both above the prior 20. Trend structure has turned up. Coincident: it moves with price, but it is the earliest of the price reads.", "dn": "Both the 20-day high and low have rolled over. Structure has broken before the moving averages will show it."}, "P5": {"n": "Top-5 alt breadth", "w": 5, "lag": "coincident", "u": " of 5", "dir": "hi", "bull": 4, "bear": 2, "up": "The move has broadened beyond bitcoin. Breadth confirms a trend; it very rarely leads one.", "dn": "The alts are falling away while bitcoin holds. Narrowing breadth is how hollow rallies look from the inside \u2014 worth watching even though it is not predictive on its own."}, "P6": {"n": "BTC vs 100-day average", "w": 5, "lag": "lagging", "u": "%", "dir": "hi", "bull": 0, "bear": -5, "up": "Price is above its intermediate average. The fastest of the three moving averages, so it turns first among them \u2014 but still after the fact.", "dn": "Price is below its intermediate average. First of the three trend lines to break."}, "L2": {"n": "Synthetic dollar index, 20-day", "w": 11, "lag": "leading", "u": " pts", "dir": "lo", "bull": -1, "bear": 1, "up": "The dollar is weakening. Global liquidity is loosening, and crypto is about as pure a bet on that as exists. Historically this shows up in the dollar days to weeks before it shows up in crypto price.", "dn": "The dollar is strengthening. This tightens conditions everywhere outside the US and drains risk appetite. It is the heaviest indicator in the model and the one that usually moves first."}, "L3": {"n": "Liquidity drain, Treasury cash + repo", "w": 10, "lag": "leading", "u": " $bn", "dir": "lo", "bull": -25, "bear": 25, "up": "Cash is being released back into the banking system. Net liquidity has historically led crypto by weeks, and the Treasury publishes its refunding schedule in advance, so this is partly knowable ahead of time.", "dn": "Cash is being pulled out of the banking system. A drain of this size usually shows up in risk assets with a lag of two to six weeks."}, "L4": {"n": "Next-FOMC hike probability", "w": 9, "lag": "leading", "u": "%", "dir": "lo", "bull": 30, "bear": 55, "up": "The market has stepped back from pricing a hike. This is forward pricing, so it moves well before the Fed does and well before the effect reaches asset prices.", "dn": "The market is pricing a hike. The policy rate is the discount rate for every risk asset, and this prices the path rather than the level \u2014 the most genuinely leading indicator in the model."}, "D1": {"n": "Bitcoin ETF flows, four weeks", "w": 7, "lag": "coincident", "u": " $m", "dir": "hi", "bull": 2000, "bear": -1000, "up": "Four-week net creations have cleared the threshold. Real, unlevered, primary-market buying \u2014 but flows chase price as often as they lead it, so read this as confirmation.", "dn": "Four-week net flow has fallen through the threshold. Institutional demand is withdrawing, usually after price has already moved."}, "D2": {"n": "Stablecoin supply, 30-day", "w": 5, "lag": "leading", "u": "%", "dir": "hi", "bull": 1.5, "bear": -0.5, "up": "The stablecoin float is expanding. This is money that has committed to crypto but not yet chosen an asset, so it tends to arrive before spot buying does.", "dn": "The stablecoin float is shrinking. Capital is leaving the ecosystem entirely rather than rotating within it \u2014 this usually precedes weakness rather than following it."}, "D3": {"n": "Ethereum ETF flows, four weeks", "w": 4, "lag": "coincident", "u": " $m", "dir": "hi", "bull": 500, "bear": -250, "up": "Institutional demand is broadening past bitcoin. A risk-appetite read, and it moves with the market rather than ahead of it.", "dn": "Ether ETF flows have turned. Institutional appetite is narrowing back to bitcoin only."}, "D4": {"n": "Spot volume, 7-day vs 30-day", "w": 4, "lag": "coincident", "u": "", "dir": "hi", "bull": 1.15, "bear": 0.85, "up": "Participation is expanding. More people are trading than usual, which makes the prevailing move more durable.", "dn": "Participation is draining. Price is now moving on thinner tape, which makes whatever happens next larger in both directions."}, "D5": {"n": "ETF flow trend, 7d vs 28d", "w": 5, "lag": "leading", "u": " $m/d", "dir": "hi", "bull": 50, "bear": -50, "up": "Flows are accelerating against their own four-week baseline. Because it is a derivative, it turns before the level does \u2014 expect D1 to follow if this holds.", "dn": "Flows are decelerating against their own baseline. This is the early warning that the four-week sum will roll over next."}, "Z1": {"n": "Perpetual funding rate", "w": 8, "lag": "leading", "u": "%", "dir": "band", "bull": 0.005, "bear": 0.03, "up": "Funding has returned to the healthy band: positive carry without froth. Crowded positioning is what precedes violent reversals, so normal funding lowers the odds of one.", "dn": "Funding has left the healthy band \u2014 either froth on the long side or stress on the short side. Positioning extremes lead reversals rather than follow them."}, "Z2": {"n": "Open interest against price", "w": 7, "lag": "leading", "u": "%", "dir": "map", "bull": 0, "bear": 0, "up": "Price and open interest are rising together: new money committing, not shorts covering. This is the configuration that sustains moves.", "dn": "Open interest is building against the price direction. New shorts or distribution \u2014 it tells you the quality of the move before price resolves it."}}, "buckets": {"Price / Trend": ["Price &amp; trend", "30%"], "Liquidity / Macro": ["Liquidity &amp; macro", "30%"], "Demand": ["Demand", "25%"], "Positioning": ["Positioning", "15%"]}};
+const DATA_FALLBACK={"asof":"2026-09-30","asofLong":"30 September 2026","asofShort":"30 Sep","btc":85293.0,"regime":"Transition","state":"Deteriorating","composite":20,"momentum":-25,"coverage":1.0,"agreement":0.78,"buckets":{"Price":83,"Liquidity":-70,"Demand":64,"Positioning":0},"bull15":6,"bear15":0,"params":{"BULL":30,"BEAR":-25,"DAYS":10,"WIN":15,"MIMP":10,"MDET":-10,"MLB":10,"MINCOV":0.6,"GEO":8},"live":{"P1":{"v":9.07,"s":1},"P3":{"v":19.61,"s":1},"P6":{"v":21.23,"s":1},"P4":{"v":0.0,"s":0},"P5":{"v":5.0,"s":1},"L2":{"v":2.694,"s":-1},"L3":{"v":148.2,"s":-1},"L4":{"v":35.0,"s":0},"D1":{"v":2796.4,"s":1},"D2":{"v":1.25,"s":0},"D3":{"v":890.9,"s":1},"D4":{"v":0.963,"s":0},"D5":{"v":181.4,"s":1},"Z1":{"v":0.00373,"s":0},"Z2":{"v":-4.4,"s":0}},"rows":[{"d":"22 Aug","iso":"2026-08-22","px":77075.0,"comp":38,"cov":0.84,"mo":null,"reg":"Building history","st":"Insufficient data","agree":0.82,"bk":{"Price":47,"Liquidity":-48,"Demand":80,"Positioning":100},"v":{"P1":-6.18,"P3":11.67,"P6":16.48,"P4":1.0,"P5":5.0,"L2":-0.949,"L3":54.7,"L4":null,"D1":2397.7,"D2":0.22,"D3":943.2,"D4":1.666,"D5":114.0,"Z1":0.01,"Z2":null},"s":{"P1":-1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":-1,"L4":null,"D1":1,"D2":0,"D3":1,"D4":1,"D5":1,"Z1":1,"Z2":null},"raw":{"px":77075.0,"ma350":82153.0,"ma200":69020.0,"ma100":66172.0,"breadth":5.0,"vol":1.666,"stable":306.7,"stable30":0.22,"dxy":98.845,"dxy20":-0.949,"drain":54.7,"hike":null,"funding":0.01,"oi":null,"oi5":null,"hhll":1.0,"px5":19.437},"dayb":307.5,"daye":184.8,"isflow":false},{"d":"23 Aug","iso":"2026-08-23","px":77734.0,"comp":38,"cov":0.84,"mo":null,"reg":"Building history","st":"Insufficient data","agree":0.82,"bk":{"Price":47,"Liquidity":-48,"Demand":80,"Positioning":100},"v":{"P1":-5.27,"P3":12.59,"P6":17.5,"P4":1.0,"P5":5.0,"L2":-0.939,"L3":61.2,"L4":null,"D1":2397.7,"D2":-0.02,"D3":943.2,"D4":1.791,"D5":114.0,"Z1":0.01,"Z2":null},"s":{"P1":-1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":-1,"L4":null,"D1":1,"D2":0,"D3":1,"D4":1,"D5":1,"Z1":1,"Z2":null},"raw":{"px":77734.0,"ma350":82058.0,"ma200":69043.0,"ma100":66159.0,"breadth":5.0,"vol":1.791,"stable":306.8,"stable30":-0.02,"dxy":98.801,"dxy20":-0.939,"drain":61.2,"hike":null,"funding":0.01,"oi":null,"oi5":null,"hhll":1.0,"px5":20.099},"dayb":307.5,"daye":184.8,"isflow":false},{"d":"24 Aug","iso":"2026-08-24","px":78993.0,"comp":51,"cov":0.84,"mo":null,"reg":"Building history","st":"Insufficient data","agree":0.83,"bk":{"Price":47,"Liquidity":5,"Demand":80,"Positioning":100},"v":{"P1":-3.62,"P3":14.28,"P6":19.38,"P4":1.0,"P5":5.0,"L2":-1.151,"L3":40.8,"L4":null,"D1":2735.3,"D2":0.0,"D3":1058.8,"D4":1.888,"D5":170.2,"Z1":0.01,"Z2":null},"s":{"P1":-1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":1,"L3":-1,"L4":null,"D1":1,"D2":0,"D3":1,"D4":1,"D5":1,"Z1":1,"Z2":null},"raw":{"px":78993.0,"ma350":81963.0,"ma200":69123.0,"ma100":66167.0,"breadth":5.0,"vol":1.888,"stable":306.9,"stable30":0.0,"dxy":98.852,"dxy20":-1.151,"drain":40.8,"hike":null,"funding":0.01,"oi":null,"oi5":null,"hhll":1.0,"px5":13.929},"dayb":337.6,"daye":115.6,"isflow":true},{"d":"25 Aug","iso":"2026-08-25","px":78539.0,"comp":38,"cov":0.84,"mo":null,"reg":"Building history","st":"Insufficient data","agree":0.82,"bk":{"Price":47,"Liquidity":-48,"Demand":80,"Positioning":100},"v":{"P1":-4.07,"P3":13.56,"P6":18.68,"P4":1.0,"P5":5.0,"L2":-0.81,"L3":63.6,"L4":null,"D1":3049.6,"D2":0.1,"D3":1238.6,"D4":1.964,"D5":214.6,"Z1":0.00861,"Z2":null},"s":{"P1":-1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":-1,"L4":null,"D1":1,"D2":0,"D3":1,"D4":1,"D5":1,"Z1":1,"Z2":null},"raw":{"px":78539.0,"ma350":81869.0,"ma200":69163.0,"ma100":66178.0,"breadth":5.0,"vol":1.964,"stable":307.0,"stable30":0.1,"dxy":98.996,"dxy20":-0.81,"drain":63.6,"hike":null,"funding":0.00861,"oi":null,"oi5":null,"hhll":1.0,"px5":7.551},"dayb":314.3,"daye":179.8,"isflow":true},{"d":"26 Aug","iso":"2026-08-26","px":79024.0,"comp":50,"cov":0.84,"mo":null,"reg":"Building history","st":"Insufficient data","agree":0.9,"bk":{"Price":47,"Liquidity":0,"Demand":80,"Positioning":100},"v":{"P1":-3.36,"P3":14.18,"P6":19.38,"P4":1.0,"P5":5.0,"L2":-0.752,"L3":-3.0,"L4":null,"D1":3249.7,"D2":0.32,"D3":1449.6,"D4":1.846,"D5":201.5,"Z1":0.00692,"Z2":null},"s":{"P1":-1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":0,"L4":null,"D1":1,"D2":0,"D3":1,"D4":1,"D5":1,"Z1":1,"Z2":null},"raw":{"px":79024.0,"ma350":81769.0,"ma200":69211.0,"ma100":66198.0,"breadth":5.0,"vol":1.846,"stable":307.3,"stable30":0.32,"dxy":98.936,"dxy20":-0.752,"drain":-3.0,"hike":null,"funding":0.00692,"oi":null,"oi5":null,"hhll":1.0,"px5":0.876},"dayb":232.2,"daye":192.4,"isflow":true},{"d":"27 Aug","iso":"2026-08-27","px":80250.0,"comp":60,"cov":0.84,"mo":null,"reg":"Building history","st":"Insufficient data","agree":1.0,"bk":{"Price":73,"Liquidity":0,"Demand":80,"Positioning":100},"v":{"P1":-1.74,"P3":15.87,"P6":21.16,"P4":1.0,"P5":5.0,"L2":-0.759,"L3":-4.3,"L4":null,"D1":3258.9,"D2":0.79,"D3":1670.8,"D4":1.659,"D5":205.2,"Z1":0.00698,"Z2":null},"s":{"P1":0,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":0,"L4":null,"D1":1,"D2":0,"D3":1,"D4":1,"D5":1,"Z1":1,"Z2":null},"raw":{"px":80250.0,"ma350":81668.0,"ma200":69261.0,"ma100":66232.0,"breadth":5.0,"vol":1.659,"stable":307.6,"stable30":0.79,"dxy":99.188,"dxy20":-0.759,"drain":-4.3,"hike":null,"funding":0.00698,"oi":null,"oi5":null,"hhll":1.0,"px5":4.119},"dayb":242.3,"daye":234.4,"isflow":true},{"d":"28 Aug","iso":"2026-08-28","px":77846.0,"comp":50,"cov":0.84,"mo":null,"reg":"Building history","st":"Insufficient data","agree":0.9,"bk":{"Price":47,"Liquidity":0,"Demand":80,"Positioning":100},"v":{"P1":-4.55,"P3":12.33,"P6":17.53,"P4":1.0,"P5":5.0,"L2":-0.429,"L3":16.0,"L4":null,"D1":3322.4,"D2":0.91,"D3":1763.9,"D4":1.4,"D5":118.2,"Z1":0.0075,"Z2":null},"s":{"P1":-1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":0,"L4":null,"D1":1,"D2":0,"D3":1,"D4":1,"D5":1,"Z1":1,"Z2":null},"raw":{"px":77846.0,"ma350":81559.0,"ma200":69300.0,"ma100":66235.0,"breadth":5.0,"vol":1.4,"stable":307.7,"stable30":0.91,"dxy":99.181,"dxy20":-0.429,"drain":16.0,"hike":null,"funding":0.0075,"oi":null,"oi5":null,"hhll":1.0,"px5":0.144},"dayb":-201.9,"daye":102.1,"isflow":true},{"d":"29 Aug","iso":"2026-08-29","px":78230.0,"comp":50,"cov":0.84,"mo":null,"reg":"Building history","st":"Insufficient data","agree":0.9,"bk":{"Price":47,"Liquidity":0,"Demand":80,"Positioning":100},"v":{"P1":-3.95,"P3":12.81,"P6":18.1,"P4":1.0,"P5":5.0,"L2":0.078,"L3":16.0,"L4":null,"D1":3322.4,"D2":0.88,"D3":1763.9,"D4":1.309,"D5":118.2,"Z1":0.01,"Z2":null},"s":{"P1":-1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":0,"L4":null,"D1":1,"D2":0,"D3":1,"D4":1,"D5":1,"Z1":1,"Z2":null},"raw":{"px":78230.0,"ma350":81451.0,"ma200":69347.0,"ma100":66241.0,"breadth":5.0,"vol":1.309,"stable":307.3,"stable30":0.88,"dxy":99.677,"dxy20":0.078,"drain":16.0,"hike":null,"funding":0.01,"oi":null,"oi5":null,"hhll":1.0,"px5":-0.966},"dayb":-201.9,"daye":102.1,"isflow":false},{"d":"30 Aug","iso":"2026-08-30","px":77682.0,"comp":50,"cov":0.84,"mo":null,"reg":"Building history","st":"Insufficient data","agree":0.9,"bk":{"Price":47,"Liquidity":0,"Demand":80,"Positioning":100},"v":{"P1":-4.5,"P3":11.93,"P6":17.23,"P4":1.0,"P5":5.0,"L2":-0.024,"L3":3.7,"L4":null,"D1":3322.4,"D2":1.1,"D3":1763.9,"D4":1.27,"D5":118.2,"Z1":0.00845,"Z2":null},"s":{"P1":-1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":0,"L4":null,"D1":1,"D2":0,"D3":1,"D4":1,"D5":1,"Z1":1,"Z2":null},"raw":{"px":77682.0,"ma350":81344.0,"ma200":69400.0,"ma100":66263.0,"breadth":5.0,"vol":1.27,"stable":307.2,"stable30":1.1,"dxy":99.664,"dxy20":-0.024,"drain":3.7,"hike":null,"funding":0.00845,"oi":null,"oi5":null,"hhll":1.0,"px5":-1.091},"dayb":-201.9,"daye":102.1,"isflow":false},{"d":"31 Aug","iso":"2026-08-31","px":78581.0,"comp":40,"cov":0.93,"mo":null,"reg":"Building history","st":"Insufficient data","agree":0.82,"bk":{"Price":47,"Liquidity":-3,"Demand":64,"Positioning":100},"v":{"P1":-3.27,"P3":13.13,"P6":18.56,"P4":1.0,"P5":5.0,"L2":-0.184,"L3":31.7,"L4":27.3,"D1":3369.0,"D2":1.13,"D3":1862.8,"D4":1.091,"D5":59.5,"Z1":0.00909,"Z2":null},"s":{"P1":-1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":-1,"L4":1,"D1":1,"D2":0,"D3":1,"D4":0,"D5":1,"Z1":1,"Z2":null},"raw":{"px":78581.0,"ma350":81239.0,"ma200":69461.0,"ma100":66281.0,"breadth":5.0,"vol":1.091,"stable":307.3,"stable30":1.13,"dxy":99.592,"dxy20":-0.184,"drain":31.7,"hike":27.3,"funding":0.00909,"oi":8.26,"oi5":null,"hhll":1.0,"px5":-0.561},"dayb":216.7,"daye":87.6,"isflow":true},{"d":"01 Sep","iso":"2026-09-01","px":77439.0,"comp":45,"cov":0.93,"mo":7,"reg":"Building history","st":"Insufficient data","agree":0.89,"bk":{"Price":47,"Liquidity":30,"Demand":44,"Positioning":100},"v":{"P1":-4.55,"P3":11.42,"P6":16.83,"P4":1.0,"P5":4.0,"L2":-0.346,"L3":-16.6,"L4":27.3,"D1":2921.0,"D2":1.15,"D3":1820.0,"D4":0.962,"D5":-2.9,"Z1":0.00744,"Z2":null},"s":{"P1":-1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":0,"L4":1,"D1":1,"D2":0,"D3":1,"D4":0,"D5":0,"Z1":1,"Z2":null},"raw":{"px":77439.0,"ma350":81127.0,"ma200":69504.0,"ma100":66285.0,"breadth":4.0,"vol":0.962,"stable":307.3,"stable30":1.15,"dxy":99.528,"dxy20":-0.346,"drain":-16.6,"hike":27.3,"funding":0.00744,"oi":8.48,"oi5":null,"hhll":1.0,"px5":-3.503},"dayb":-236.5,"daye":10.9,"isflow":true},{"d":"02 Sep","iso":"2026-09-02","px":77340.0,"comp":45,"cov":0.93,"mo":7,"reg":"Building history","st":"Insufficient data","agree":0.89,"bk":{"Price":47,"Liquidity":30,"Demand":44,"Positioning":100},"v":{"P1":-4.54,"P3":11.21,"P6":16.68,"P4":1.0,"P5":4.0,"L2":-0.218,"L3":-22.1,"L4":27.3,"D1":2777.7,"D2":1.17,"D3":1711.0,"D4":0.944,"D5":-35.4,"Z1":0.0066,"Z2":null},"s":{"P1":-1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":0,"L4":1,"D1":1,"D2":0,"D3":1,"D4":0,"D5":0,"Z1":1,"Z2":null},"raw":{"px":77340.0,"ma350":81015.0,"ma200":69542.0,"ma100":66285.0,"breadth":4.0,"vol":0.944,"stable":307.3,"stable30":1.17,"dxy":99.774,"dxy20":-0.218,"drain":-22.1,"hike":27.3,"funding":0.0066,"oi":8.38,"oi5":null,"hhll":1.0,"px5":-0.65},"dayb":101.1,"daye":-48.2,"isflow":true},{"d":"03 Sep","iso":"2026-09-03","px":81270.0,"comp":73,"cov":0.93,"mo":22,"reg":"Building history","st":"Insufficient data","agree":1.0,"bk":{"Price":100,"Liquidity":63,"Demand":44,"Positioning":100},"v":{"P1":0.44,"P3":16.76,"P6":22.51,"P4":1.0,"P5":4.0,"L2":-0.501,"L3":-54.8,"L4":27.3,"D1":3370.9,"D2":1.21,"D3":1760.3,"D4":0.959,"D5":1.8,"Z1":0.00735,"Z2":null},"s":{"P1":1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":1,"L4":1,"D1":1,"D2":0,"D3":1,"D4":0,"D5":0,"Z1":1,"Z2":null},"raw":{"px":81270.0,"ma350":80913.0,"ma200":69604.0,"ma100":66338.0,"breadth":4.0,"vol":0.959,"stable":307.6,"stable30":1.21,"dxy":99.407,"dxy20":-0.501,"drain":-54.8,"hike":27.3,"funding":0.00735,"oi":8.32,"oi5":null,"hhll":1.0,"px5":3.886},"dayb":730.8,"daye":141.4,"isflow":true},{"d":"04 Sep","iso":"2026-09-04","px":79661.0,"comp":65,"cov":0.93,"mo":27,"reg":"Building history","st":"Insufficient data","agree":1.0,"bk":{"Price":73,"Liquidity":63,"Demand":44,"Positioning":100},"v":{"P1":-1.42,"P3":14.36,"P6":19.99,"P4":1.0,"P5":4.0,"L2":-0.581,"L3":-69.8,"L4":27.3,"D1":3443.8,"D2":1.48,"D3":1737.1,"D4":0.937,"D5":-7.2,"Z1":0.0065,"Z2":null},"s":{"P1":0,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":1,"L4":1,"D1":1,"D2":0,"D3":1,"D4":0,"D5":0,"Z1":1,"Z2":null},"raw":{"px":79661.0,"ma350":80810.0,"ma200":69658.0,"ma100":66390.0,"breadth":4.0,"vol":0.937,"stable":308.7,"stable30":1.48,"dxy":99.055,"dxy20":-0.581,"drain":-69.8,"hike":27.3,"funding":0.0065,"oi":9.16,"oi5":null,"hhll":1.0,"px5":2.548},"dayb":174.6,"daye":26.4,"isflow":true},{"d":"05 Sep","iso":"2026-09-05","px":79832.0,"comp":59,"cov":1.0,"mo":9,"reg":"Bull","st":"Bull + broad confirmation","agree":1.0,"bk":{"Price":73,"Liquidity":63,"Demand":44,"Positioning":47},"v":{"P1":-1.08,"P3":14.51,"P6":20.13,"P4":1.0,"P5":5.0,"L2":-0.497,"L3":-69.8,"L4":28.3,"D1":3443.8,"D2":1.49,"D3":1737.1,"D4":0.957,"D5":-7.2,"Z1":0.00093,"Z2":4.06},"s":{"P1":0,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":1,"L4":1,"D1":1,"D2":0,"D3":1,"D4":0,"D5":0,"Z1":0,"Z2":1},"raw":{"px":79832.0,"ma350":80707.0,"ma200":69719.0,"ma100":66453.0,"breadth":5.0,"vol":0.957,"stable":308.9,"stable30":1.49,"dxy":99.15,"dxy20":-0.497,"drain":-69.8,"hike":28.3,"funding":0.00093,"oi":8.59,"oi5":4.06,"hhll":1.0,"px5":1.592},"dayb":174.6,"daye":26.4,"isflow":false},{"d":"06 Sep","iso":"2026-09-06","px":80342.0,"comp":52,"cov":1.0,"mo":-8,"reg":"Bull","st":"Bull confirmation","agree":1.0,"bk":{"Price":73,"Liquidity":63,"Demand":44,"Positioning":0},"v":{"P1":-0.33,"P3":15.12,"P6":20.78,"P4":1.0,"P5":5.0,"L2":-0.407,"L3":-43.4,"L4":28.3,"D1":3443.8,"D2":1.46,"D3":1737.1,"D4":0.958,"D5":-7.2,"Z1":0.0029,"Z2":-0.03},"s":{"P1":0,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":1,"L4":1,"D1":1,"D2":0,"D3":1,"D4":0,"D5":0,"Z1":0,"Z2":0},"raw":{"px":80342.0,"ma350":80608.0,"ma200":69789.0,"ma100":66521.0,"breadth":5.0,"vol":0.958,"stable":308.9,"stable30":1.46,"dxy":99.138,"dxy20":-0.407,"drain":-43.4,"hike":28.3,"funding":0.0029,"oi":8.48,"oi5":-0.03,"hhll":1.0,"px5":3.749},"dayb":174.6,"daye":26.4,"isflow":false},{"d":"07 Sep","iso":"2026-09-07","px":79112.0,"comp":52,"cov":1.0,"mo":2,"reg":"Bull","st":"Bull confirmation","agree":1.0,"bk":{"Price":73,"Liquidity":63,"Demand":44,"Positioning":0},"v":{"P1":-1.74,"P3":13.26,"P6":18.83,"P4":1.0,"P5":5.0,"L2":-0.421,"L3":-72.5,"L4":28.3,"D1":3443.8,"D2":1.46,"D3":1737.1,"D4":0.902,"D5":-7.2,"Z1":0.0027,"Z2":1.11},"s":{"P1":0,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":1,"L4":1,"D1":1,"D2":0,"D3":1,"D4":0,"D5":0,"Z1":0,"Z2":0},"raw":{"px":79112.0,"ma350":80512.0,"ma200":69849.0,"ma100":66574.0,"breadth":5.0,"vol":0.902,"stable":309.0,"stable30":1.46,"dxy":99.174,"dxy20":-0.421,"drain":-72.5,"hike":28.3,"funding":0.0027,"oi":8.48,"oi5":1.11,"hhll":1.0,"px5":2.291},"dayb":174.6,"daye":26.4,"isflow":false},{"d":"08 Sep","iso":"2026-09-08","px":78456.0,"comp":51,"cov":1.0,"mo":1,"reg":"Bull","st":"Bull + broad confirmation","agree":1.0,"bk":{"Price":73,"Liquidity":33,"Demand":44,"Positioning":53},"v":{"P1":-2.44,"P3":12.24,"P6":17.76,"P4":1.0,"P5":5.0,"L2":-0.778,"L3":-56.1,"L4":30.4,"D1":3541.8,"D2":1.42,"D3":1727.4,"D4":0.924,"D5":-45.6,"Z1":0.00725,"Z2":1.56},"s":{"P1":0,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":1,"L4":0,"D1":1,"D2":0,"D3":1,"D4":0,"D5":0,"Z1":1,"Z2":0},"raw":{"px":78456.0,"ma350":80416.0,"ma200":69901.0,"ma100":66621.0,"breadth":5.0,"vol":0.924,"stable":308.8,"stable30":1.42,"dxy":98.817,"dxy20":-0.778,"drain":-56.1,"hike":30.4,"funding":0.00725,"oi":8.45,"oi5":1.56,"hhll":1.0,"px5":-3.463},"dayb":-46.6,"daye":-24.3,"isflow":true},{"d":"09 Sep","iso":"2026-09-09","px":78306.0,"comp":51,"cov":1.0,"mo":1,"reg":"Bull","st":"Bull + broad confirmation","agree":1.0,"bk":{"Price":73,"Liquidity":33,"Demand":44,"Positioning":53},"v":{"P1":-2.5,"P3":11.94,"P6":17.42,"P4":1.0,"P5":5.0,"L2":-0.038,"L3":-91.2,"L4":31.4,"D1":3413.8,"D2":1.47,"D3":1763.8,"D4":0.93,"D5":-21.3,"Z1":0.00623,"Z2":-8.67},"s":{"P1":0,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":1,"L4":0,"D1":1,"D2":0,"D3":1,"D4":0,"D5":0,"Z1":1,"Z2":0},"raw":{"px":78306.0,"ma350":80316.0,"ma200":69953.0,"ma100":66690.0,"breadth":5.0,"vol":0.93,"stable":309.1,"stable30":1.47,"dxy":98.758,"dxy20":-0.038,"drain":-91.2,"hike":31.4,"funding":0.00623,"oi":8.36,"oi5":-8.67,"hhll":1.0,"px5":-1.701},"dayb":-120.2,"daye":34.7,"isflow":true},{"d":"10 Sep","iso":"2026-09-10","px":76569.0,"comp":43,"cov":1.0,"mo":3,"reg":"Bull","st":"Bull + broad confirmation","agree":0.82,"bk":{"Price":47,"Liquidity":33,"Demand":44,"Positioning":53},"v":{"P1":-4.55,"P3":9.39,"P6":14.64,"P4":1.0,"P5":5.0,"L2":-0.025,"L3":-110.6,"L4":31.4,"D1":3192.2,"D2":1.73,"D3":1726.5,"D4":0.876,"D5":-92.1,"Z1":0.00621,"Z2":-4.24},"s":{"P1":-1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":1,"L4":0,"D1":1,"D2":1,"D3":1,"D4":0,"D5":-1,"Z1":1,"Z2":0},"raw":{"px":76569.0,"ma350":80223.0,"ma200":69998.0,"ma100":66788.0,"breadth":5.0,"vol":0.876,"stable":308.9,"stable30":1.73,"dxy":98.74,"dxy20":-0.025,"drain":-110.6,"hike":31.4,"funding":0.00621,"oi":8.23,"oi5":-4.24,"hhll":1.0,"px5":-4.087},"dayb":-282.7,"daye":-29.9,"isflow":true},{"d":"11 Sep","iso":"2026-09-11","px":77226.0,"comp":30,"cov":1.0,"mo":-15,"reg":"Bull","st":"Deteriorating","agree":0.78,"bk":{"Price":47,"Liquidity":33,"Demand":24,"Positioning":0},"v":{"P1":-3.63,"P3":10.23,"P6":15.4,"P4":1.0,"P5":5.0,"L2":0.303,"L3":-106.0,"L4":34.4,"D1":3310.1,"D2":1.3,"D3":1936.2,"D4":0.86,"D5":-53.6,"Z1":0.00424,"Z2":-3.55},"s":{"P1":-1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":1,"L4":0,"D1":1,"D2":0,"D3":1,"D4":0,"D5":-1,"Z1":0,"Z2":0},"raw":{"px":77226.0,"ma350":80131.0,"ma200":70061.0,"ma100":66919.0,"breadth":5.0,"vol":0.86,"stable":308.5,"stable30":1.3,"dxy":99.148,"dxy20":0.303,"drain":-106.0,"hike":34.4,"funding":0.00424,"oi":8.18,"oi5":-3.55,"hhll":1.0,"px5":-3.878},"dayb":-13.2,"daye":216.4,"isflow":true},{"d":"12 Sep","iso":"2026-09-12","px":77279.0,"comp":34,"cov":1.0,"mo":-11,"reg":"Bull","st":"Bull + broad confirmation","agree":0.73,"bk":{"Price":47,"Liquidity":33,"Demand":8,"Positioning":53},"v":{"P1":-3.45,"P3":10.2,"P6":15.25,"P4":1.0,"P5":5.0,"L2":0.296,"L3":-106.0,"L4":38.4,"D1":3310.1,"D2":1.32,"D3":1936.2,"D4":0.85,"D5":-53.6,"Z1":0.0052,"Z2":-5.84},"s":{"P1":-1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":1,"L4":0,"D1":1,"D2":0,"D3":1,"D4":-1,"D5":-1,"Z1":1,"Z2":0},"raw":{"px":77279.0,"ma350":80038.0,"ma200":70127.0,"ma100":67053.0,"breadth":5.0,"vol":0.85,"stable":308.7,"stable30":1.32,"dxy":99.097,"dxy20":0.296,"drain":-106.0,"hike":38.4,"funding":0.0052,"oi":7.98,"oi5":-5.84,"hhll":1.0,"px5":-2.317},"dayb":-13.2,"daye":216.4,"isflow":false},{"d":"13 Sep","iso":"2026-09-13","px":76842.0,"comp":34,"cov":1.0,"mo":-39,"reg":"Bull","st":"Bull + broad confirmation","agree":0.73,"bk":{"Price":47,"Liquidity":33,"Demand":8,"Positioning":53},"v":{"P1":-3.87,"P3":9.51,"P6":14.33,"P4":1.0,"P5":5.0,"L2":0.24,"L3":-139.8,"L4":38.5,"D1":3310.1,"D2":1.35,"D3":1936.2,"D4":0.836,"D5":-53.6,"Z1":0.00554,"Z2":-5.58},"s":{"P1":-1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":1,"L4":0,"D1":1,"D2":0,"D3":1,"D4":-1,"D5":-1,"Z1":1,"Z2":0},"raw":{"px":76842.0,"ma350":79937.0,"ma200":70171.0,"ma100":67211.0,"breadth":5.0,"vol":0.836,"stable":308.7,"stable30":1.35,"dxy":99.092,"dxy20":0.24,"drain":-139.8,"hike":38.5,"funding":0.00554,"oi":7.98,"oi5":-5.58,"hhll":1.0,"px5":-2.057},"dayb":-13.2,"daye":216.4,"isflow":false},{"d":"14 Sep","iso":"2026-09-14","px":78189.0,"comp":51,"cov":1.0,"mo":-14,"reg":"Bull","st":"Bull + broad confirmation","agree":1.0,"bk":{"Price":73,"Liquidity":33,"Demand":44,"Positioning":53},"v":{"P1":-2.06,"P3":11.34,"P6":16.03,"P4":1.0,"P5":5.0,"L2":0.339,"L3":-121.9,"L4":38.3,"D1":3526.2,"D2":1.26,"D3":2057.3,"D4":0.857,"D5":-43.4,"Z1":0.00647,"Z2":-3.65},"s":{"P1":0,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":1,"L4":0,"D1":1,"D2":0,"D3":1,"D4":0,"D5":0,"Z1":1,"Z2":0},"raw":{"px":78189.0,"ma350":79834.0,"ma200":70224.0,"ma100":67384.0,"breadth":5.0,"vol":0.857,"stable":308.6,"stable30":1.26,"dxy":99.335,"dxy20":0.339,"drain":-121.9,"hike":38.3,"funding":0.00647,"oi":8.06,"oi5":-3.65,"hhll":1.0,"px5":-0.149},"dayb":159.9,"daye":121.1,"isflow":true},{"d":"15 Sep","iso":"2026-09-15","px":75644.0,"comp":14,"cov":1.0,"mo":-45,"reg":"Bull","st":"Deteriorating","agree":0.64,"bk":{"Price":47,"Liquidity":-33,"Demand":8,"Positioning":53},"v":{"P1":-5.12,"P3":7.64,"P6":12.05,"P4":1.0,"P5":4.0,"L2":0.676,"L3":32.1,"L4":37.4,"D1":2778.3,"D2":1.35,"D3":1884.4,"D4":0.844,"D5":-187.3,"Z1":0.00652,"Z2":-1.63},"s":{"P1":-1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":-1,"L4":0,"D1":1,"D2":0,"D3":1,"D4":-1,"D5":-1,"Z1":1,"Z2":0},"raw":{"px":75644.0,"ma350":79724.0,"ma200":70273.0,"ma100":67507.0,"breadth":4.0,"vol":0.844,"stable":308.8,"stable30":1.35,"dxy":99.612,"dxy20":0.676,"drain":32.1,"hike":37.4,"funding":0.00652,"oi":8.09,"oi5":-1.63,"hhll":1.0,"px5":-1.208},"dayb":-450.4,"daye":-142.0,"isflow":true},{"d":"16 Sep","iso":"2026-09-16","px":76206.0,"comp":6,"cov":1.0,"mo":-46,"reg":"Bull","st":"Deteriorating","agree":0.6,"bk":{"Price":47,"Liquidity":-33,"Demand":8,"Positioning":0},"v":{"P1":-4.27,"P3":8.37,"P6":12.67,"P4":1.0,"P5":5.0,"L2":0.462,"L3":45.8,"L4":38.4,"D1":2293.1,"D2":1.1,"D3":1588.9,"D4":0.841,"D5":-239.0,"Z1":0.004,"Z2":-0.64},"s":{"P1":-1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":-1,"L4":0,"D1":1,"D2":0,"D3":1,"D4":-1,"D5":-1,"Z1":0,"Z2":0},"raw":{"px":76206.0,"ma350":79603.0,"ma200":70319.0,"ma100":67638.0,"breadth":5.0,"vol":0.841,"stable":308.0,"stable30":1.1,"dxy":99.65,"dxy20":0.462,"drain":45.8,"hike":38.4,"funding":0.004,"oi":8.13,"oi5":-0.64,"hhll":1.0,"px5":-1.321},"dayb":-295.9,"daye":-224.1,"isflow":true},{"d":"17 Sep","iso":"2026-09-17","px":76417.0,"comp":-1,"cov":1.0,"mo":-53,"reg":"Bull","st":"Deteriorating","agree":0.55,"bk":{"Price":47,"Liquidity":-37,"Demand":-20,"Positioning":7},"v":{"P1":-3.85,"P3":8.59,"P6":12.73,"P4":1.0,"P5":5.0,"L2":1.12,"L3":1.4,"L4":46.3,"D1":1935.4,"D2":1.06,"D3":1360.5,"D4":0.802,"D5":-211.6,"Z1":0.00706,"Z2":3.01},"s":{"P1":-1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":-1,"L3":0,"L4":0,"D1":0,"D2":0,"D3":1,"D4":-1,"D5":-1,"Z1":1,"Z2":-1},"raw":{"px":76417.0,"ma350":79477.0,"ma200":70373.0,"ma100":67785.0,"breadth":5.0,"vol":0.802,"stable":308.0,"stable30":1.06,"dxy":100.301,"dxy20":1.12,"drain":1.4,"hike":46.3,"funding":0.00706,"oi":8.22,"oi5":3.01,"hhll":1.0,"px5":-1.115},"dayb":159.5,"daye":-39.3,"isflow":true},{"d":"18 Sep","iso":"2026-09-18","px":80884.0,"comp":40,"cov":1.0,"mo":-11,"reg":"Bull","st":"Deteriorating","agree":0.8,"bk":{"Price":100,"Liquidity":0,"Demand":-20,"Positioning":100},"v":{"P1":1.92,"P3":14.84,"P6":18.98,"P4":1.0,"P5":5.0,"L2":0.523,"L3":15.0,"L4":51.2,"D1":1762.1,"D2":1.07,"D3":1283.5,"D4":0.843,"D5":-153.2,"Z1":0.00751,"Z2":3.61},"s":{"P1":1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":0,"L4":0,"D1":0,"D2":0,"D3":1,"D4":-1,"D5":-1,"Z1":1,"Z2":1},"raw":{"px":80884.0,"ma350":79359.0,"ma200":70433.0,"ma100":67979.0,"breadth":5.0,"vol":0.843,"stable":308.0,"stable30":1.07,"dxy":100.2,"dxy20":0.523,"drain":15.0,"hike":51.2,"funding":0.00751,"oi":8.27,"oi5":3.61,"hhll":1.0,"px5":5.26},"dayb":433.0,"daye":143.7,"isflow":true},{"d":"19 Sep","iso":"2026-09-19","px":81250.0,"comp":35,"cov":1.0,"mo":-16,"reg":"Bull","st":"Deteriorating","agree":0.8,"bk":{"Price":100,"Liquidity":-30,"Demand":-4,"Positioning":100},"v":{"P1":2.53,"P3":15.25,"P6":19.21,"P4":1.0,"P5":5.0,"L2":0.558,"L3":15.0,"L4":55.4,"D1":1762.1,"D2":1.01,"D3":1283.5,"D4":0.907,"D5":-153.2,"Z1":0.00888,"Z2":8.33},"s":{"P1":1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":0,"L4":-1,"D1":0,"D2":0,"D3":1,"D4":0,"D5":-1,"Z1":1,"Z2":1},"raw":{"px":81250.0,"ma350":79242.0,"ma200":70497.0,"ma100":68155.0,"breadth":5.0,"vol":0.907,"stable":308.5,"stable30":1.01,"dxy":100.222,"dxy20":0.558,"drain":15.0,"hike":55.4,"funding":0.00888,"oi":8.73,"oi5":8.33,"hhll":1.0,"px5":3.915},"dayb":433.0,"daye":143.7,"isflow":false},{"d":"20 Sep","iso":"2026-09-20","px":81178.0,"comp":45,"cov":1.0,"mo":2,"reg":"Bull","st":"Bull but fragile","agree":0.82,"bk":{"Price":100,"Liquidity":3,"Demand":-4,"Positioning":100},"v":{"P1":2.6,"P3":15.08,"P6":18.8,"P4":1.0,"P5":5.0,"L2":0.627,"L3":-43.8,"L4":55.4,"D1":1762.1,"D2":0.68,"D3":1283.5,"D4":1.012,"D5":-153.2,"Z1":0.00917,"Z2":8.04},"s":{"P1":1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":1,"L4":-1,"D1":0,"D2":0,"D3":1,"D4":0,"D5":-1,"Z1":1,"Z2":1},"raw":{"px":81178.0,"ma350":79121.0,"ma200":70540.0,"ma100":68331.0,"breadth":5.0,"vol":1.012,"stable":308.5,"stable30":0.68,"dxy":100.219,"dxy20":0.627,"drain":-43.8,"hike":55.4,"funding":0.00917,"oi":8.74,"oi5":8.04,"hhll":1.0,"px5":7.316},"dayb":433.0,"daye":143.7,"isflow":false},{"d":"21 Sep","iso":"2026-09-21","px":86620.0,"comp":41,"cov":1.0,"mo":11,"reg":"Bull","st":"Bull but fragile","agree":0.83,"bk":{"Price":100,"Liquidity":-63,"Demand":60,"Positioning":100},"v":{"P1":9.63,"P3":22.66,"P6":26.35,"P4":1.0,"P5":5.0,"L2":0.769,"L3":61.5,"L4":55.4,"D1":2453.6,"D2":0.65,"D3":1368.7,"D4":1.151,"D5":-5.5,"Z1":0.00656,"Z2":7.62},"s":{"P1":1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":-1,"L4":-1,"D1":1,"D2":0,"D3":1,"D4":1,"D5":0,"Z1":1,"Z2":1},"raw":{"px":86620.0,"ma350":79012.0,"ma200":70619.0,"ma100":68553.0,"breadth":5.0,"vol":1.151,"stable":308.7,"stable30":0.65,"dxy":100.297,"dxy20":0.769,"drain":61.5,"hike":55.4,"funding":0.00656,"oi":8.75,"oi5":7.62,"hhll":1.0,"px5":13.666},"dayb":999.0,"daye":270.0,"isflow":true},{"d":"22 Sep","iso":"2026-09-22","px":86209.0,"comp":65,"cov":1.0,"mo":31,"reg":"Bull","st":"Bull confirmation","agree":1.0,"bk":{"Price":100,"Liquidity":0,"Demand":80,"Positioning":100},"v":{"P1":9.25,"P3":21.92,"P6":25.38,"P4":1.0,"P5":5.0,"L2":0.584,"L3":13.0,"L4":53.4,"D1":2830.7,"D2":1.16,"D3":1415.3,"D4":1.151,"D5":70.7,"Z1":0.00682,"Z2":15.0},"s":{"P1":1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":0,"L3":0,"L4":0,"D1":1,"D2":0,"D3":1,"D4":1,"D5":1,"Z1":1,"Z2":1},"raw":{"px":86209.0,"ma350":78912.0,"ma200":70709.0,"ma100":68758.0,"breadth":5.0,"vol":1.151,"stable":310.3,"stable30":1.16,"dxy":100.358,"dxy20":0.584,"drain":13.0,"hike":53.4,"funding":0.00682,"oi":9.45,"oi5":15.0,"hhll":1.0,"px5":12.814},"dayb":714.7,"daye":162.2,"isflow":true},{"d":"23 Sep","iso":"2026-09-23","px":84398.0,"comp":36,"cov":1.0,"mo":2,"reg":"Bull","st":"Bull but fragile","agree":0.83,"bk":{"Price":100,"Liquidity":-70,"Demand":80,"Positioning":47},"v":{"P1":7.1,"P3":19.21,"P6":22.43,"P4":1.0,"P5":5.0,"L2":1.316,"L3":43.1,"L4":53.3,"D1":2863.3,"D2":0.34,"D3":1340.0,"D4":1.252,"D5":80.4,"Z1":0.00088,"Z2":11.21},"s":{"P1":1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":-1,"L3":-1,"L4":0,"D1":1,"D2":0,"D3":1,"D4":1,"D5":1,"Z1":0,"Z2":1},"raw":{"px":84398.0,"ma350":78801.0,"ma200":70795.0,"ma100":68938.0,"breadth":5.0,"vol":1.252,"stable":307.9,"stable30":0.34,"dxy":100.723,"dxy20":1.316,"drain":43.1,"hike":53.3,"funding":0.00088,"oi":9.2,"oi5":11.21,"hhll":1.0,"px5":4.344},"dayb":346.9,"daye":104.5,"isflow":true},{"d":"24 Sep","iso":"2026-09-24","px":84410.0,"comp":20,"cov":1.0,"mo":-31,"reg":"Bull","st":"Deteriorating","agree":0.75,"bk":{"Price":100,"Liquidity":-100,"Demand":80,"Positioning":0},"v":{"P1":7.26,"P3":19.08,"P6":22.11,"P4":1.0,"P5":5.0,"L2":2.085,"L3":35.7,"L4":65.4,"D1":2821.8,"D2":0.05,"D3":1213.7,"D4":1.351,"D5":163.1,"Z1":0.00212,"Z2":-4.8},"s":{"P1":1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":-1,"L3":-1,"L4":-1,"D1":1,"D2":0,"D3":1,"D4":1,"D5":1,"Z1":0,"Z2":0},"raw":{"px":84410.0,"ma350":78694.0,"ma200":70887.0,"ma100":69126.0,"breadth":5.0,"vol":1.351,"stable":307.2,"stable30":0.05,"dxy":101.14,"dxy20":2.085,"drain":35.7,"hike":65.4,"funding":0.00212,"oi":8.31,"oi5":-4.8,"hhll":1.0,"px5":3.889},"dayb":190.7,"daye":66.1,"isflow":true},{"d":"25 Sep","iso":"2026-09-25","px":84100.0,"comp":20,"cov":1.0,"mo":6,"reg":"Bull","st":"Bull but fragile","agree":0.75,"bk":{"Price":100,"Liquidity":-100,"Demand":80,"Positioning":0},"v":{"P1":6.98,"P3":18.51,"P6":21.32,"P4":1.0,"P5":5.0,"L2":2.131,"L3":56.3,"L4":67.6,"D1":2714.0,"D2":0.4,"D3":1066.3,"D4":1.295,"D5":230.4,"Z1":0.00105,"Z2":-7.49},"s":{"P1":1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":-1,"L3":-1,"L4":-1,"D1":1,"D2":0,"D3":1,"D4":1,"D5":1,"Z1":0,"Z2":0},"raw":{"px":84100.0,"ma350":78612.0,"ma200":70965.0,"ma100":69321.0,"breadth":5.0,"vol":1.295,"stable":308.5,"stable30":0.4,"dxy":101.281,"dxy20":2.131,"drain":56.3,"hike":67.6,"funding":0.00105,"oi":8.09,"oi5":-7.49,"hhll":1.0,"px5":3.599},"dayb":134.5,"daye":87.0,"isflow":true},{"d":"26 Sep","iso":"2026-09-26","px":84433.0,"comp":20,"cov":1.0,"mo":14,"reg":"Transition","st":"Recovery","agree":0.75,"bk":{"Price":100,"Liquidity":-100,"Demand":80,"Positioning":0},"v":{"P1":7.51,"P3":18.86,"P6":21.42,"P4":1.0,"P5":4.0,"L2":1.894,"L3":56.3,"L4":63.4,"D1":2714.0,"D2":0.06,"D3":1066.3,"D4":1.294,"D5":230.4,"Z1":0.00172,"Z2":-8.49},"s":{"P1":1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":-1,"L3":-1,"L4":-1,"D1":1,"D2":0,"D3":1,"D4":1,"D5":1,"Z1":0,"Z2":0},"raw":{"px":84433.0,"ma350":78537.0,"ma200":71038.0,"ma100":69536.0,"breadth":4.0,"vol":1.294,"stable":307.8,"stable30":0.06,"dxy":101.032,"dxy20":1.894,"drain":56.3,"hike":63.4,"funding":0.00172,"oi":8.0,"oi5":-8.49,"hhll":1.0,"px5":-2.525},"dayb":134.5,"daye":87.0,"isflow":false},{"d":"27 Sep","iso":"2026-09-27","px":84472.0,"comp":20,"cov":1.0,"mo":21,"reg":"Transition","st":"Recovery","agree":0.75,"bk":{"Price":100,"Liquidity":-100,"Demand":80,"Positioning":0},"v":{"P1":7.68,"P3":18.79,"P6":21.11,"P4":1.0,"P5":4.0,"L2":1.852,"L3":56.3,"L4":65.4,"D1":2714.0,"D2":0.78,"D3":1066.3,"D4":1.312,"D5":230.4,"Z1":0.0024,"Z2":-15.61},"s":{"P1":1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":-1,"L3":-1,"L4":-1,"D1":1,"D2":0,"D3":1,"D4":1,"D5":1,"Z1":0,"Z2":0},"raw":{"px":84472.0,"ma350":78450.0,"ma200":71109.0,"ma100":69746.0,"breadth":4.0,"vol":1.312,"stable":310.1,"stable30":0.78,"dxy":101.026,"dxy20":1.852,"drain":56.3,"hike":65.4,"funding":0.0024,"oi":7.98,"oi5":-15.61,"hhll":1.0,"px5":-2.015},"dayb":134.5,"daye":87.0,"isflow":false},{"d":"28 Sep","iso":"2026-09-28","px":83500.0,"comp":20,"cov":1.0,"mo":-20,"reg":"Transition","st":"Deteriorating","agree":0.75,"bk":{"Price":100,"Liquidity":-100,"Demand":80,"Positioning":0},"v":{"P1":6.56,"P3":17.32,"P6":19.39,"P4":1.0,"P5":4.0,"L2":2.277,"L3":79.8,"L4":65.4,"D1":2946.9,"D2":1.35,"D3":981.3,"D4":1.16,"D5":217.7,"Z1":0.00197,"Z2":-13.55},"s":{"P1":1,"P3":1,"P6":1,"P4":1,"P5":1,"L2":-1,"L3":-1,"L4":-1,"D1":1,"D2":0,"D3":1,"D4":1,"D5":1,"Z1":0,"Z2":0},"raw":{"px":83500.0,"ma350":78360.0,"ma200":71174.0,"ma100":69938.0,"breadth":4.0,"vol":1.16,"stable":311.5,"stable30":1.35,"dxy":101.094,"dxy20":2.277,"drain":79.8,"hike":65.4,"funding":0.00197,"oi":7.95,"oi5":-13.55,"hhll":1.0,"px5":-1.064},"dayb":31.0,"daye":17.1,"isflow":true},{"d":"29 Sep","iso":"2026-09-29","px":83664.0,"comp":11,"cov":1.0,"mo":-24,"reg":"Transition","st":"Deteriorating","agree":0.7,"bk":{"Price":83,"Liquidity":-100,"Demand":64,"Positioning":0},"v":{"P1":6.88,"P3":17.44,"P6":19.28,"P4":0.0,"P5":4.0,"L2":2.532,"L3":126.9,"L4":69.6,"D1":2796.4,"D2":1.32,"D3":890.9,"D4":1.066,"D5":181.4,"Z1":0.00401,"Z2":-6.79},"s":{"P1":1,"P3":1,"P6":1,"P4":0,"P5":1,"L2":-1,"L3":-1,"L4":-1,"D1":1,"D2":0,"D3":1,"D4":0,"D5":1,"Z1":0,"Z2":0},"raw":{"px":83664.0,"ma350":78276.0,"ma200":71238.0,"ma100":70141.0,"breadth":4.0,"vol":1.066,"stable":311.3,"stable30":1.32,"dxy":101.29,"dxy20":2.532,"drain":126.9,"hike":69.6,"funding":0.00401,"oi":7.75,"oi5":-6.79,"hhll":0.0,"px5":-0.884},"dayb":66.2,"daye":-2.8,"isflow":true},{"d":"30 Sep","iso":"2026-09-30","px":85293.0,"comp":20,"cov":1.0,"mo":-25,"reg":"Transition","st":"Deteriorating","agree":0.78,"bk":{"Price":83,"Liquidity":-70,"Demand":64,"Positioning":0},"v":{"P1":9.07,"P3":19.61,"P6":21.23,"P4":0.0,"P5":5.0,"L2":2.694,"L3":148.2,"L4":35.0,"D1":2796.4,"D2":1.25,"D3":890.9,"D4":0.963,"D5":181.4,"Z1":0.00373,"Z2":-4.4},"s":{"P1":1,"P3":1,"P6":1,"P4":0,"P5":1,"L2":-1,"L3":-1,"L4":0,"D1":1,"D2":0,"D3":1,"D4":0,"D5":1,"Z1":0,"Z2":0},"raw":{"px":85293.0,"ma350":78203.0,"ma200":71308.0,"ma100":70354.0,"breadth":5.0,"vol":0.963,"stable":311.2,"stable30":1.25,"dxy":101.434,"dxy20":2.694,"drain":148.2,"hike":35.0,"funding":0.00373,"oi":7.73,"oi5":-4.4,"hhll":0.0,"px5":1.419},"dayb":66.2,"daye":-2.8,"isflow":false}],"flows":[["2026-07-29",32.1,-18.6],["2026-07-30",233.1,13.2],["2026-07-31",-265.4,9.0],["2026-08-03",170.1,-11.3],["2026-08-04",211.5,53.7],["2026-08-05",244.4,60.8],["2026-08-06",137.6,92.1],["2026-08-07",101.7,49.6],["2026-08-10",-144.6,-14.6],["2026-08-11",7.8,-1.7],["2026-08-12",-61.1,7.4],["2026-08-13",-131.1,6.7],["2026-08-14",-56.2,0.0],["2026-08-17",297.5,30.9],["2026-08-18",189.3,71.4],["2026-08-19",517.2,189.1],["2026-08-20",606.3,220.7],["2026-08-21",307.5,184.8],["2026-08-24",337.6,115.6],["2026-08-25",314.3,179.8],["2026-08-26",232.2,192.4],["2026-08-27",242.3,234.4],["2026-08-28",-201.9,102.1],["2026-08-31",216.7,87.6],["2026-09-01",-236.5,10.9],["2026-09-02",101.1,-48.2],["2026-09-03",730.8,141.4],["2026-09-04",174.6,26.4],["2026-09-08",-46.6,-24.3],["2026-09-09",-120.2,34.7],["2026-09-10",-282.7,-29.9],["2026-09-11",-13.2,216.4],["2026-09-14",159.9,121.1],["2026-09-15",-450.4,-142.0],["2026-09-16",-295.9,-224.1],["2026-09-17",159.5,-39.3],["2026-09-18",433.0,143.7],["2026-09-21",999.0,270.0],["2026-09-22",714.7,162.2],["2026-09-23",346.9,104.5],["2026-09-24",190.7,66.1],["2026-09-25",134.5,87.0],["2026-09-28",31.0,17.1],["2026-09-29",66.2,-2.8]],"tvl":{"now":94.0,"d30":9.3,"since":23.7,"from":"23 Jul","ethShare":57,"btcShare":4.8},"geo":{"iran":4,"ru":3,"new":3,"density":3,"total":13,"flag":"ELEVATED","note":"Brent near $100 a barrel is now only about 9% above where it sat a month ago, down from roughly 18-20% above at the $108 peak two days ago, and that compression is the whole of what reaches crypto from this. The route runs oil into headline inflation, headline inflation into the expected path of policy rates, and the rate path into the price of dollar liquidity \u2014 it is not a sentiment channel, and the dashboard does not treat it as one. Today you can watch the entire chain complete in a single number: the market-implied probability of an October Fed increase fell from 69.6% yesterday to 35.0% today, which lifted the L4 liquidity indicator out of negative territory and took the liquidity bucket from -100 to -70. The caution is that this is a repricing of expectations rather than of cash: the Treasury and the Fed's reverse repo facility are still draining dollars faster than at any point this month.","prev":["<b>28 Feb 2026</b> \u2014 US Operation Epic Fury began alongside Israel's campaign; Iran's Supreme Leader was killed. A naval blockade followed and the Strait of Hormuz has not returned to normal traffic since.","<b>7 Aug</b> \u2014 Saudi Arabia, Pakistan and Turkey signed the Mecca Joint Defence Agreement. Turkey's parliament has not ratified it.","<b>23\u201325 Sep</b> \u2014 Zelenskyy said Ukraine is ready for an energy-only ceasefire and asked for a trilateral meeting with Putin and Trump; Russia has not agreed. A 295-drone Russian barrage on Kyiv killed seven on the 25th.","<b>24\u201325 Sep</b> \u2014 Houthi missile and drone salvos on Riyadh and Saudi Aramco facilities; the three Mecca Pact military chiefs were summoned to urgent talks in Riyadh. Neither Pakistan nor Turkey has committed combat forces, and Washington has refused Saudi requests for US strikes on the Houthis.","<b>25 Sep</b> \u2014 Iran put its terms in public at the UN General Assembly: reopening Hormuz within seven days in exchange for released frozen funds, an end to sanctions and the lifting of the US naval blockade, conditional on restarting nuclear talks.","<b>27 Sep</b> \u2014 Trump rejected Iran's offer and would not rule out renewed strikes, closing off the one path that would have relieved oil quickly.","<b>28 Sep</b> \u2014 Brent traded near $108 a barrel, the highest since the Strait was shut in February. That is the peak the oil premium has since been unwinding from.","<b>29 Sep</b> \u2014 Regional exports recovered to 12.8 million barrels a day in September, the highest monthly figure since the war began, against roughly 20 million a day before it; Kpler put traffic through the Strait itself at 7.4 million a day. Iran simultaneously claimed fresh attacks on commercial shipping and on US Navy vessels, and the Pentagon's war-wounded list reached 861."],"today":["<b>The oil war premium is unwinding in earnest.</b> Brent settled near $100 a barrel on 29 September, down about 2.5% on the day and only around 9% above where it sat a month ago \u2014 against roughly 18\u201320% above a month ago when it peaked near $108 on the 28th. Bloomberg's 30 September market wrap has oil holding that loss, with Middle East exports now seen near pre-war levels. Supply is no longer arriving at a war price.","<b>That fed straight through to the Fed, and it is the biggest single thing on the board today.</b> New York Fed president John Williams said on 29 September that there is no urgency about another increase and no rush after September's hike, guiding towards just one more rise late in the year. The market-implied probability of an October increase fell from 69.6% to 35.0% in a day \u2014 the exact chain this section keeps describing, arriving in the one indicator that tracks it.","<b>All four sub-scores still carry forward unchanged</b> at Iran 4, Russia\u2013Ukraine 3, risk of a new theatre 3 and headline density 3, for a total of 13 and an ELEVATED flag. The premium is coming out of the oil price, but the blockade is still in force, Trump's rejection of Iran's terms still stands and Iran is still claiming attacks on shipping, so the conflict itself has not de-escalated even though the market's pricing of it has."]},"commentary":"","lead":"The score rose from <b>+11</b> yesterday to <b>+20</b> today, but that is still well short of the <b>+45</b> it stood at ten sessions ago \u2014 and the day's gain came entirely from the market pulling back its bet on an October Fed rate increase.","bullets":["<b>The October rate-increase bet kept collapsing.</b> The market-implied probability of the Fed raising rates in October is now 35.0%, down from 69.6% yesterday, after New York Fed president John Williams said there was no urgency for another move and Brent crude eased to about $100 a barrel. The indicator scores negative at 55% or above and positive only at 30% or below, so 35.0% is neutral \u2014 but it is close to the positive line, and it lifted the liquidity bucket from -100 to -70.","<b>Positioning went quiet again, which trimmed the gain.</b> The average cost of holding a bitcoin futures position, 0.0037% per eight hours so far today, sits just below the 0.005%\u20130.03% range the indicator treats as healthy, so it scores neutral rather than positive; that took the positioning bucket from +53 to 0. Open interest of $7.73bn is 4.4% lower than five days ago while price is up 1.4% over the same stretch, so traders are still stepping back rather than crowding in. Today's figure is a part-day average and can move.","<b>The cash itself did not improve \u2014 only the expectation did.</b> The dollar index at 101.43 is 2.69 points higher than 20 sessions ago, against a 1-point rise being enough to score negative. Cash pulled out of the banking system by the Treasury's account and the Fed's reverse repo facility rose by $148bn over the same 20 sessions, against a $25bn threshold, and that is the fastest drain in the window. Stablecoin supply grew 1.25% over 30 days, short of the 1.5% needed to score positive. The liquidity gain is a repricing of what the Fed will do, not more dollars in the system.","<b>The price bucket did not move, and everything in it looks backwards.</b> It stayed at +83. Bitcoin at $85,293 is 9.1% above its 350-day average, 19.6% above its 200-day average and 21.2% above its 100-day average, and all five of the largest alternative coins are above their own 50-day averages. The trend-pattern indicator is neutral because the past 20 sessions made a higher high ($86,620) but also a lower low ($75,644) than the 20 before ($81,270 and $76,569). These are the slowest-moving indicators on the board and describe the past year, not the next month. Every liquidity indicator is a leading one and every price indicator a lagging one, so with the price bucket at +83 and the liquidity bucket at -70 the composite understates whichever way liquidity is pointing \u2014 still downward, but less so than yesterday.","<b>ETF demand is still positive, but the flow has gone flat and trading has thinned.</b> Over the last 20 trading days the US bitcoin funds took in $2.80bn net and the ethereum funds $891m, above the $2bn and $500m marks needed to score positive, so the demand bucket held at +64. The two latest published days were small, though: $31m on 28 September and $66m on 29 September, against $999m on 21 September; 30 September's figure is not yet published. The past week's volume ran 3.7% lighter than the average day of the past month, where the indicator needs it at least 15% heavier to score positive."],"moves":[{"h":"October rate-increase odds fall to 30% or below","t":"They are 35.0% now, down from 69.6% yesterday. At 30% or lower the hike-odds indicator scores outright positive, which lifts the liquidity bucket from -70 to -40 and the composite from +20 to about +29."},{"h":"October rate-increase odds climb back to 55% or above","t":"That is the level at which the same indicator scores negative. From 35.0% it is a 20-point move, and it would put the liquidity bucket back at -100 and the composite at about +11."},{"h":"Bitcoin futures funding settles back inside 0.005%\u20130.03% per eight hours","t":"It is 0.0037% now, just under the floor of the healthy range. Back inside it, the positioning bucket returns from 0 to +53 and the composite from +20 to about +28."},{"h":"Bitcoin closes below $75,644","t":"That is the lowest close of the past 20 sessions. Below it the price is making both lower highs and lower lows, which turns the trend-pattern indicator negative, the price bucket from +83 to +67 and the composite from +20 to about +15."}],"built":"2026-09-30T13:36Z","stale":false,"staleNote":"","geoHist":{"2026-09-30":{"iran":4,"ru":3,"new":3,"density":3,"total":13,"flag":"ELEVATED","note":"Brent near $100 a barrel is now only about 9% above where it sat a month ago, down from roughly 18-20% above at the $108 peak two days ago, and that compression is the whole of what reaches crypto from this. The route runs oil into headline inflation, headline inflation into the expected path of policy rates, and the rate path into the price of dollar liquidity \u2014 it is not a sentiment channel, and the dashboard does not treat it as one. Today you can watch the entire chain complete in a single number: the market-implied probability of an October Fed increase fell from 69.6% yesterday to 35.0% today, which lifted the L4 liquidity indicator out of negative territory and took the liquidity bucket from -100 to -70. The caution is that this is a repricing of expectations rather than of cash: the Treasury and the Fed's reverse repo facility are still draining dollars faster than at any point this month.","prev":["<b>28 Feb 2026</b> \u2014 US Operation Epic Fury began alongside Israel's campaign; Iran's Supreme Leader was killed. A naval blockade followed and the Strait of Hormuz has not returned to normal traffic since.","<b>7 Aug</b> \u2014 Saudi Arabia, Pakistan and Turkey signed the Mecca Joint Defence Agreement. Turkey's parliament has not ratified it.","<b>23\u201325 Sep</b> \u2014 Zelenskyy said Ukraine is ready for an energy-only ceasefire and asked for a trilateral meeting with Putin and Trump; Russia has not agreed. A 295-drone Russian barrage on Kyiv killed seven on the 25th.","<b>24\u201325 Sep</b> \u2014 Houthi missile and drone salvos on Riyadh and Saudi Aramco facilities; the three Mecca Pact military chiefs were summoned to urgent talks in Riyadh. Neither Pakistan nor Turkey has committed combat forces, and Washington has refused Saudi requests for US strikes on the Houthis.","<b>25 Sep</b> \u2014 Iran put its terms in public at the UN General Assembly: reopening Hormuz within seven days in exchange for released frozen funds, an end to sanctions and the lifting of the US naval blockade, conditional on restarting nuclear talks.","<b>27 Sep</b> \u2014 Trump rejected Iran's offer and would not rule out renewed strikes, closing off the one path that would have relieved oil quickly.","<b>28 Sep</b> \u2014 Brent traded near $108 a barrel, the highest since the Strait was shut in February. That is the peak the oil premium has since been unwinding from.","<b>29 Sep</b> \u2014 Regional exports recovered to 12.8 million barrels a day in September, the highest monthly figure since the war began, against roughly 20 million a day before it; Kpler put traffic through the Strait itself at 7.4 million a day. Iran simultaneously claimed fresh attacks on commercial shipping and on US Navy vessels, and the Pentagon's war-wounded list reached 861."],"today":["<b>The oil war premium is unwinding in earnest.</b> Brent settled near $100 a barrel on 29 September, down about 2.5% on the day and only around 9% above where it sat a month ago \u2014 against roughly 18\u201320% above a month ago when it peaked near $108 on the 28th. Bloomberg's 30 September market wrap has oil holding that loss, with Middle East exports now seen near pre-war levels. Supply is no longer arriving at a war price.","<b>That fed straight through to the Fed, and it is the biggest single thing on the board today.</b> New York Fed president John Williams said on 29 September that there is no urgency about another increase and no rush after September's hike, guiding towards just one more rise late in the year. The market-implied probability of an October increase fell from 69.6% to 35.0% in a day \u2014 the exact chain this section keeps describing, arriving in the one indicator that tracks it.","<b>All four sub-scores still carry forward unchanged</b> at Iran 4, Russia\u2013Ukraine 3, risk of a new theatre 3 and headline density 3, for a total of 13 and an ELEVATED flag. The premium is coming out of the oil price, but the blockade is still in force, Trump's rejection of Iran's terms still stands and Iran is still claiming attacks on shipping, so the conflict itself has not de-escalated even though the market's pricing of it has."]}}};
+/* ============ Crypto regime dashboard - renderer ============
+   The page is static; every number comes from data.json, which the
+   daily task republishes. DATA_FALLBACK is the snapshot baked in at
+   build time so the page is complete even if the fetch fails. */
+const S=STATIC_JSON;
+let D=DATA_FALLBACK;
+const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const UNIT={P1:'%',P3:'%',P6:'%',P5:' of 5',L2:' pts',L3:' $bn',L4:'%',D1:' $m',D2:'%',
+            D3:' $m',D4:'',D5:' $m/d',Z1:'%',Z2:'%',P4:''};
+const LAGTXT={leading:['lead','Leading'],coincident:['coin','Coincident'],lagging:['lagg','Lagging']};
+const BROLE={Price:'Is the structural trend intact?',Liquidity:'Is the monetary tide coming in or going out?',
+  Demand:'Is new money actually arriving?',Positioning:'Is the move built on cash or on leverage?'};
+const BW={Price:'30%',Liquidity:'30%',Demand:'25%',Positioning:'15%'};
+const BLABEL={Price:'Price &amp; trend',Liquidity:'Liquidity &amp; macro',Demand:'Demand',Positioning:'Positioning'};
+const LADDER=['Bear confirmed','Bear, improving','Neutral / chop','Deteriorating','Recovery','Bull, fragile','Bull confirmed','Bull, broad'];
+const LHEIGHT=[24,34,44,52,62,74,86,100];
+const STMAP={'Bear confirmation':'Bear confirmed','Bear but improving':'Bear, improving','Neutral / chop':'Neutral / chop',
+  'Deteriorating':'Deteriorating','Recovery':'Recovery','Bull but fragile':'Bull, fragile',
+  'Bull confirmation':'Bull confirmed','Bull + broad confirmation':'Bull, broad','Insufficient data':null};
+
+const $=id=>document.getElementById(id);
+const num=(v,dp)=>v===null||v===undefined?'—':(Math.abs(v)>=1000?Math.round(v).toLocaleString():v.toFixed(dp===undefined?1:dp));
+const MINUS='\u2212';
+const sgn=v=>v===null||v===undefined?'—':((v>0?'+':v<0?MINUS:'')+(Math.abs(v)>=1000?Math.round(Math.abs(v)).toLocaleString():Math.abs(v)));
+const cls=v=>v===null||v===undefined?'abs':(v>0?'pos':v<0?'neg':'nil');
+function fv(id,v){
+  if(v===null||v===undefined)return '—';
+  if(id==='P4')return v>0?'rising':v<0?'falling':'range';
+  if(id==='Z1')return v.toFixed(4)+'%';
+  if(id==='D4')return v.toFixed(2);
+  if(id==='P5')return v+' of 5';
+  const s=Math.abs(v)>=1000?Math.round(v).toLocaleString()
+    :(UNIT[id]==='%'?v.toFixed(1):v.toFixed(Math.abs(v)<10?2:1));
+  return (v>0&&/[%$]/.test(UNIT[id])?'+':'')+s+UNIT[id];
+}
+
+
+
+/* ---------- selected session: everything above the daily log follows this ---------- */
+let SEL=-1;                                   /* -1 = latest */
+const RI=()=>SEL<0?D.rows.length-1:SEL;
+const isLatest=()=>RI()===D.rows.length-1;
+const MONL=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const dlong=iso=>String(+iso.slice(8))+' '+MONL[+iso.slice(5,7)-1]+' '+iso.slice(0,4);
+function geoFor(iso){
+  if(D.geoHist&&D.geoHist[iso])return D.geoHist[iso];
+  if(iso===D.asof&&D.geo)return D.geo;
+  return null;
+}
+function V(){
+  const i=RI(),r=D.rows[i];
+  const win=D.rows.slice(Math.max(0,i-D.params.WIN+1),i+1).map(x=>x.comp)
+    .filter(x=>x!==null&&x!==undefined);
+  return {i,row:r,iso:r.iso,dshort:r.d,dlong:dlong(r.iso),
+    state:r.st,regime:r.reg,composite:r.comp,momentum:r.mo,coverage:r.cov,
+    agreement:r.agree,buckets:r.bk,btc:r.px,
+    live:Object.fromEntries(Object.keys(r.v).map(k=>[k,{v:r.v[k],s:r.s[k]}])),
+    bull15:win.filter(c=>c>=D.params.BULL).length,
+    bear15:win.filter(c=>c<=D.params.BEAR).length,
+    geo:geoFor(r.iso)};
+}
+function renderBanner(){
+  const el=$('viewbanner'); if(!el)return;
+  if(isLatest()){el.hidden=true;el.innerHTML='';return;}
+  const W=V();
+  el.hidden=false;
+  el.innerHTML='<span class="vb-l">Viewing a past session</span><b>'+W.dlong+'</b>'+
+    '<span class="vb-x">Material changes, buckets, geopolitics, the score and the ledger below all show this date.</span>'+
+    '<button type="button" id="vb-back">Back to '+D.asofShort+'</button>';
+  $('vb-back').addEventListener('click',()=>{SEL=-1;syncStrip();renderAll();
+    document.querySelector('.masthead').scrollIntoView({block:'start',behavior:'smooth'});});
+}
+function syncStrip(){
+  const strip=$('strip'); if(!strip)return;
+  [...strip.children].forEach((c,j)=>c.setAttribute('aria-pressed',j===RI()?'true':'false'));
+}
+
+/* ---------- plain-language translation of every indicator ---------- */
+const pc=v=>(v>0?'+':'')+v.toFixed(1)+'%';
+const money=v=>{const a=Math.abs(v);const s=a>=1000?'$'+(a/1000).toFixed(2)+'bn':'$'+Math.round(a)+'m';return (v<0?'minus ':'')+s;};
+const PLAIN={
+ P1:(a,b)=>'Bitcoin is trading '+pc(b)+' away from its average price over the past year'+(a!==null?' — it was '+pc(a)+' yesterday':'')+
+   '. Above that average is the textbook definition of a bull market; below it, a bear market.',
+ P3:(a,b)=>'Bitcoin is '+pc(b)+' from its average price over the past 200 days'+(a!==null?', against '+pc(a)+' yesterday':'')+
+   '. This is the line most professional traders watch, so it tends to become self-fulfilling.',
+ P4:(a,b)=>'Over the last month bitcoin made '+(b>0?'both a higher high and a higher low':b<0?'both a lower high and a lower low':'a mixed pattern')+
+   ' than the month before — '+(b>0?'the shape of an uptrend':b<0?'the shape of a downtrend':'the shape of a sideways range')+'.',
+ P5:(a,b)=>b+' of the five largest altcoins are above their own two-month average'+
+   (a!==null&&a!==b?', '+(b>a?'up':'down')+' from '+a:'')+
+   '. When bitcoin rises but the alts do not, the rally is narrow and historically less durable.',
+ P6:(a,b)=>'Bitcoin is '+pc(b)+' from its average price over the past 100 days. This is the fastest of the three trend lines, so it turns first.',
+ L2:(a,b)=>'The US dollar is '+(b>0?b.toFixed(1)+' points stronger':Math.abs(b).toFixed(1)+' points weaker')+
+   ' than it was a month ago'+(a!==null?' (a month ago that reading was '+(a>0?'+':'')+a.toFixed(1)+')':'')+
+   '. A '+(b>0?'stronger':'weaker')+' dollar '+(b>0?'pulls money out of':'pushes money into')+
+   ' risk assets everywhere, and crypto is about as pure a bet on global liquidity as exists.',
+ L3:(a,b)=>'Over the past month the US Treasury and the Fed have '+(b>0?'pulled '+money(b*1000)+' of cash out of':'released '+money(Math.abs(b)*1000)+' of cash back into')+
+   ' the banking system. Less cash in the system means less money chasing risky assets, usually with a lag of a few weeks.',
+ L4:(a,b)=>'Markets now put a '+b.toFixed(0)+'% chance on the Fed '+'<b>raising</b> interest rates at its next meeting'+
+   (a!==null?', '+(b>a?'up':b<a?'down':'level with')+' from '+a.toFixed(0)+'%':'')+'. Higher rates make every risk asset less attractive, and this prices what the Fed will do before it does it.',
+ D1:(a,b)=>'US bitcoin ETFs have taken in '+money(b)+' of net new money over the last four weeks'+
+   (a!==null?', against '+money(a)+' yesterday':'')+'. This is real cash buying actual bitcoin, not leverage.',
+ D2:(a,b)=>'The total pool of stablecoins — dollars already parked inside crypto, waiting to buy something — '+
+   (b>0?'grew ':'shrank ')+Math.abs(b).toFixed(2)+'% over the past month. This money has committed to crypto but not yet chosen an asset.',
+ D3:(a,b)=>'US ethereum ETFs have taken in '+money(b)+' over the last four weeks. Money reaching ether rather than only bitcoin means institutional appetite is broadening.',
+ D4:(a,b)=>'Trading activity over the past week ran '+(b>=1?((b-1)*100).toFixed(0)+'% heavier':((1-b)*100).toFixed(0)+'% lighter')+
+   ' than the past month’s average'+(a!==null?', against '+(a>=1?((a-1)*100).toFixed(0)+'% heavier':((1-a)*100).toFixed(0)+'% lighter')+' yesterday':'')+
+   '. Fewer people trading means price moves on a thinner market, which makes whatever happens next bigger in either direction.',
+ D5:(a,b)=>'ETF buying over the past week is running '+money(Math.abs(b))+' per day '+(b>0?'above':'below')+
+   ' its own four-week pace. This is the speedometer rather than the odometer — it turns before the four-week total does.',
+ Z1:(a,b)=>'Traders betting on a rising price are paying '+(b>=0?b.toFixed(4)+'%':'being paid '+Math.abs(b).toFixed(4)+'%')+
+   ' every eight hours to keep those bets open'+(Math.abs(b)<0.005?' — near zero, so almost nobody is paying up to be long right now':
+   b>0.03?' — an unusually high price to pay, which means the long side is crowded and fragile':'')+'.',
+ Z2:(a,b)=>'The total value of outstanding leveraged bets '+(b>0?'rose '+b.toFixed(1)+'%':'fell '+Math.abs(b).toFixed(1)+'%')+
+   ' over five days. '+(b<0?'Positions are being closed rather than opened, which clears out leverage rather than signalling direction.':
+   'New positions are being opened, so the move has fresh money behind it rather than being short-covering.')
+};
+function plainLine(id,a,b){
+  try{const f=PLAIN[id]; if(!f||b===null||b===undefined)return null; return f(a===undefined?null:a,b);}catch(e){return null}
+}
+
+/* ---------- alerts ---------- */
+function sd(a){const x=a.filter(v=>typeof v==='number');if(x.length<8)return null;
+  const mu=x.reduce((p,c)=>p+c,0)/x.length;
+  return Math.sqrt(x.reduce((p,c)=>p+(c-mu)*(c-mu),0)/x.length);}
+function buildAlerts(){
+  const R=D.rows,i=RI(); if(i<1)return [];
+  const a=R[i-1],b=R[i],out=[];
+  if(a.reg!==b.reg) out.push({sev:1,h:'Regime changed: '+a.reg+' → '+b.reg,
+    d:'The persistence rule has been satisfied in a new direction — the composite beyond its threshold for '+D.params.DAYS+' of '+D.params.WIN+' sessions.',
+    m:'A regime change is the model’s highest-conviction output. Treat it as a sizing decision, not a trading signal.',
+    lag:null,dirn:b.reg==='Bull'?'bull':b.reg==='Bear'?'bear':'neut'});
+  if(a.st!==b.st) out.push({sev:1,h:'State changed: '+a.st+' → '+b.st,
+    d:'Composite <b>'+sgn(a.comp)+'</b> → <b>'+sgn(b.comp)+'</b> · momentum <b>'+sgn(a.mo)+'</b> → <b>'+sgn(b.mo)+'</b>',
+    m:'The state combines the regime with the direction of travel. It moves faster than the regime and is the rung you are standing on today.',
+    plain:'The overall score moved from '+sgn(a.comp)+' to '+sgn(b.comp)+' on a scale running from \u2212100 (everything bearish) to +100 (everything bullish), and the ten-day trend in that score is '+sgn(b.mo)+'.',
+    lag:null,dirn:/Bull|Recovery|improving/.test(b.st)?'bull':/Bear|Deterior/.test(b.st)?'bear':'neut'});
+  Object.keys(BROLE).forEach(k=>{
+    const x=a.bk[k],y=b.bk[k];
+    if(typeof x==='number'&&typeof y==='number'&&Math.abs(y-x)>=25)
+      out.push({sev:2,h:BLABEL[k].replace('&amp;','&')+' bucket moved '+sgn(y-x)+' points',
+        d:'<b>'+sgn(x)+'</b> → <b>'+sgn(y)+'</b>',
+        m:'A bucket swing this size means more than one indicator inside it turned on the same day. The scores view of the daily log shows which.',
+        plain:'This group of indicators scores from \u2212100 (all bearish) to +100 (all bullish). It moved '+Math.abs(y-x)+' points '+(y>x?'toward bullish':'toward bearish')+' in one session.',
+        lag:null,dirn:y>x?'bull':'bear'});
+  });
+  const flipped=new Set();
+  Object.keys(S.ameta).forEach(id=>{
+    const x=a.s[id],y=b.s[id]; if(x===null||y===null||x===y)return;
+    flipped.add(id); const m=S.ameta[id];
+    out.push({sev:m.w>=7?1:2,w:m.w,
+      h:m.n+': score '+(x>0?'+1':x)+' → '+(y>0?'+1':y),
+      d:'<b>'+fv(id,a.v[id])+'</b> → <b>'+fv(id,b.v[id])+'</b> · '+m.w+' of 100 model weight',
+      m:y>x?m.up:m.dn,plain:plainLine(id,a.v[id],b.v[id]),lag:m.lag,dirn:y>x?'bull':'bear'});
+  });
+  Object.keys(S.ameta).forEach(id=>{
+    if(['P4','Z1','Z2'].includes(id)||flipped.has(id))return;
+    const m=S.ameta[id],v=b.v[id]; if(typeof v!=='number')return;
+    const sig=sd(R.slice(0,i+1).map(r=>r.v[id])); if(!sig)return;
+    [['bull',m.bull],['bear',m.bear]].forEach(([which,thr])=>{
+      const crossed=m.dir==='hi'?(which==='bull'?v>=thr:v<=thr):(which==='bull'?v<=thr:v>=thr);
+      if(crossed||Math.abs(v-thr)>0.5*sig)return;
+      out.push({sev:3,w:m.w,h:m.n+' is close to scoring '+(which==='bull'?'bullish':'bearish'),
+        d:'<b>'+fv(id,v)+'</b> against a trigger at <b>'+fv(id,thr)+'</b> — inside half a normal day’s move',
+        m:'Not a change yet. Flagged because one ordinary session in the same direction flips '+m.w+' points of model weight, and '+
+          (m.lag==='leading'?'this is a leading indicator, so it would flip before price does':
+           m.lag==='coincident'?'this moves with price rather than ahead of it':
+           'this lags price, so it would be confirming rather than warning')+'.',
+        plain:plainLine(id,null,v),lag:m.lag,dirn:which});
+    });
+  });
+  out.sort((x,y)=>(x.sev-y.sev)||((y.w||0)-(x.w||0)));
+  return out;
+}
+function renderAlerts(){
+  const A=buildAlerts(),i=RI();
+  const prev=i>0?D.rows[i-1].d:'the previous session';
+  const onDate=isLatest()?'':' <span class="hd-date">as at '+D.rows[i].d+'</span>';
+  const nLead=A.filter(x=>x.lag==='leading').length;
+  let head='<div class="alerts-hd"><b>Material changes since '+prev+'</b>'+onDate+'<span>'+
+    (A.length?A.length+' flagged · '+nLead+' from leading indicators':'nothing above threshold')+'</span></div>';
+  if(!A.length){$('alerts').innerHTML=head+'<p class="quiet">No score flips, no bucket move of 25 points or more, no change of regime or state, and nothing within half a normal day’s move of a trigger. A quiet session is information too: the composite below rests on the same evidence as the session before.</p>';return;}
+  $('alerts').innerHTML=head+A.map(x=>{
+    const lt=x.lag?LAGTXT[x.lag]:null;
+    const dl=x.dirn==='bull'?'→ Bullish':x.dirn==='bear'?'→ Bearish':'→ Neutral';
+    return '<article class="al" data-sev="'+x.sev+'"><div class="stripe"></div><div><h4>'+x.h+
+      '</h4><p class="delta">'+x.d+'</p>'+(x.plain?'<p class="plain"><span>In plain terms</span>'+x.plain+'</p>':'')+
+      '<p class="mean">'+x.m+'</p></div><div class="tags">'+
+      (lt?'<span class="tag '+lt[0]+'">'+lt[1]+'</span>':'')+'<span class="tag '+
+      (x.dirn==='bull'?'bull':x.dirn==='bear'?'bear':'neut')+'">'+dl+'</span></div></article>';
+  }).join('')+
+  '<p class="alerts-foot"><b>Leading</b> moves before the regime does — the dollar, liquidity, hike odds, funding, open interest and the flow derivative. '+
+  '<b>Coincident</b> moves with it — breadth, volume, ETF flow levels, trend structure. <b>Lagging</b> confirms after the fact — all three moving averages. '+
+  'The entire price bucket (30% of the model) is lagging or coincident and the entire liquidity bucket (30%) is leading, so when those two disagree the weighted average understates whichever way liquidity is pointing.</p>';
+}
+
+/* ---------- hero, buckets, geo, tvl ---------- */
+function renderHead(){
+  const W=V(), latest=isLatest();
+  $('mdate').textContent=W.dlong;
+  $('mdate').setAttribute('datetime',W.iso);
+  const st=W.state, rung=STMAP[st];
+  const el=$('state'); el.textContent=st;
+  el.style.color=/Bull|Recovery/.test(st)?'var(--bull)':/Bear|Deterior/.test(st)?'var(--bear)':'var(--hold)';
+  if(!latest){
+    $('gloss').innerHTML='<p class="pastnote">The written commentary is only kept for the most recent session, '+
+      'so there is none for '+W.dlong+'. Everything below \u2014 the score, the material changes, the buckets, '+
+      'the geopolitics and the indicator ledger \u2014 is that day\u2019s reading.</p>';
+    $('gloss').classList.remove('asbul');
+  } else if(Array.isArray(D.bullets)&&D.bullets.length){
+    $('gloss').innerHTML=(D.lead?'<p class="lead">'+D.lead+'</p>':'')+
+      '<ul class="glossbul">'+D.bullets.map(b=>'<li>'+b+'</li>').join('')+'</ul>';
+    $('gloss').classList.add('asbul');
+  } else { $('gloss').innerHTML=D.commentary; $('gloss').classList.remove('asbul'); }
+  $('rungs').innerHTML=LADDER.map((l,i)=>'<div class="rung" data-zone="'+(i<2?'bear':i<5?'mid':'bull')+'"'+
+    (l===rung?' data-here="1"':'')+'><i style="height:'+LHEIGHT[i]+'%"></i></div>').join('');
+  $('rlabels').innerHTML=LADDER.map(l=>'<div'+(l===rung?' data-here="1"':'')+'>'+l+'</div>').join('');
+  $('regv').textContent=W.regime;
+  $('regv').className='big '+(W.regime==='Bull'?'pos':W.regime==='Bear'?'neg':'nil');
+  $('regn').innerHTML=W.bull15+' of the '+D.params.WIN+' sessions to '+W.dshort+' at or above '+sgn(D.params.BULL)+
+    ', and a regime call needs '+D.params.DAYS+'. '+W.bear15+' at or below '+sgn(D.params.BEAR)+'. Coverage '+
+    Math.round(W.coverage*100)+'% against a '+Math.round(D.params.MINCOV*100)+'% floor.';
+  const mo=W.momentum, bkr=D.rows[W.i-D.params.MLB], pv=bkr?bkr.comp:null;
+  $('conv').textContent=(mo===null||mo===undefined?'No reading':mo>=D.params.MIMP?'Improving':mo<=D.params.MDET?'Deteriorating':'Steady');
+  $('conv').className='big '+(mo===null||mo===undefined?'abs':mo>=D.params.MIMP?'pos':mo<=D.params.MDET?'neg':'nil');
+  $('conn').textContent=(mo===null||mo===undefined)?'Not enough history to judge the direction on this date.'
+    :('The score '+(mo>0?'rose ':mo<0?'fell ':'held level over ')+(mo===0?'':Math.abs(mo)+' points ')+
+      'over the '+D.params.MLB+' sessions to '+W.dshort+(pv!==null&&pv!==undefined?', from '+sgn(pv)+' to '+sgn(W.composite):'')+
+      '. Anything beyond '+D.params.MIMP+' points either way counts as a real move rather than noise.');
+  $('buckets').innerHTML=Object.keys(BROLE).map(k=>{
+    const v=W.buckets[k];
+    const uniq=[...new Set(S.ledger.filter(x=>
+      (k==='Price'&&x.bucket.startsWith('Price'))||(k==='Liquidity'&&x.bucket.startsWith('Liquidity'))||
+      (k==='Demand'&&x.bucket==='Demand')||(k==='Positioning'&&x.bucket==='Positioning')).map(x=>x.id))];
+    const g=s=>uniq.filter(i=>W.live[i]&&W.live[i].s===s);
+    const pos=uniq.filter(i=>W.live[i]&&W.live[i].s>0),neg=uniq.filter(i=>W.live[i]&&W.live[i].s<0),nil=g(0);
+    const parts=[];
+    if(pos.length)parts.push('<b class="pos">'+pos.join(', ')+'</b> positive');
+    if(neg.length)parts.push('<b class="neg">'+neg.join(', ')+'</b> negative');
+    if(nil.length)parts.push('<span class="nil">'+nil.join(', ')+'</span> neutral');
+    return '<div class="bk"><div class="nm">'+BLABEL[k]+'</div><div class="wt">'+BW[k]+' weight \u00b7 '+
+      uniq.length+' indicators</div><div class="val '+cls(v)+'">'+sgn(v)+'</div>'+
+      '<p class="note">'+BROLE[k]+' '+parts.join('; ')+'.</p></div>';
+  }).join('');
+  $('bucketsh').innerHTML='Buckets'+(latest?'':' <span class="hd-date">as at '+W.dshort+'</span>');
+
+  /* ---- geopolitics: only recorded from the day the history began ---- */
+  const g=W.geo;
+  if(!g){
+    $('geohd').innerHTML='<b>Geopolitics \u2014 not recorded</b><span>no score kept for '+W.dshort+'</span>';
+    $('geohd').className='hd';
+    $('geolist').innerHTML='';
+    $('geonote').innerHTML='<p class="geoempty">Geopolitical scores are only stored from the day per-session '+
+      'history was switched on. Earlier sessions have none, and I have not back-filled them \u2014 inventing '+
+      'a score for a date I did not read the news on would be worse than leaving it blank.</p>';
+  } else {
+    $('geohd').innerHTML='<b>'+(g.flag==='ELEVATED'?'Geopolitics elevated \u2014 size down':'Geopolitics normal')+
+      '</b><span>'+(g.total===null||g.total===undefined?'not scored':g.total+' of 18 \u00b7 threshold is '+D.params.GEO)+
+      (latest?'':' \u00b7 as at '+W.dshort)+'</span>';
+    $('geohd').className='hd';
+    $('geolist').innerHTML=[['Iran / United States',g.iran],['Russia / Ukraine',g.ru],
+      ['New-theatre risk',g.new],['Events this week',g.density]]
+      .map(([k,v])=>'<li>'+k+' <b>'+(v===undefined||v===null?'\u2014':v)+'</b></li>').join('');
+    const bullets=(arr,label,empty)=>'<div class="geocol"><h4>'+label+'</h4>'+
+      ((arr&&arr.length)?'<ul class="geobul">'+arr.map(x=>'<li>'+x+'</li>').join('')+'</ul>'
+        :'<p class="geoempty">'+empty+'</p>')+'</div>';
+    $('geonote').innerHTML='<div class="geogrid">'+
+      bullets(g.prev||(latest?(D.geo||{}).prev:null),'Background','Not kept for this session.')+
+      bullets(g.today,latest?'Today':'That day','Nothing new was recorded for this session.')+
+      '</div><p class="geofoot">'+(g.note||'')+
+      ' <b>An elevated flag never votes bull or bear</b> \u2014 it tells you to cut position size for the same signal.</p>';
+  }
+
+  const t=D.tvl||{};
+  $('tvlrow').innerHTML=[['Now','$'+num(t.now,0)+'<small>bn</small>',''],
+    ['30 days',sgn(t.d30)+'<small>%</small>',cls(t.d30)],
+    ['Since '+(t.from||''),sgn(t.since)+'<small>%</small>',cls(t.since)],
+    ['Ethereum share',num(t.ethShare,0)+'<small>%</small>',''],
+    ['Bitcoin share',num(t.btcShare,1)+'<small>%</small>','']]
+    .map(([k,v,c])=>'<div><dt>'+k+'</dt><dd class="'+c+'">'+v+'</dd></div>').join('');
+  const mv=document.getElementById('movesblock');
+  if(latest){
+    if(mv)mv.hidden=false;
+    $('moves').innerHTML=(D.moves||[]).map(m=>'<li><b>'+m.h+'.</b> '+m.t+'</li>').join('');
+    $('movesh').textContent='What moves this off '+D.state;
+  } else if(mv){ mv.hidden=true; }
+  $('foot').innerHTML='Bitcoin '+num(W.btc,0)+' at the '+W.dshort+' close. Fifteen indicators, '+
+    Math.round(W.coverage*100)+'% of model weight live, '+D.rows.length+' sessions of history. '+
+    'Price and volume from Binance; dollar index rebuilt from ECB reference rates; Treasury cash from the US Treasury Fiscal Data API; '+
+    'reverse repo from the NY Fed; hike odds from Polymarket; ETF flows from Farside, which publishes with a one-day lag. '+
+    'Geopolitics scored by reading the news \u2014 the one judgement-based input here. Thresholds are judgement rather than backtested, '+
+    'and the persistence rule makes this deliberately late. Data built '+D.built+'.'+
+    (D.stale?' <b>'+D.staleNote+'</b>':'');
+  if(D.stale){$('stale').hidden=false;$('stale').textContent=D.staleNote;}
+}
+
+
+/* ---------- today's total score ---------- */
+function renderScore(){
+  const W=V(), v=W.composite, B=D.params.BULL, R=D.params.BEAR;
+  const el=$('scoreband'); if(!el)return;
+  if(v===null||v===undefined){el.innerHTML='';return;}
+  const pos=x=>((x+100)/2);
+  const back=D.rows[W.i-D.params.MLB], prev=back?back.comp:null;
+  const moved=(prev===null||prev===undefined)?null:v-prev;
+  let movedHtml='';
+  if(moved!==null){
+    const dir = moved>0?'rose':moved<0?'fell':'unchanged';
+    movedHtml='<span class="mv '+(moved>0?'pos':moved<0?'neg':'nil')+'">'+
+      (moved>0?'\u25b2':moved<0?'\u25bc':'\u25ac')+' '+Math.abs(moved)+' points in '+D.params.MLB+
+      ' sessions</span><span class="mvsub">'+(moved===0?'level with':'was '+sgn(prev))+' on '+back.d+'</span>';
+  }
+  const ghost = (prev===null||prev===undefined)?'' :
+    '<i class="ghost" style="left:'+pos(prev)+'%"></i>'+
+    '<i class="trail" style="left:'+Math.min(pos(prev),pos(v))+'%;width:'+Math.abs(pos(v)-pos(prev))+'%"></i>';
+  const need = v>=B ? 'Already past the bullish line.' :
+               v<=R ? 'Already past the bearish line.' :
+               'Needs '+(B-v)+' more points to turn bullish, or to fall '+(v-R)+' points to turn bearish.';
+  el.innerHTML=
+   '<div class="sb-num"><span class="lbl">'+(isLatest()?'Today\u2019s total score':'Score on '+W.dshort)+'</span>'+
+     '<span class="big '+cls(v)+'">'+sgn(v)+'</span>'+
+     '<span class="scale">out of \u2212100 to +100</span>'+movedHtml+'</div>'+
+   '<div class="sb-bar">'+
+     '<div class="track">'+
+       '<i class="zone bear" style="left:0;width:'+pos(R)+'%"></i>'+
+       '<i class="zone mid" style="left:'+pos(R)+'%;width:'+(pos(B)-pos(R))+'%"></i>'+
+       '<i class="zone bull" style="left:'+pos(B)+'%;right:0"></i>'+
+       '<i class="tick" style="left:50%"></i>'+
+       ghost+
+       '<i class="mark" style="left:'+pos(v)+'%"></i>'+
+     '</div>'+
+     '<div class="ax"><span style="left:0">bearish</span>'+
+       '<span style="left:'+pos(R)+'%">'+sgn(R)+'</span>'+
+       '<span style="left:50%">0</span>'+
+       '<span style="left:'+pos(B)+'%">'+sgn(B)+'</span>'+
+       '<span style="right:0;left:auto">bullish</span></div>'+
+     '<p class="sb-note">The weighted average of all '+Object.keys(D.live).length+
+       ' indicators, each scoring \u22121, 0 or +1. '+need+
+       ' A score has to stay past a line for '+D.params.DAYS+' of '+D.params.WIN+
+       ' sessions before the regime changes, so one day never decides it.</p>'+
+   '</div>';
+}
+
+
+/* ---------- how to read: regimes x condition ---------- */
+const RUNGS=[
+ ['Bear confirmed','Bear','Steady or falling','The score has sat at or below the bearish line for 10 of the last 15 sessions. The structural picture is negative and is not mending.'],
+ ['Bear, improving','Bear','Improving','Still a bear market on the structural test, but the score has climbed 10 points or more over 10 sessions. The first thing you see before a bottom \u2014 and also what a failed rally looks like.'],
+ ['Neutral / chop','Transition','Steady','Neither threshold has been met and the score is going nowhere. The honest reading is that there is no trend to trade.'],
+ ['Deteriorating','Bull or Transition','Falling','The score has dropped 10 points or more over 10 sessions. The one rung you can reach from either a bull market or a neutral one, which is why it is a warning rather than a verdict.'],
+ ['Recovery','Transition','Improving','Not a bull market yet, but the score has risen 10 points or more over 10 sessions. Conditions are mending faster than the structure has confirmed.'],
+ ['Bull, fragile','Bull','Any','A bull market on the structural test, but either liquidity or demand is scoring negative underneath it. The trend is real and its support is not.'],
+ ['Bull confirmed','Bull','Steady or improving','A bull market with no bucket arguing against it, though not every bucket is positive.'],
+ ['Bull, broad','Bull','Any','All four buckets positive at once. The strongest reading the model can produce.']
+];
+function renderHowTo(){
+  const el=$('howto'); if(!el)return;
+  const W=V(), mo=W.momentum, B=D.params.BULL, R=D.params.BEAR;
+  const cond = mo===null?null : mo>=D.params.MIMP?'Improving' : mo<=D.params.MDET?'Deteriorating':'Steady';
+  const reg = W.regime;
+  const cell=(regime,c)=>{
+    if(regime==='Bull') return c==='Deteriorating'?'Deteriorating':'Bull confirmed<span class="sub">broad if all four buckets positive; fragile if liquidity or demand is negative</span>';
+    if(regime==='Bear') return c==='Improving'?'Bear, improving':'Bear confirmed';
+    return c==='Improving'?'Recovery':c==='Deteriorating'?'Deteriorating':'Neutral / chop';
+  };
+  const conds=['Improving','Steady','Deteriorating'];
+  let grid='<table class="mx"><thead><tr><th></th>'+
+    conds.map(c=>'<th>'+c+'<span class="sub">'+(c==='Improving'?'score up '+D.params.MIMP+'+ points in '+D.params.MLB+' sessions'
+      :c==='Deteriorating'?'score down '+D.params.MIMP+'+ points in '+D.params.MLB+' sessions'
+      :'within '+D.params.MIMP+' points either way')+'</span></th>').join('')+'</tr></thead><tbody>';
+  [['Bull','score at or above '+sgn(B)+' for '+D.params.DAYS+' of '+D.params.WIN+' sessions'],
+   ['Transition','neither threshold met'],
+   ['Bear','score at or below '+sgn(R)+' for '+D.params.DAYS+' of '+D.params.WIN+' sessions']].forEach(([rg,rule])=>{
+    grid+='<tr><th scope="row">'+rg+'<span class="sub">'+rule+'</span></th>'+
+      conds.map(c=>'<td'+((rg===reg&&c===cond)?' class="here"':'')+'>'+cell(rg,c)+'</td>').join('')+'</tr>';
+  });
+  grid+='</tbody></table>';
+  el.innerHTML=
+   '<p class="ledger-intro">The dashboard answers two questions separately, then combines them. '+
+   '<b>Regime</b> is the slow, structural one: is this a bull or a bear market? '+
+   '<b>Condition</b> is the fast one: are things getting better or worse right now? '+
+   'The headline at the top of the page is the two of them combined.</p>'+
+   '<h3 class="mxh">Regime \u00d7 Condition</h3>'+grid+
+   '<p class="mxnote">Today: regime <b>'+reg+'</b>, condition <b>'+(cond||'no reading')+
+   '</b> \u2014 highlighted above. A regime never flips straight from Bull to Bear; it has to pass through Transition first. '+
+   'Below 60% coverage, or with fewer than '+D.params.WIN+' sessions of history, the model refuses to name one at all and says <i>Insufficient data</i>.</p>'+
+   '<h3 class="mxh">All eight readings</h3>'+
+   '<ul class="rungs-list">'+RUNGS.map(([n,rg,c,t])=>
+     '<li'+(n===W.state?' class="here"':'')+'><b>'+n+'</b><span class="tagline">'+rg+' \u00b7 '+c+'</span>'+t+'</li>').join('')+'</ul>'+
+   '<p class="mxnote"><b>One quirk worth knowing:</b> if all four buckets are positive, the model calls it <i>Bull, broad</i> '+
+   'even when the score is falling fast \u2014 that check runs before the falling check. It is logged for the monthly review rather than quietly patched.</p>';
+}
+
+/* ---------- history strip ---------- */
+function renderStrip(){
+  const R=D.rows,strip=$('strip'),det=$('hdet'),sel=$('hsel');
+  /* one shared baseline: bars rise above it and hang below it, to scale */
+  const comps=R.map(r=>r.comp).filter(v=>typeof v==='number');
+  const posMax=Math.max(0,...comps,10), negMax=Math.max(0,...comps.map(v=>-v),0);
+  const span=Math.max(posMax+negMax,1), basePct=posMax/span*100;
+  strip.style.setProperty('--base',basePct+'%');
+  strip.innerHTML='';
+  R.forEach((h,i)=>{
+    const b=document.createElement('button');
+    b.className='day';b.type='button';b.setAttribute('aria-pressed',i===R.length-1?'true':'false');
+    b.setAttribute('aria-label',h.d+', score '+(h.comp===null?'no reading':h.comp)+', '+(h.st||''));
+    const v=h.comp||0, hp=Math.max(1.5,Math.abs(v)/span*100);
+    b.innerHTML = v>=0
+      ? '<i class="up" style="bottom:'+(100-basePct)+'%;height:'+hp+'%"></i>'
+      : '<i class="dn" style="top:'+basePct+'%;height:'+hp+'%"></i>';
+    b.addEventListener('click',()=>pick(i));
+    b.addEventListener('pointerenter',()=>tip(i,b));
+    b.addEventListener('focus',()=>tip(i,b));
+    strip.appendChild(b);
+  });
+  const tt=$('striptip');
+  function tip(i,el){
+    if(!tt)return;
+    const h=R[i];
+    tt.innerHTML='<b>'+h.d+'</b><span>score '+sgn(h.comp)+'</span><span class="st-st">'+(h.st||'')+'</span>';
+    tt.hidden=false;
+    const sr=strip.getBoundingClientRect(), br=el.getBoundingClientRect();
+    tt.style.left=Math.round(br.left-sr.left+br.width/2)+'px';
+  }
+  strip.addEventListener('pointerleave',()=>{if(tt)tt.hidden=true;});
+  strip.addEventListener('focusout',e=>{
+    if(tt&&!strip.contains(e.relatedTarget))tt.hidden=true;});
+  function pick(i){
+    SEL=(i===R.length-1)?-1:i;
+    [...strip.children].forEach((c,j)=>c.setAttribute('aria-pressed',j===i?'true':'false'));
+    const h=R[i];sel.textContent=h.d;
+    det.innerHTML=[['Composite',sgn(h.comp)],['Price',sgn(h.bk.Price)],['Liquidity',sgn(h.bk.Liquidity)],
+      ['Demand',sgn(h.bk.Demand)],['Positioning',sgn(h.bk.Positioning)],
+      ['Coverage',Math.round(h.cov*100)+'%'],['Momentum',sgn(h.mo)],
+      ['BTC',h.px?Math.round(h.px).toLocaleString():'—'],['Regime',h.reg||'—'],['State',h.st||'—']]
+      .map(([k,v],ix)=>'<div><dt>'+k+'</dt><dd'+(ix>7?' class="sm"':'')+'>'+v+'</dd></div>').join('');
+    renderBanner();renderHead();renderScore();renderHowTo();renderAlerts();renderLedger();
+  }
+  pick(RI());
+}
+
+/* ---------- ledger ---------- */
+function renderLedger(){
+  let grp=null,out=[];
+  S.ledger.forEach(x=>{
+    if(x.bucket!==grp){grp=x.bucket;out.push('<div class="grp">'+grp+'</div>');}
+    const L=V().live[x.id]||{};
+    out.push('<article class="ind"><div class="c-head"><span class="c-id">'+x.id+'</span><span class="c-name">'+x.name+
+      '</span></div><div class="c-read"><span class="rv">'+fv(x.id,L.v)+'</span><span class="s '+cls(L.s)+'">'+
+      (L.s===null||L.s===undefined?'—':sgn(L.s))+'</span><span class="wt">'+x.w+'% · '+x.src+'</span></div>'+
+      '<div class="c-x c-calc"><span class="lb">Calculation</span>'+x.calc+'</div>'+
+      '<div class="c-x c-mean"><span class="lb">What the value means</span>'+x.mean+'</div>'+
+      '<div class="c-x c-score"><span class="lb">What the score means</span>'+x.score+'</div>'+
+      '<div class="c-x c-rat"><span class="lb">Why it matters, and why this weight</span>'+x.rat+'</div></article>');
+  });
+  out.push('<div class="grp">Removed</div>');
+  S.removed.forEach(r=>out.push('<article class="ind rem"><div class="c-head"><span class="c-id">'+r.id+
+    '</span><span class="c-name">'+r.name+'</span></div><div class="c-x" style="grid-column:2/4">'+r.why+'</div></article>'));
+  $('ledger').innerHTML=out.join('');
+  const lh=document.getElementById('ledgerh');
+  if(lh)lh.innerHTML='Indicator ledger \u2014 15 indicators, every one with a live source'+
+    (isLatest()?'':' <span class="hd-date">as at '+V().dshort+'</span>');
+}
+
+/* ---------- daily log ---------- */
+const LOGV={
+ inputs:{cols:['Date','BTC close','50W MA','200D MA','100D MA','Alts >50D','Vol 7/30','Stables $bn','DXY','Hike %','Funding %','OI $bn','BTC ETF $m','ETH ETF $m'],
+   get:r=>[r.d,r.px,r.raw.ma350,r.raw.ma200,r.raw.ma100,r.raw.breadth,r.raw.vol,r.raw.stable,r.raw.dxy,r.raw.hike,r.raw.funding,r.raw.oi,r.isflow?r.dayb:null,r.isflow?r.daye:null],
+   note:'Newest session first. Raw fetched values, one row per session. 50W is a 350-day mean because crypto trades every day. The two ETF columns are that day\u2019s actual flow and are blank at weekends, when the funds do not trade; the four-week sums that the model scores are in the Derived view.'},
+ derived:{cols:['Date','vs 50W %','vs 200D %','vs 100D %','HH/HL','Stables 30d %','DXY 20d','Drain $bn','OI 5d %','Px 5d %','BTC 4wk $m','ETH 4wk $m','Flow trend'],
+   get:r=>[r.d,r.v.P1,r.v.P3,r.v.P6,r.v.P4,r.v.D2,r.v.L2,r.v.L3,r.v.Z2,r.raw.px5,r.v.D1,r.v.D3,r.v.D5],
+   note:'Newest session first. Computed from the inputs. The BTC and ETH four-week columns are rolling sums of the last 20 ETF trading days \u2014 these are what D1 and D3 score, not any single day\u2019s flow. Flow trend is the 7-session mean minus the 28-session mean.'},
+ scores:{cols:['Date','P1','P3','P4','P5','P6','L2','L3','L4','D1','D2','D3','D4','D5','Z1','Z2'],
+   get:r=>['P1','P3','P4','P5','P6','L2','L3','L4','D1','D2','D3','D4','D5','Z1','Z2'].reduce((a,k)=>(a.push(r.s[k]),a),[r.d]),
+   note:'Newest session first. Each indicator resolved to +1, 0 or −1 against its own thresholds. Green is bullish, red bearish, amber neutral. Blank means no data, which is excluded from the weighted average rather than scored as neutral.'},
+ outputs:{cols:['Date','Price','Liquidity','Demand','Position','Composite','Coverage','Agree','Momentum','Regime','State'],
+   get:r=>[r.d,r.bk.Price,r.bk.Liquidity,r.bk.Demand,r.bk.Positioning,r.comp,r.cov,r.agree,r.mo,r.reg,r.st],
+   note:'Newest session first. Bucket averages and the weighted composite, scaled −100 to +100. Coverage is the share of model weight with data. Regime needs the composite beyond its threshold for 10 of 15 sessions; below 60% coverage it refuses to call one.'}};
+let view='inputs';
+function drawLog(){
+  const V=LOGV[view],rows=D.rows.slice().reverse().map(V.get);
+  $('logthead').innerHTML='<tr>'+V.cols.map(c=>'<th scope="col">'+c+'</th>').join('')+'</tr>';
+  $('logtbody').innerHTML=rows.map(r=>'<tr>'+r.map((v,i)=>{
+    const c=V.cols[i];
+    if(i===0)return '<th scope="row">'+v+'</th>';
+    if(view==='scores')return '<td class="s '+(v===1?'s1':v===-1?'sm1':v===0?'s0':'')+'">'+(v===null||v===undefined?'—':(v>0?'+1':String(v)))+'</td>';
+    if(typeof v==='string')return '<td class="txt">'+v+'</td>';
+    if(v===null||v===undefined)return '<td>—</td>';
+    if(c==='Coverage')return '<td>'+Math.round(v*100)+'%</td>';
+    if(c==='Agree')return '<td>'+Math.round(v*100)+'%</td>';
+    if(c==='Funding %')return '<td>'+v.toFixed(4)+'</td>';
+    return '<td>'+(Math.abs(v)>=1000?Math.round(v).toLocaleString():Number.isInteger(v)?v:v.toFixed(Math.abs(v)<10?2:1))+'</td>';
+  }).join('')+'</tr>').join('');
+  $('logfoot').textContent=V.note;
+}
+function wireLog(){
+  document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-selected',String(x===b)));
+    view=b.dataset.v;drawLog();}));
+  $('cp').addEventListener('click',async e=>{
+    const V=LOGV[view],TAB=String.fromCharCode(9),NL=String.fromCharCode(10);
+    const tsv=[V.cols.join(TAB)].concat(D.rows.slice().reverse().map(V.get).map(r=>r.map(v=>v===null||v===undefined?'':v).join(TAB))).join(NL);
+    const btn=e.currentTarget;
+    try{await navigator.clipboard.writeText(tsv);btn.textContent='Copied';}
+    catch(err){const rg=document.createRange();rg.selectNodeContents($('logt'));
+      const sl=getSelection();sl.removeAllRanges();sl.addRange(rg);btn.textContent='Selected — press copy';}
+    setTimeout(()=>btn.textContent='Copy this view',2200);
+  });
+}
+
+/* ---------- ETF flow chart ---------- */
+function renderFlows(){
+  const FL=D.flows||[]; if(!FL.length)return;
+  const dates=FL.map(r=>r[0]),btc=FL.map(r=>r[1]),eth=FL.map(r=>r[2]);
+  const roll=(v,n)=>v.map((_,i)=>{const w=v.slice(Math.max(0,i-n+1),i+1);
+    return w.length>=10?Math.round(w.reduce((a,b)=>a+b,0)):null;});
+  const bSum=roll(btc,20),eSum=roll(eth,20),N=dates.length;
+  const W=720,ML=46,MR=10,PH=118,GAP=58,TOP=26;
+  const plotW=W-ML-MR,slot=plotW/N,bw=Math.min(11,slot-3.2),H=TOP+PH+GAP+PH+26;
+  const mk=(s,a)=>{const e=document.createElementNS('http://www.w3.org/2000/svg',s);
+    for(const k in a)e.setAttribute(k,a[k]);return e;};
+  function barPath(x,y0,y1,w,r){
+    const up=y1<y0,h=Math.abs(y1-y0),rr=Math.min(r,w/2,h);
+    if(h<0.6)return 'M'+x+' '+y0+'h'+w;
+    return up?'M'+x+' '+y0+'V'+(y1+rr)+'a'+rr+' '+rr+' 0 0 1 '+rr+' '+(-rr)+'h'+(w-2*rr)+'a'+rr+' '+rr+' 0 0 1 '+rr+' '+rr+'V'+y0+'Z'
+              :'M'+x+' '+y0+'V'+(y1-rr)+'a'+rr+' '+rr+' 0 0 0 '+rr+' '+rr+'h'+(w-2*rr)+'a'+rr+' '+rr+' 0 0 0 '+rr+' '+(-rr)+'V'+y0+'Z';
+  }
+  const rnd=(v,up)=>{const m=Math.pow(10,Math.floor(Math.log10(Math.max(1,Math.abs(v)))));
+    return (up?Math.ceil(v/(m/2)):Math.floor(v/(m/2)))*(m/2);};
+  const panels=[{v:btc,label:'Bitcoin',top:TOP,sum:bSum,thr:2000},
+                {v:eth,label:'Ethereum',top:TOP+PH+GAP,sum:eSum,thr:500}];
+  const svg=mk('svg',{viewBox:'0 0 '+W+' '+H,role:'img','aria-label':
+    'Daily net flows into US spot bitcoin and ethereum ETFs, '+dates[0]+' to '+dates[N-1]+
+    ', in millions of dollars. Each panel has its own vertical scale.'});
+  const bars={};
+  panels.forEach((p,pi)=>{
+    p.hi=Math.max(rnd(Math.max(...p.v),true),1); p.lo=Math.min(rnd(Math.min(...p.v),false),-1);
+    const y=v=>p.top+PH*(p.hi-v)/(p.hi-p.lo),zero=y(0);
+    svg.appendChild(mk('text',{x:0,y:p.top-11,class:'ch-ttl'})).textContent=p.label;
+    const lbl=v=>(v>0?'+':'')+(Math.abs(v)>=1000?(v/1000)+'bn':v+'m');
+    [p.hi,p.lo].forEach(v=>{
+      svg.appendChild(mk('line',{x1:ML,x2:W-MR,y1:y(v),y2:y(v),class:'ch-grid'}));
+      const t=mk('text',{x:ML-7,y:y(v)+3.5,class:'ch-ax','text-anchor':'end'});t.textContent=lbl(v);svg.appendChild(t);
+    });
+    svg.appendChild(mk('line',{x1:ML,x2:W-MR,y1:zero,y2:zero,class:'ch-zero'}));
+    const z=mk('text',{x:ML-7,y:zero+3.5,class:'ch-ax','text-anchor':'end'});z.textContent='0';svg.appendChild(z);
+    bars[pi]=[];let hiI=0,loI=0;
+    p.v.forEach((v,i)=>{if(v>p.v[hiI])hiI=i;if(v<p.v[loI])loI=i;});
+    p.v.forEach((v,i)=>{
+      const x=ML+i*slot+(slot-bw)/2;
+      const el=mk('path',{d:barPath(x,zero,y(v),bw,3.5),class:'ch-bar '+(v>=0?'up':'dn')});
+      svg.appendChild(el);bars[pi].push(el);
+    });
+    [[hiI,'above'],[loI,'below']].forEach(([i,side])=>{
+      const v=p.v[i],x=ML+i*slot+slot/2;
+      const t=mk('text',{x:Math.min(W-MR-14,Math.max(ML+14,x)),y:y(v)+(side==='above'?-6:13),
+        class:'ch-pk','text-anchor':'middle'});
+      t.textContent=(v>0?'+':'')+Math.round(v)+'m · '+dates[i].slice(8)+' '+MON[+dates[i].slice(5,7)-1];
+      svg.appendChild(t);
+    });
+  });
+  const xt=[];for(let i=0;i<N;i+=9)xt.push(i);
+  if(xt[xt.length-1]<N-4)xt.push(N-1);
+  for(const i of xt){const t=mk('text',{x:ML+i*slot+slot/2,y:H-8,class:'ch-ax','text-anchor':'middle'});
+    t.textContent=dates[i].slice(8)+' '+MON[+dates[i].slice(5,7)-1];svg.appendChild(t);}
+  const cross=mk('line',{x1:0,x2:0,y1:TOP-4,y2:TOP+PH+GAP+PH+4,class:'ch-cross'});
+  cross.style.opacity=0;svg.appendChild(cross);
+  const hit=mk('g',{});svg.appendChild(hit);
+  const fm=v=>v===null||v===undefined?'—':(v>0?'+':'')+Math.round(v).toLocaleString()+'m';
+  function show(i){
+    bars[0].forEach((b,k)=>b.classList.toggle('sel',k===i));
+    bars[1].forEach((b,k)=>b.classList.toggle('sel',k===i));
+    cross.setAttribute('x1',ML+i*slot+slot/2);cross.setAttribute('x2',ML+i*slot+slot/2);cross.style.opacity=1;
+    $('flowread').innerHTML=
+      '<div><dt>'+dates[i].slice(8)+' '+MON[+dates[i].slice(5,7)-1]+' '+dates[i].slice(0,4)+'</dt><dd class="sm">session</dd></div>'+
+      '<div><dt>Bitcoin, day</dt><dd class="'+(btc[i]>=0?'pos':'neg')+'">'+fm(btc[i])+'</dd></div>'+
+      '<div><dt>Bitcoin, 4 weeks</dt><dd>'+fm(bSum[i])+'<small> vs +2,000m trigger</small></dd></div>'+
+      '<div><dt>Ethereum, day</dt><dd class="'+(eth[i]>=0?'pos':'neg')+'">'+fm(eth[i])+'</dd></div>'+
+      '<div><dt>Ethereum, 4 weeks</dt><dd>'+fm(eSum[i])+'<small> vs +500m trigger</small></dd></div>';
+  }
+  for(let i=0;i<N;i++){
+    const r=mk('rect',{x:ML+i*slot,y:TOP-4,width:slot,height:PH+GAP+PH+8,fill:'transparent',
+      tabindex:'0',role:'button','aria-label':dates[i]+': bitcoin '+fm(btc[i])+', ethereum '+fm(eth[i])});
+    r.addEventListener('pointerenter',()=>show(i));
+    r.addEventListener('focus',()=>show(i));
+    hit.appendChild(r);
+  }
+  $('flowchart').innerHTML='';$('flowchart').appendChild(svg);show(N-1);
+}
+
+function renderAll(){renderBanner();renderHead();renderScore();renderHowTo();renderAlerts();renderStrip();renderLedger();drawLog();renderFlows();}
+wireLog();renderAll();
+fetch('data.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(j=>{
+  if(j&&j.asof){D=j;renderAll();}
+}).catch(()=>{});
+/* Embedded in the shell's iframe: report our height so the shell sizes the frame to fit
+   (otherwise the frame gets its own second scrollbar), and hide our own vertical scrollbar. */
+if(parent!==window){
+  document.documentElement.style.overflowY='hidden';
+  const _h=()=>parent.postMessage({type:'tab-height',h:document.documentElement.scrollHeight},'*');
+  _h();new ResizeObserver(_h).observe(document.body);addEventListener('load',_h);
+}
+
+</script>
+
+</body></html>

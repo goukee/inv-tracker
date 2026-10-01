@@ -1,0 +1,371 @@
+{
+ "dm3": {
+  "guide_mid": 10,
+  "consensus": 12,
+  "measured": "analysts' consensus revenue growth for the September quarter when guidance was given (30 Jul 2026)",
+  "source": "Apple Q3 FY26 call; consensus per Investing.com",
+  "note": "Apple guided 9-11% revenue growth vs about 12% expected. Apple only guides one quarter ahead, so DM3 scores guidance vs expectations (Kenneth's decision, 30 Sep 2026)."
+ },
+ "custom": {
+  "DM4a": {
+   "value": 12.1,
+   "period": "Jun 2026 quarter"
+  },
+  "DM4b": {
+   "value": 21.7,
+   "period": "Jun 2026 quarter; $54.3bn vs $44.6bn, Apple 8-K"
+  },
+  "DM5": {
+   "value": 15.3,
+   "period": "Apr-Jun 2026, IDC: 55.8m vs 48.4m units"
+  }
+ },
+ "move": {
+  "class": "Quiet",
+  "direction": "down",
+  "headline": "A normal-sized pullback, mostly specific to Apple",
+  "evidence": [
+   {
+    "d": "29 Sep",
+    "t": "Apple fell 2.2% while the S&P 500 slipped 0.3%. That is inside Apple's normal daily range, so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
+   {
+    "d": "29 Sep",
+    "t": "A secondary site linked the fall to a Bank of America note warning that AI shopping agents could divert App Store and payments revenue. Not confirmed by a primary source.",
+    "kind": "speculation",
+    "src": "Wealth Awesome"
+   },
+   {
+    "d": "28-29 Sep",
+    "t": "Shares closed 3.0% below their highest close of the past year ($341.10 on 25 Sep) ahead of the expected 29 Oct results, with the weaker September-quarter outlook (9-11% growth vs 16% in the June quarter, each vs a year earlier) still weighing.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices; Tradingpedia"
+   },
+   {
+    "d": "16 Sep",
+    "t": "Reported by one outlet, not confirmed by Apple: Apple has accepted a 2027 memory deal at about $2.00 per gigabit vs $1.50 now (+33%), with more product price rises likely.",
+    "kind": "speculation",
+    "src": "AppleInsider"
+   }
+  ]
+ },
+ "earnings": {
+  "past": [
+   {
+    "q": "Jun 2026 quarter (Q3 FY26)",
+    "date": "Thu 30 Jul 2026, after the US close (Fri 31 Jul, about 5am Singapore)",
+    "vs": "Revenue $109.4bn, +16% vs a year earlier, above consensus. EPS $2.02 vs $1.89 expected (+6.9%); $0.11 of it from one-off tariff refunds.",
+    "guide": "September quarter: revenue growth 9-11% vs a year earlier (consensus about 12%); gross margin 47-48% (from 50.1%), including about 1 point of one-off tariff refunds.",
+    "reaction": "Shares about −7% the next day while the S&P 500 rose.",
+    "take": [
+     "<b>Demand strong except iPad.</b> iPhone +22%, Mac +29%, Services +12% (all June-quarter records); iPad −6%.",
+     "<b>Memory costs are the problem.</b> Management called it a \"100-year flood\"; memory explains more than all of the expected margin fall. Mac and iPad prices went up.",
+     "<b>Supply, not demand, limits sales.</b> Advanced-chip capacity for Apple's processors is significantly constrained.",
+     "<b>Currency drag.</b> The stronger dollar takes about 2.5 points off total revenue growth next quarter; Services growth excluding currency effects is expected to be broadly similar to June's.",
+     "<b>Siri AI launch still awaits regulators</b> in the EU and China (China has approved initial Apple Intelligence features).",
+     "<b>About $30bn returned</b> in the quarter: $25.8bn buybacks plus $4bn dividends."
+    ],
+    "impact": "Demand indicators strong; guidance below expectations (DM3 bearish); margin pressure shows in chain C1."
+   },
+   {
+    "q": "Mar 2026 quarter (Q2 FY26)",
+    "date": "Thu 30 Apr 2026",
+    "vs": "Revenue $111.2bn vs $109.7bn consensus; +17% vs a year earlier. EPS $2.01 vs $1.94 expected (+3.6%).",
+    "guide": "June quarter: revenue growth 14-17%. Delivered 16%.",
+    "reaction": "+3.3% on 1 May vs +0.3% for the S&P 500.",
+    "take": [
+     "<b>Best March quarter ever for iPhone:</b> $57.0bn vs $46.8bn a year earlier, driven by iPhone 17.",
+     "<b>Services record:</b> $30.9bn vs $26.6bn.",
+     "<b>Double-digit growth in every region.</b>",
+     "<b>MacBook Neo</b> set a record for new Mac buyers.",
+     "<b>$100bn new buyback;</b> dividend up 4% to $0.27 a quarter.",
+     "<b>CEO change (announced 20 Apr):</b> John Ternus became CEO on 1 Sep 2026; Tim Cook is now executive chairman."
+    ],
+    "impact": "Demand strong; guidance delivered."
+   }
+  ],
+  "next": [
+   {
+    "q": "Sep 2026 quarter (Q4 FY26)",
+    "date": "Thu 29 Oct 2026 (expected)",
+    "iso": "2026-10-29",
+    "status": "Estimated (Apple had not announced the date as of 30 Sep; it usually confirms about 4 weeks ahead)",
+    "watch": [
+     "Gross margin vs the 47-48% guide: how far memory costs bit (chain C1).",
+     "Services growth vs the +12% line (DM4a), despite the currency drag.",
+     "December-quarter outlook: is chip supply loosening?",
+     "iPhone 18 demand: launch delivery waits were shorter than a year earlier (JPMorgan, UBS), which could mean weaker demand or better supply."
+    ]
+   },
+   {
+    "q": "Dec 2026 quarter (Q1 FY27)",
+    "date": "Late January 2027",
+    "iso": "2027-01-28",
+    "status": "Estimated",
+    "watch": [
+     "Holiday iPhone demand after the $100 price rises.",
+     "Foldable iPhone uptake."
+    ]
+   }
+  ]
+ },
+ "shareholder_notes": [
+  "Nasdaq still lists an old Vanguard Group line dated 31 Dec 2025, from before Vanguard split its reporting; it is left out as stale.",
+  "Yahoo does not mark which insider sales were pre-scheduled trading plans, so they cannot be excluded.",
+  "Yahoo still labels Tim Cook 'Chief Executive Officer': he became executive chairman on 1 Sep 2026 (CEO until 31 Aug); John Ternus is CEO.",
+  "Wellington Management's line has no filing date in Nasdaq's data, so its age cannot be checked."
+ ],
+ "chains": [
+  {
+   "id": "C1",
+   "name": "Memory and chip shortage",
+   "path": [
+    "AI boom",
+    "memory and advanced chips scarce",
+    "Apple's component costs up",
+    "higher prices, demand risk"
+   ],
+   "watch": "MU",
+   "watch_label": "Micron share price (stand-in for DRAM prices)",
+   "active": {
+    "kind": "pct",
+    "t": 10
+   },
+   "status": "Hurting",
+   "evidence": [
+    "Margin guided down to 47-48% from 50.1%, mostly memory (30 Jul).",
+    "Company responding: Mac and iPad prices raised in June, iPhone prices up $100 in September; reportedly (one outlet) accepted a 2027 memory deal at +33% per gigabit (AppleInsider, 16 Sep).",
+    "Demand held in Apr-Jun: IDC counts iPhone shipments +15% vs a year earlier while the phone market shrank 7% (Counterpoint says +3%; the firms disagree).",
+    "Newer read softer: iPhone 18 Pro launch delivery waits 7 days vs 15 a year earlier (JPMorgan, 14 Sep); UBS (24 Sep) found waits flat outside China, 4 days shorter in China."
+   ]
+  },
+  {
+   "id": "C2",
+   "name": "Rates squeeze the valuation",
+   "path": [
+    "Iran war, oil",
+    "inflation",
+    "higher bond yields, Fed odds",
+    "Apple's ~35x forward P/E gets squeezed"
+   ],
+   "watch": "TNX",
+   "watch_label": "US 10-year Treasury yield",
+   "active": {
+    "kind": "pts",
+    "t": 0.25
+   },
+   "status": "Active",
+   "evidence": [
+    "Markets now price a 34% chance of a Fed rate rise at the 28 Oct meeting, up from 27% a month earlier (Polymarket, 30 Sep close).",
+    "Apple's earnings yield (expected profit over the next 12 months as a % of the share price, the inverse of the 34.5x forward P/E) is 2.9%, vs 5.26% on the US 10-year Treasury (29 Sep close; 4.76% 20 trading days earlier). Bonds pay more than Apple's profits per dollar invested."
+   ]
+  },
+  {
+   "id": "C3",
+   "name": "Strong dollar",
+   "path": [
+    "Dollar up",
+    "overseas sales worth fewer dollars",
+    "reported revenue and profit lower"
+   ],
+   "watch": "DXY",
+   "watch_label": "US dollar index",
+   "active": {
+    "kind": "pct",
+    "t": 2
+   },
+   "status": "Hurting",
+   "evidence": [
+    "Apple guided a 2.5-point currency drag on September-quarter growth (30 Jul)."
+   ]
+  },
+  {
+   "id": "C4",
+   "name": "US-China trade and tariffs",
+   "path": [
+    "Tariffs or trade action",
+    "costs of China-assembled products",
+    "margins; Chinese demand"
+   ],
+   "watch": "CNY",
+   "watch_label": "Chinese yuan per US dollar (higher = weaker yuan)",
+   "active": {
+    "kind": "pct",
+    "t": 2
+   },
+   "status": "Quiet",
+   "evidence": [
+    "Tariff refunds added about 2 points to the June-quarter gross margin (50.1%) and $0.11 to EPS, and about 1 point is in the September-quarter guide (Apple, 30 Jul): a one-off tailwind that fades."
+   ]
+  },
+  {
+   "id": "C5",
+   "name": "Regulation of Services",
+   "path": [
+    "Court or regulator action",
+    "Google search payments or App Store fees",
+    "high-margin Services revenue"
+   ],
+   "watch": null,
+   "watch_label": "News scan only",
+   "active": null,
+   "status": "Quiet",
+   "evidence": [
+    "Google may keep paying Apple for search placement under the US remedy; Google's appeal is not expected to be heard before late 2026 (MacRumors, 22 May).",
+    "Apple overhauled EU App Store fees on 18 Aug 2026 (CNBC)."
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "d": "2026-10-02",
+   "t": "US jobs report (September)",
+   "link": "C2",
+   "note": "Confirmed (BLS): Fri 2 Oct, 8:30am ET (8:30pm Singapore). A strong report pushes up rate-rise odds."
+  },
+  {
+   "d": "2026-10-14",
+   "t": "US inflation (September CPI)",
+   "link": "C2",
+   "note": "Confirmed (BLS): Wed 14 Oct, 8:30am ET (8:30pm Singapore). Hotter than forecast = higher yields."
+  },
+  {
+   "d": "2026-10-28",
+   "t": "Fed rate decision",
+   "link": "C2",
+   "note": "Markets price a 34% chance of a rise (Polymarket, 30 Sep close), vs 27% a month earlier."
+  },
+  {
+   "d": "2026-10-29",
+   "t": "Apple results (Sep quarter)",
+   "link": "all",
+   "note": "Expected, not yet announced by Apple. After the US close; Fri 30 Oct morning in Singapore."
+  }
+ ],
+ "valuation_plain": [],
+ "lead": "Apple is <b>Building history</b> (today's zone: <b>Hold</b>), at <b>+5</b> on a −100 to +100 scale, up from +3 yesterday: a strong business priced for perfection, with interest-rate and dollar pressure still weighing on it.",
+ "bullets": [
+  "<b>The business is strong, with soft spots.</b> Demand scores +43: revenue grew 16.4% in the June quarter vs a year earlier, faster than the 12.5% average of the prior four quarters; gross margin over the last 4 quarters was 48.2% vs 46.7% for the 4 quarters a year earlier once one-off tariff refunds are removed (48.7% as reported); Services revenue +12.1% and iPhone revenue +21.7% (June quarter vs a year earlier); IDC counts iPhone shipments +15% in Apr-Jun vs a year earlier. Soft spots: September-quarter guidance of 9-11% growth was below the ~12% analysts expected, gross margin is guided down to 47-48% (from 50.1% in the June quarter, which included about 2 points of one-off tariff refunds), and analysts' profit forecast for the year to Sep 2027 slipped 1.1% in 90 days.",
+  "<b>It is priced for perfection.</b> Valuation scores −76: investors pay 67% more per dollar of expected profit over the next 12 months than for the peer median (34.8x vs 20.8x forward P/E), 25% more after allowing for growth, and 44% more on EV/EBITDA (29.1x vs 20.3x). On trailing (last-12-month) earnings it is 22% above its own 5-year median (38.2x vs 31.3x); that scores as expensive only at +25%.",
+  "<b>The money backdrop has turned.</b> Liquidity scores −13, up from −27 yesterday: markets price a 34% chance of a Fed rate rise on 28 Oct, up from 27% a month earlier (Polymarket), and the dollar index is 1.80 points higher than 20 trading days earlier. Buying and selling volume is balanced (1.01x up-day vs down-day volume, last 20 trading days). Short interest rose 10.7% vs the previous month's report, but at only 0.9% of freely traded shares it is too small to count (the minimum is 2%).",
+  "<b>The price trend is up but lagging, and the call is not yet confirmed.</b> Price scores +44: Apple is 15.4% above its 200-day average, but 6.8 points behind its peers' average return over the last 3 months. It closed at $333.02, +1.1% on the day vs −0.25% for the S&P 500. This is day 2 of the 10 trading days of score history needed to confirm a call; next big test: results expected on 29 Oct.",
+  "<b>Newer signals are softer than the scores.</b> The Demand readings use April-June data. iPhone 18 Pro delivery waits in launch week were 7 days vs 15 for iPhone 17 Pro a year earlier, with the biggest drop in China (JPMorgan, 14 Sep); UBS (24 Sep) found waits about flat vs a year earlier outside China and 4 days shorter in China. Shorter waits can mean weaker demand or better supply: which one is not yet clear. Jefferies (Underperform, $263.66 target, 20% below the 29 Sep close) and Phillip Securities (Reduce, $290, 12% below) cut Apple on 11 Aug, citing memory costs and no clear sign that Apple Intelligence drives upgrades."
+ ],
+ "defects": [
+  "Staging build, second day of history: the call needs 10 trading days of scores before it can be confirmed.",
+  "Valuation vs own history (VL3) uses trailing P/E: free forward P/E history is too short.",
+  "EV/EBITDA uses last-12-month EBITDA (free source).",
+  "Interest-cover check excluded: Apple no longer reports interest expense separately.",
+  "Chain C1 watches Micron's share price as a stand-in until a free DRAM price source is verified.",
+  "Dollar index here is the ICE index from Yahoo; the crypto tab uses its own rebuilt index. To be unified when crypto moves into the tabbed page.",
+  "Guidance, Services, iPhone and shipments inputs (DM3, DM4a, DM4b, DM5) are entered from results releases and research-firm reports, so they update quarterly and lag newer signals such as iPhone 18 delivery waits.",
+  "Institutional change (LQ3) counts changes in existing positions only.",
+  "DM5 (iPhone shipments, Apr-Jun 2026 vs a year earlier): research firms disagree. IDC +15.3% (55.8m vs 48.4m units; used, as it publishes unit counts and matches Apple's +21.7% iPhone revenue), Omdia's share rise from 16% to 20% in a market down 4% implies about +20%, Counterpoint says +3%. All but Counterpoint score bullish (line: +5%). The page previously showed +13%, which matched no firm.",
+  "DM6 (gross margin, last 4 quarters vs the 4 a year earlier) scores bullish, but the June quarter's 50.1% includes about 2 points of one-off tariff refunds (about 0.5 point on the 4-quarter figure), and Apple guides the September quarter down to 47-48%. The margin rise is likely to reverse.",
+  "EV uses cash plus short-term investments only ($62.4bn). Adding Apple's $84.1bn of long-term marketable securities (8-K, 27 Jun 2026) would lower EV/EBITDA from 28.9x to about 28.4x; still expensive vs peers.",
+  "Short interest (LQ2) is only 0.9% of freely traded shares, so a 10.7% rise is a change of about 0.1 percentage point of float: mostly noise, though it scores bearish."
+ ],
+ "sources": [
+  "Yahoo Finance (prices, consensus, valuation, short interest, insiders)",
+  "SEC EDGAR (reported financials, filings)",
+  "Nasdaq (13F institutional holdings)",
+  "Polymarket (Fed odds)",
+  "Apple newsroom results releases (30 Apr, 30 Jul 2026)",
+  "IDC 2Q26 smartphone release (13 Jul 2026)",
+  "US Bureau of Labor Statistics release schedule",
+  "MacRumors, Investing.com, AppleInsider, Counterpoint, TIKR, Advisor Perspectives, Tradingpedia, Wealth Awesome, Nasdaq call summary (news)",
+  "Finviz (JPMorgan lead times), Tiger Brokers news (UBS, Jefferies), Phillip Securities POEMS (analyst notes)"
+ ],
+ "mix": {
+  "updated": "2026-09-30",
+  "segments": {
+   "IPH": {
+    "sells": "iPhone smartphones.",
+    "buyers": "Consumers and businesses worldwide, through Apple stores, phone carriers and resellers.",
+    "pos": [
+     "Biggest and currently fastest-growing part: +19% over the last 4 quarters vs the 4 quarters before.",
+     "Every iPhone sold keeps or adds a user for Services (App Store, iCloud, Apple Music), which earns about 76% gross margin."
+    ],
+    "neg": [
+     "Not recurring: sold once, and demand rises and falls with upgrade cycles.",
+     "Lower margin: Products earn about 39% gross margin (last 4 quarters), roughly half of Services' 76%.",
+     "Over half of Apple's sales depend on this one product.",
+     "Exposed to China demand, tariffs and component costs such as memory."
+    ]
+   },
+   "MAC": {
+    "sells": "Mac laptops and desktops, running Apple's own M-series chips.",
+    "buyers": "Consumers, students, creative professionals and businesses.",
+    "pos": [
+     "Growing +10% (last 4 quarters vs the 4 before), and +29% in the June quarter vs a year earlier.",
+     "Keeps professionals inside Apple's ecosystem, which supports Services."
+    ],
+    "neg": [
+     "One-off purchases, replaced every several years.",
+     "Products gross margin (about 39%), well below Services."
+    ]
+   },
+   "IPD": {
+    "sells": "iPad tablets and related software.",
+    "buyers": "Consumers, schools and businesses.",
+    "pos": [
+     "Strong in education and creative work; another entry point into Services."
+    ],
+    "neg": [
+     "Barely growing: +2% (last 4 quarters vs the 4 before).",
+     "Share of sales down from 7.6% to 6.1% in 3 years.",
+     "Long replacement cycles."
+    ]
+   },
+   "WHA": {
+    "sells": "Apple Watch, AirPods, Apple TV, HomePod, Vision Pro and accessories.",
+    "buyers": "Mostly existing iPhone owners.",
+    "pos": [
+     "Deepens the tie to iPhone (health, fitness, audio), which makes customers less likely to switch."
+    ],
+    "neg": [
+     "Shrinking share: 10.5% to 7.8% of sales in 3 years; growth only +2% (last 4 quarters vs the 4 before), though +6% in the June quarter vs a year earlier.",
+     "Discretionary gadgets: first to be cut when consumers spend less."
+    ]
+   },
+   "SVC": {
+    "sells": "App Store commissions, iCloud, Apple Music and TV+, AppleCare, Apple Pay, advertising, and licensing (including Google's payment to be the default search engine).",
+    "buyers": "People using Apple's installed base of more than 2.5 billion active devices (Apple, Jul 2026 call).",
+    "pos": [
+     "Highest margin: about 76% gross margin (last 4 quarters) vs about 39% for products.",
+     "Mostly recurring: subscriptions and repeat spending, which smooths results between iPhone cycles.",
+     "Steady growth: +14% (last 4 quarters vs the 4 before) with little extra capital, so most of it turns into free cash flow."
+    ],
+    "neg": [
+     "Regulators are pushing down App Store fees (EU Digital Markets Act; US court orders on outside payment links).",
+     "The Google search payment is under antitrust scrutiny; losing it would hit this high-margin income directly.",
+     "Share of sales flat this year (25.8% both years) because iPhone grew faster."
+    ]
+   }
+  },
+  "shift": {
+   "title": "What the shift means for Apple",
+   "pos": [
+    "Services rose from 21% to 26% of sales in 3 years (last 4 quarters vs the 4 quarters to Jun 2023). Company gross margin rose from 43.4% to 48.7% over the same period. About 1.5 points of that came from the shift towards Services; the rest came from higher margins within both Products (36.0% to 39.1%) and Services (70.7% to 76.0%).",
+    "More recurring revenue: about a quarter of sales now comes from subscriptions and repeat spending, which steadies profit and supports free cash flow between iPhone cycles.",
+    "Free cash flow (operating cash minus capital spending) was 29% of revenue over the last 4 quarters ($136.7bn), vs 24% for the 4 quarters a year earlier."
+   ],
+   "neg": [
+    "Near term, memory costs are squeezing the Products margin: Apple guided September-quarter gross margin to 47-48%, below the 48.7% of the last 4 quarters, and that guide includes about 1 point of one-off tariff refunds.",
+    "This year the mix stood still: iPhone grew faster (+19%) than Services (+14%), so Services stayed at 26% of sales.",
+    "Over half of sales still depend on iPhone upgrade cycles.",
+    "Part of the high-margin Services income (App Store fees, the Google search payment) is under regulatory and legal pressure."
+   ]
+  }
+ },
+ "dm6_oneoffs": [
+  {
+   "end": "2026-06-27",
+   "gp_add": -2200,
+   "label": "tariff refunds (one-time benefit, about 2 points of margin)",
+   "source": "Apple Q3 FY26 results call, via beancount.io 22 Aug 2026"
+  }
+ ]
+}

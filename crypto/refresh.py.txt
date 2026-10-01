@@ -1,0 +1,216 @@
+#!/usr/bin/env python3
+"""Crypto regime dashboard - data builder.
+Input : raw.json  (produced by fetch.js running in the browser)
+Output: data.json (published alongside index.html)
+Pure computation - no network. See the Pull List on the dashboard for sources.
+"""
+import json, sys, datetime as dt
+
+IND=[('P1','Price',8,'hi',0,-3),('P3','Price',7,'hi',0,-5),('P4','Price',5,'hi',1,-1),
+     ('P5','Price',5,'hi',4,2),('P6','Price',5,'hi',0,-5),
+     ('L2','Liquidity',11,'lo',-1,1),('L3','Liquidity',10,'lo',-25,25),('L4','Liquidity',9,'lo',30,55),
+     ('D1','Demand',7,'hi',2000,-1000),('D2','Demand',5,'hi',1.5,-0.5),('D3','Demand',4,'hi',500,-250),
+     ('D4','Demand',4,'hi',1.15,0.85),('D5','Demand',5,'hi',50,-50),
+     ('Z1','Positioning',8,'band',0.005,0.03),('Z2','Positioning',7,'map',0,0)]
+W={i[0]:i[2] for i in IND}; BUCK={i[0]:i[1] for i in IND}
+P=dict(BULL=30,BEAR=-25,DAYS=10,WIN=15,MIMP=10,MDET=-10,MLB=10,MINCOV=0.60,GEO=8)
+DERF=['d','px','ma350','ma200','ma100','breadth','vol','stable','stable30','dxy','dxy20',
+      'drain','hike','funding','oi','oi5','hhll','px5']
+
+def score(iid,v,oi5=None,px5=None):
+    if iid=='Z2':
+        if oi5 is None or px5 is None: return None
+        if px5>0 and oi5>2: return 1
+        if px5<0 and oi5>2: return -1
+        return 0
+    if v is None: return None
+    _,_,_,d,bull,bear=[x for x in IND if x[0]==iid][0]
+    if d=='hi':   return 1 if v>=bull else (-1 if v<=bear else 0)
+    if d=='lo':   return 1 if v<=bull else (-1 if v>=bear else 0)
+    if d=='band': return 1 if bull<=v<=bear else (-1 if (v>bear*1.7 or v<-0.01) else 0)
+    return None
+
+def rollsum(vals,n):
+    """Sum over the last n TRADING sessions (ETF flows only exist on trading days)."""
+    out=[]
+    for i in range(len(vals)):
+        w=vals[max(0,i-n+1):i+1]
+        out.append(round(sum(w),1) if len(w)>=max(8,n//2) else None)
+    return out
+
+def build(raw):
+    der=[dict(zip(DERF,r)) for r in raw['der']]
+    flows=raw['flows']                      # [[date, btc, eth], ...] trading days only
+    fd=[r[0] for r in flows]; fb=[r[1] for r in flows]; fe=[r[2] for r in flows]
+    b20=rollsum(fb,20); e20=rollsum(fe,20)
+    def mean(a): return sum(a)/len(a) if a else None
+    ftrend=[]
+    for i in range(len(fb)):
+        s7=fb[max(0,i-6):i+1]; s28=fb[max(0,i-27):i+1]
+        ftrend.append(round(mean(s7)-mean(s28),1) if len(s7)>=3 and len(s28)>=10 else None)
+    # map trading-day series onto each calendar session (carry the last published value)
+    def carry(dates,vals,target):
+        out=[];k=-1
+        for t in target:
+            while k+1<len(dates) and dates[k+1]<=t: k+=1
+            out.append(vals[k] if k>=0 else None)
+        return out
+    tgt=[r['d'] for r in der]
+    B20=carry(fd,b20,tgt); E20=carry(fd,e20,tgt); FT=carry(fd,ftrend,tgt)
+    dayb=carry(fd,fb,tgt); daye=carry(fd,fe,tgt)
+
+    rows=[]
+    for i,r in enumerate(der):
+        px,m350,m200,m100=r['px'],r['ma350'],r['ma200'],r['ma100']
+        pct=lambda ma: round((px/ma-1)*100,2) if (px and ma) else None
+        v={'P1':pct(m350),'P3':pct(m200),'P6':pct(m100),'P4':r['hhll'],'P5':r['breadth'],
+           'L2':r['dxy20'],'L3':r['drain'],'L4':r['hike'],
+           'D1':B20[i],'D2':r['stable30'],'D3':E20[i],'D4':r['vol'],'D5':FT[i],
+           'Z1':r['funding'],'Z2':r['oi5']}
+        s={k:score(k,v[k],r['oi5'],r['px5']) for k in v}
+        num=sum(W[k]*s[k] for k in s if s[k] is not None)
+        den=sum(W[k] for k in s if s[k] is not None)
+        comp=round(100*num/den) if den else None
+        bk={}
+        for b in ('Price','Liquidity','Demand','Positioning'):
+            ids=[k for k in s if BUCK[k]==b]
+            n=sum(W[k]*s[k] for k in ids if s[k] is not None)
+            d2=sum(W[k] for k in ids if s[k] is not None)
+            bk[b]=round(100*n/d2) if d2 else None
+        pos=sum(1 for k in s if s[k] and s[k]>0); neg=sum(1 for k in s if s[k] and s[k]<0)
+        rows.append({'d':r['d'],'px':px,'v':v,'s':s,'comp':comp,'cov':round(den/100,3),
+                     'bk':bk,'agree':round(max(pos,neg)/max(1,pos+neg),2),
+                     'dayb':dayb[i],'daye':daye[i],'isflow':(r['d'] in set(fd))})
+    # momentum, regime, state
+    for i,rw in enumerate(rows):
+        j=i-P['MLB']
+        rw['mo']=(rw['comp']-rows[j]['comp']) if (j>=0 and rw['comp'] is not None
+                  and rows[j]['comp'] is not None and rw['cov']>=P['MINCOV']
+                  and rows[j]['cov']>=P['MINCOV']) else None
+        hist=sum(1 for k in range(i+1) if rows[k]['comp'] is not None)
+        win=[rows[k]['comp'] for k in range(max(0,i-P['WIN']+1),i+1) if rows[k]['comp'] is not None]
+        if rw['comp'] is None: rw['reg']=None
+        elif hist<P['WIN']: rw['reg']='Building history'
+        elif rw['cov']<P['MINCOV']: rw['reg']='Coverage too low'
+        elif sum(1 for c in win if c>=P['BULL'])>=P['DAYS']: rw['reg']='Bull'
+        elif sum(1 for c in win if c<=P['BEAR'])>=P['DAYS']: rw['reg']='Bear'
+        else: rw['reg']='Transition'
+        mo=rw['mo']; bkv=rw['bk']
+        if rw['reg'] in (None,'Building history','Coverage too low'): rw['st']='Insufficient data'
+        elif rw['reg']=='Bull':
+            if all((bkv[b] or 0)>0 for b in bkv): rw['st']='Bull + broad confirmation'
+            elif mo is not None and mo<=P['MDET']: rw['st']='Deteriorating'
+            elif (bkv['Liquidity'] or 0)<0 or (bkv['Demand'] or 0)<0: rw['st']='Bull but fragile'
+            else: rw['st']='Bull confirmation'
+        elif rw['reg']=='Bear':
+            rw['st']='Bear but improving' if (mo is not None and mo>=P['MIMP']) else 'Bear confirmation'
+        else:
+            rw['st']=('Recovery' if (mo is not None and mo>=P['MIMP'])
+                      else 'Deteriorating' if (mo is not None and mo<=P['MDET']) else 'Neutral / chop')
+    return rows,{'b20':B20,'e20':E20,'ft':FT},flows
+
+
+def parse_txt(path):
+    """Parse the plain-text bundle fetch.js leaves in window.__TXT."""
+    txt=open(path).read().strip()
+    raw={'der':[],'flows':[],'tvl':{},'errors':[]}
+    lines=txt.split('\n'); i=0
+    while i<len(lines):
+        L=lines[i].strip()
+        if L.startswith('ASOF|'): raw['asof']=L.split('|')[1]
+        elif L.startswith('TVL|'):
+            p=L.split('|')
+            f=lambda x:(float(x) if x not in ('','None') else None)
+            raw['tvl']={'now':f(p[1]),'d30':f(p[2]),'since':f(p[3]),
+                        'from':p[4] if len(p)>4 else '','ethShare':57,'btcShare':4.8}
+        elif L.startswith('ERRORS|'):
+            e=L[7:].strip()
+            raw['errors']=[x.strip() for x in e.split(';') if x.strip()]
+        elif L=='DER':
+            for row in lines[i+1:]:
+                row=row.strip()
+                if not row: continue
+                p=row.split(':')
+                raw['der'].append([p[0]]+[(float(x) if x not in ('','None') else None) for x in p[1:]])
+            break
+        i+=1
+    return raw
+
+MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+def dshort(iso): return iso[8:]+' '+MON[int(iso[5:7])-1]
+def dlong(iso):
+    return str(int(iso[8:]))+' '+['January','February','March','April','May','June','July',
+      'August','September','October','November','December'][int(iso[5:7])-1]+' '+iso[:4]
+
+
+def geohist(raw, rows, last, g, geototal):
+    """Per-session geopolitics, accumulated forward.
+
+    The browser cannot supply history for a judgement-based score, so each run
+    appends its own reading and carries the earlier ones through. Sessions from
+    before this was switched on simply have no entry; they are never back-filled,
+    because inventing a score for a date nobody read the news on is worse than a gap.
+    The rolling background list is deliberately not stored per day - it repeats
+    almost unchanged and would triple the file for no information.
+    """
+    gh = dict(raw.get('geoHist') or {})
+    if g:
+        gh[last['d']] = {
+            'iran': g.get('iran'), 'ru': g.get('ru'),
+            'new': g.get('new'), 'density': g.get('density'),
+            'total': geototal,
+            'flag': ('ELEVATED' if (geototal or 0) >= P['GEO'] else 'Normal'),
+            'note': raw.get('geoNote', ''),
+            'today': raw.get('geoToday', [])}
+    keep = {r['d'] for r in rows}
+    return {k: v for k, v in gh.items() if k in keep}
+
+
+def emit(raw):
+    rows,extra,flows=build(raw)
+    last=rows[-1]
+    g=raw.get('geo',{})
+    geototal=sum(g.get(k,0) for k in ('iran','ru','new','density')) if g else None
+    win=[r['comp'] for r in rows[-P['WIN']:] if r['comp'] is not None]
+    data={
+     'asof':last['d'],'asofLong':dlong(last['d']),'asofShort':dshort(last['d']),
+     'btc':last['px'],
+     'regime':last['reg'],'state':last['st'],'composite':last['comp'],
+     'momentum':last['mo'],'coverage':last['cov'],'agreement':last['agree'],
+     'buckets':last['bk'],
+     'bull15':sum(1 for c in win if c>=P['BULL']),'bear15':sum(1 for c in win if c<=P['BEAR']),
+     'params':P,
+     'live':{k:{'v':last['v'][k],'s':last['s'][k]} for k in last['v']},
+     'rows':[{'d':dshort(r['d']),'iso':r['d'],'px':r['px'],'comp':r['comp'],'cov':r['cov'],
+              'mo':r['mo'],'reg':r['reg'],'st':r['st'],'agree':r['agree'],
+              'bk':r['bk'],'v':r['v'],'s':r['s'],
+              'raw':{f:dict(zip(DERF,raw['der'][i]))[f] for f in DERF if f!='d'},
+              'dayb':r['dayb'],'daye':r['daye'],'isflow':r['isflow']} for i,r in enumerate(rows)],
+     'flows':flows,
+     'tvl':raw.get('tvl',{}),
+     'geo':{**g,'total':geototal,'flag':('ELEVATED' if (geototal or 0)>=P['GEO'] else 'Normal'),
+            'note':raw.get('geoNote',''),
+            'prev':raw.get('geoPrev',[]),'today':raw.get('geoToday',[])},
+     'geoHist':geohist(raw,rows,last,g,geototal),
+     'commentary':raw.get('commentary',''),
+     'lead':raw.get('lead',''),
+     'bullets':raw.get('bullets',[]),
+     'moves':raw.get('moves',[]),
+     'built':dt.datetime.utcnow().strftime('%Y-%m-%dT%H:%MZ'),
+     'stale':raw.get('stale',False),'staleNote':raw.get('staleNote','')}
+    return data
+
+if __name__=='__main__':
+    src=sys.argv[1] if len(sys.argv)>1 else 'raw.json'
+    out=sys.argv[2] if len(sys.argv)>2 else 'data.json'
+    raw=parse_txt(src) if src.endswith(('.txt','.tsv')) else json.load(open(src))
+    # side inputs the browser cannot supply: ETF flows (Farside is scrape-only),
+    # geopolitics (read from the news) and the written commentary.
+    for extra in sys.argv[3:]:
+        raw.update(json.load(open(extra)))
+    d=emit(raw)
+    json.dump(d,open(out,'w'),separators=(',',':'))
+    print(json.dumps({'wrote':out,'bytes':len(open(out).read()),'sessions':len(d['rows']),
+      'asof':d['asof'],'composite':d['composite'],'coverage':d['coverage'],
+      'regime':d['regime'],'state':d['state'],'momentum':d['momentum'],
+      'buckets':d['buckets'],'geo':d['geo'].get('total')},indent=1))

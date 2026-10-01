@@ -1,0 +1,299 @@
+{
+ "_note": "Per-stock settings. Draft schema v0.2: finalised during the AAPL pilot. Only this stock's chat edits it; anything not set here uses the framework plan defaults.",
+ "code": "AAPL",
+ "market": "US",
+ "exchange": "NASDAQ",
+ "name": "Apple Inc.",
+ "currency": "USD",
+ "benchmark": {
+  "name": "S&P 500",
+  "symbol": "^GSPC"
+ },
+ "peers": [
+  {
+   "code": "1810.HK",
+   "name": "Xiaomi",
+   "why": "Phone-and-ecosystem rival; China"
+  },
+  {
+   "code": "GOOGL",
+   "name": "Alphabet",
+   "why": "Android/Play Store platform rival; Pixel; services overlap"
+  },
+  {
+   "code": "MSFT",
+   "name": "Microsoft",
+   "why": "Software/services platform plus PCs and devices; mega-cap quality comparison"
+  },
+  {
+   "code": "SONY",
+   "name": "Sony",
+   "why": "Consumer electronics with a digital services store"
+  },
+  {
+   "code": "GRMN",
+   "name": "Garmin",
+   "why": "Wearables rival to Apple Watch"
+  },
+  {
+   "code": "HPQ",
+   "name": "HP Inc",
+   "why": "PC hardware rival to Mac"
+  }
+ ],
+ "valuation": {
+  "metric": "forward_pe",
+  "fallback": "trailing_pe",
+  "vl3_basis": "trailing P/E, 5 years (price / last-12-month SEC diluted EPS), labelled"
+ },
+ "dm4": [
+  {
+   "id": "DM4a",
+   "name": "Services revenue growth",
+   "weight": 4,
+   "source": "Apple quarterly results release, net sales by category (on results)",
+   "bullish_if": ">= +12%",
+   "bearish_if": "<= +8%",
+   "measured_against": "same quarter a year earlier",
+   "latest": "+12.1% (Q3 FY26)",
+   "what": "Growth in Apple's Services revenue (App Store, iCloud, Apple Music, payments) vs the same quarter last year.",
+   "why": "Services is recurring and far more profitable than hardware, so it drives much of Apple's profit growth and its valuation.",
+   "bull_means": "Services is growing fast: the high-margin engine is healthy.",
+   "neutral_means": "Services growth is moderate.",
+   "bear_means": "Services growth has slowed sharply: a hit to the most profitable part of the business."
+  },
+  {
+   "id": "DM4b",
+   "name": "iPhone revenue growth",
+   "weight": 4,
+   "source": "Apple quarterly results release, net sales by category (on results)",
+   "bullish_if": ">= +5%",
+   "bearish_if": "<= -3%",
+   "measured_against": "same quarter a year earlier",
+   "latest": "+21.7% (Q3 FY26, Apple results: $54.3bn vs $44.6bn)",
+   "what": "Growth in iPhone revenue vs the same quarter last year.",
+   "why": "iPhone is about half of Apple's revenue and brings customers into the Services ecosystem.",
+   "bull_means": "iPhone sales are growing.",
+   "neutral_means": "iPhone sales are roughly flat.",
+   "bear_means": "iPhone sales are shrinking."
+  }
+ ],
+ "dm5": {
+  "id": "DM5",
+  "name": "Apple smartphone shipments (research firms)",
+  "weight": 4,
+  "source": "Counterpoint / IDC / Canalys quarterly press releases",
+  "bullish_if": ">= +5%",
+  "bearish_if": "<= -5%",
+  "measured_against": "same calendar quarter a year earlier",
+  "latest": "+15.3% (Q2 2026, IDC: 55.8m vs 48.4m units; Counterpoint reports +3%, see Known defects)",
+  "what": "How many iPhones were shipped in the latest calendar quarter vs the same quarter a year earlier, from an independent research firm (IDC; firms can disagree, see Known defects).",
+  "why": "It arrives before Apple reports, so it is an early outside read on demand.",
+  "bull_means": "Shipments are growing: demand is holding up.",
+  "neutral_means": "Shipments are roughly flat.",
+  "bear_means": "Shipments are falling."
+ },
+ "overrides": [],
+ "removed_indicators": [],
+ "chains": [
+  {
+   "id": "C1",
+   "trigger": "AI boom",
+   "what_changes": "memory and advanced-chip shortage, prices up",
+   "business_hit": "component costs up -> gross margin down / product prices up -> demand risk",
+   "company_levers": "price rises, long-term supply deals, memory configurations",
+   "watch": {
+    "name": "DRAM spot price (DDR5 16Gb)",
+    "source": "DRAMeXchange (verify at build); fallback Micron (MU) price",
+    "active_if": "up 10%+",
+    "measured_against": "its level one month earlier"
+   },
+   "status": "Hurting"
+  },
+  {
+   "id": "C2",
+   "trigger": "Iran war / oil / inflation",
+   "what_changes": "bond yields and Fed rate odds up",
+   "business_hit": "valuation multiple compresses (about 35x earnings)",
+   "company_levers": "none (acts on share price)",
+   "watch": {
+    "name": "US 10-year Treasury yield",
+    "source": "Yahoo ^TNX",
+    "active_if": "up 0.25 percentage points or more",
+    "measured_against": "its level one month earlier"
+   },
+   "status": "Active"
+  },
+  {
+   "id": "C3",
+   "trigger": "Strong US dollar",
+   "what_changes": "overseas sales worth fewer dollars",
+   "business_hit": "reported revenue and profit",
+   "company_levers": "local pricing, hedging",
+   "watch": {
+    "name": "US dollar index",
+    "source": "shared macro (DX-Y.NYB / crypto series)",
+    "active_if": "up 2%+",
+    "measured_against": "its level one month earlier"
+   },
+   "status": "Hurting"
+  },
+  {
+   "id": "C4",
+   "trigger": "US-China trade / tariffs",
+   "what_changes": "tariffs on China-assembled products; Chinese demand/regulation",
+   "business_hit": "costs and China revenue",
+   "company_levers": "assembly shift to India/Vietnam; US investment for exemptions",
+   "watch": {
+    "name": "USD/CNY + news scan",
+    "source": "Yahoo CNY=X",
+    "active_if": "yuan weakens 2%+ or new tariff action",
+    "measured_against": "its level one month earlier"
+   },
+   "status": "Quiet"
+  },
+  {
+   "id": "C5",
+   "trigger": "Regulation of Services",
+   "what_changes": "Google search payments and App Store fees under legal pressure",
+   "business_hit": "high-margin Services revenue",
+   "company_levers": "appeals, new fee structures",
+   "watch": {
+    "name": "news scan only",
+    "source": "web search",
+    "active_if": "any ruling or law affecting search payments or App Store fees",
+    "measured_against": "-"
+   },
+   "status": "Quiet (checked 30 Sep 2026: payments allowed to continue; Google appeal not yet heard)"
+  }
+ ],
+ "shareholder_sources": [
+  "Nasdaq institutional holdings (13F)",
+  "Yahoo Finance insiderTransactions (SEC Form 4)",
+  "SEC EDGAR 13D/13G"
+ ],
+ "status": "live",
+ "version": "0.1",
+ "onboarded": "",
+ "_peers_status": "approved by Kenneth 29 Sep 2026",
+ "_settings_status": "approved by Kenneth 29 Sep 2026 (DM4 split into two measures at his request, 4 + 4 points)",
+ "_chains_status": "approved by Kenneth 29 Sep 2026",
+ "sec_cik": "0000320193",
+ "splits": [
+  [
+   "2020-08-31",
+   4
+  ]
+ ],
+ "index_holders": [
+  "vanguard",
+  "blackrock",
+  "state street",
+  "geode",
+  "northern trust",
+  "norges",
+  "legal & general",
+  "schwab",
+  "dimensional",
+  "morgan stanley",
+  "jpmorgan",
+  "bank of america",
+  "goldman",
+  "ubs",
+  "royal bank",
+  "wells fargo",
+  "invesco",
+  "bank of new york",
+  "amundi",
+  "deutsche",
+  "swiss national",
+  "hsbc",
+  "mitsubishi",
+  "sumitomo",
+  "ameriprise",
+  "nuveen"
+ ],
+ "mix": {
+  "_note": "Revenue mix (plan v0.4 section 'Revenue mix', not scored). match = patterns on the row label printed in the SEC filing; first pattern that gives a value wins; a pattern matching several labels adds them up. groups = where the filing reports profit or cost (margin level).",
+  "source": "sec",
+  "basis": "gross",
+  "segments": [
+   {
+    "id": "IPH",
+    "name": "iPhone",
+    "match": [
+     "^iphone$"
+    ],
+    "recurring": "no",
+    "group": "PRD"
+   },
+   {
+    "id": "MAC",
+    "name": "Mac",
+    "match": [
+     "^mac$"
+    ],
+    "recurring": "no",
+    "group": "PRD"
+   },
+   {
+    "id": "IPD",
+    "name": "iPad",
+    "match": [
+     "^ipad$"
+    ],
+    "recurring": "no",
+    "group": "PRD"
+   },
+   {
+    "id": "WHA",
+    "name": "Wearables, Home & Accessories",
+    "match": [
+     "^wearables"
+    ],
+    "recurring": "no",
+    "group": "PRD"
+   },
+   {
+    "id": "SVC",
+    "name": "Services",
+    "match": [
+     "^services$"
+    ],
+    "recurring": "yes",
+    "group": "SVC"
+   }
+  ],
+  "groups": [
+   {
+    "id": "PRD",
+    "name": "Products",
+    "match": [
+     "^products$"
+    ]
+   },
+   {
+    "id": "SVC",
+    "name": "Services",
+    "match": [
+     "^services$"
+    ]
+   }
+  ],
+  "note": "Apple reports gross margin for Products and Services only, not for each product. So iPhone, Mac, iPad and Wearables all show the Products gross margin."
+ },
+ "onboard_price": 330.85,
+ "onboard_date": "2026-09-29",
+ "_onboard_note": "Price at the first staging build (29 Sep 2026 close): the reference for O6 winner discipline (\"up since onboarded\") until a positions feed exists.",
+ "drivers": [
+  {
+   "id": "iphone",
+   "name": "iPhone cycle",
+   "indicators": [
+    "DM1",
+    "DM4b",
+    "DM5"
+   ]
+  }
+ ]
+}

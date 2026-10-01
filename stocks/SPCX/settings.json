@@ -1,0 +1,296 @@
+{
+ "_note": "Per-stock settings, schema v0.3. Copy AAPL-US/settings.json as the worked example. Only this stock's chat edits it.",
+ "code": "SPCX",
+ "market": "US",
+ "exchange": "NASDAQ",
+ "name": "Space Exploration Technologies Corp.",
+ "currency": "USD",
+ "benchmark": {
+  "name": "Nasdaq-100",
+  "symbol": "^NDX"
+ },
+ "peers": [
+  {
+   "code": "IRDM",
+   "name": "Iridium",
+   "why": "Satellite phones and data; same government and maritime customers as Starlink"
+  },
+  {
+   "code": "VSAT",
+   "name": "Viasat",
+   "why": "Satellite broadband for airlines, ships and government: Starlink's main incumbent rival"
+  },
+  {
+   "code": "ASTS",
+   "name": "AST SpaceMobile",
+   "why": "Direct-to-phone from space, head-on with Starlink Direct to Cell"
+  },
+  {
+   "code": "GSAT",
+   "name": "Globalstar",
+   "why": "Satellite messaging to phones (Apple partner); direct-to-device rival"
+  },
+  {
+   "code": "SESG.PA",
+   "name": "SES",
+   "why": "Satellite operator (GEO + MEO) for government, maritime, aviation; Euronext Paris, EUR"
+  },
+  {
+   "code": "ETL.PA",
+   "name": "Eutelsat (OneWeb)",
+   "why": "OneWeb is the only operating LEO broadband rival; Euronext Paris, EUR"
+  },
+  {
+   "code": "RKLB",
+   "name": "Rocket Lab",
+   "why": "Launch and spacecraft for NASA and defence"
+  },
+  {
+   "code": "FLY",
+   "name": "Firefly Aerospace",
+   "why": "Launch (Alpha) and lunar landers; NASA and defence customers"
+  }
+ ],
+ "valuation": {
+  "metric": "forward_pe",
+  "fallback": "trailing_pe",
+  "note": "Kenneth chose forward P/E (30 Sep) over EV/Sales. Only Iridium (28.0x) is inside the 2x-80x data-quality range, so VL1 rests on one peer: shown under Known defects."
+ },
+ "dm4": [
+  {
+   "id": "DM4a",
+   "name": "Connectivity (Starlink) revenue growth",
+   "weight": 4,
+   "source": "SpaceX quarterly results release, revenue by segment (on results)",
+   "bullish_if": ">= +45%",
+   "bearish_if": "<= +25%",
+   "measured_against": "same quarter a year earlier",
+   "latest": "+66% (Q2 2026)",
+   "what": "Growth in Starlink revenue (home, business, aviation, maritime, government, direct-to-phone) vs the same quarter last year.",
+   "why": "Starlink is over half of revenue and the main source of cash. Revenue (not subscriber count) is used because revenue per subscriber is lower than a year ago (revenue +66% while subscribers doubled), even though management says it held at $66 a month vs the March quarter.",
+   "bull_means": "Starlink revenue is growing fast: the core business is healthy.",
+   "neutral_means": "Starlink growth is slowing to a moderate pace.",
+   "bear_means": "Starlink growth has slowed sharply: a hit to the business that funds everything else."
+  },
+  {
+   "id": "DM4b",
+   "name": "AI (xAI) revenue growth",
+   "weight": 3,
+   "source": "SpaceX quarterly results release, revenue by segment (on results)",
+   "bullish_if": ">= +100%",
+   "bearish_if": "<= +50%",
+   "measured_against": "same quarter a year earlier",
+   "latest": "+247% (Q2 2026)",
+   "what": "Growth in AI revenue (Grok subscriptions and API, X advertising, and renting out AI computing capacity) vs the same quarter last year.",
+   "why": "A third of revenue and where most of the spending goes ($15.8bn of the $18.4bn June-quarter capex); it must grow very fast to justify the investment. Growth is driven by computing contracts, mainly one customer (12.2% of company revenue in the 6 months to June).",
+   "bull_means": "AI revenue is growing at the pace the valuation needs.",
+   "neutral_means": "AI growth is solid but not exceptional.",
+   "bear_means": "AI growth has slowed well below what the spending assumes."
+  },
+  {
+   "id": "DM4c",
+   "name": "Space (launch) revenue growth",
+   "weight": 1,
+   "source": "SpaceX quarterly results release, revenue by segment (on results)",
+   "bullish_if": ">= +20%",
+   "bearish_if": "<= +5%",
+   "measured_against": "same quarter a year earlier",
+   "latest": "+29% (Q2 2026)",
+   "what": "Growth in launch, Dragon and government space revenue vs the same quarter last year.",
+   "why": "The smallest segment, but it is the base the rest is built on and shows demand from NASA, defence and commercial customers.",
+   "bull_means": "Launch demand is growing.",
+   "neutral_means": "Launch revenue is roughly steady.",
+   "bear_means": "Launch revenue is flat or shrinking."
+  }
+ ],
+ "dm5": {
+  "id": "DM5",
+  "name": "Google search interest in 'Starlink'",
+  "weight": 4,
+  "source": "Google Trends, worldwide, weekly index: average of the last 4 complete weeks vs the same 4 weeks a year earlier (tested live 30 Sep 2026: works from trends.google.com)",
+  "bullish_if": ">= +10%",
+  "bearish_if": "<= -10%",
+  "measured_against": "same 4 weeks a year earlier",
+  "what": "How often people search Google for 'Starlink' in the latest month vs the same month last year.",
+  "why": "An outside, early read of consumer interest that arrives before SpaceX reports subscribers. It is noisy: news such as Starship flights, outages or Musk headlines also moves it.",
+  "bull_means": "Consumer interest is rising.",
+  "neutral_means": "Consumer interest is steady.",
+  "bear_means": "Consumer interest is falling."
+ },
+ "overrides": [
+  {
+   "id": "NEWLISTING",
+   "applies_to": [
+    "PT1",
+    "PT2",
+    "beta"
+   ],
+   "rule": "PT1 = price vs average of all days since listing; PT2 = 20-day average vs average since listing; beta over all days since listing (minimum 60). Thresholds unchanged.",
+   "ends": "PT1/PT2 at 200 trading days (about 29 Mar 2027); beta at 253 (about 14 Jun 2027), per the engine's estimate",
+   "reason": "Listed 12 Jun 2026: only 75 trading days to the 29 Sep 2026 close. Approved by Kenneth 30 Sep 2026. Needs the Framework chat's generic new-listing mode in the shared engine."
+  }
+ ],
+ "removed_indicators": [
+  {
+   "id": "VL3",
+   "reason": "Listed 12 Jun 2026: no earnings history to compare against. Kenneth (30 Sep): reinstate once enough history exists."
+  }
+ ],
+ "chains": [
+  {
+   "id": "C1",
+   "trigger": "Lock-up releases",
+   "what_changes": "tradable shares jump",
+   "business_hit": "selling pressure on the price, not the business",
+   "company_levers": "none of substance; tranches staggered around results",
+   "watch": {
+    "name": "lock-up calendar + news",
+    "source": "news / filings",
+    "active_if": "a tranche of 5%+ of shares due within 20 trading days",
+    "measured_against": "-"
+   },
+   "status": "Quiet"
+  },
+  {
+   "id": "C2",
+   "trigger": "Inflation / Fed rate-rise odds",
+   "what_changes": "10-year yield up",
+   "business_hit": "far-off profits worth less; high P/E compresses",
+   "company_levers": "none (acts on share price)",
+   "watch": {
+    "name": "US 10-year Treasury yield",
+    "source": "Yahoo ^TNX",
+    "active_if": "up 0.25 percentage points or more",
+    "measured_against": "its level 20 trading days earlier"
+   },
+   "status": "Active"
+  },
+  {
+   "id": "C3",
+   "trigger": "AI boom",
+   "what_changes": "GPU, memory and power costs up",
+   "business_hit": "xAI capex and costs up; deeper negative free cash flow; more funding",
+   "company_levers": "Terafab chip plant with Tesla (a related Musk company); Nvidia partnership; debt",
+   "watch": {
+    "name": "Micron share price (stand-in for memory prices)",
+    "source": "Yahoo MU",
+    "active_if": "up 10%+",
+    "measured_against": "its level 20 trading days earlier"
+   },
+   "status": "Active"
+  },
+  {
+   "id": "C4",
+   "trigger": "US defence and space budgets (Golden Dome, Space Force, NASA)",
+   "what_changes": "contract volume for launch and Starshield",
+   "business_hit": "Space segment and government Starlink revenue",
+   "company_levers": "bid for Golden Dome; $6bn+ Starshield contracts",
+   "watch": {
+    "name": "US defence ETF (ITA) + appropriations news",
+    "source": "Yahoo ITA (fetched by the engine)",
+    "active_if": "down 5%+",
+    "measured_against": "its level 20 trading days earlier"
+   },
+   "status": "Active"
+  }
+ ],
+ "shareholder_sources": [],
+ "sec_cik": "0001181412",
+ "splits": [],
+ "index_holders": [
+  "vanguard",
+  "blackrock",
+  "state street",
+  "geode",
+  "northern trust",
+  "norges",
+  "legal & general",
+  "schwab",
+  "dimensional",
+  "morgan stanley",
+  "jpmorgan",
+  "bank of america",
+  "goldman",
+  "ubs",
+  "royal bank",
+  "wells fargo",
+  "invesco",
+  "bank of new york",
+  "amundi",
+  "deutsche",
+  "swiss national",
+  "hsbc",
+  "mitsubishi",
+  "sumitomo",
+  "ameriprise",
+  "nuveen"
+ ],
+ "status": "live",
+ "version": "0.1",
+ "onboarded": "",
+ "_peers_status": "approved 30 Sep 2026: space/satellite names only, plus satellite operators and Firefly (Kenneth). Blue Origin is private.",
+ "_scoping_status": "approved 30 Sep 2026 (conditional go)",
+ "_settings_status": "approved 30 Sep 2026: DM4 Connectivity 4 + AI 3 + Space 1; DM5 Starlink search interest; forward P/E",
+ "_chains_status": "approved 30 Sep 2026: C1-C4 (C5 space-stock sentiment dropped: overlaps PT4)",
+ "mix": {
+  "_note": "Revenue mix (plan v0.4). SpaceX reports three segments with revenue, cost and operating profit. Only one 10-Q so far (Jun 2026), so the engine uses short-history mode (single quarters).",
+  "source": "sec",
+  "basis": "operating",
+  "segments": [
+   {
+    "id": "CON",
+    "name": "Connectivity (Starlink)",
+    "match": [
+     "^connectivity$"
+    ],
+    "recurring": "yes",
+    "group": "CON"
+   },
+   {
+    "id": "AI",
+    "name": "AI (xAI and X)",
+    "match": [
+     "^ai$"
+    ],
+    "recurring": "partly",
+    "group": "AI"
+   },
+   {
+    "id": "SPA",
+    "name": "Space",
+    "match": [
+     "^space$"
+    ],
+    "recurring": "no",
+    "group": "SPA"
+   }
+  ],
+  "groups": [
+   {
+    "id": "CON",
+    "name": "Connectivity (Starlink)",
+    "match": [
+     "^connectivity$"
+    ]
+   },
+   {
+    "id": "AI",
+    "name": "AI (xAI and X)",
+    "match": [
+     "^ai$"
+    ]
+   },
+   {
+    "id": "SPA",
+    "name": "Space",
+    "match": [
+     "^space$"
+    ]
+   }
+  ],
+  "note": "Segment operating margin = the segment's operating profit ÷ its revenue, before costs SpaceX does not allocate to segments. Quarter to Mar 2025 and Mar 2026 are derived: 6 months minus the June quarter."
+ },
+ "onboard_price": 149.24,
+ "onboard_date": "2026-09-29",
+ "_onboard_note": "Price at the first staging build (29 Sep 2026 close): the reference for O6 winner discipline (\"up since onboarded\") until a positions feed exists."
+}

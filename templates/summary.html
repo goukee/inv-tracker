@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stocks summary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Summary tab (plan v0.5, section S15). Reads tabs.json and every stock's data.json; holds no data of its own.
+   Tokens are the same as templates/stock.html so the tabs look like one system. */
+:root{
+  --paper:#E4E8EC; --panel:#EDF0F3; --ink:#151A21; --ink-2:#4A5560; --ink-3:#7C8792;
+  --rule:#C3CBD3; --rule-2:#D6DCE2;
+  --bull:#1D6B4C; --bear:#993030; --hold:#87671C; --absent:#A7B0B9;
+  --bull-bg:#CFE0D6; --bear-bg:#E8D2D2; --hold-bg:#E6DCC4;
+  --dot-g:#2E8A5F; --dot-y:#C9A227; --dot-r:#C0453F;
+  --font:Archivo,"Helvetica Neue",Arial,sans-serif; color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#12171D; --panel:#1A2029; --ink:#E6EBF0; --ink-2:#A3AEB9; --ink-3:#727D88; --rule:#2E3844; --rule-2:#252E38;
+  --bull:#5FBF92; --bear:#E07777; --hold:#D4AC4C; --absent:#5A646E; --bull-bg:#1B3A2C; --bear-bg:#3B2222; --hold-bg:#382F19;
+  --dot-g:#4FB585; --dot-y:#D9B23F; --dot-r:#E0645E; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#12171D; --panel:#1A2029; --ink:#E6EBF0; --ink-2:#A3AEB9; --ink-3:#727D88; --rule:#2E3844; --rule-2:#252E38;
+  --bull:#5FBF92; --bear:#E07777; --hold:#D4AC4C; --absent:#5A646E; --bull-bg:#1B3A2C; --bear-bg:#3B2222; --hold-bg:#382F19;
+  --dot-g:#4FB585; --dot-y:#D9B23F; --dot-r:#E0645E; color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:14px;line-height:1.45;font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1000px;margin:0 auto;padding:18px 18px 48px}
+.mast{display:flex;justify-content:space-between;align-items:baseline;gap:6px 16px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:9px}
+.mast h1{font-size:20px;margin:0;letter-spacing:-.01em}
+.mast span{font-size:12.5px;color:var(--ink-2)}
+.strip{margin:14px 0 0;padding:10px 13px;border:1px solid var(--rule);background:var(--panel);font-size:13px;color:var(--ink-2)}
+.strip.on{border-color:var(--hold);background:var(--hold-bg);color:var(--ink)}
+.strip b{color:var(--ink)}
+.strip ul{margin:6px 0 0;padding-left:18px}.strip li{margin:2px 0}
+h2{font-size:14px;font-weight:700;margin:26px 0 0;padding-bottom:7px;border-bottom:1px solid var(--ink);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:baseline}
+h2 small{font-weight:500;font-size:12px;color:var(--ink-2)}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{padding:9px 10px;border-bottom:1px solid var(--rule-2);white-space:nowrap;text-align:right;vertical-align:middle}
+th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}
+thead th{font-size:11.5px;font-weight:600;color:var(--ink-2);background:var(--panel)}
+tbody tr{cursor:pointer}
+tbody tr:hover td{background:var(--panel)}
+tbody tr:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}
+.code{font-weight:800;font-size:14px}
+.nm{display:block;font-size:11.5px;color:var(--ink-3);font-weight:500}
+.call{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:2px}
+.call.bull{color:var(--bull);background:var(--bull-bg)}.call.bear{color:var(--bear);background:var(--bear-bg)}
+.call.hold{color:var(--hold);background:var(--hold-bg)}.call.mute{color:var(--ink-2);border:1px solid var(--rule)}
+.reads{display:block;font-size:11px;color:var(--ink-3);margin-top:3px}
+.pos{color:var(--bull)}.neg{color:var(--bear)}.nil{color:var(--ink-2)}
+.comp{font-weight:800;font-size:15px}
+.flag{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;border-radius:2px;background:var(--hold-bg);color:var(--ink);box-shadow:inset 3px 0 0 var(--hold);margin-left:4px}
+.flag.big{background:var(--bear-bg);box-shadow:inset 3px 0 0 var(--bear)}
+.none{color:var(--ink-3);font-size:12px}
+/* indicator grid */
+.grid th,.grid td{text-align:center;padding:8px 5px}
+.grid th:first-child,.grid td:first-child{text-align:left;padding-left:10px}
+.grid thead tr.b th{font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-2);border-bottom:0;padding-bottom:0}
+.grid thead tr.i th{font-size:10.5px;font-weight:600;color:var(--ink-3)}
+.grid .sep{border-left:1px solid var(--rule)}
+.dot{display:inline-block;width:13px;height:13px;border-radius:50%;vertical-align:middle}
+.dot.g{background:var(--dot-g)}.dot.y{background:var(--dot-y)}.dot.r{background:var(--dot-r)}
+.dot.x{width:auto;height:auto;border-radius:0;color:var(--absent);font-size:12px}
+.dot.moved{box-shadow:0 0 0 2px var(--paper),0 0 0 4px var(--ink)}
+.legend{display:flex;gap:6px 16px;flex-wrap:wrap;font-size:12px;color:var(--ink-2);margin:10px 0 0}
+.legend .dot{width:11px;height:11px;margin-right:5px}
+.note{font-size:12px;color:var(--ink-3);margin:10px 0 0}
+.err{padding:24px 0;color:var(--bear)}
+@media (max-width:620px){
+  .main thead{display:none}
+  .main tr{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:10px 4px;border-bottom:1px solid var(--rule-2)}
+  .main td{display:block;border:0;padding:0;text-align:left;white-space:normal}
+  .main td:nth-child(4){text-align:right}
+  .main td:nth-child(2){grid-column:2;grid-row:1;text-align:right}
+  .main td:nth-child(5){grid-column:1 / -1;text-align:left}
+}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"><p class="note">Loading…</p></div>
+<script>
+/* Every figure comes from each stock's data.json (principle P11). Adding a stock to tabs.json adds it here automatically. */
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const dl=iso=>iso?(+iso.slice(8,10))+' '+MON[+iso.slice(5,7)-1]+' '+iso.slice(0,4):'';
+const sg=v=>v==null?'n/a':(v>0?'+':v<0?'−':'')+Math.abs(v);
+const ZONE={SB:'Strong Buy',B:'Buy',H:'Hold',S:'Sell',SS:'Strong Sell'};
+const zt=z=>z==='SB'||z==='B'?'bull':z==='S'||z==='SS'?'bear':z==='H'?'hold':'mute';
+// indicator columns, grouped by bucket; DM4 = the stock's own demand measures combined (weighted)
+const COLS=[['Price trend',['PT1','PT2','PT4']],['Liquidity',['LQ1','LQ2','LQ3','LQ4','LQ6']],['Demand',['DM1','DM2','DM3','DM4','DM5','DM6']],['Valuation',['VL1','VL2','VL3','VL4']]];
+const WORD={1:'bullish',0:'neutral','-1':'bearish'};
+function cell(d,id){
+  let its=d.indicators.filter(i=>i.id===id);
+  if(id==='DM4') its=d.indicators.filter(i=>/^DM4/.test(i.id));
+  const live=its.filter(i=>i.s!=null);
+  const moved=((d.changes||{}).sections||{}).indicators||[];
+  const mv=its.some(i=>moved.some(m=>m.id===i.id));
+  if(!live.length){const why=its.length?its.map(i=>i.name+': '+i.text).join('; '):(d.removed||[]).some(r=>r.id===id)?'removed for this stock':'no data';
+    return `<td title="${esc(id+' · '+why)}"><span class="dot x" aria-label="${esc(id)} no data">–</span></td>`}
+  const w=live.reduce((a,i)=>a+i.w,0), s=live.reduce((a,i)=>a+i.w*i.s,0)/w, k=s>=0.34?'g':s<=-0.34?'r':'y';
+  const t=live.map(i=>`${i.id} ${i.name}: ${i.text} (${WORD[i.s]})`).join('\n')+(mv?'\nChanged since the last refresh':'');
+  return `<td title="${esc(t)}"><span class="dot ${k}${mv?' moved':''}" role="img" aria-label="${esc(id+' '+({g:'bullish',y:'neutral',r:'bearish'})[k]+(mv?', changed':''))}"></span></td>`;
+}
+function major(d){
+  const S=((d.changes||{}).sections)||{}, calls=(S.call||[]), inds=(S.indicators||[]);
+  const callMoved=calls.some(x=>/^Call changed|zone moved/i.test(x));
+  return {since:(d.changes||{}).since, first:(d.changes||{}).first, calls, inds, callMoved};
+}
+function render(rows,skipped){
+  const asof=rows.map(r=>r.d.meta.asof).sort().at(-1);
+  const ch=rows.map(r=>({r,m:major(r.d)}));
+  const withCh=ch.filter(x=>x.m.calls.length||x.m.inds.length);
+  const strip=withCh.length
+    ?`<div class="strip on"><b>Major changes since the previous refresh</b><ul>${withCh.map(({r,m})=>`<li><b>${esc(r.code)}</b>: ${[...m.calls.map(esc),...(m.inds.length?[`${m.inds.length} indicator${m.inds.length>1?'s':''} moved (${m.inds.map(i=>esc(i.id)+' '+i.from.toLowerCase()+' → '+i.to.toLowerCase()).join(', ')})`]:[])].join('; ')}</li>`).join('')}</ul></div>`
+    :`<div class="strip"><b>No major changes.</b> No call, zone or indicator changed since each stock's previous refresh${ch.some(x=>x.m.first||!x.m.since)?' (tabs on their first day have nothing to compare yet)':''}.</div>`;
+  const main=rows.map(({code,d})=>{
+    const c=d.call||{}, conf=!!c.code, label=d.composite==null?'Insufficient data':conf?c.label:'Not confirmed';
+    const tone=d.composite==null?'mute':zt(conf?c.code:d.zone);
+    const reads=d.composite==null?`coverage ${(d.coverage*100).toFixed(0)}%; needs 70%`:conf?(c.capped?'capped; indicators read '+esc(c.capped):''):`today reads ${esc(ZONE[d.zone]||'n/a')} · ${esc(c.label)}`;
+    const m=major(d), big=m.callMoved;
+    const chg=m.first||!m.since?'<span class="none">First day</span>':(m.calls.length||m.inds.length)?`<span class="flag${big?' big':''}">${big?'Call / zone changed':''}${big&&m.inds.length?' · ':''}${m.inds.length?m.inds.length+' indicator'+(m.inds.length>1?'s':''):''}${!big&&!m.inds.length?'Score moved':''}</span>`:'<span class="none">No change</span>';
+    const p=d.price||{}, d1=p.d1;
+    return `<tr tabindex="0" data-code="${esc(code)}"><td><span class="code">${esc(code)}</span><span class="nm">${esc(d.meta.name)}</span></td>
+      <td><span class="call ${tone}">${esc(label)}</span>${reads?`<span class="reads">${reads}</span>`:''}</td>
+      <td>${p.px!=null?p.px.toFixed(2):'n/a'} <span class="nm"><span class="${d1>0?'pos':d1<0?'neg':'nil'}">${d1==null?'':(d1>0?'+':d1<0?'−':'')+Math.abs(d1*100).toFixed(1)+'%'}</span> on the day · ${esc(d.meta.currency)} · close ${esc(dl(d.meta.asof))}</span></td>
+      <td><span class="comp ${d.composite>0?'pos':d.composite<0?'neg':'nil'}">${d.composite==null?'n/a':sg(d.composite)}</span><span class="nm">${d.direction?esc(d.direction.label):'direction: after 25 days'}</span></td>
+      <td>${chg}</td></tr>`}).join('');
+  const hb=COLS.map(([b,ids],j)=>`<th colspan="${ids.length}" class="${j?'sep':''}">${b}</th>`).join('');
+  const hi=COLS.map(([b,ids],j)=>ids.map((id,k)=>`<th class="${j&&!k?'sep':''}" title="${esc(id)}">${id}</th>`).join('')).join('');
+  const grid=rows.map(({code,d})=>`<tr tabindex="0" data-code="${esc(code)}"><td><span class="code">${esc(code)}</span></td>${COLS.map(([b,ids],j)=>ids.map((id,k)=>cell(d,id).replace('<td',`<td class="${j&&!k?'sep':''}"`)).join('')).join('')}</tr>`).join('');
+  document.getElementById('app').innerHTML=`
+  <header class="mast"><h1>Stocks summary</h1><span>${rows.length} stock${rows.length>1?'s':''} · latest close ${esc(dl(asof))} · click a row to open its tab</span></header>
+  ${strip}
+  <h2>The call <small>Composite runs from −100 to +100 · Buy at +30 or above, Sell at −30 or below</small></h2>
+  <div class="tbl"><table class="main"><thead><tr><th>Stock</th><th>Call</th><th>Last price</th><th>Composite</th><th>Since last refresh</th></tr></thead><tbody>${main}</tbody></table></div>
+  <h2>Indicators <small>Hover a dot for the reading</small></h2>
+  <div class="tbl"><table class="grid"><thead><tr class="b"><th></th>${hb}</tr><tr class="i"><th>Stock</th>${hi}</tr></thead><tbody>${grid}</tbody></table></div>
+  <div class="legend"><span><span class="dot g"></span>Bullish</span><span><span class="dot y"></span>Neutral</span><span><span class="dot r"></span>Bearish</span><span><span class="dot x">–</span> No data or removed</span><span><span class="dot y moved"></span> Changed since the last refresh</span></div>
+  <p class="note">DM4 combines each stock's own demand measures (weighted). A call is confirmed after 7 of 10 trading days in one zone; until then the page shows the zone the indicators read today.${skipped.length?' Not shown (data missing): '+skipped.map(esc).join(', ')+'.':''}</p>`;
+  document.querySelectorAll('tr[data-code]').forEach(tr=>{const go=()=>parent!==window&&parent.postMessage({type:'open-tab',id:tr.dataset.code},'*');
+    tr.addEventListener('click',go);tr.addEventListener('keydown',e=>{if(e.key==='Enter')go()})});
+  parent!==window&&parent.postMessage({type:'tab-height',h:document.documentElement.scrollHeight},'*');
+}
+fetch('../tabs.json',{cache:'no-store'}).then(r=>r.json()).then(cfg=>{
+  const codes=cfg.tabs.filter(t=>t.template==='stock').map(t=>t.id);
+  return Promise.all(codes.map(code=>fetch(`../stocks/${code}/data.json`,{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null).then(d=>({code,d}))));
+}).then(all=>render(all.filter(x=>x.d),all.filter(x=>!x.d).map(x=>x.code)))
+  .catch(e=>{document.getElementById('app').innerHTML=`<p class="err">Could not load the stocks (${esc(e.message)}).</p>`});
+new ResizeObserver(()=>parent!==window&&parent.postMessage({type:'tab-height',h:document.documentElement.scrollHeight},'*')).observe(document.body);
+</script>
+</body>
+</html>

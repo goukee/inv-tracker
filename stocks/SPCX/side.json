@@ -1,0 +1,354 @@
+{
+ "dm3": {
+  "guide_mid": null,
+  "consensus": null,
+  "measured": "-",
+  "source": "SpaceX gives no revenue or profit guidance",
+  "note": "No guidance, so DM3 is blank and excluded."
+ },
+ "custom": {
+  "DM4a": {
+   "value": 66.0,
+   "period": "Jun 2026 quarter"
+  },
+  "DM4b": {
+   "value": 247.0,
+   "period": "Jun 2026 quarter"
+  },
+  "DM4c": {
+   "value": 29.0,
+   "period": "Jun 2026 quarter"
+  },
+  "DM5": {
+   "value": 24.4,
+   "period": "4 weeks to 26 Sep 2026 vs same 4 weeks of 2025 (Google Trends, worldwide: avg 67.5 vs 54.3)"
+  }
+ },
+ "move": {
+  "class": "Quiet",
+  "direction": "up",
+  "headline": "A normal-sized rise, inside SpaceX's usual daily range",
+  "evidence": [
+   {
+    "d": "29 Sep",
+    "t": "SpaceX rose 2.6% while the Nasdaq-100 rose 0.2%. Its typical daily move over the last 60 trading days is 4.5%, so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
+   {
+    "d": "28 Sep",
+    "t": "Starship reached orbit for the first time and deployed 26 Starlink V3 satellites (Flight 14), ending with a controlled splashdown in the Pacific.",
+    "kind": "fact",
+    "src": "RocketLaunch.org"
+   },
+   {
+    "d": "22 Sep",
+    "t": "President Gwynne Shotwell exercised options and sold shares at $151-155 (Form 4).",
+    "kind": "fact",
+    "src": "SEC / Yahoo"
+   }
+  ]
+ },
+ "earnings": {
+  "past": [
+   {
+    "q": "Jun 2026 quarter (Q2 2026)",
+    "date": "Tue 4 Aug 2026, after the US close (Wed 5 Aug, early morning Singapore)",
+    "vs": "Revenue $7.81bn, +92% vs a year earlier, vs about $6.7-6.9bn expected. EPS -$0.09 vs about -$0.26 to -$0.29 expected. Adjusted EBITDA $3.5bn vs about $2.0bn.",
+    "guide": "No revenue or profit guidance. Capex in each of the next two quarters similar to the June quarter's $18.4bn (about $13bn had been expected). Target: $100bn annualised revenue run-rate by December 2026.",
+    "reaction": "-13.6% on 5 Aug while the Nasdaq-100 fell 0.8%; then +6.1% and +15.8% on 6-7 Aug.",
+    "take": [
+     "<b>Revenue beat everywhere.</b> Connectivity +66% (12.0m Starlink subscribers, double a year earlier), AI +247%, Space +29%, each vs the same quarter a year earlier.",
+     "<b>AI turned EBITDA-positive</b> (operating profit before depreciation) on new AI computing agreements: $1.1bn adjusted EBITDA; computing agreements brought in $1.6bn of revenue.",
+     "<b>Spending is the problem.</b> Capex $18.4bn in the quarter ($15.8bn of it for AI), 2.35x revenue; free cash flow −$25.0bn in the 6 months to Jun 2026.",
+     "<b>Large cash cushion, but it is being spent fast:</b> $93.5bn cash plus $6.5bn marketable securities at 30 Jun ($100.0bn), against $39.4bn of debt, after a $25bn bond that partly repaid a $20bn bridge loan; backlog $47.5bn. At the H1 pace (−$12.5bn a quarter) that cash lasts about 8 quarters; at capex near $18bn a quarter, closer to 6 (rough estimate, before any new borrowing or share sales).",
+     "<b>Space still loss-making</b> (operating loss $542m) while Starship is developed.",
+     "<b>New front:</b> plans a mobile network on EchoStar spectrum, competing with phone carriers."
+    ],
+    "impact": "Demand strong (DM4a/b/c bullish); no guidance (DM3 blank); cash burn shows in the quality check and chain C3."
+   },
+   {
+    "q": "Mar 2026 quarter (Q1 2026)",
+    "date": "Disclosed in the IPO prospectus (May 2026), before listing",
+    "vs": "Revenue $4.69bn, +15% vs a year earlier. Net loss $4.28bn vs $0.53bn a year earlier. No public consensus.",
+    "guide": "None.",
+    "reaction": "Not listed yet.",
+    "take": [
+     "<b>Heavy AI spending before the revenue:</b> capex $10.1bn, $7.7bn of it on AI; the AI segment lost $2.5bn.",
+     "<b>Cash was thin before the IPO:</b> $15.9bn, with $29.1bn of debt."
+    ],
+    "impact": "Baseline: revenue rose 66% from Q1 to Q2 once AI computing revenue arrived."
+   }
+  ],
+  "next": [
+   {
+    "q": "Sep 2026 quarter (Q3 2026)",
+    "date": "Tue 3 Nov 2026 (estimated), after the US close",
+    "iso": "2026-11-03",
+    "status": "Estimated",
+    "watch": [
+     "Revenue vs the $12.6bn consensus: do the AI contracts show up?",
+     "Capex vs the ~$18bn a quarter signalled (chain C3), and how long the $100bn of cash and securities lasts.",
+     "Starlink subscribers vs 12.0m; about 1.3bn shares unlock on the second full trading day after the release (chain C1)."
+    ]
+   },
+   {
+    "q": "Dec 2026 quarter (Q4 2026)",
+    "date": "Early February 2027",
+    "iso": "2027-02-02",
+    "status": "Estimated",
+    "watch": [
+     "FY2026 revenue vs the $44.5bn consensus.",
+     "2027 capex plan."
+    ]
+   }
+  ]
+ },
+ "shareholder_notes": [
+  "Controlled company: Class B shares carry 10 votes. Before the IPO Musk owned about 42.5% of the shares and 83.8% of the votes (prospectus, via Reuters); he keeps more than 50% of the votes after listing.",
+  "First 13F quarter after listing: every institution shows as a new buyer, so institutional change (LQ3) is blank until the September-quarter filings (mid-November).",
+  "The 13,182m shares used for holder percentages match the 10-Q count: 7,696m Class A + 5,485m Class B at 28 Jul 2026.",
+  "Insider sales cannot yet be split into pre-scheduled plans and discretionary sales."
+ ],
+ "chains": [
+  {
+   "id": "C1",
+   "name": "Share supply (lock-ups)",
+   "path": [
+    "Lock-up expires",
+    "more tradable shares",
+    "selling pressure on the price"
+   ],
+   "watch": null,
+   "watch_label": "Lock-up calendar + news",
+   "active": null,
+   "status": "Quiet",
+   "evidence": [
+    "No single tranche of 5%+ of shares is due within 20 trading days yet, so the chain reads Quiet; it turns Active about 8 Oct, when the ~1.3bn-share (9.9%) post-results tranche comes within 20 trading days. Meanwhile 328m shares (2.5% of all 13,182m) unlock on 9 Oct and 328m on 24 Oct (a Saturday, so tradable from 26 Oct): 5.0% together (Motley Fool, 16 Aug and 15 Sep).",
+    "Next: about 1.3bn shares (9.9%) on the second full trading day after Q3 results; 342m on 8 Dec when the main 180-day lock-up ends (one tracker puts the 8 Dec total at about 798m); Musk's roughly 6.1-6.4bn shares (sources differ; about half of all shares) stay locked until about 14 Jun 2027.",
+    "The 911.5m-share release on 6 Aug was absorbed: +6.1% that day (CNN). The 9 Sep release coincided with a 3.9% fall (Motley Fool)."
+   ]
+  },
+  {
+   "id": "C2",
+   "name": "Rates squeeze the valuation",
+   "path": [
+    "Inflation, Fed rate-rise odds",
+    "10-year yield up",
+    "far-off profits worth less",
+    "85.6x P/E compresses"
+   ],
+   "watch": "TNX",
+   "watch_label": "US 10-year Treasury yield",
+   "active": {
+    "kind": "pts",
+    "t": 0.25
+   },
+   "status": "Active",
+   "evidence": [
+    "10-year yield 5.26% on 29 Sep vs 4.76% 20 trading days earlier, up 0.50 percentage points (trigger: up 0.25) (Yahoo)."
+   ]
+  },
+  {
+   "id": "C3",
+   "name": "AI build-out cost",
+   "path": [
+    "AI boom",
+    "chips, memory, power dearer",
+    "xAI spending up",
+    "deeper cash burn"
+   ],
+   "watch": "MU",
+   "watch_label": "Micron share price (stand-in for memory prices)",
+   "active": {
+    "kind": "pct",
+    "t": 10
+   },
+   "status": "Active",
+   "evidence": [
+    "Micron shares $1,065 on 29 Sep vs $959 20 trading days earlier, +11.1% (trigger: up 10%) (Yahoo).",
+    "Q2 capex $18.4bn, $15.8bn of it for AI; shares −13.6% on 5 Aug when it was reported (CNBC).",
+    "Terafab chip plant with Tesla, $16.8bn first phase (Electrek, 6 Aug). A deal with a related Musk company."
+   ]
+  },
+  {
+   "id": "C4",
+   "name": "Defence and space budgets",
+   "path": [
+    "Congress funds Golden Dome, Space Force, NASA",
+    "launch and Starshield contracts",
+    "Space and government revenue"
+   ],
+   "watch": "ITA",
+   "watch_label": "US defence ETF (ITA)",
+   "active": {
+    "kind": "pct",
+    "t": -5
+   },
+   "status": "Active",
+   "evidence": [
+    "Defence ETF (ITA) $209.30 on 29 Sep vs $228.35 20 trading days earlier, −8.3% (trigger: down 5%): the watch number has fired, but nothing has yet shown up in SpaceX's own figures.",
+    "FY2027 request includes $17.9bn for Golden Dome, $17.1bn of it through a planned reconciliation package rather than normal appropriations (Aerospace America). Starshield holds $6bn+ of Space Force contracts (24/7 Wall St, 23 Sep)."
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "d": "2026-10-02",
+   "t": "US jobs report (September)",
+   "link": "C2",
+   "note": "Confirmed (BLS): Fri 2 Oct, 8:30am ET (8:30pm Singapore)."
+  },
+  {
+   "d": "2026-10-09",
+   "t": "Lock-up tranche: 328m shares (2.5% of all shares)",
+   "link": "C1",
+   "note": "Day 120 after the IPO (Motley Fool)."
+  },
+  {
+   "d": "2026-10-14",
+   "t": "US inflation (September CPI)",
+   "link": "C2",
+   "note": "Confirmed (BLS): Wed 14 Oct, 8:30am ET (8:30pm Singapore)."
+  },
+  {
+   "d": "2026-10-26",
+   "t": "Lock-up tranche: 328m shares (2.5% of all shares)",
+   "link": "C1",
+   "note": "Day 135 falls on Sat 24 Oct, so first tradable Mon 26 Oct (Motley Fool; date per Tokenomist)."
+  },
+  {
+   "d": "2026-10-28",
+   "t": "Fed rate decision",
+   "link": "C2",
+   "note": "Meeting 27-28 Oct; decision and press conference (2:30pm ET) on 28 Oct, which is early 29 Oct in Singapore (Federal Reserve)."
+  },
+  {
+   "d": "2026-11-03",
+   "t": "SpaceX Q3 results (estimated)",
+   "link": "all",
+   "note": "After the US close; date not yet confirmed by SpaceX."
+  },
+  {
+   "d": "2026-11-05",
+   "t": "Lock-up tranche: about 1.3bn shares (9.9% of all shares)",
+   "link": "C1",
+   "note": "Second full trading day after Q3 results; moves with the results date (Motley Fool)."
+  },
+  {
+   "d": "2026-12-08",
+   "t": "End of the main 180-day lock-up: 342m shares (2.6%)",
+   "link": "C1",
+   "note": "Motley Fool; one tracker (Tokenomist) puts the total that day at about 798m."
+  },
+  {
+   "d": "2027-06-14",
+   "t": "Musk's lock-up ends (about 6.1-6.4bn shares, about half of all shares)",
+   "link": "C1",
+   "note": "366 days after the IPO falls on Sat 12 Jun, so first tradable Mon 14 Jun (Motley Fool, Tokenomist)."
+  }
+ ],
+ "valuation_plain": [],
+ "lead": "SpaceX shows <b>Insufficient data</b>: only 62% of indicator weight has live data (a call needs 70%), any call would be capped at Hold by two quality red flags, and the Demand bucket is left out because only 34% of its weight has live data (it needs 50%).",
+ "bullets": [
+  "<b>No call, and none due on 5 Oct.</b> Only 62% of indicator weight has live data vs the 70% needed. Forecast revisions (DM2, 8 of 100 points) stay out while the forecast they are measured against is too small: 2027 earnings per share of $0.03 expected 90 days ago vs $1.89 today, so the 5 Oct date no longer brings them back by itself. Even with a call, two quality red flags cap it at Hold: free cash flow was −$25.0bn in the 6 months to Jun 2026, and the operating loss was 1.6x the interest bill over the same two quarters.",
+  "<b>Demand looks strong but is not scored yet.</b> Only 34% of the Demand weight has live data (the bucket needs 50%), so it is left out; the live readings are all bullish. In the June quarter, vs the same quarter a year earlier, Connectivity (Starlink) revenue grew 66%, AI 247% and Space 29%; Google searches for Starlink were 24.4% above the same 4 weeks of 2025 (a noisy measure: the Starship flight fell in that window). Much of the AI jump came from renting out computing capacity, and one AI customer alone was 12.2% of company revenue in the 6 months to June (10-Q).",
+  "<b>The price is extreme vs peers.</b> Valuation scores −100: investors pay 107.9x expected profit over the next 12 months vs 30.8x for Iridium, the only space peer with a usable P/E, a one-peer comparison (+250%); SpaceX's 108x is above the 80x range peers must pass, so the page adds a caution, but it still counts as very expensive. On total company value vs operating profit before depreciation it is 327x vs 8.5x for the median of four peers.",
+  "<b>Price trend scores +100, yet the shares are still down over 3 months.</b> The price is 5.1% above its average since listing ($143.51) and 19.5 points ahead of the space peers over 63 trading days, but only because the peers fell further (average −23.7% vs SpaceX −4.2% over the same 63 days). The shares closed at $150.86, +1.1% on the day vs +0.23% for the Nasdaq-100, 29% below their post-listing high close ($211.40 on 16 Jun) and 12% above the $135 IPO price.",
+  "<b>Money flows are no longer leaning against it.</b> Liquidity scores +8, up from −54 yesterday: buying vs selling volume is now neutral (0.88x up-day vs down-day volume, last 20 trading days), the dollar index is 1.80 points higher than 20 trading days ago, and markets price a 34% chance of a Fed rate rise at the next meeting vs 27% a month earlier. Short interest fell 12.0% vs a month earlier (2.6% of float). Share supply is rising: 656m shares (5.0% of all shares) unlock in October and about 1.3bn (9.9%) just after Q3 results."
+ ],
+ "defects": [
+  "Coverage 62% (below the 70% floor): no call. Forecast revisions (DM2) stay out while the forecast 90 days earlier is too small a base (under $0.05, or under 10% of today's); it was $0.03 vs $1.89 today.",
+  "Quality override O3: 2 red flags (free cash flow −$25.0bn in the 6 months to Jun 2026; operating loss 1.6x interest), so any call is capped at Hold.",
+  "VL3 (P/E vs own history) removed: no earnings history yet. To be reinstated when history allows.",
+  "Revenue and margin trends (DM1, DM6) blank: too few quarters filed with the SEC.",
+  "No company guidance, so DM3 is blank.",
+  "Forward P/E vs peers rests on one peer (Iridium): the other seven are loss-making or outside the 2x-80x data-quality range. The 85.6x is Yahoo's figure; price ÷ the FY2027 consensus of $1.89 gives about 79x. SpaceX's own 85.6x and 323x (EV/EBITDA) are above the 80x range that peers must pass, yet are still scored.",
+  "Price trend +100 comes from short-history measures and from peers falling further; the shares fell 12.7% over 63 trading days.",
+  "Customer concentration and related parties are not scored: one AI customer ('Customer B' in the 10-Q, not named; press reports suggest Anthropic, unconfirmed) was 12.2% of revenue in the 6 months to June, about 19.5% of June-quarter revenue (Unite.AI); another customer was 17.9% across all three segments in the same 6 months. The 10-Q balance sheet shows about $13.3bn of related-party debt at 30 Jun (details in its Note 17, not reviewed here), and Terafab is a joint project with Tesla.",
+  "No cash runway line: cash and securities of $100.0bn vs free cash flow of −$25.0bn in 6 months (rough estimate: 6-8 quarters before new funding).",
+  "Demand inputs (DM4a/b/c, DM5) are entered by hand from results releases and Google Trends. DM5 (search interest) is a noisy attention measure that jumps on news.",
+  "Short interest as % of float (LQ2) and trading volume (LQ1) shift mechanically while lock-ups add tradable shares.",
+  "Revenue mix uses short-history mode: only the Jun 2026 10-Q is filed, giving four quarters with a gap (Mar/Jun 2025 and Mar/Jun 2026)."
+ ],
+ "sources": [
+  "Yahoo Finance (prices, consensus, valuation, short interest, insiders, macro)",
+  "SEC EDGAR (reported financials, filings; Q2 2026 10-Q)",
+  "Nasdaq (13F institutional holdings)",
+  "Polymarket (Fed odds)",
+  "SpaceX Q2 2026 results release (4 Aug 2026) and call highlights (Nasdaq)",
+  "Motley Fool and Tokenomist (lock-up schedule); BLS and Federal Reserve calendars",
+  "CNBC, CNN, Axios, Electrek, Aerospace America, Unite.AI, RocketLaunch.org, Reuters, Morningstar, 24/7 Wall St (news)"
+ ],
+ "mix": {
+  "updated": "2026-09-30",
+  "segments": {
+   "CON": {
+    "sells": "Starlink satellite internet: home and business broadband, aviation, maritime, government (Starshield) and direct-to-phone service.",
+    "buyers": "Consumers (12.0m subscribers in June 2026), airlines, shipping lines, businesses and governments.",
+    "pos": [
+     "The only profitable part: 38.6% segment operating margin in the Jun 2026 quarter (35.7% a year earlier).",
+     "Mostly monthly subscriptions, so revenue recurs.",
+     "+66% vs the same quarter a year earlier; subscribers doubled to 12.0m."
+    ],
+    "neg": [
+     "Share of sales fell from 64% to 55% (Jun 2025 → Jun 2026 quarter) because AI grew faster.",
+     "Revenue per subscriber is lower than a year ago: Connectivity revenue grew 66% while subscribers doubled (roughly −17% per subscriber). Management says average revenue per user held at $66 a month vs the March quarter.",
+     "Satellites must be replaced every few years, so capital spending never stops."
+    ]
+   },
+   "AI": {
+    "sells": "xAI: Grok chatbot subscriptions and API, advertising on X, and AI computing agreements (renting out data-centre capacity).",
+    "buyers": "Consumers and businesses (Grok), advertisers (X), and companies buying AI computing.",
+    "pos": [
+     "+247% vs the same quarter a year earlier; now 33% of sales (18% a year earlier).",
+     "New AI computing agreements made the segment EBITDA-positive in the Jun 2026 quarter ($1.1bn adjusted EBITDA; $1.6bn of computing revenue)."
+    ],
+    "neg": [
+     "Still loses money: segment operating margin −49% in the Jun 2026 quarter (−207% a year earlier).",
+     "Takes most of the capital spending: $15.8bn of the $18.4bn capex in the Jun 2026 quarter (86%) was for AI, and management expects a similar level in each of the next two quarters.",
+     "Advertising on X is shrinking: $367m vs $426m in the same quarter a year earlier.",
+     "Much of the jump came from new computing agreements, and one customer (not named) was 12.2% of company revenue in the 6 months to June; how repeatable these deals are is not yet known."
+    ]
+   },
+   "SPA": {
+    "sells": "Falcon and Starship launches, Dragon crew and cargo flights, and development work for NASA and defence.",
+    "buyers": "NASA, the US Space Force and other agencies, commercial satellite operators; it also launches SpaceX's own Starlink satellites.",
+    "pos": [
+     "+29% vs the same quarter a year earlier.",
+     "Owning the launcher lets SpaceX put up its own Starlink satellites at cost, which rivals cannot match."
+    ],
+    "neg": [
+     "Loss-making while Starship is developed: operating loss $542m in the Jun 2026 quarter (segment margin −56%).",
+     "One-off missions, not recurring: revenue swings with launch timing ($619m in the Mar 2026 quarter vs $962m in June).",
+     "Smallest part: 12% of sales in the Jun 2026 quarter."
+    ]
+   }
+  },
+  "shift": {
+   "title": "What the shift means for SpaceX",
+   "pos": [
+    "Faster growth: revenue +92% vs the same quarter a year earlier (Jun 2026), led by AI (+247%).",
+    "Losses narrowed sharply in the June quarter: all segments together earned −1.8% operating margin vs −23.8% a year earlier, helped by the AI computing deals. But the March quarter was −41.4%, and over the half year losses widened: −16.7% (6 months to Jun 2026) vs −11.6% a year earlier."
+   ],
+   "neg": [
+    "Less recurring: subscription-based Connectivity fell from 64% to 55% of sales while AI, which relies on newer and less proven deals, rose from 18% to 33%.",
+    "Heavy cash burn: the AI build-out needs about $18bn of capital spending a quarter, far above operating cash (free cash flow −$25.0bn in the 6 months to Jun 2026, against $100.0bn of cash and securities).",
+    "Only four quarters of segment data are filed (with a gap), so the trend is short.",
+    "The '30.5-point mix drag' line reflects AI's very deep loss a year ago (−207% margin) weighing more now AI is a bigger share; AI's own margin improved to −49%."
+   ]
+  }
+ },
+ "quality_info": [
+  {
+   "name": "Customer concentration",
+   "value": "one unnamed AI customer was 12.2% of revenue in the 6 months to Jun 2026 (about 19.5% of the June quarter)",
+   "source": "SpaceX 10-Q, 4 Aug 2026"
+  },
+  {
+   "name": "Share supply",
+   "value": "lock-up releases: about 5% of shares in October, about 9.9% two trading days after Q3 results, 2.6% on 8 Dec; Musk's holding from about 14 Jun 2027",
+   "source": "prospectus terms (see chain C1)"
+  }
+ ]
+}
