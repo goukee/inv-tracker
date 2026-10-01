@@ -224,6 +224,37 @@ ul.bul li b{color:var(--ink)}
 .shift .calc{grid-column:1/-1;font-size:12.5px;color:var(--ink-2);border-top:1px solid var(--rule-2);padding-top:8px;margin-top:4px}
 .shift .calc ul{margin:4px 0 0;padding-left:0}
 
+
+/* ---- timeline (plan S16): pick a past session; stays pinned under the tab bar while scrolling */
+.tl{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--rule);box-shadow:0 8px 12px -12px rgba(0,0,0,.4);will-change:transform}
+.tl .in{max-width:1000px;margin:0 auto;padding:9px 18px 9px;position:relative}
+.tl-hd{display:flex;justify-content:space-between;align-items:center;gap:8px 12px;flex-wrap:wrap;font-size:12px;color:var(--ink-3);margin-bottom:6px}
+.tl-hd .sel{display:flex;align-items:center;gap:10px;color:var(--ink-2)}
+.tl-hd .sel b{color:var(--ink);font-size:13px}
+.tl-hd .sel .lt{font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--bull);border:1.5px solid var(--bull);padding:1px 6px}
+.tl-hd .past{font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--hold);border:1.5px solid var(--hold);padding:1px 6px}
+.tl-hd button{font:inherit;font-size:12px;font-weight:700;color:var(--ink);background:var(--panel);border:1px solid var(--ink-3);padding:3px 10px;border-radius:2px;cursor:pointer}
+.tl-strip{position:relative;display:flex;justify-content:flex-end;gap:2px;height:52px}
+.tl-strip::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--rule)}
+.tl-day{flex:1 1 0;max-width:30px;min-width:5px;position:relative;border:0;background:none;padding:0;cursor:pointer;border-radius:1px}
+.tl-day i{position:absolute;left:1px;right:1px;border-radius:1px}
+.tl-day i.up{bottom:50%}.tl-day i.dn{top:50%}
+.tl-day.b i{background:var(--bull)}.tl-day.s i{background:var(--bear)}.tl-day.h i{background:var(--hold)}.tl-day.x i{background:var(--absent)}
+.tl-day:hover{background:var(--rule-2)}
+.tl-day[aria-pressed="true"]{background:var(--rule-2);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.tl-day:disabled{cursor:default;opacity:.4}
+.tl-day:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.tl-ax{display:flex;justify-content:space-between;font-size:10.5px;color:var(--ink-3);margin-top:3px}
+.tl-det{display:grid;grid-template-columns:repeat(auto-fit,minmax(86px,1fr));gap:1px;background:var(--rule-2);border-top:1px solid var(--rule);margin-top:7px}
+.tl-det div{background:var(--paper);padding:5px 8px 6px}
+.tl-det dt{font-size:10.5px;color:var(--ink-3);margin:0}
+.tl-det dd{margin:0;font-size:15px;font-weight:700;letter-spacing:-.01em}
+.tl-det dd.sm{font-size:12.5px;font-weight:600;color:var(--ink-2)}
+.tl-tip{position:absolute;top:calc(100% - 4px);transform:translateX(-50%);z-index:30;background:var(--ink);color:var(--paper);font-size:12px;padding:5px 9px;border-radius:2px;white-space:nowrap;pointer-events:none}
+.pastbar{margin:12px 0 0;padding:10px 13px;border:1px solid var(--hold);background:var(--hold-bg);font-size:13px;color:var(--ink-2)}
+.pastbar b{color:var(--ink)}
+.chg.lat{color:var(--ink-3);border:1px dashed var(--rule)}
+@media (max-width:620px){.tl-det{grid-template-columns:1.4fr 1fr 1.2fr}.tl-det .bk{display:none}.tl-det dd{font-size:13.5px}.tl-strip{height:40px}.tl .in{padding:7px 14px}.tl-hd .hint{display:none}}
 .foot{margin-top:34px;padding-top:13px;border-top:1px solid var(--rule);font-size:12px;color:var(--ink-3)}
 .foot ul{padding-left:18px;margin:6px 0 12px}.foot li{margin-bottom:4px}
 .err{padding:30px 0;font-size:14px;color:var(--bear)}
@@ -231,6 +262,7 @@ ul.bul li b{color:var(--ink)}
 </style>
 </head>
 <body>
+<div class="tl" id="tl" hidden></div>
 <div class="wrap" id="app"><p class="sub">Loading…</p></div>
 <script>
 /* Draws one stock tab from stocks/<CODE>/data.json. The code comes from the address fragment, e.g. stock.html#AAPL.
@@ -247,6 +279,8 @@ const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','De
 const dshort=iso=>iso?(+iso.slice(8,10))+' '+MON[+iso.slice(5,7)-1]:'';
 const dlong=iso=>iso?dshort(iso)+' '+iso.slice(0,4):'';
 const ZONE={SB:'Strong Buy',B:'Buy',H:'Hold',S:'Sell',SS:'Strong Sell'};
+const upd=b=>{if(!b)return '';const t=new Date(b.replace(/Z$/,':00Z'));if(isNaN(t))return '';const s=new Date(t.getTime()+8*3600e3),h=s.getUTCHours();
+  return `${s.getUTCDate()} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][s.getUTCMonth()]} ${s.getUTCFullYear()}, ${h%12||12}:${String(s.getUTCMinutes()).padStart(2,'0')}${h<12?'am':'pm'} SGT`};
 const zoneTone=z=>z==='SB'||z==='B'?'pos':z==='S'||z==='SS'?'neg':'nil';
 
 function band(d){
@@ -428,11 +462,48 @@ function mixSection(mx,H,m){
   <p class="sub">Source: ${esc(mx.source)}. Refreshed when new results are filed.${(mx.checks||[]).length?' Data checks: '+mx.checks.map(esc).join(' '):''}</p>`;
 }
 
+
+/* ---- commodity variant (plan v0.6): data.asset_type === 'commodity' repurposes the company sections */
+const kgT=v=>v==null?'n/a':v.toLocaleString('en-US',{maximumFractionDigits:1})+' t';
+function gVal(d,H){const I=Object.fromEntries(d.indicators.map(i=>[i.id,i])),c=d.commodity||{},v1=I['G-VL1'],v2=I['G-VL2'],r=c.ratio||{};
+  const box=(i,big,sub)=>i?`<div><dt>${esc(i.name)}</dt><dd class="${i.s>0?'pos':i.s<0?'neg':'nil'}">${esc(i.text)}</dd><dd style="font-size:12.5px;font-weight:500;color:var(--ink-2);margin-top:4px">${sub}</dd></div>`:'';
+  return `${H('valuation','Valuation (stretch)','sec-val')}
+  <p class="sub">Gold pays no income, so there is no true “cheap or dear”. These two measures show how stretched the price is against its own history and against stocks. Both only score at extremes (Kenneth, 1 Oct 2026).</p>
+  <div class="kv" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+   ${box(v1,0,c.w200?`$${d.price.px.toFixed(2)} vs a 200-week average of $${c.w200.toFixed(2)} · bearish at 60%+ above, bullish below the average`:esc(v1&&v1.note||''))}
+   ${box(v2,0,r.ratio?`gold ÷ S&P 500 = ${r.ratio.toFixed(3)} (week of ${dshort(r.week)}) vs a 10-year median of ${r.median10y.toFixed(3)} · bearish at 25%+ above, bullish 25%+ below`:esc(v2&&v2.note||''))}
+  </div>`}
+function gMix(dm,H){if(!dm)return '';const P=dm.parts||[],tot=dm.total_t||P.reduce((a,x)=>a+(x.t||0),0),mx=Math.max(...P.map(x=>x.t||0));
+  return `${H('mix','Gold demand mix','sec-mix')}
+  <p class="sub">Where the world's gold demand came from in ${esc(dm.quarter)}: tonnes, and change vs the same quarter a year earlier. Typed in from ${esc(dm.source)}. Not scored; central banks feed DM4 and jewellery plus bars and coins feed DM5.</p>
+  <div class="tbl"><table><thead><tr><th style="text-align:left">Buyer</th><th>Tonnes</th><th>Share of total</th><th>vs a year earlier</th><th style="width:34%"></th></tr></thead><tbody>
+   ${P.map(x=>`<tr><td style="text-align:left">${esc(x.name)}${x.note?`<span class="nm" style="display:block;font-size:11.5px;color:var(--ink-3)">${esc(x.note)}</span>`:''}</td><td>${x.t==null?'n/a':x.t.toFixed(1)}</td><td>${x.t==null||!tot?'n/a':(x.t/tot*100).toFixed(0)+'%'}</td><td class="${x.yoy>0?'pos':x.yoy<0?'neg':''}">${x.yoy==null?'n/a':sg(x.yoy)+'%'}</td><td style="text-align:left"><i style="display:inline-block;height:9px;border-radius:2px;background:var(--ink-3);width:${x.t&&mx?x.t/mx*100:0}%"></i></td></tr>`).join('')}
+   <tr class="med"><td style="text-align:left">Total demand</td><td>${tot?tot.toFixed(1):'n/a'}</td><td></td><td></td><td></td></tr></tbody></table></div>
+  ${dm.shift?`<div class="shift"><h3>${esc(dm.shift.title||'What the shift means')}</h3><div><div class="pnh">Positives</div><ul class="pn p">${(dm.shift.pos||[]).map(x=>`<li>${x}</li>`).join('')}</ul></div><div><div class="pnh">Negatives</div><ul class="pn n">${(dm.shift.neg||[]).map(x=>`<li>${x}</li>`).join('')}</ul></div></div>`:''}`}
+function gFlows(d,H){const c=d.commodity||{},sp=c.spdr||{},cf=c.cftc||{},se=sp.series;
+  const chart=se&&se.v&&se.v.length>5?`<div class="chart" id="flc">${lineChart(se.v,{id:'fl',h:150,label:'Tonnes of gold held by GLD, last 260 trading days',fmt:v=>v.toFixed(1)+' t',xl:[[0,dshort(se.start)],[se.v.length-1,dshort(sp.date)]]})}</div>`:'';
+  return `${H('shareholders','Fund flows and positioning','sec-sh')}
+  <p class="sub">A gold trust has no shareholder register worth reading; what matters is whether investors are adding gold to the fund, and how crowded the futures market is. Not scored here (they feed G-LQ2, G-DM3 and G-LQ3).</p>
+  <div class="kv" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))"><div><dt>Gold held by GLD (${dshort(sp.date)})</dt><dd>${kgT(sp.tonnes)}</dd></div>
+   <div><dt>vs 20 trading days earlier (${dshort(sp.d20)})</dt><dd class="${tone(sp.t20&&sp.tonnes-sp.t20)}">${sp.t20?sg((sp.tonnes/sp.t20-1)*100,1)+'%':'n/a'}</dd></div>
+   <div><dt>vs 60 trading days earlier (${dshort(sp.d60)})</dt><dd class="${tone(sp.t60&&sp.tonnes-sp.t60)}">${sp.t60?sg((sp.tonnes/sp.t60-1)*100,1)+'%':'n/a'}</dd></div>
+   <div><dt>Value of the gold held</dt><dd>${sp.value?'$'+(sp.value/1e9).toFixed(1)+'bn':'n/a'}</dd></div></div>
+  ${chart}
+  <div class="kv" style="margin-top:14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))"><div><dt>Hedge funds' net long in gold futures (report of ${dshort(cf.report)})</dt><dd>${cf.net_long_pct_oi==null?'n/a':cf.net_long_pct_oi.toFixed(1)+'% of open interest'}</dd></div>
+   <div><dt>Where that sits in its last 3 years</dt><dd>${cf.pctile_3y==null?'n/a':cf.pctile_3y.toFixed(0)+'th percentile'}</dd></div>
+   <div><dt>4 weeks earlier (${dshort(cf.d4w)})</dt><dd>${cf.v4w==null?'n/a':cf.v4w.toFixed(1)+'%'}</dd></div>
+   <div><dt>3-year range</dt><dd>${cf.min3y==null?'n/a':cf.min3y.toFixed(1)+'% to '+cf.max3y.toFixed(1)+'%'}</dd></div></div>
+  <p class="sub">CFTC reports positions each Tuesday and publishes them on Friday, so this is up to 10 days old. Read it the other way round: crowded (top 15%) is bearish, washed out (bottom 20%) is bullish.</p>
+  ${(d.shareholders.notes||[]).length?`<p class="sub">${d.shareholders.notes.map(esc).join(' ')}</p>`:''}`}
+function gTrust(d,H){return `${H('quality','Trust checks','sec-q')}
+  <p class="sub">A gold trust has no accounts to check for warning signs, so the company quality check does not apply and never caps the call. Shown instead: what it costs to hold and whether the price tracks the gold.</p>
+  <ul class="qc">${(d.quality.info||[]).map(c=>`<li><span><b>${esc(c.name)}</b><span class="r"> · ${esc(c.rule)}</span></span><span>${esc(c.value)} <span class="pill mute">Info</span></span></li>`).join('')}</ul>`}
 function render(d){
+  const COM=d.asset_type==='commodity', BL=b=>(d.bucket_labels||{})[b]||b;
   const m=d.meta, I=d.indicators, byB={};I.forEach(i=>(byB[i.bucket]=byB[i.bucket]||[]).push(i));
   const callLabel=d.composite==null?'Insufficient data':d.call.code?d.call.label:(ZONE[d.zone]||'No call');
-  const age=(Date.now()-new Date(m.asof+'T21:00:00Z'))/864e5;
-  const bq={ 'Price trend':'Is the market agreeing with the story?','Liquidity':'Is money flowing in or out, and is the backdrop supportive?',
+  const age=d._past?0:(Date.now()-new Date(m.asof+'T21:00:00Z'))/864e5, dayIso=d._past||m.asof;
+  const bq=COM?{'Price trend':'Is the market agreeing?','Liquidity':'Is money flowing in, and is the dollar and rate backdrop supportive?','Demand':'Are the forces behind gold demand pushing up or down?','Valuation vs peers':'How stretched is the price vs its own history and vs stocks?'}:{ 'Price trend':'Is the market agreeing with the story?','Liquidity':'Is money flowing in or out, and is the backdrop supportive?',
     'Demand':'Is demand for the products growing?','Valuation vs peers':'Cheap or expensive vs peers and its own history?'};
   const P=d.peers, sm=P.stock, med=P.median, prem=(a,b)=>a!=null&&b?(a/b-1):null;
   const plain=[
@@ -459,10 +530,10 @@ function render(d){
   const CH=d.changes||{sections:{}}, since=CH.since?dshort(CH.since):null;
   const pxTitle=(new Date(m.asof)-new Date(d.closes.start))/864e5<350?'Price since '+dlong(d.closes.start):'Price, last 12 months';
   const SECT=[['call','The call','sec-call'],['changers','What would change the call','sec-chg'],['move',"What's happening & why",'sec-move'],['calendar','Coming up','sec-cal'],
-    ['indicators','Indicators','sec-ind'],['valuation','Valuation vs peers','sec-val'],['mix','Revenue mix','sec-mix'],['earnings','Earnings','sec-earn'],['shareholders','Shareholders','sec-sh'],
+    ['indicators','Indicators','sec-ind'],['valuation',COM?'Valuation (stretch)':'Valuation vs peers','sec-val'],['mix',COM?'Gold demand mix':'Revenue mix','sec-mix'],['earnings',COM?'Reports and events':'Earnings','sec-earn'],['shareholders',COM?'Fund flows and positioning':'Shareholders','sec-sh'],
     ['chains','Macro chains','sec-chain'],['quality','Quality & cash check','sec-q'],['price',pxTitle,'sec-px']];
   const items=k=>{const v=(CH.sections||{})[k]||[];return v.map(x=>typeof x==='string'?x:`${x.name}: ${x.from} → ${x.to}`)};
-  const badge=k=>CH.first?'<span class="chg off">First day</span>':!CH.since?'<span class="chg off">No comparison yet</span>':items(k).length?`<span class="chg on">${items(k).length} change${items(k).length>1?'s':''} since ${since}</span>`:`<span class="chg off">No change since ${since}</span>`;
+  const badge=k=>d._past&&!SNAPK.has(k)?`<span class="chg lat">Shows latest · ${dshort(m.asof)}</span>`:CH.first?'<span class="chg off">First day</span>':!CH.since?'<span class="chg off">No comparison yet</span>':items(k).length?`<span class="chg on">${items(k).length} change${items(k).length>1?'s':''} since ${since}</span>`:`<span class="chg off">No change since ${since}</span>`;
   const H=(k,title,id)=>`<h2 id="${id}"><span>${title}</span>${badge(k)}</h2>${items(k).length&&k!=='indicators'?`<ul class="chglist">${items(k).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}`;
   const changedSecs=SECT.filter(([k])=>items(k).length);
   const overnight=CH.first||!CH.since?`<div class="overnight"><b>Overnight changes</b><span>First day of this tab: from the next refresh, each section flags what moved since the previous day.</span></div>`
@@ -473,7 +544,8 @@ function render(d){
 
   $('#app').innerHTML=`
   <header class="mast"><h1>${esc(m.name)}<small>${esc(m.code)} · ${esc(m.exchange||'')} · ${esc(m.currency)}</small>${m.status!=='live'?'<span class="stg">STAGING</span>':''}</h1>
-   <span class="px"><b>${d.price.px.toFixed(2)}</b> <span class="${tone(d.price.d1)}">${pc(d.price.d1)}</span> on the day vs ${pc(d.price.bench_d1)} for the ${esc(m.bench)} · close ${dlong(m.asof)}</span></header>
+   <span class="px"><b>${d.price.px.toFixed(2)}</b> <span class="${tone(d.price.d1)}">${pc(d.price.d1)}</span> on the day vs ${pc(d.price.bench_d1)} for the ${esc(m.bench)} · close ${dlong(dayIso)}${(()=>{const u=upd(d._past?d._built:m.built);return u?` · ${d._past?'refreshed':'updated'} ${u}`:''})()}</span></header>
+  ${d._past?`<div class="pastbar"><b>Viewing ${dlong(d._past)}.</b> The call, composite and bucket scores, headline, “What would change the call”, “What’s happening &amp; why” and every indicator score show that day. Sections marked “Shows latest” show the latest data (${dlong(m.asof)}).</div>`:''}
   ${overnight}
   ${age>4?`<p class="stale">Data is ${Math.floor(age)} days old (last close ${dlong(m.asof)}). The daily refresh may have failed.</p>`:''}
 
@@ -490,7 +562,7 @@ function render(d){
      <div>${band(d)}
       <div class="meta3"><span>Direction: <b>${d.direction?d.direction.label+' ('+sg(d.direction.delta)+' points)':'not enough history yet (needs 25 trading days)'}</b></span><span>Confidence: <b>${d.confidence}</b></span><span>Call changes after 7 of 10 trading days in a new zone</span></div></div>
    </div>
-   <div class="buckets">${Object.entries(d.buckets).map(([b,v])=>`<div class="bk"><div class="nm">${b}</div><div class="wt">${d.bucket_w[b]} of 100 points · score on −100 to +100</div><div class="val ${tone(v)}">${v==null?'n/a':sg(v)}</div>${v==null&&d.bucket_live&&d.bucket_live[b]!=null?`<div class="wt">only ${(d.bucket_live[b]*100).toFixed(0)}% of its weight has live data; needs 50%, so left out</div>`:''}<div class="q">${bq[b]}</div></div>`).join('')}</div>
+   <div class="buckets">${Object.entries(d.buckets).map(([b,v])=>`<div class="bk"><div class="nm">${BL(b)}</div><div class="wt">${d.bucket_w[b]} of 100 points · score on −100 to +100</div><div class="val ${tone(v)}">${v==null?'n/a':sg(v)}</div>${v==null&&d.bucket_live&&d.bucket_live[b]!=null?`<div class="wt">only ${(d.bucket_live[b]*100).toFixed(0)}% of its weight has live data; needs 50%, so left out</div>`:''}<div class="q">${bq[b]}</div></div>`).join('')}</div>
    ${d.flags.length?`<div class="flags">${d.flags.map(f=>`<div class="flag"><b>${f.code}</b> ${esc(f.text)}</div>`).join('')}</div>`:''}
    ${H('changers','What would change the call','sec-chg')}
    <ol class="changers">${d.changers.map(c=>`<li>${c}</li>`).join('')}</ol>
@@ -512,16 +584,16 @@ function render(d){
   ${H('indicators','Indicators','sec-ind')}
   ${Object.keys(indChg).length?`<div class="chips">${Object.values(indChg).map(x=>`<span class="chip"><span class="${x.up?'u':'d'}">${x.up?'▲':'▼'}</span> <b>${x.id}</b> ${esc(x.name)}: ${x.from} → ${x.to}</span>`).join('')}</div>`:''}
   <p class="sub">Each indicator scores −1, 0 or +1 against its own lines; bucket scores are weighted averages. Missing data is left out, never scored neutral; a bucket with less than half of its weight live is left out.${(d.driver_notes||[]).length?' Demand driver cap (one driver at most half of Demand): '+d.driver_notes.map(esc).join(' '):''}</p>
-  ${Object.entries(byB).map(([b,list])=>`<div class="grp"><span>${b}</span><span>bucket ${sg(d.buckets[b])} · ${d.bucket_w[b]} points</span></div>
+  ${Object.entries(byB).map(([b,list])=>`<div class="grp"><span>${BL(b)}</span><span>bucket ${sg(d.buckets[b])} · ${d.bucket_w[b]} points</span></div>
    ${list.map(i=>{const c=indChg[i.id],x=i.explain||{};return `<div class="ind${c?' moved':''}"><span class="id">${i.id}</span>
      <div><div class="nm">${esc(i.name)}</div><div class="ms">Bullish: ${esc(i.bull)} · Bearish: ${esc(i.bear)}<br>Measured against ${esc(i.measured)} · ${esc(i.timing)} · ${esc(i.source)}${i.note?' · '+esc(i.note):''}</div></div>
-     <div class="ex"><div class="now"><span>Today's score means</span>${esc(x.score)}</div><div><span>What it is</span>${esc(x.what)}</div><div><span>Why it matters</span>${esc(x.why)}</div></div>
+     <div class="ex"><div class="now"><span>${d._past?'That day’s':'Today’s'} score means</span>${esc(x.score)}</div><div><span>What it is</span>${esc(x.what)}</div><div><span>Why it matters</span>${esc(x.why)}</div></div>
      <div class="sc">${spill(i.s)}<div class="vl">${esc(i.text)}</div><div class="ms">${i.w} of 100 points</div>${c?`<div class="was">was ${c.from}</div>`:''}</div></div>`}).join('')}
    ${b==='Price trend'&&d.stretch.v!=null?`<div class="ind"><span class="id">REF</span><div><div class="nm">Stretch (reference only)</div><div class="ms">Flagged above +25% · measured against ${esc(d.stretch.measured||"the stock's own 200-day average")} · not scored</div></div>
      <div class="ex"><div class="now"><span>Today means</span>${d.stretch.flag?'The price has run far ahead of its trend: adding here means buying at a stretched level.':'The price is not unusually far above its trend.'}</div><div><span>What it is</span>How far the price sits above or below ${esc(d.stretch.measured||"its long-run (200-day) average")}.</div><div><span>Why it matters</span>Context for when to add, never a reason to sell on its own.</div></div>
      <div class="sc"><span class="pill ${d.stretch.flag?'hold':'mute'}">${d.stretch.flag?'Stretched':'Normal'}</span><div class="vl">${sg(d.stretch.v,1)}%</div></div></div>`:''}`).join('')}
 
-  ${H('valuation','Valuation vs peers','sec-val')}
+${COM?gVal(d,H):`  ${H('valuation','Valuation vs peers','sec-val')}
   <div class="peerwhy">${P.rows.map(r=>`<div><b>${esc(r.name)}</b> (${esc(r.code)}): ${esc(r.why)}</div>`).join('')}</div>
   <div class="tbl"><table><thead><tr><th>Company</th><th>Forward P/E (next 12 months)</th><th>P/E ÷ growth</th><th>EV/EBITDA</th><th>Revenue growth*</th><th>Gross margin</th><th>3-month return</th></tr></thead><tbody>
    <tr class="me"><td>${esc(m.name)}</td><td>${fx(sm.fpe,1,'x')}</td><td>${fx(sm.peg,2)}</td><td>${fx(sm.ev,1,'x')}</td><td>${pc(sm.revg,0)}</td><td>${pc(sm.gm,0)}</td><td>${pc(d.price.m3,0)}</td></tr>
@@ -530,26 +602,26 @@ function render(d){
    <tr class="med"><td>${esc(m.code)} vs median</td><td class="${tone(-prem(sm.fpe,med.fpe))}">${pc(prem(sm.fpe,med.fpe),0)}</td><td class="${tone(-prem(sm.peg,med.peg))}">${pc(prem(sm.peg,med.peg),0)}</td><td class="${tone(-prem(sm.ev,med.ev))}">${pc(prem(sm.ev,med.ev),0)}</td><td></td><td></td><td></td></tr>
   </tbody></table></div>
   <p class="sub">*Latest quarter vs a year earlier. Struck-through figures fall outside the sanity range (2x to 80x for P/E and EV/EBITDA) and are left out of the median.</p>
-  <div class="plain">${plain}</div>
+  <div class="plain">${plain}</div>`}
 
-  ${mixSection(d.mix,H,m)}
+  ${COM?gMix(d.demand_mix,H):mixSection(d.mix,H,m)}
 
-  ${H('earnings','Earnings','sec-earn')}
+  ${H('earnings',COM?'Reports and events':'Earnings','sec-earn')}
   <div class="earn">${(E.past||[]).map(e=>`<div class="ec"><h3>${esc(e.q)}</h3><div class="dt">${esc(e.date)}</div>
     <p><b>Results:</b> ${esc(e.vs)}</p><p><b>Outlook:</b> ${esc(e.guide)}</p><p><b>Reaction:</b> ${esc(e.reaction)}</p>
     <ul>${e.take.map(t=>`<li>${t}</li>`).join('')}</ul><p><b>Impact on the call:</b> ${esc(e.impact)}</p></div>`).join('')}</div>
-  <div class="tbl" style="margin-top:14px"><table><thead><tr><th>Next results</th><th>Date</th><th>Status</th><th>Calendar days away</th></tr></thead><tbody>
+  <div class="tbl" style="margin-top:14px"><table><thead><tr><th>${COM?'Next events':'Next results'}</th><th>Date</th><th>Status</th><th>Calendar days away</th></tr></thead><tbody>
    ${(E.next||[]).map(n=>`<tr><td>${esc(n.q)}</td><td>${esc(n.date)}</td><td><span class="pill ${n.status==='Confirmed'?'bull':'mute'}">${n.status}</span></td><td>${n.status==='Confirmed'?days(n.iso):'about '+days(n.iso)}</td></tr>`).join('')}</tbody></table></div>
   ${(E.next||[]).length?`<p class="sub"><b>What to watch on ${esc(E.next[0].date)}:</b></p><ul class="bul">${E.next[0].watch.map(w=>`<li>${esc(w)}</li>`).join('')}</ul>`:''}
 
-  ${H('shareholders','Shareholders','sec-sh')}
+${COM?gFlows(d,H):`  ${H('shareholders','Shareholders','sec-sh')}
   <p class="sub">Change is measured against each holder's own previous filing: Adding = up 5% or more; Maintaining = within ±5%; Trimming = down 5% to 50%; Selling out = down more than 50%. Filings for the quarter to ${(()=>{const [mm,dd,yy]=(SH.asof||'').split('/');return yy?dd+' '+MON[+mm-1]+' '+yy:esc(SH.asof)})()}. Not scored.</p>
   <div class="movegrid">
    <div><div class="grp"><span>Top 5 holders</span></div><div class="tbl" style="border-top:0"><table class="sh"><thead><tr><th>Holder</th><th>% of shares outstanding</th><th>Change vs its previous filing</th><th>Class</th></tr></thead><tbody>${SH.top5.map(h=>`<tr><td>${esc(h.disp||mkName(h.name))}${h.index?'<span class="ix">Index fund</span>':''}</td><td>${h.pct==null?'n/a':h.pct.toFixed(2)+'%'}</td><td>${h.chg==null?'n/a':sg(h.chg,1)+'%'}</td><td>${clsPill(h.cls)}</td></tr>`).join('')}</tbody></table></div></div>
    <div><div class="grp"><span>Top 5 active holders</span></div><div class="tbl" style="border-top:0"><table class="sh"><thead><tr><th>Holder</th><th>% of shares outstanding</th><th>Change vs its previous filing</th><th>Class</th></tr></thead><tbody>${SH.active.map(h=>`<tr><td>${esc(h.disp||mkName(h.name))}</td><td>${h.pct==null?'n/a':h.pct.toFixed(2)+'%'}</td><td>${h.chg==null?'n/a':sg(h.chg,1)+'%'}</td><td>${clsPill(h.cls)}</td></tr>`).join('')}</tbody></table></div></div>
   </div>
   <p class="sub"><b>Insiders, last 6 months:</b> ${SH.insiders.some(i=>i.buy_sh>0)?SH.insiders.filter(i=>i.buy_sh>0).length+' bought in the open market.':'no open-market purchases.'} Sales: ${SH.insiders.filter(i=>i.sell_sh>0).map(i=>`${esc(i.name)} (${esc(i.role)}) $${(i.sell_val/1e6).toFixed(1)}m`).join('; ')}. ${SH.insiders.filter(i=>i.buy_sh>0).length>=3?'<span class="pill bull">Insider buying cluster</span>':''}</p>
-  ${(SH.notes||[]).length?`<p class="sub">${SH.notes.map(esc).join(' ')}</p>`:''}
+  ${(SH.notes||[]).length?`<p class="sub">${SH.notes.map(esc).join(' ')}</p>`:''}`}
 
   ${H('chains','Macro chains','sec-chain')}
   <p class="sub">The outside events that can move this stock, traced to the part of the business they hit. Watch numbers are checked daily. Chains are not scored; they reach the score through demand, valuation and structural moves.</p>
@@ -557,10 +629,10 @@ function render(d){
     <div class="path">${c.path.map(p=>`<span>${esc(p)}</span>`).join('<i>→</i>')}</div>${chainWatch(c)}
     <ul>${c.evidence.map(e=>`<li>${esc(e)}</li>`).join('')}</ul></div>`).join('')}</div>
 
-  ${H('quality','Quality &amp; cash check','sec-q')}
+${COM?gTrust(d,H):`  ${H('quality','Quality &amp; cash check','sec-q')}
   <p class="sub">Two or more red flags cap the call at Hold. Today: <b>${d.quality.flags} flag${d.quality.flags===1?'':'s'}</b>. Lines marked Info are shown for context and never count as flags.</p>
   <ul class="qc">${d.quality.checks.map(c=>`<li><span><b>${esc(c.name)}</b><span class="r"> · ${esc(c.rule)}</span></span><span>${esc(c.value)} ${c.flag==null?'<span class="pill mute">Excluded</span>':c.flag?'<span class="pill bear">Flag</span>':'<span class="pill bull">OK</span>'}</span></li>`).join('')}${(d.quality.info||[]).map(c=>`<li><span><b>${esc(c.name)}</b><span class="r"> · ${esc(c.rule)}</span></span><span>${esc(c.value)} <span class="pill mute">Info</span></span></li>`).join('')}</ul>
-  ${fcfSection(d.quality.cash)}
+  ${fcfSection(d.quality.cash)}`}
 
   ${H('price',pxTitle,'sec-px')}
   <div class="chart" id="pc">${lineChart(cl,{id:'px',label:'Closing price, last 12 months',fmt:v=>'$'+v,xl:[[0,dshort(d.closes.start)+' '+d.closes.start.slice(2,4)],[cl.length-1,dshort(d.closes.end)]]})}</div>
@@ -574,14 +646,68 @@ function render(d){
    <b>Sources</b><ul>${d.sources.map(s=>`<li>${esc(s)}</li>`).join('')}</ul>
    Built ${esc(m.built)} · ${esc(m.plan)} · settings v${esc(m.version)} · Analysis, not advice: a rules-based reading of the approved indicators.</footer>`;
   hover('px',cl,i=>'$'+cl[i].toFixed(2));
-  if(d.quality.cash)fcfHover(d.quality.cash);
+  if(d.quality.cash&&!COM)fcfHover(d.quality.cash);
+  if(COM&&d.commodity&&d.commodity.spdr&&d.commodity.spdr.series){const se=d.commodity.spdr.series;hover('fl',se.v,i=>se.v[i].toFixed(1)+' tonnes')}
   if(d.mix&&d.mix.quarters){mixHover(d.mix);document.querySelectorAll('[data-mixmode]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-mixmode]').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));$('#mixc').innerHTML=mixChart(d.mix,b.dataset.mixmode);mixHover(d.mix);parent!==window&&parent.postMessage({type:'tab-height',h:document.documentElement.scrollHeight},'*')})}
   hover('hs',hs.map(h=>h.comp),i=>dshort(hs[i].d)+': '+sg(hs[i].comp)+(hs[i].call?' · '+ZONE[hs[i].call]:''));
-  document.title=m.code+' · '+callLabel;
+  document.title=m.code+' · '+callLabel+(d._past?' · '+dshort(d._past):'');
   parent!==window&&parent.postMessage({type:'tab-height',h:document.documentElement.scrollHeight},'*');
 }
+
+/* ---- timeline: day-by-day snapshots kept by the engine (data.snapshots, last 40 trading days; plan S16) */
+let D=null;
+const SNAPK=new Set(['call','changers','move','indicators']);   // sections that change with the selected day
+function dayView(iso){
+  if(!iso||iso===D.meta.asof||!(D.snapshots||{})[iso])return D;
+  const s=D.snapshots[iso], h=new Map((s.indicators||[]).map(i=>[i.id,i]));
+  const v={...D,...s,_past:iso,_built:s.built};
+  v.indicators=D.indicators.map(i=>{const x=h.get(i.id);return x?{...i,s:x.s,v:x.v,text:x.text,note:x.note,explain:{...(i.explain||{}),score:x.score||''}}
+    :{...i,s:null,v:null,text:'not recorded that day',explain:{...(i.explain||{}),score:'This indicator was not on the tab that day.'}}});
+  return v;
+}
+function timeline(sel){
+  const el=$('#tl'), H=(D.history||[]).slice(-40), S=D.snapshots||{};
+  if(!H.length){el.hidden=true;return}
+  const cur=sel||D.meta.asof, v=dayView(cur), past=cur!==D.meta.asof;
+  const zc=z=>z==='SB'||z==='B'?'b':z==='S'||z==='SS'?'s':z==='H'?'h':'x';
+  const bars=H.map(h=>{const has=!!S[h.d]||h.d===D.meta.asof, c=h.comp, ht=c==null?6:Math.max(9,Math.abs(c)/100*50);
+    const lab=`${dlong(h.d)}: ${c==null?'no composite (coverage below 70%)':'composite '+sg(c)+' · '+(ZONE[h.z]||'')}${has?'':' · details not recorded'}`;
+    return `<button class="tl-day ${c==null?'x':zc(h.z)}" data-d="${h.d}" aria-pressed="${h.d===cur}" aria-label="${esc(lab)}" data-tip="${esc(lab)}"${has?'':' disabled'}>${c==null?`<i class="up" style="height:3px"></i><i class="dn" style="height:3px"></i>`:`<i class="${c>=0?'up':'dn'}" style="height:${ht}%"></i>`}</button>`}).join('');
+  const callTxt=v.composite==null?'Insufficient data':v.call.code?v.call.label:'Not confirmed · '+(ZONE[v.zone]||'n/a');
+  const B=v.buckets||{}, bk=(k,l)=>`<div class="bk"><dt>${l}</dt><dd class="${tone(B[k])}">${B[k]==null?'n/a':sg(B[k])}</dd></div>`;
+  el.innerHTML=`<div class="in"><div class="tl-hd"><span>Session history<span class="hint"> · select a day (${H.length} recorded)</span></span>
+    <span class="sel">${past?'<span class="past">Past day</span>':''}<b>${dlong(cur)}</b>${(()=>{const u=upd(past?v._built:D.meta.built);return u?`<span>${past?'refreshed':'updated'} ${u}</span>`:''})()}${past?'<button type="button" id="tlback">Back to latest</button>':'<span class="lt">latest</span>'}</span></div>
+    <div class="tl-strip" id="tlstrip" role="group" aria-label="Composite score by trading day">${bars}</div>
+    <div class="tl-det"><div><dt>Call</dt><dd class="sm ${zoneTone(v.call.code||v.zone)}">${esc(callTxt)}</dd></div>
+     <div><dt>Composite</dt><dd class="${zoneTone(v.zone)}">${sg(v.composite)}</dd></div>
+     ${bk('Price trend','Price trend')}${bk('Liquidity','Liquidity')}${bk('Demand','Demand')}${bk('Valuation vs peers','Valuation')}
+     <div><dt>Close</dt><dd>${v.price.px.toFixed(2)} <span class="${tone(v.price.d1)}" style="font-size:12px">${pc(v.price.d1)}</span></dd></div>
+     <div class="bk"><dt>Coverage</dt><dd class="sm">${(v.coverage*100).toFixed(0)}%</dd></div></div>
+    <div class="tl-tip" id="tltip" hidden></div></div>`;
+  el.hidden=false;
+  const pick=iso=>{const y=scrollY;render(dayView(iso));timeline(iso);scrollTo(0,y);pin()};
+  el.querySelectorAll('.tl-day:not(:disabled)').forEach(b=>{b.onclick=()=>pick(b.dataset.d);
+    b.onkeydown=e=>{if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;const all=[...el.querySelectorAll('.tl-day:not(:disabled)')],i=all.indexOf(b)+(e.key==='ArrowRight'?1:-1);
+      if(all[i]){pick(all[i].dataset.d);const nb=$('#tl').querySelector(`[data-d="${all[i].dataset.d}"]`);nb&&nb.focus()}e.preventDefault()}});
+  const tip=$('#tltip');
+  el.querySelectorAll('.tl-day').forEach(b=>{b.onmouseenter=()=>{tip.textContent=b.dataset.tip;tip.hidden=false;
+      const r=b.getBoundingClientRect(),q=el.querySelector('.in').getBoundingClientRect();tip.style.left=Math.min(q.width-120,Math.max(120,r.left-q.left+r.width/2))+'px';tip.style.top=(r.bottom-q.top+4)+'px'};
+    b.onmouseleave=()=>tip.hidden=true});
+  const back=$('#tlback'); if(back)back.onclick=()=>pick(D.meta.asof);
+  pin();
+}
+/* Inside the dashboard the tab is a full-height frame, so CSS "sticky" has nothing to scroll against: move the strip with the
+   dashboard's scroll instead, keeping it just under the dashboard's tab bar. Opened on its own, CSS sticky does the job. */
+function pin(){
+  const el=$('#tl'); if(!el||el.hidden||parent===window)return;
+  try{const fe=window.frameElement; if(!fe)return; const fr=fe.getBoundingClientRect(); if(!fr.height)return;
+    const bar=parent.document.querySelector('.bar'), top=bar?bar.getBoundingClientRect().bottom:0;
+    const max=document.documentElement.scrollHeight-el.offsetHeight-60, y=Math.max(0,Math.min(max,top-fr.top));
+    el.style.transform=y>0?`translateY(${y}px)`:'';}catch(e){}
+}
+try{if(parent!==window){parent.addEventListener('scroll',()=>requestAnimationFrame(pin),{passive:true});parent.addEventListener('resize',()=>requestAnimationFrame(pin))}}catch(e){}
 if(!code){$('#app').innerHTML='<p class="err">No stock code given. Open this page from the dashboard tabs.</p>'}
-else fetch(`../stocks/${code}/data.json`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(render)
+else fetch(`../stocks/${code}/data.json`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(d=>{D=d;render(d);timeline(null)})
   .catch(e=>{$('#app').innerHTML=`<p class="err">Could not load the data for ${esc(code)} (${esc(e.message)}). The daily refresh may not have published it yet.</p>`});
 new ResizeObserver(()=>parent!==window&&parent.postMessage({type:'tab-height',h:document.documentElement.scrollHeight},'*')).observe(document.body);
 </script>

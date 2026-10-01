@@ -19,7 +19,7 @@ DIR_T, COV_FLOOR, MOVE_T = 15, 0.70, 2.0
 BUCKET_FLOOR, DRIVER_CAP = 0.50, 0.50
 SHORT_FLOOR = 0.02   # D31: LQ2 counts only when 2%+ of the float is sold short   # plan v0.5 (Kenneth, 30 Sep): bucket needs 50% of its weight live; one driver max half of Demand
 VALID = {'pe': (2, 80), 'ev': (2, 80), 'peg': (0.1, 10)}    # peer figures outside these are ignored
-UNITS = {'PT1': '%', 'PT2': '%', 'PT4': ' pts', 'LQ1': 'x', 'LQ2': '%', 'LQ3': ' pts', 'LQ4': ' pts', 'LQ6': ' pts', 'DM1': ' pts', 'DM2': '%', 'DM6': ' pts', 'VL1': '%', 'VL2': '%', 'VL3': '%', 'VL4': '%'}
+UNITS = {'G-LQ2': '%', 'G-LQ3': 'th percentile', 'G-DM1': ' pts', 'G-DM2': ' pts', 'G-DM3': '%', 'G-VL1': '%', 'G-VL2': '%', 'PT1': '%', 'PT2': '%', 'PT4': ' pts', 'LQ1': 'x', 'LQ2': '%', 'LQ3': ' pts', 'LQ4': ' pts', 'LQ6': ' pts', 'DM1': ' pts', 'DM2': '%', 'DM6': ' pts', 'VL1': '%', 'VL2': '%', 'VL3': '%', 'VL4': '%'}
 # New-listing mode (plan v0.3 OUT3, approved for SPCX 30 Sep 2026; generic for any recent listing):
 #   PT1 = price vs average of every close since listing; PT2 = 20-day average vs that since-listing average;
 #   beta = all days since listing. Needs 50 days (PT) / 60 days (beta). Switches off by itself at day 200 (PT) / 253 (beta).
@@ -100,6 +100,119 @@ EXPLAIN = {
          'Unlike the P/E, this counts debt, so an indebted company cannot look artificially cheap.',
          {1: 'Cheaper than its competitors once debt is counted.', 0: 'In line with its competitors once debt is counted.', -1: 'More expensive than its competitors once debt is counted.'}),
 }
+
+# ---------------------------------------------------------------- commodity variant (plan v0.6, sheet 3 G- rows; GLD first, 1 Oct 2026)
+# settings.asset_type = "commodity": company-only indicators are listed in removed_indicators and replaced by these. Same -1/0/+1
+# scoring, buckets, floors, persistence and overrides as a stock. Weights, names and "measured against" come from
+# settings.commodity.indicators; the lines below are the approved rules (GLD research/settings_proposal.md, Kenneth 1 Oct 2026).
+#   kind 'hi' : bullish if v >= bull, bearish if v <= bear      kind 'lo' : bullish if v <= bull, bearish if v >= bear
+G_RULES = {'G-LQ2': ('hi', 1.5, -1.5), 'G-LQ3': ('lo', 20, 85), 'G-DM1': ('lo', -0.15, 0.15), 'G-DM2': ('hi', 0.10, -0.10),
+           'G-DM3': ('hi', 3.5, -3.5), 'G-VL1': ('lo<', 0, 60), 'G-VL2': ('lo', -25, 25)}
+G_WORDS = {'G-LQ2': ('up 1.5% or more', 'down 1.5% or more'), 'G-LQ3': ('in the bottom 20% of its 3-year range (washed out)', 'in the top 15% (crowded)'),
+           'G-DM1': ('fell 0.15 points or more', 'rose 0.15 points or more'), 'G-DM2': ('rose 0.10 points or more', 'fell 0.10 points or more'),
+           'G-DM3': ('up 3.5% or more', 'down 3.5% or more'), 'G-VL1': ('below the average', '60% or more above'), 'G-VL2': ('25% or more below the median', '25% or more above the median')}
+G_TIMING = {'G-LQ2': 'Coincident', 'G-LQ3': 'Leading', 'G-DM1': 'Leading', 'G-DM2': 'Leading', 'G-DM3': 'Coincident', 'G-VL1': 'Lagging', 'G-VL2': 'Coincident'}
+G_SOURCE = {'G-LQ2': 'SPDR Gold Shares daily file', 'G-LQ3': 'CFTC Commitments of Traders (weekly)', 'G-DM1': 'FRED (DFII10)', 'G-DM2': 'FRED (T10YIE)',
+            'G-DM3': 'SPDR Gold Shares daily file', 'G-VL1': 'Yahoo Finance weekly prices', 'G-VL2': 'Yahoo Finance weekly prices (gold futures, S&P 500)'}
+G_BUCKET = {'Liquidity': 'Liquidity', 'Liquidity and flows': 'Liquidity', 'Demand': 'Demand', 'Demand drivers': 'Demand',
+            'Valuation (stretch)': 'Valuation vs peers', 'Valuation vs peers': 'Valuation vs peers', 'Price trend': 'Price trend'}
+EXPLAIN.update({
+ 'G-LQ2': ('Whether investors are adding gold to GLD or taking it out over the last 20 trading days (tonnes held by the trust).',
+           'Money moving into or out of the biggest gold fund is a direct read of investor demand, separate from the price.',
+           {1: 'Investors are adding gold to GLD: money is flowing in.', 0: 'GLD holdings are broadly steady.', -1: 'Investors are pulling gold out of GLD: money is flowing out.'}),
+ 'G-LQ3': ("How heavily hedge funds are betting on gold futures, compared with their own range over the last 3 years (weekly CFTC report).",
+           'Read the other way round: when nearly everyone is already long there are few buyers left and forced selling can hit hard (29 Dec 2025 week, GLD −4.4%); when they are out, the reverse.',
+           {1: 'Hedge funds hold few gold bets: room for buyers to return.', 0: 'Hedge-fund positioning is middling: not crowded either way.', -1: 'Hedge-fund bets are crowded: risk of a sharp unwind.'}),
+ 'G-DM1': ('Whether the 10-year US interest rate after inflation (the inflation-protected Treasury yield) has risen or fallen over the last 20 trading days.',
+           "Gold pays no interest, so when safe bonds pay more after inflation, holding gold costs more. 9 of gold's 10 worst weeks in 5 years were rate or dollar shocks.",
+           {1: 'Real interest rates are falling: holding gold costs less.', 0: 'Real interest rates are broadly unchanged.', -1: 'Real interest rates are rising: holding gold costs more.'}),
+ 'G-DM2': ('Whether the inflation that bond markets expect over the next 10 years has risen or fallen over the last 20 trading days.',
+           'Gold is bought as protection against inflation; rising expectations tend to draw buyers.',
+           {1: 'Expected inflation is rising: more demand for protection.', 0: 'Expected inflation is broadly unchanged.', -1: 'Expected inflation is falling: less need for protection.'}),
+ 'G-DM3': ('Whether Western investors have added or removed gold through GLD over the last 3 months (60 trading days).',
+           'A slower read of investor demand than the 20-day flow: sustained buying through a falling price is a sign of conviction.',
+           {1: 'Investors have kept adding gold over 3 months.', 0: 'Investor holdings are steady over 3 months.', -1: 'Investors have been taking gold out over 3 months.'}),
+ 'G-VL1': ('How far GLD is above or below its average weekly price of the last ~4 years (200 weeks). A stretch measure, not a valuation: gold has no earnings.',
+           'Only extremes matter: in 2006–2026, weeks 60%+ above this average (top 5%) were followed by flat returns; moderate stretch was not a warning.',
+           {1: 'Below its long-run average: unusually cheap by its own history.', 0: 'Within its normal range of stretch.', -1: 'Extremely stretched above its long-run average: historically followed by flat returns.'}),
+ 'G-VL2': ('The gold price divided by the S&P 500 index, compared with its middle value over the last 10 years. A stretch measure, not a valuation.',
+           'Shows whether gold is dear or cheap relative to stocks, the main alternative use of the money.',
+           {1: 'Gold is cheap relative to stocks by 10-year standards.', 0: 'Gold vs stocks is within its normal 10-year range.', -1: 'Gold is very dear relative to stocks by 10-year standards.'}),
+})
+# shared indicators re-worded for a commodity (same scores and lines; wording only)
+EXPLAIN_COMMOD = {
+ 'PT4': ('Whether {asset} has beaten or lagged {peer} over the last 3 months.',
+         'Stocks are the main alternative use of the money; this shows which the market is favouring.',
+         {1: '{asset_cap} is beating {peer}.', 0: '{asset_cap} and {peer} have moved roughly in line.', -1: '{asset_cap} is lagging {peer}.'}),
+ 'LQ4': (None, "Gold is priced in dollars: a stronger dollar makes it dearer for everyone else, and drove 4 of gold's 10 worst weeks in 5 years.",
+         {1: 'The dollar has weakened: a tailwind for gold.', 0: 'The dollar is broadly unchanged.', -1: 'The dollar has strengthened: a headwind for gold.'}),
+ 'LQ6': (None, None, {1: 'Markets have moved towards rate cuts: supportive for gold.', 0: 'Rate expectations have moved less than 15 points.', -1: 'Markets have moved towards rate rises: a headwind for gold.'}),
+}
+
+def _gnum(x):
+    try: return float(x)
+    except (TypeError, ValueError): return None
+
+def commodity_indicators(S, R, px, put, wk_closes):
+    """Score the G- indicators from the collector lines (R = rawA + rawG lines merged). Returns the facts shown on the tab."""
+    spec = {i['id']: i for i in (S.get('commodity') or {}).get('indicators', [])}
+    fred = {r[0]: r for r in R.get('FRED', [])}; sp = (R.get('SPDR') or [None])[0]; cf = (R.get('CFTC') or [None])[0]; ra = (R.get('RATIO') or [None])[0]
+    MON_ = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    dl = lambda iso: f'{int(iso[8:10])} {MON_[int(iso[5:7]) - 1]} {iso[:4]}' if iso else '?'
+    def score(id_, v):
+        if v is None: return None
+        kind, bull, bear = G_RULES[id_]
+        if kind == 'hi': return 1 if v >= bull else -1 if v <= bear else 0
+        if kind == 'lo<': return 1 if v < bull else -1 if v >= bear else 0
+        return 1 if v <= bull else -1 if v >= bear else 0
+    def g(id_, v, text, note):
+        if id_ not in spec: return
+        c = spec[id_]
+        put(id_, G_BUCKET.get(c['bucket'], c['bucket']), c['name'], c['weight'], v, text if v is not None else 'n/a', score(id_, v),
+            c['measured_against'], G_WORDS[id_][0], G_WORDS[id_][1], G_TIMING[id_], G_SOURCE.get(id_, c.get('source', '')), note)
+    facts = {}
+    # fund holdings (SPDR daily file): SPDR|date|tonnes|prevdate|prev|d20|t20|d60|t60|premium%|oz/share|value$
+    if sp:
+        t0, t20, t60 = _gnum(sp[1]), _gnum(sp[5]), _gnum(sp[7])
+        v = pct(t0, t20); g('G-LQ2', v, f'{sgn(v,1)}%', f'{t0:,.1f} tonnes on {dl(sp[0])} vs {t20:,.1f} tonnes on {dl(sp[4])}.' if v is not None else '')
+        v = pct(t0, t60); g('G-DM3', v, f'{sgn(v,1)}%', f'{t0:,.1f} tonnes on {dl(sp[0])} vs {t60:,.1f} tonnes on {dl(sp[6])}. GLD only, not all gold funds worldwide.' if v is not None else '')
+        facts['spdr'] = {'date': sp[0], 'tonnes': t0, 'prev_date': sp[2], 'prev': _gnum(sp[3]), 'd20': sp[4], 't20': t20, 'd60': sp[6], 't60': t60,
+                         'premium_pct': _gnum(sp[8]), 'oz_per_share': _gnum(sp[9]), 'value': _gnum(sp[10]) if len(sp) > 10 else None}
+        if len(sp) > 11 and sp[11]: facts['spdr']['series'] = {'start': sp[11], 'v': [int(x) / 10 for x in sp[12].split(',') if x]} if len(sp) > 12 else None
+    else:
+        g('G-LQ2', None, 'n/a', 'SPDR daily file not collected today.'); g('G-DM3', None, 'n/a', 'SPDR daily file not collected today.')
+    # positioning (CFTC): CFTC|report|net%OI|pctile|prevdate|prev|4wkdate|4wk|max3y|min3y
+    if cf:
+        nl, pc_ = _gnum(cf[1]), _gnum(cf[2])
+        g('G-LQ3', pc_, f'{pc_:.0f}th percentile' if pc_ is not None else 'n/a',
+          f"Read the other way round: crowded = bearish. Hedge funds hold a net {nl:.1f}% of all gold futures (report of {dl(cf[0])}); 3-year range {_gnum(cf[8]):.1f}% to {_gnum(cf[7]):.1f}%." if nl is not None else '')
+        facts['cftc'] = {'report': cf[0], 'net_long_pct_oi': nl, 'pctile_3y': pc_, 'prev_date': cf[3], 'prev': _gnum(cf[4]), 'd4w': cf[5], 'v4w': _gnum(cf[6]), 'max3y': _gnum(cf[7]), 'min3y': _gnum(cf[8])}
+    else:
+        g('G-LQ3', None, 'n/a', 'CFTC report not collected today.')
+    # rates (FRED): FRED|series|date|value|date20|value20|prevdate|prev
+    for id_, ser in (('G-DM1', 'DFII10'), ('G-DM2', 'T10YIE')):
+        r = fred.get(ser)
+        if r and _gnum(r[2]) is not None and _gnum(r[4]) is not None:
+            v = round(_gnum(r[2]) - _gnum(r[4]), 2)
+            g(id_, v, f'{sgn(v,2)} pts', f'{_gnum(r[2]):.2f}% on {dl(r[1])} vs {_gnum(r[4]):.2f}% on {dl(r[3])}.' + (' FRED publishes a day late.' if ser == 'DFII10' else ''))
+            facts.setdefault('fred', {})[ser] = {'d': r[1], 'v': _gnum(r[2]), 'd20': r[3], 'v20': _gnum(r[4])}
+        else:
+            g(id_, None, 'n/a', f'FRED {ser} not collected today.')
+    # stretch: price vs 200-week average (weekly closes incl. the current week)
+    if wk_closes and len(wk_closes) >= 200:
+        w200 = sum(wk_closes[-200:]) / 200; v = pct(px, w200)
+        g('G-VL1', v, f'{sgn(v)}%', f'${px:.2f} vs a 200-week average of ${w200:.2f}.'); facts['w200'] = round(w200, 2)
+    else:
+        g('G-VL1', None, 'n/a', f'needs 200 weekly closes ({len(wk_closes or [])} collected).')
+    # stretch: gold ÷ S&P 500 vs its 10-year median: RATIO|week|gold|spx|ratio|median|from|to|n
+    if ra:
+        rr, med = _gnum(ra[3]), _gnum(ra[4]); v = pct(rr, med)
+        g('G-VL2', v, f'{sgn(v)}%', f'Ratio {rr:.3f} (gold ${_gnum(ra[1]):,.0f} ÷ S&P 500 {_gnum(ra[2]):,.0f}, week of {dl(ra[0])}) vs a 10-year median of {med:.3f} ({ra[7]} weeks).')
+        facts['ratio'] = {'week': ra[0], 'gold': _gnum(ra[1]), 'spx': _gnum(ra[2]), 'ratio': rr, 'median10y': med, 'from': ra[5], 'to': ra[6], 'n': ra[7]}
+    else:
+        g('G-VL2', None, 'n/a', 'Gold ÷ S&P 500 history not collected today.')
+    return facts
+
 SCORE_WORD = {1: 'Bullish', 0: 'Neutral', -1: 'Bearish', None: 'No data'}
 
 def explain(it, S):
@@ -109,6 +222,11 @@ def explain(it, S):
         cfg = next((d for d in (S.get('dm4', []) + ([S['dm5']] if S.get('dm5') else [])) if d['id'] == k), {})
         what = cfg.get('what', it['name']); why = cfg.get('why', '')
         s = {1: cfg.get('bull_means', 'Better than the bullish line.'), 0: cfg.get('neutral_means', 'Between the lines.'), -1: cfg.get('bear_means', 'Worse than the bearish line.')}
+    if S.get('asset_type') == 'commodity' and k in EXPLAIN_COMMOD:
+        cm = S.get('commodity') or {}; asset = cm.get('asset', S.get('name', 'it')); peer = cm.get('pt4_label', ', '.join(p['name'] for p in S.get('peers', [])))
+        fm = lambda x: x.format(asset=asset, asset_cap=asset[:1].upper() + asset[1:], peer=peer)
+        w2, y2, s2 = EXPLAIN_COMMOD[k]
+        what = fm(w2) if w2 else what; why = fm(y2) if y2 else why; s = {kk: fm(vv) for kk, vv in s2.items()}
     if k in ('PT1', 'PT2') and 'since listing' in (it.get('measured') or ''):   # new-listing mode wording
         what = ('Whether the share price is above or below its average price since listing (the long-run average does not exist yet).' if k == 'PT1'
                 else 'Whether the last 20 trading days are running above or below the average since listing (short-history version of the trend check).')
@@ -269,6 +387,29 @@ def _pick(series, patterns, e):
         vals = [series[l]['Q'].get(e) for l in labs]
         if all(v is not None for v in vals): return sum(vals)
     return None
+
+SNAP_DAYS = 40   # trading days of day-by-day detail kept for the timeline (plan S16)
+SNAP_KEYS = ('price', 'call', 'zone', 'composite', 'coverage', 'buckets', 'bucket_live', 'driver_notes', 'direction', 'confidence',
+             'flags', 'changers', 'lead', 'bullets', 'move', 'changes', 'new_listing')
+
+def snap_of(d):
+    """One day's view for the timeline: the call, scores, headline words, what's happening and that day's change flags."""
+    s = {k: d.get(k) for k in SNAP_KEYS}
+    s['built'] = (d.get('meta') or {}).get('built')   # when that day's refresh ran (UTC), shown as 'updated' in SGT
+    s['indicators'] = [{'id': i['id'], 's': i.get('s'), 'v': i.get('v'), 'text': i.get('text'), 'note': i.get('note'),
+                        'score': (i.get('explain') or {}).get('score')} for i in d.get('indicators', [])]
+    return s
+
+def snapshots(prev, d):
+    """Carry the previous days' snapshots forward, add today's, keep the last SNAP_DAYS. A previous data.json written before
+    snapshots existed seeds its own day from itself, so no recorded day is lost."""
+    asof = d['meta']['asof']; out = {}
+    if prev:
+        out.update({k: v for k, v in (prev.get('snapshots') or {}).items() if k < asof})
+        pa = (prev.get('meta') or {}).get('asof')
+        if pa and pa < asof and pa not in out and prev.get('indicators'): out[pa] = snap_of(prev)
+    out[asof] = snap_of(d)
+    return {k: out[k] for k in sorted(out)[-SNAP_DAYS:]}
 
 def build_mix(S, D, side, prev_mix=None, currency='USD'):
     cfg = S.get('mix'); txt = side.get('mix', {}) if side else {}
@@ -547,8 +688,9 @@ def cash_block(B, fin, asof, fq):
             'cover': cover, 'cover_text': cov_txt}
 
 # ---------------------------------------------------------------- build
-def build(S, A, B, C, side, prev, D=None):
+def build(S, A, B, C, side, prev, D=None, G=None):
     code = S['code']; asof = A['ASOF'][0][0]
+    commod = S.get('asset_type') == 'commodity'; cfacts = {}
     px, ma50, ma200 = map(num, A['PX'][0][:3])
     move = list(map(num, A['MOVE'][0])); bench = A['BENCH'][0]
     peers = {p[0]: p for p in A.get('PEER', [])}
@@ -607,8 +749,9 @@ def build(S, A, B, C, side, prev, D=None):
                     {'id': 'PT2', 'standard': '50-day vs 200-day average', 'now': '20-day average vs average since listing', 'end_day': NL['pt_end'], 'end_est': est_date(NL['pt_end'] - ndays)}]
     pr = [num(p[3]) for p in peers.values() if num(p[3]) is not None]
     v = (move[2] - sum(pr) / len(pr)) * 100 if pr and move[2] is not None else None
-    put('PT4', 'Price trend', 'Relative strength vs peers, 3 months', 7, v, f'{sgn(v)} pts',
-        None if v is None else (1 if v > 5 else -1 if v < -5 else 0), f'equal-weighted average of {len(pr)} peers over 63 trading days',
+    pt4_name = f"{code} vs {(S.get('commodity') or {}).get('pt4_label') or ', '.join(p['name'] for p in S.get('peers', []))}, 3 months" if commod else 'Relative strength vs peers, 3 months'
+    put('PT4', 'Price trend', pt4_name, 7, v, f'{sgn(v)} pts',
+        None if v is None else (1 if v > 5 else -1 if v < -5 else 0), (f"{', '.join(p['code'] for p in S.get('peers', []))} over the same 63 trading days" if commod else f'equal-weighted average of {len(pr)} peers over 63 trading days'),
         'more than 5 points ahead', 'more than 5 points behind', 'Coincident', 'Yahoo Finance prices')
     stretch = pct(px, ma200) if not pt_short else pct(px, avg_since)
 
@@ -785,10 +928,24 @@ def build(S, A, B, C, side, prev, D=None):
             None if v is None else (1 if v <= -15 else -1 if v >= 25 else 0), "the stock's own median trailing P/E, last 5 years (weekly)",
             '15%+ below', '25%+ above', 'Lagging', 'Yahoo prices ÷ SEC earnings', 'Trailing (last 12 months actual) P/E: free forward P/E history is too short.')
 
+    # ---- commodity variant: G- indicators replace the company ones (which settings.removed_indicators drops below)
+    if commod:
+        R = {}
+        for src in (A, G or {}):
+            for k_, v_ in src.items(): R.setdefault(k_, []).extend(v_)
+        wkc = [int(x) / 10 for x in wk[0][1].split(',')] if wk else []
+        cfacts = commodity_indicators(S, R, px, put, wkc)
+        for k_ in ('DM4', 'DM5'):
+            if k_ in I: I[k_]['timing'] = 'Lagging'
+
     # ---- indicators removed for this stock (settings.removed_indicators): dropped entirely, so they are not in the score or coverage
     removed_ids = {r['id'] for r in S.get('removed_indicators', [])}
     for k in list(I):
         if k in removed_ids: del I[k]
+
+    if commod:
+        order = ['PT1', 'PT2', 'PT4', 'LQ1', 'G-LQ2', 'G-LQ3', 'LQ4', 'LQ6', 'G-DM1', 'G-DM2', 'DM4', 'DM5', 'G-DM3', 'G-VL1', 'G-VL2']
+        I = {k: I[k] for k in order + [k for k in I if k not in order] if k in I}
 
     # ---- score
     ids = [k for k in I if I[k]['s'] is not None]
@@ -809,13 +966,14 @@ def build(S, A, B, C, side, prev, D=None):
         buckets[b] = round(100 * sum(ew[k] * I[k]['s'] for k in ks) / w) if w and live >= BUCKET_FLOOR else None
     bw = sum(BUCKET_W[b] for b in buckets if buckets[b] is not None)
     comp = round(sum(BUCKET_W[b] * buckets[b] for b in buckets if buckets[b] is not None) / bw) if bw else None
-    cov = sum(I[k]['w'] for k in ids) / 100
+    # coverage (D36, Kenneth 1 Oct 2026): live weight ÷ the weight left after removed_indicators (100 when nothing is removed)
+    cov = sum(I[k]['w'] for k in ids) / (sum(I[k]['w'] for k in I) or 100)
     if cov < COV_FLOOR: comp = None
 
     # ---- quality & cash check (S10)
     fy = B.get('FY', []); ar = B.get('AR', [])
     checks = []
-    cash = cash_block(B, fin, asof, fq)
+    cash = cash_block(B, fin, asof, fq) if not commod else {'ttm': None, 'cover': None, 'cover_text': 'n/a', 'periods': [], 'ttm_label': ''}
     fv = cash['ttm']
     checks.append(('Free cash flow (operating cash − capital spending)', None if fv is None else fv < 0,
                    'n/a' if fv is None else f"{'−' if fv < 0 else ''}${abs(fv)/1e3:.1f}bn ({cash['ttm_label']})", 'flag if negative'))
@@ -839,6 +997,7 @@ def build(S, A, B, C, side, prev, D=None):
     else:
         checks.append(('Receivables vs revenue growth, vs a year earlier', None, f'n/a (needs the same quarter a year earlier; {len(ar)} receivables and {len(fq)} revenue quarters filed)', 'flag if receivables grow more than twice as fast'))
     a4 = num(B.get('AUDITCHG', [[None]])[0][0]); checks.append(('Auditor change (last 2 years)', None if a4 is None else a4 > 0, 'no SEC data' if a4 is None else 'none' if a4 == 0 else f'{a4:.0f} filing(s)', 'flag if any'))
+    if commod: checks = []   # a trust has no company accounts: shown as trust checks (side.json quality_info + SPDR premium) instead
     nflags = sum(1 for c in checks if c[1])
     # information lines (Kenneth, 30 Sep: shown, never flagged): cash runway (automatic when free cash flow is negative),
     # dilution and customer concentration (typed by the stock chat in side.json quality_info, with source)
@@ -850,7 +1009,13 @@ def build(S, A, B, C, side, prev, D=None):
         else: nq = 4
         per_q = -fv / nq
         info.append({'name': 'Cash runway', 'value': f"about {cash_now/1e6/per_q:.0f} quarters: cash ${cash_now/1e9:.1f}bn ÷ recent burn ${per_q/1e3:.1f}bn a quarter", 'rule': 'information only; cash ÷ average quarterly free-cash-flow burn over the period shown above'})
+    if commod and cfacts.get('spdr') and cfacts['spdr'].get('premium_pct') is not None:
+        sp_ = cfacts['spdr']; _M = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        dd_ = f"{int(sp_['date'][8:10])} {_M[int(sp_['date'][5:7]) - 1]} {sp_['date'][:4]}"
+        info.append({'name': 'Premium or discount to gold value', 'value': f"{sgn(sp_['premium_pct'], 2)}% on {dd_} (price at 4:15pm New York vs the value of the gold it holds)", 'rule': 'information only; SPDR daily file'})
+        if sp_.get('oz_per_share'): info.append({'name': 'Gold per share', 'value': f"{sp_['oz_per_share']:.4f} oz on {dd_} (falls slowly as the fee is paid in gold)", 'rule': 'information only; SPDR daily file'})
     for q in side.get('quality_info', []):
+        if commod and q.get('name') in ('Premium to gold value', 'Gold per share') and cfacts.get('spdr'): continue   # automatic lines above replace the typed ones
         info.append({'name': q.get('name', ''), 'value': q.get('value', ''), 'rule': 'information only' + (f"; {q['source']}" if q.get('source') else '')})
 
     # ---- history, persistence, direction
@@ -914,6 +1079,7 @@ def build(S, A, B, C, side, prev, D=None):
     near = []
     lim = {'PT1': (0, -5), 'PT2': (0, -2), 'PT4': (5, -5), 'LQ1': (1.3, 0.77), 'LQ2': (-10, 10), 'LQ3': (1, -1), 'LQ4': (-1, 1), 'LQ6': (15, -15),
            'DM1': (2, -2), 'DM2': (3, -3), 'DM6': (1, -1), 'VL1': (-15, 25), 'VL2': (-15, 25), 'VL3': (-15, 25), 'VL4': (-15, 25)}
+    lim.update({k: (b1, b2) for k, (_, b1, b2) in G_RULES.items()})
     for k, (b1, b2) in lim.items():
         x = I.get(k, {}).get('v')
         if x is None: continue
@@ -929,7 +1095,7 @@ def build(S, A, B, C, side, prev, D=None):
         now = {1: 'bullish', 0: 'neutral', -1: 'bearish'}[it['s']]
         if t == bl: after = 'neutral' if it['s'] == 1 else 'bullish'      # crossing the bullish line
         else: after = 'neutral' if it['s'] == -1 else 'bearish'          # crossing the bearish line
-        move_word = f"crosses {sgn(t, 2 if abs(t) < 2 else 0)}{unit}"
+        move_word = f"crosses {t:.0f}{unit}" if unit == 'th percentile' else f"crosses {sgn(t, 2 if abs(t) < 2 else 0)}{unit}"
         changers.append(f"<b>{it['name']}</b> ({it['w']} points): now {it['text']}, scoring {now}. It turns {after} if it {move_word}, measured against {it['measured']}.")
         if len(changers) == 3: break
 
@@ -994,8 +1160,22 @@ def build(S, A, B, C, side, prev, D=None):
         'errors': [e for e in (A['ERRORS'][0][0], B['ERRORS'][0][0], C['ERRORS'][0][0]) if e],
     }
     for it in data['indicators']: it['explain'] = explain(it, S)
-    data['mix'] = build_mix(S, D, side, (prev or {}).get('mix'), currency=data['meta']['currency'] or 'USD')
+    data['mix'] = build_mix(S, D, side, (prev or {}).get('mix'), currency=data['meta']['currency'] or 'USD') if not commod else None
+    if commod:
+        # commodity variant (plan v0.6): company sections are repurposed; the template reads data.asset_type
+        cm = S.get('commodity') or {}
+        data['asset_type'] = 'commodity'
+        data['bucket_labels'] = cm.get('bucket_labels', {})
+        data['commodity'] = dict(cfacts, asset=cm.get('asset', S.get('name')))
+        data['demand_mix'] = side.get('demand_mix')
+        data['peers'] = {'rows': [], 'stock': {}, 'median': {}, 'excluded': [], 'plain': [], 'alternatives': side.get('alternatives', [])}
+        data['shareholders'] = {'top5': [], 'active': [], 'insiders': [], 'asof': None, 'shares_out_m': None, 'notes': side.get('shareholder_notes', [])}
+        fr = (cfacts.get('fred') or {}).get('DFII10')
+        if fr: data['macro']['DFII10'] = {'sym': 'FRED DFII10', 'last': fr['v'], 'ago20': fr['v20'], 'ago21': None, 'd': fr['d']}
+        data['errors'] = [e for e in (A['ERRORS'][0][0], (G or {}).get('ERRORS', [['']])[0][0] if G else '') if e]
+        if not G: data['errors'].append('commodity feeds (FRED, SPDR, CFTC) not collected: run stage G')
     data['changes'] = changes(prev, data)
+    data['snapshots'] = snapshots(prev, data)
     macro_out = {'asof': asof, 'series': macro, 'fed': data['fed'], 'fed_slug': fed[0]}
     return data, macro_out
 
@@ -1005,7 +1185,8 @@ if __name__ == '__main__':
     mout = sys.argv[sys.argv.index('--macro') + 1] if '--macro' in sys.argv else None
     dpath = sys.argv[sys.argv.index('--mixraw') + 1] if '--mixraw' in sys.argv else None
     mpath = sys.argv[sys.argv.index('--macro-in') + 1] if '--macro-in' in sys.argv else None
-    args = [a for a in args if a not in (out, mout, dpath, mpath)]
+    gpath = sys.argv[sys.argv.index('--graw') + 1] if '--graw' in sys.argv else None   # commodity feeds (collector stage G)
+    args = [a for a in args if a not in (out, mout, dpath, mpath, gpath)]
     S = json.load(open(args[0])); A = parse(args[1]); B = parse(args[2]); C = parse(args[3]); side = json.load(open(args[4]))
     if mpath:
         if mpath.endswith('.json'):   # the shared macro.json published on staging (written by --macro)
@@ -1016,7 +1197,7 @@ if __name__ == '__main__':
         else:
             S['_macro_in'] = parse(mpath)
     prev = json.load(open(args[5])) if len(args) > 5 else None
-    d, m = build(S, A, B, C, side, prev, parse(dpath) if dpath else None)
+    d, m = build(S, A, B, C, side, prev, parse(dpath) if dpath else None, parse(gpath) if gpath else None)
     json.dump(d, open(out, 'w'), separators=(',', ':'))
     if mout: json.dump(m, open(mout, 'w'), separators=(',', ':'))
     print(json.dumps({'wrote': out, 'bytes': len(open(out).read()), 'asof': d['meta']['asof'], 'composite': d['composite'], 'zone': d['zone'],

@@ -1,0 +1,310 @@
+{
+ "_note": "GLD settings, commodity variant (approved 1 Oct 2026). Scored by the shared engine's commodity mode (plan v0.6).",
+ "code": "GLD",
+ "market": "US",
+ "exchange": "NYSEArca",
+ "name": "SPDR Gold Shares",
+ "currency": "USD",
+ "asset_type": "commodity",
+ "benchmark": {
+  "name": "S&P 500",
+  "symbol": "^GSPC"
+ },
+ "peers": [
+  {
+   "code": "SPY",
+   "name": "SPDR S&P 500 ETF",
+   "why": "PT4 comparison: is gold beating stocks, the main alternative use of the money (approved benchmark 1 Oct)"
+  }
+ ],
+ "valuation": {
+  "metric": "stretch",
+  "note": "Gold has no earnings; valuation bucket = stretch measures G-VL1, G-VL2 (Kenneth, 1 Oct 2026)"
+ },
+ "dm4": [
+  {
+   "id": "DM4",
+   "name": "Central bank gold buying, last 4 quarters",
+   "weight": 6,
+   "source": "World Gold Council Gold Demand Trends (quarterly; typed in)",
+   "bullish_if": ">= 10%",
+   "bearish_if": "<= -10%",
+   "measured_against": "the 4 quarters before, both on WGC's latest published figure for each quarter",
+   "what": "How much gold the world's central banks bought in the last 12 months vs the 12 months before.",
+   "why": "Central banks have been gold's steadiest buyer since 2022 and buy regardless of interest rates; their pace sets a floor under the price.",
+   "bull_means": "Central banks are buying faster: the floor under gold is rising.",
+   "neutral_means": "Central bank buying is steady.",
+   "bear_means": "Central banks are buying less: weaker support if other buyers step back.",
+   "_weight_note": "Half weight (12 -> 6) until WGC's Q3 2026 report (~29 Oct) because WGC reclassified 187 t of Q1 2026 central-bank buying; Kenneth, 1 Oct 2026. Revisit then: back to 12 if the trend is confirmed."
+  }
+ ],
+ "dm5": {
+  "id": "DM5",
+  "name": "Consumer demand: jewellery plus bars and coins",
+  "weight": 4,
+  "source": "World Gold Council Gold Demand Trends (quarterly; typed in)",
+  "bullish_if": ">= 5%",
+  "bearish_if": "<= -5%",
+  "measured_against": "same quarter a year earlier, in tonnes",
+  "what": "Tonnes of gold bought as jewellery and as bars and coins (mostly China and India) vs the same quarter a year earlier.",
+  "why": "Shows whether everyday buyers still take metal at today's price; in tonnes, so high prices themselves push it down.",
+  "bull_means": "Consumers are buying more metal despite the price.",
+  "neutral_means": "Consumer buying is steady.",
+  "bear_means": "Consumers are buying less metal: the price is rationing demand."
+ },
+ "commodity": {
+  "_note": "Indicator specs for the Framework chat's commodity build (plan sheets 3 and 4 to be updated). Same scoring rules as stocks.",
+  "indicators": [
+   {
+    "id": "G-LQ2",
+    "bucket": "Liquidity",
+    "name": "GLD gold held (tonnes), 20-day change",
+    "weight": 3,
+    "source": "SPDR daily file (api.spdrgoldshares.com historical-archive, Excel; run from spdrgoldshares.com)",
+    "measured_against": "tonnes 20 trading days earlier",
+    "bullish_if": ">= 1.5%",
+    "bearish_if": "<= -1.5%"
+   },
+   {
+    "id": "G-LQ3",
+    "bucket": "Liquidity",
+    "name": "Hedge funds' net long in gold futures, % of open interest (contrarian)",
+    "weight": 2,
+    "source": "CFTC disaggregated futures (publicreporting.cftc.gov dataset 72hh-3qpy, code 088691; weekly)",
+    "measured_against": "its own last 3 years (percentile)",
+    "bullish_if": "<= 20th percentile",
+    "bearish_if": ">= 85th percentile"
+   },
+   {
+    "id": "G-DM1",
+    "bucket": "Demand",
+    "name": "10-year real interest rate, 20-day change",
+    "weight": 8,
+    "source": "FRED DFII10 (run from fred.stlouisfed.org)",
+    "measured_against": "level 20 trading days earlier",
+    "bullish_if": "<= -0.15 pts",
+    "bearish_if": ">= +0.15 pts",
+    "driver": "us_rates"
+   },
+   {
+    "id": "G-DM2",
+    "bucket": "Demand",
+    "name": "10-year inflation expectations (breakeven), 20-day change",
+    "weight": 5,
+    "source": "FRED T10YIE",
+    "measured_against": "level 20 trading days earlier",
+    "bullish_if": ">= +0.10 pts",
+    "bearish_if": "<= -0.10 pts",
+    "driver": "us_rates"
+   },
+   {
+    "id": "G-DM3",
+    "bucket": "Demand",
+    "name": "Western investor demand: GLD tonnes, 60-day change",
+    "weight": 6,
+    "source": "SPDR daily file",
+    "measured_against": "tonnes 60 trading days earlier",
+    "bullish_if": ">= 3.5%",
+    "bearish_if": "<= -3.5%"
+   },
+   {
+    "id": "G-VL1",
+    "bucket": "Valuation (stretch)",
+    "name": "GLD vs its 200-week average",
+    "weight": 12,
+    "source": "Yahoo weekly closes",
+    "measured_against": "own 200-week average",
+    "bullish_if": "< 0% (below the average)",
+    "bearish_if": ">= +60%"
+   },
+   {
+    "id": "G-VL2",
+    "bucket": "Valuation (stretch)",
+    "name": "Gold ÷ S&P 500 ratio",
+    "weight": 13,
+    "source": "Yahoo weekly GC=F and ^GSPC, 10+ years",
+    "measured_against": "its own 10-year median",
+    "bullish_if": "<= -25%",
+    "bearish_if": ">= +25%"
+   }
+  ],
+  "bucket_labels": {
+   "Valuation vs peers": "Valuation (stretch)",
+   "Liquidity": "Liquidity and flows",
+   "Demand": "Demand drivers"
+  },
+  "sections": {
+   "earnings": "replace with 'Coming up' (Fed, CPI, jobs, WGC quarterly, CFTC Fridays)",
+   "shareholders": "replace with GLD tonnes and flows",
+   "mix": "replace with gold demand mix (jewellery, technology, bars & coins, ETFs, central banks) from WGC, typed in",
+   "quality": "replace with trust checks: fee vs IAU 0.25% / GLDM 0.10%, premium/discount to gold value (SPDR file)"
+  },
+  "asset": "gold",
+  "pt4_label": "the S&P 500 (SPY)"
+ },
+ "overrides": [],
+ "removed_indicators": [
+  {
+   "id": "LQ2",
+   "reason": "no short-interest data for GLD on Yahoo or Nasdaq (tested 1 Oct)"
+  },
+  {
+   "id": "LQ3",
+   "reason": "Nasdaq's institutional-holdings summary returns an error for ETFs (tested 1 Oct)"
+  },
+  {
+   "id": "DM1",
+   "reason": "no revenue (gold trust)"
+  },
+  {
+   "id": "DM2",
+   "reason": "no earnings forecasts"
+  },
+  {
+   "id": "DM3",
+   "reason": "no guidance"
+  },
+  {
+   "id": "DM6",
+   "reason": "no gross margin"
+  },
+  {
+   "id": "VL1",
+   "reason": "no earnings"
+  },
+  {
+   "id": "VL2",
+   "reason": "no earnings"
+  },
+  {
+   "id": "VL3",
+   "reason": "no earnings"
+  },
+  {
+   "id": "VL4",
+   "reason": "no EBITDA"
+  }
+ ],
+ "drivers": [
+  {
+   "id": "us_rates",
+   "name": "US interest rates",
+   "indicators": [
+    "G-DM1",
+    "G-DM2"
+   ]
+  }
+ ],
+ "chains": [
+  {
+   "id": "C1",
+   "trigger": "Hot inflation or jobs data",
+   "what_changes": "Fed hikes or fewer cuts; real yields up",
+   "business_hit": "gold pays nothing, so holding it costs more; price falls",
+   "company_levers": "none",
+   "watch": {
+    "name": "10-year real yield",
+    "source": "FRED DFII10",
+    "active_if": "up 0.25+ pts",
+    "measured_against": "its level a month earlier"
+   },
+   "status": "Hurting"
+  },
+  {
+   "id": "C2",
+   "trigger": "Strong US dollar (or loss of trust in it)",
+   "what_changes": "gold dearer for non-US buyers",
+   "business_hit": "demand and price",
+   "company_levers": "none",
+   "watch": {
+    "name": "US dollar index",
+    "source": "shared macro (DX-Y.NYB)",
+    "active_if": "up 2%+",
+    "measured_against": "its level a month earlier"
+   },
+   "status": "Building"
+  },
+  {
+   "id": "C3",
+   "trigger": "War or oil shock",
+   "what_changes": "safe-haven buying vs higher oil, inflation and rate fears",
+   "business_hit": "two-sided; in 2026 the rate effect won",
+   "company_levers": "none",
+   "watch": {
+    "name": "Brent crude",
+    "source": "Yahoo BZ=F (needs extraMacro)",
+    "active_if": "up 15%+ or a new conflict",
+    "measured_against": "its level a month earlier"
+   },
+   "status": "Quiet (elevated)"
+  },
+  {
+   "id": "C4",
+   "trigger": "Reserve diversification by central banks",
+   "what_changes": "steady buying regardless of price and rates",
+   "business_hit": "floor under the price",
+   "company_levers": "none",
+   "watch": {
+    "name": "Central bank tonnes, last 4 quarters",
+    "source": "WGC quarterly; PBoC monthly",
+    "active_if": "down 10%+",
+    "measured_against": "the 4 quarters before"
+   },
+   "status": "Weakening support"
+  },
+  {
+   "id": "C5",
+   "trigger": "US policy shocks (tariffs, fiscal scares, Fed independence)",
+   "what_changes": "trust in US assets falls",
+   "business_hit": "gold up; a truce reverses it",
+   "company_levers": "none",
+   "watch": {
+    "name": "news scan; dollar cross-check",
+    "source": "web search",
+    "active_if": "new tariff action, rating move or threat to Fed independence",
+    "measured_against": "-"
+   },
+   "status": "Quiet"
+  }
+ ],
+ "shareholder_sources": [
+  "SPDR daily file (tonnes, flows)"
+ ],
+ "sec_cik": "0001222333",
+ "splits": [],
+ "index_holders": [
+  "vanguard",
+  "blackrock",
+  "state street",
+  "geode",
+  "northern trust",
+  "norges",
+  "legal & general",
+  "schwab",
+  "dimensional",
+  "morgan stanley",
+  "jpmorgan",
+  "bank of america",
+  "goldman",
+  "ubs",
+  "royal bank",
+  "wells fargo",
+  "invesco",
+  "bank of new york",
+  "amundi",
+  "deutsche",
+  "swiss national",
+  "hsbc",
+  "mitsubishi",
+  "sumitomo",
+  "ameriprise",
+  "nuveen"
+ ],
+ "status": "live",
+ "version": "0.1",
+ "onboarded": "",
+ "_status": "Scoping approved 1 Oct 2026 (commodity variant; benchmark S&P 500; valuation = stretch). Peers, settings and chains C1-C5 approved by Kenneth 1 Oct 2026. Reweight after sanity check (Kenneth, 1 Oct 2026): G-DM1 12 -> 8, DM4 8 -> 12. DM4 at half weight (6) until WGC's Q3 2026 report (Kenneth, 1 Oct 2026, after the adversarial pass).",
+ "onboard_price": 389.62,
+ "onboard_date": "2026-10-01",
+ "_onboard_note": "Kenneth's GLD average cost (1 Oct 2026), used for O6 winner discipline instead of the first staging close ($380.84 on 30 Sep). At the 30 Sep close GLD is 2.3% below this cost, so O6 does not apply today."
+}

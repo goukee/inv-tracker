@@ -3,5 +3,6 @@
  {"id": "crypto", "label": "Crypto", "template": "crypto", "src": "crypto/index.html", "status": "live", "folder": "02 Crypto"},
  {"id": "AAPL", "label": "AAPL", "template": "stock", "src": "templates/stock.html#AAPL", "status": "live", "folder": "03 Stocks/AAPL-US"},
  {"id": "AMD", "label": "AMD", "template": "stock", "src": "templates/stock.html#AMD", "status": "live", "folder": "03 Stocks/AMD-US"},
- {"id": "SPCX", "label": "SPCX", "template": "stock", "src": "templates/stock.html#SPCX", "status": "live", "folder": "03 Stocks/SPCX-US"}
+ {"id": "SPCX", "label": "SPCX", "template": "stock", "src": "templates/stock.html#SPCX", "status": "live", "folder": "03 Stocks/SPCX-US"},
+ {"id": "GLD", "label": "GLD", "template": "stock", "src": "templates/stock.html#GLD", "status": "live", "folder": "03 Stocks/GLD-US"}
 ]}

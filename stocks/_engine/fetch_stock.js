@@ -8,6 +8,8 @@
      D  https://www.sec.gov/                revenue mix: segment / product revenue, cost and operating profit from the
                                             inline XBRL in the last ~16 10-Q/10-K filings (US only). Optional __CFG.n (filings, default 16)
                                             and __CFG.axes (regex of dimension axes, default ProductOrService / BusinessSegments).
+     G  commodity feeds, one source per run from its own site: FRED (fred.stlouisfed.org), SPDR daily file (www.spdrgoldshares.com),
+        CFTC (publicreporting.cftc.gov). See the stage G block. Stage A takes __CFG.ratio=['GC=F','^GSPC'] for commodity tabs.
    Each stage runs in the background and leaves a plain-text bundle in window.__TXT.
    Poll window.__SUMMARY, then pull window.__TXT in 880-character chunks. Never base64 it. */
 window.__TXT=null;window.__SUMMARY=null;window.__ERR=null;
@@ -89,6 +91,11 @@ window.__RUN=async function(){
 
   /* --- 5 years weekly closes (for P/E vs own history) --- */
   await safe('weekly',async()=>{const W=await chart(C.code,'6y','1wk');put('WEEKLY',W[0].d,W.map(x=>Math.round(x.c*10)).join(','))  /* weekly closes x10; weeks are 7 days apart except the last */},null);
+  /* commodity tabs (plan v0.6, G-VL2): __CFG.ratio=['GC=F','^GSPC'] -> this week's ratio vs the median of the previous 520 weeks */
+  if(C.ratio) await safe('ratio',async()=>{const [X,Y]=await Promise.all(C.ratio.map(s=>chart(s,'11y','1wk')));const ym=Object.fromEntries(Y.map(x=>[x.d,x.c]));
+    const R=X.filter(x=>ym[x.d]).map(x=>({d:x.d,g:x.c,s:ym[x.d],r:x.c/ym[x.d]}));const last=R[R.length-1],H=R.slice(-521,-1),srt=H.map(x=>x.r).sort((a,b)=>a-b);
+    const md=srt.length%2?srt[(srt.length-1)/2]:(srt[srt.length/2-1]+srt[srt.length/2])/2;
+    put('RATIO',last.d,+last.g.toFixed(1),+last.s.toFixed(2),+last.r.toFixed(4),+md.toFixed(4),H[0].d,H[H.length-1].d,H.length)},null);
 
   /* --- shared macro: dollar, 10-year yield, yuan, memory proxy, Fed odds --- */
   for(const [key,sym] of [['DXY','DX-Y.NYB'],['TNX','^TNX'],['CNY','CNY=X'],['MU','MU'],...(C.extraMacro||[])]){
@@ -231,6 +238,37 @@ window.__RUN=async function(){
   put('SEGSRC',F.length+' filings',F[F.length-1]?.[1]||'',F[0]?.[1]||'');
  }
 
+
+ if(C.stage==='G'){
+  /* Commodity feeds (plan v0.6; GLD first). One source per run, each from its own site (other origins block the calls):
+       __CFG={stage:'G',src:'fred',series:['DFII10','T10YIE']}   from https://fred.stlouisfed.org/
+       __CFG={stage:'G',src:'spdr',product:'gld'}                   from https://www.spdrgoldshares.com/usa/gld/
+       __CFG={stage:'G',src:'cftc',market:'088691'}                 from https://publicreporting.cftc.gov/
+     Join the three outputs (any order) into rawG.txt; refresh_stock.py --graw rawG.txt. */
+  if(C.src==='fred') for(const id of (C.series||['DFII10','T10YIE'])) await safe('fred '+id,async()=>{
+    const r=await fetch(`/graph/fredgraph.csv?id=${id}`);if(!r.ok)throw new Error(r.status);
+    const rows=(await r.text()).trim().split('\n').slice(1).map(l=>l.split(',')).filter(x=>x[1]&&x[1]!=='.'&&!isNaN(+x[1]));
+    const n=rows.length-1;if(n<21)throw new Error('too few rows');
+    put('FRED',id,rows[n][0],+rows[n][1],rows[n-20][0],+rows[n-20][1],rows[n-1][0],+rows[n-1][1])},null);   /* 20 observations earlier */
+  if(C.src==='spdr') await safe('spdr',async()=>{
+    if(!window.XLSX) await new Promise((ok,no)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js';s.onload=ok;s.onerror=()=>no(new Error('SheetJS did not load'));document.head.appendChild(s)});
+    const r=await fetch(`https://api.spdrgoldshares.com/api/v1/historical-archive?product=${C.product||'gld'}&exchange=NYSE&lang=en`);if(!r.ok)throw new Error(r.status);
+    const wb=XLSX.read(await r.arrayBuffer(),{type:'array'});const rows=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[1]],{header:1,raw:false});
+    const M={Jan:'01',Feb:'02',Mar:'03',Apr:'04',May:'05',Jun:'06',Jul:'07',Aug:'08',Sep:'09',Oct:'10',Nov:'11',Dec:'12'};
+    const f=v=>+String(v).replace(/[$,]/g,'');
+    const D=rows.filter(x=>/^\d{1,2}-[A-Za-z]{3}-\d{4}$/.test(x[0]||'')&&x[9]&&!isNaN(f(x[9]))).map(x=>{const [d,m,y]=x[0].split('-');return {d:`${y}-${M[m]}-${d.padStart(2,'0')}`,t:f(x[9]),pr:f(x[6]),oz:f(x[2]),nav:f(x[10])}});
+    const n=D.length-1;if(n<61)throw new Error('too few rows');const S=D.slice(-260);
+    /* SPDR|date|tonnes|prev date|prev|date 20 days earlier|tonnes|date 60 days earlier|tonnes|premium %|oz per share|trust value $|series start|tonnes x10 (last 260 days) */
+    put('SPDR',D[n].d,D[n].t,D[n-1].d,D[n-1].t,D[n-20].d,D[n-20].t,D[n-60].d,D[n-60].t,D[n].pr,D[n].oz,Math.round(D[n].nav),S[0].d,S.map(x=>Math.round(x.t*10)).join(','))},null);
+  if(C.src==='cftc') await safe('cftc',async()=>{
+    const q=`https://publicreporting.cftc.gov/resource/72hh-3qpy.json?cftc_contract_market_code=${C.market||'088691'}&$order=report_date_as_yyyy_mm_dd%20DESC&$limit=170&$select=report_date_as_yyyy_mm_dd,m_money_positions_long_all,m_money_positions_short_all,open_interest_all`;
+    const r=await fetch(q);if(!r.ok)throw new Error(r.status);const J=(await r.json()).reverse();
+    const P=J.map(x=>({d:x.report_date_as_yyyy_mm_dd.slice(0,10),v:(x.m_money_positions_long_all-x.m_money_positions_short_all)/x.open_interest_all*100}));
+    const n=P.length-1,H=P.slice(-156),cur=P[n].v,pc=H.filter(x=>x.v<cur).length/H.length*100;   /* percentile: share of the last 156 weekly reports (3 years, this week included) below this week's level */
+    const vs=H.map(x=>x.v);
+    /* CFTC|report|net long % of open interest|percentile (3y)|prev report|value|4 weeks earlier|value|3y max|3y min */
+    put('CFTC',P[n].d,+cur.toFixed(2),+pc.toFixed(1),P[n-1].d,+P[n-1].v.toFixed(2),P[n-4].d,+P[n-4].v.toFixed(2),+Math.max(...vs).toFixed(1),+Math.min(...vs).toFixed(1))},null);
+ }
  put('ERRORS',errs.join(' ; '));
  const txt=L.join('\n'); window.__TXT=txt;
  window.__SUMMARY={stage:C.stage,code:C.code,lines:L.length,len:txt.length,chunks:Math.ceil(txt.length/880),errors:errs};

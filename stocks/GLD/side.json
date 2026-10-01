@@ -1,0 +1,317 @@
+{
+ "_note": "Text and on-results inputs only a chat can write. See AAPL-US/side.json for a full example.",
+ "dm3": {
+  "guide_mid": null,
+  "consensus": null,
+  "measured": "n/a (commodity)",
+  "source": "",
+  "note": "Not applicable: gold has no guidance."
+ },
+ "custom": {
+  "DM4": {
+   "value": -20.5,
+   "period": "4 quarters to Jun 2026: 780 t vs 981 t"
+  },
+  "DM5": {
+   "value": -10.1,
+   "period": "Q2 2026: 585 t vs 651 t"
+  }
+ },
+ "move": {
+  "class": "Quiet",
+  "direction": "down",
+  "headline": "A normal-sized dip in a falling month",
+  "evidence": [
+   {
+    "d": "30 Sep",
+    "t": "GLD fell 0.5% vs a typical daily move of 1.6% (last 60 days), so no classification is triggered. Over 5 days it fell 3.1%.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
+   {
+    "d": "16 Sep",
+    "t": "The Fed raised rates for the first time since 2023; the 10-year real rate rose 0.47 points over the month to 29 Sep.",
+    "kind": "fact",
+    "src": "MUFG; FRED"
+   },
+   {
+    "d": "7 Jul–30 Sep",
+    "t": "Investors added gold to GLD through the dip: 1,055.7 t on 30 Sep vs 1,002.5 t on 7 Jul (+5.3%); in September alone +0.9% (vs 1,046.6 t on 1 Sep).",
+    "kind": "fact",
+    "src": "SPDR daily file"
+   }
+  ]
+ },
+ "earnings": {
+  "past": [
+   {
+    "q": "Q2 2026 gold demand (World Gold Council)",
+    "date": "Thu 30 Jul 2026",
+    "vs": "Total demand 1,269 tonnes, flat vs Q2 2025. Central banks 289 t (+62%); bars and coins 307 t (-3%); jewellery 278 t (-17%); technology 80 t (+2%).",
+    "guide": "Not applicable (no guidance for a commodity).",
+    "reaction": "Not measured: gold reacts to rates and the dollar far more than to this report.",
+    "take": [
+     "Buying has shifted from consumers to central banks: jewellery tonnes -17% while central banks +62%, each vs Q2 2025.",
+     "Central banks: Q2 was a record second quarter, but the first half (345 t) was the lowest since 2022, after WGC cut Q1 to 57 t (from 244 t).",
+     "Jewellery spending in dollars still rose (first half +22% vs a year earlier, $86bn, WGC press release): fewer tonnes at a much higher price.",
+     "Gold ETFs worldwide saw a 44.8 t outflow in Q2 (first half +18 t)."
+    ],
+    "impact": "Feeds DM4 (central banks, last 4 quarters -20.5% vs the 4 before: bearish, mostly from the Q1 reclassification) and DM5 (jewellery plus bars and coins -10.1% vs Q2 2025: bearish)."
+   }
+  ],
+  "next": [
+   {
+    "q": "Fed decision (27-28 Oct meeting)",
+    "date": "Wed 28 Oct 2026, 2pm ET (2am Thu Singapore)",
+    "iso": "2026-10-28",
+    "status": "Confirmed",
+    "watch": [
+     "Rate rise or hold: markets priced 34% odds of a rise on 30 Sep (vs 27% four weeks earlier).",
+     "Real interest rates (G-DM1, 8 points) and the dollar (LQ4) are how the decision reaches gold.",
+     "Jobs (2 Oct), CPI (14 Oct) and PCE (29 Oct) move the odds before and after."
+    ]
+   },
+   {
+    "q": "Q3 2026 gold demand (World Gold Council)",
+    "date": "About Thu 29 Oct 2026 (expected)",
+    "iso": "2026-10-29",
+    "status": "Estimated (Q2 came out Thu 30 Jul)",
+    "watch": [
+     "Central bank tonnes: updates DM4 and chain C4.",
+     "Jewellery plus bars and coins: updates DM5."
+    ]
+   }
+  ]
+ },
+ "shareholder_notes": [],
+ "chains": [
+  {
+   "id": "C1",
+   "name": "Rates and the Fed",
+   "path": [
+    "hot inflation or jobs data",
+    "Fed hikes or fewer cuts",
+    "real interest rates up",
+    "gold costs more to hold; price falls"
+   ],
+   "watch": "DFII10",
+   "watch_label": "10-year real interest rate (FRED, %)",
+   "active": {
+    "kind": "pts",
+    "t": 0.25
+   },
+   "status": "Hurting",
+   "evidence": [
+    "Real rate 2.91% on 29 Sep vs 2.44% on 31 Aug: +0.47 points vs a month earlier (FRED DFII10).",
+    "Fed raised rates 0.25 points to 3.75-4.00% on 16 Sep, its first rise since 2023 (MUFG recap).",
+    "Markets price a 34% chance of another rise at the 27-28 Oct meeting, vs 27% four weeks earlier (Polymarket, 30 Sep close)."
+   ]
+  },
+  {
+   "id": "C2",
+   "name": "Dollar",
+   "path": [
+    "strong dollar",
+    "gold dearer outside the US",
+    "demand and price fall"
+   ],
+   "watch": "DXY",
+   "watch_label": "US dollar index",
+   "active": {
+    "kind": "pct",
+    "t": 2
+   },
+   "status": "Building",
+   "evidence": [
+    "Dollar index 101.45 on 30 Sep vs 99.67 twenty trading days earlier: +1.8% (+1.78 index points), under this chain's 2% line; the dollar indicator LQ4 uses a 1-point line and scores it bearish.",
+    "The reverse also works: doubts about US debt weakened the dollar in the week of 17 Aug 2026 and GLD rose 5.4% (Kitco)."
+   ]
+  },
+  {
+   "id": "C3",
+   "name": "War and oil (two-sided)",
+   "path": [
+    "war or oil shock",
+    "safe-haven buying vs higher inflation and rate fears",
+    "in 2026 the rate effect won"
+   ],
+   "watch": "BRENT",
+   "watch_label": "Brent crude ($ a barrel)",
+   "active": {
+    "kind": "pct",
+    "t": 15
+   },
+   "status": "Quiet (oil rising)",
+   "evidence": [
+    "Brent $103.53 on 30 Sep vs $94.65 twenty trading days earlier: +9.4%, under the 15% line.",
+    "Week of 16 Mar 2026: gold's worst week since 1983 (GLD -10.3%) as the Iran war lifted oil and Fed-rise odds (Trading Economics)."
+   ]
+  },
+  {
+   "id": "C4",
+   "name": "Central bank buying",
+   "path": [
+    "reserve diversification",
+    "steady buying regardless of price and rates",
+    "floor under gold"
+   ],
+   "watch": "",
+   "watch_label": "Central bank tonnes, last 4 quarters (World Gold Council, quarterly): active at 10%+ down vs the 4 quarters before",
+   "active": {
+    "kind": "pct",
+    "t": -10
+   },
+   "status": "Weakening support",
+   "evidence": [
+    "780 t in the 4 quarters to Jun 2026 vs 981 t the 4 before (WGC's latest published figures): -20.5%.",
+    "Most of that drop is a reclassification: WGC cut Q1 2026 central-bank buying from 244 t to 57 t, moving 187 t to over-the-counter demand (WGC Q2 2026).",
+    "Q2 2026 was 289 t vs 178 t a year earlier (+62%), a record second quarter; Poland 51 t, China 33 t (WGC, 30 Jul)."
+   ]
+  },
+  {
+   "id": "C5",
+   "name": "US policy shocks",
+   "path": [
+    "tariffs, fiscal scares, threats to Fed independence",
+    "trust in US assets falls",
+    "gold up; a truce reverses it"
+   ],
+   "watch": "",
+   "watch_label": "News scan (no daily number); active on new tariff action, a credit-rating move or a threat to Fed independence",
+   "active": {
+    "kind": "news"
+   },
+   "status": "Quiet",
+   "evidence": [
+    "No new shock found for the last month (news search, 1 Oct). Last active: week of 17 Aug 2026, US debt above $40tn, GLD +5.4% (Kitco)."
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "d": "2026-10-02",
+   "t": "US jobs report (September)",
+   "link": "C1",
+   "note": "Confirmed (BLS): Fri 2 Oct, 8:30am ET (8:30pm Singapore). A strong report lifted rate-rise odds in the 1 Jun 2026 week (GLD -5.0%)."
+  },
+  {
+   "d": "2026-10-14",
+   "t": "US inflation (September CPI)",
+   "link": "C1",
+   "note": "Confirmed (BLS): Wed 14 Oct, 8:30am ET (8:30pm Singapore). Hot CPI drove the 11 May 2026 week (GLD -3.8%)."
+  },
+  {
+   "d": "2026-10-28",
+   "t": "Fed decision (27-28 Oct meeting)",
+   "link": "C1",
+   "note": "Confirmed: Wed 28 Oct, 2pm ET (2am Thu Singapore). 34% odds of a rise (Polymarket, 30 Sep)."
+  },
+  {
+   "d": "2026-10-29",
+   "t": "PCE inflation (September)",
+   "link": "C1",
+   "note": "Confirmed: Thu 29 Oct, 8:30am ET (8:30pm Singapore). The Fed's preferred inflation measure."
+  },
+  {
+   "d": "2026-10-29",
+   "t": "World Gold Council Gold Demand Trends Q3 (expected)",
+   "link": "C4",
+   "note": "Estimated: about end-October (Q2 came out Thu 30 Jul). Updates DM4 central banks and DM5 consumer demand."
+  }
+ ],
+ "valuation_plain": [],
+ "lead": "GLD's reading is building history (today's zone: <b>Sell</b>, <b>−34</b> on a −100 to +100 scale): rising real interest rates and a firmer dollar are pressing on gold, while investors keep adding to GLD on the dip. Read it as a pressure gauge, not a timing signal.",
+ "bullets": [
+  "<b>Rates are the main pressure.</b> The 10-year real interest rate is 2.91% on 29 Sep vs 2.44% on 31 Aug (+0.47 points, bearish); the dollar index rose 1.78 points over 20 trading days (bearish). Net Fed odds (chance of a cut minus chance of a rise) moved 11 points towards rises in 28 days, under the 15-point line (neutral).",
+  "<b>The price trend is down.</b> $380.84 is 8.5% below its 200-day average and the 50-day average is 4.9% below the 200-day (both bearish); over 3 months GLD is level with the S&P 500 (+0.2 points including dividends, neutral). Price trend bucket −72 on −100 to +100.",
+  "<b>Demand is mixed, and one figure tips it to Sell.</b> Central bank buying is 20.5% lower over 4 quarters vs the 4 before (780 t vs 981 t, bearish), mostly because WGC moved 187 t of Q1 2026 into another category, so it counts at half weight (6 of 12 points) until WGC's Q3 report; on WGC's first Q1 figure it would be neutral and the composite about −27 (Hold). Consumer buying is 10.1% lower vs a year earlier (bearish); GLD's gold holdings rose 5.3% in 60 trading days (bullish). Demand bucket −41.",
+  "<b>Not stretched to an extreme.</b> GLD is 38.7% above its 200-week average (bearish only at 60%+) and gold vs the S&P 500 is 15.0% above its 10-year median (bearish at 25%+). Valuation (stretch) bucket 0.",
+  "<b>Not a call yet.</b> Day 1 of 10. Confidence High means only that data coverage is 100% and 3 of 4 buckets agree, not that the reading has a good record: in the 5-year replay, weeks reading Sell were followed by GLD +12.9% over 6 months on average (vs +10.8% for all weeks)."
+ ],
+ "defects": [
+  "Staging build, first day: a call needs 7 of the last 10 trading days in one zone.",
+  "The day's move breakdown keeps the stock wording: 'Sector' = SPY's move beyond the S&P 500 (near zero), 'Company-specific' = gold's own move.",
+  "Today's zone turns on one figure: central bank buying (DM4) reads -20.5% mostly because WGC moved 187 t of Q1 2026 into another category. It counts at half weight (6 of 12 points, Kenneth 1 Oct) until WGC's Q3 2026 report (~29 Oct). On WGC's first Q1 figure DM4 is neutral and the composite about -27 (Hold).",
+  "10-year real rate (G-DM1) is published by FRED a day late: latest value 29 Sep.",
+  "Stretch (G-VL1): the 200-week average counts the current week twice (Yahoo repeats it): $274.48 instead of $273.42, so +38.7% instead of +39.3%. The score is unaffected (bearish only at 60%+); engine fix pending.",
+  "Fed odds (LQ6) use the shared engine's 28-day window and are jumpy: rise odds were 48% on 29 Sep and 34% on 30 Sep; on 29 Sep LQ6 would have read bearish (composite about -36).",
+  "GLD flows (G-LQ2, G-DM3) cover GLD only, not all gold funds worldwide.",
+  "Hedge-fund positioning (G-LQ3) is weekly: latest report as of Tue 22 Sep, released Fri 25 Sep.",
+  "Sensitivity to the S&P 500 (0.80x, last 252 trading days) is computed from daily GLD and index moves; gold has been unusually correlated with stocks in 2026.",
+  "5-year weekly replay (research/sanity_check.md): Sell readings in 2021-26 were followed by GLD +12.9% over 6 months on average vs +10.8% for all weeks; stretch at extremes was the best input, real rates the weakest."
+ ],
+ "sources": [
+  "Yahoo Finance (prices, S&P 500, dollar, Brent)",
+  "FRED (DFII10 real rate, T10YIE inflation expectations)",
+  "SPDR Gold Shares daily file (tonnes, premium)",
+  "CFTC Commitments of Traders (gold, 088691)",
+  "World Gold Council Gold Demand Trends Q2 2026 (30 Jul 2026), Q1 2026 and full-year 2025",
+  "Polymarket (Fed odds)",
+  "MUFG September 2026 FOMC recap",
+  "Kitco; Trading Economics (past moves)"
+ ],
+ "quality_info": [
+  {
+   "name": "Fee",
+   "value": "0.40% a year vs IAU 0.25% and GLDM 0.10% (same gold)",
+   "source": "sponsors' sites"
+  },
+  {
+   "name": "Premium to gold value",
+   "value": "+0.02% at 4:15pm ET, 30 Sep (trades at its gold value)",
+   "source": "SPDR daily file"
+  },
+  {
+   "name": "Gold per share",
+   "value": "0.0917 oz on 30 Sep; falls about 0.40% a year as the fee is paid in gold",
+   "source": "SPDR daily file"
+  }
+ ],
+ "demand_mix": {
+  "quarter": "Q2 2026",
+  "source": "WGC Gold Demand Trends Q2 2026 (30 Jul 2026)",
+  "total_t": 1268.9,
+  "parts": [
+   {
+    "id": "CB",
+    "name": "Central banks",
+    "t": 288.9,
+    "yoy": 62
+   },
+   {
+    "id": "BC",
+    "name": "Bars and coins",
+    "t": 307.1,
+    "yoy": -3
+   },
+   {
+    "id": "JW",
+    "name": "Jewellery",
+    "t": 278.2,
+    "yoy": -17
+   },
+   {
+    "id": "TE",
+    "name": "Technology",
+    "t": 80.4,
+    "yoy": 2
+   },
+   {
+    "id": "ETF",
+    "name": "Gold ETFs worldwide",
+    "t": null,
+    "yoy": null,
+    "note": "Outflow of 44.8 t in Q2 (first half +18 t), so not shown as a share; over-the-counter and other demand make up the rest of the 1,268.9 t total."
+   }
+  ],
+  "shift": {
+   "title": "What the shift means for gold",
+   "pos": [
+    "Buying moved from consumers (jewellery -17% vs Q2 2025) to central banks (+62%): slow, steady holders."
+   ],
+   "neg": [
+    "More reliance on a few dozen central banks whose buying is lumpy (Q1 2026 57 t, Q2 289 t)."
+   ]
+  }
+ }
+}

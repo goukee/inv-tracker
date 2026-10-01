@@ -89,13 +89,16 @@ const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&g
 const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 const dl=iso=>iso?(+iso.slice(8,10))+' '+MON[+iso.slice(5,7)-1]+' '+iso.slice(0,4):'';
 const sg=v=>v==null?'n/a':(v>0?'+':v<0?'−':'')+Math.abs(v);
+const upd=b=>{if(!b)return '';const t=new Date(b.replace(/Z$/,':00Z'));if(isNaN(t))return '';const s=new Date(t.getTime()+8*3600e3),h=s.getUTCHours();
+  return `${s.getUTCDate()} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][s.getUTCMonth()]} ${s.getUTCFullYear()}, ${h%12||12}:${String(s.getUTCMinutes()).padStart(2,'0')}${h<12?'am':'pm'} SGT`};
 const ZONE={SB:'Strong Buy',B:'Buy',H:'Hold',S:'Sell',SS:'Strong Sell'};
 const zt=z=>z==='SB'||z==='B'?'bull':z==='S'||z==='SS'?'bear':z==='H'?'hold':'mute';
 // indicator columns, grouped by bucket; DM4 = the stock's own demand measures combined (weighted)
 const COLS=[['Price trend',['PT1','PT2','PT4']],['Liquidity',['LQ1','LQ2','LQ3','LQ4','LQ6']],['Demand',['DM1','DM2','DM3','DM4','DM5','DM6']],['Valuation',['VL1','VL2','VL3','VL4']]];
 const WORD={1:'bullish',0:'neutral','-1':'bearish'};
+const ALT={LQ2:'G-LQ2',LQ3:'G-LQ3',DM1:'G-DM1',DM2:'G-DM2',DM3:'G-DM3',VL1:'G-VL1',VL2:'G-VL2'};   // commodity tabs: the gold equivalent sits in the company column
 function cell(d,id){
-  let its=d.indicators.filter(i=>i.id===id);
+  let its=d.indicators.filter(i=>i.id===id||(d.asset_type==='commodity'&&ALT[id]===i.id));
   if(id==='DM4') its=d.indicators.filter(i=>/^DM4/.test(i.id));
   const live=its.filter(i=>i.s!=null);
   const moved=((d.changes||{}).sections||{}).indicators||[];
@@ -112,7 +115,7 @@ function major(d){
   return {since:(d.changes||{}).since, first:(d.changes||{}).first, calls, inds, callMoved};
 }
 function render(rows,skipped){
-  const asof=rows.map(r=>r.d.meta.asof).sort().at(-1);
+  const asof=rows.map(r=>r.d.meta.asof).sort().at(-1); const built=rows.map(r=>r.d.meta.built||'').sort().at(-1);
   const ch=rows.map(r=>({r,m:major(r.d)}));
   const withCh=ch.filter(x=>x.m.calls.length||x.m.inds.length);
   const strip=withCh.length
@@ -134,14 +137,14 @@ function render(rows,skipped){
   const hi=COLS.map(([b,ids],j)=>ids.map((id,k)=>`<th class="${j&&!k?'sep':''}" title="${esc(id)}">${id}</th>`).join('')).join('');
   const grid=rows.map(({code,d})=>`<tr tabindex="0" data-code="${esc(code)}"><td><span class="code">${esc(code)}</span></td>${COLS.map(([b,ids],j)=>ids.map((id,k)=>cell(d,id).replace('<td',`<td class="${j&&!k?'sep':''}"`)).join('')).join('')}</tr>`).join('');
   document.getElementById('app').innerHTML=`
-  <header class="mast"><h1>Stocks summary</h1><span>${rows.length} stock${rows.length>1?'s':''} · latest close ${esc(dl(asof))} · click a row to open its tab</span></header>
+  <header class="mast"><h1>Stocks summary</h1><span>${rows.length} stock${rows.length>1?'s':''} · latest close ${esc(dl(asof))}${upd(built)?' · updated '+esc(upd(built)):''} · click a row to open its tab</span></header>
   ${strip}
   <h2>The call <small>Composite runs from −100 to +100 · Buy at +30 or above, Sell at −30 or below</small></h2>
   <div class="tbl"><table class="main"><thead><tr><th>Stock</th><th>Call</th><th>Last price</th><th>Composite</th><th>Since last refresh</th></tr></thead><tbody>${main}</tbody></table></div>
   <h2>Indicators <small>Hover a dot for the reading</small></h2>
   <div class="tbl"><table class="grid"><thead><tr class="b"><th></th>${hb}</tr><tr class="i"><th>Stock</th>${hi}</tr></thead><tbody>${grid}</tbody></table></div>
   <div class="legend"><span><span class="dot g"></span>Bullish</span><span><span class="dot y"></span>Neutral</span><span><span class="dot r"></span>Bearish</span><span><span class="dot x">–</span> No data or removed</span><span><span class="dot y moved"></span> Changed since the last refresh</span></div>
-  <p class="note">DM4 combines each stock's own demand measures (weighted). A call is confirmed after 7 of 10 trading days in one zone; until then the page shows the zone the indicators read today.${skipped.length?' Not shown (data missing): '+skipped.map(esc).join(', ')+'.':''}</p>`;
+  <p class="note">DM4 combines each stock's own demand measures (weighted). Commodity rows (e.g. GLD) show their gold measures in the nearest column (G-LQ2 under LQ2, G-DM1 under DM1, G-VL1 under VL1 and so on); hover a dot for the name. A call is confirmed after 7 of 10 trading days in one zone; until then the page shows the zone the indicators read today.${skipped.length?' Not shown (data missing): '+skipped.map(esc).join(', ')+'.':''}</p>`;
   document.querySelectorAll('tr[data-code]').forEach(tr=>{const go=()=>parent!==window&&parent.postMessage({type:'open-tab',id:tr.dataset.code},'*');
     tr.addEventListener('click',go);tr.addEventListener('keydown',e=>{if(e.key==='Enter')go()})});
   parent!==window&&parent.postMessage({type:'tab-height',h:document.documentElement.scrollHeight},'*');
