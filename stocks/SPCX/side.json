@@ -146,7 +146,7 @@
    },
    "status": "Active",
    "evidence": [
-    "10-year yield 5.26% on 29 Sep vs 4.76% 20 trading days earlier, up 0.50 percentage points (trigger: up 0.25) (Yahoo)."
+    "10-year yield 5.24% on 1 Oct vs 4.80% 20 trading days earlier, up 0.44 percentage points (trigger: up 0.25) (Yahoo)."
    ]
   },
   {
@@ -166,7 +166,7 @@
    },
    "status": "Active",
    "evidence": [
-    "Micron shares $1,065 on 29 Sep vs $959 20 trading days earlier, +11.1% (trigger: up 10%) (Yahoo).",
+    "Micron shares $1,097 on 1 Oct vs $956 20 trading days earlier, +14.8% (trigger: up 10%) (Yahoo).",
     "Q2 capex $18.4bn, $15.8bn of it for AI; shares −13.6% on 5 Aug when it was reported (CNBC).",
     "Terafab chip plant with Tesla, $16.8bn first phase (Electrek, 6 Aug). A deal with a related Musk company."
    ]
@@ -187,7 +187,7 @@
    },
    "status": "Active",
    "evidence": [
-    "Defence ETF (ITA) $209.30 on 29 Sep vs $228.35 20 trading days earlier, −8.3% (trigger: down 5%): the watch number has fired, but nothing has yet shown up in SpaceX's own figures.",
+    "Defence ETF (ITA) $208.04 on 1 Oct vs $223.37 20 trading days earlier, −6.9% (trigger: down 5%): the watch number has fired, but nothing has yet shown up in SpaceX's own figures.",
     "FY2027 request includes $17.9bn for Golden Dome, $17.1bn of it through a planned reconciliation package rather than normal appropriations (Aerospace America). Starshield holds $6bn+ of Space Force contracts (24/7 Wall St, 23 Sep)."
    ]
   }
@@ -249,13 +249,13 @@
   }
  ],
  "valuation_plain": [],
- "lead": "SpaceX shows <b>Insufficient data</b>: only 62% of indicator weight has live data (a call needs 70%), any call would be capped at Hold by two quality red flags, and the Demand bucket is left out because only 34% of its weight has live data (it needs 50%).",
+ "lead": "SpaceX shows <b>Insufficient data</b>: only 66% of indicator weight has live data (a call needs 70%), any call would be capped at Hold by two quality red flags, and the Demand bucket is left out because only 34% of its weight has live data (it needs 50%).",
  "bullets": [
-  "<b>No call, and none due on 5 Oct.</b> Only 62% of indicator weight has live data vs the 70% needed. Forecast revisions (DM2, 8 of 100 points) stay out while the forecast they are measured against is too small: 2027 earnings per share of $0.03 expected 90 days ago vs $1.89 today, so the 5 Oct date no longer brings them back by itself. Even with a call, two quality red flags cap it at Hold: free cash flow was −$25.0bn in the 6 months to Jun 2026, and the operating loss was 1.6x the interest bill over the same two quarters.",
+  "<b>No call, and none due on 5 Oct.</b> Only 66% of indicator weight has live data vs the 70% needed. Forecast revisions (DM2, 8 of 100 points) stay out while the forecast they are measured against is too small: 2027 earnings per share of $0.03 expected 90 days ago vs $1.89 today, so the 5 Oct date no longer brings them back by itself. Even with a call, two quality red flags cap it at Hold: free cash flow was −$25.0bn in the 6 months to Jun 2026, and the operating loss was 1.6x the interest bill over the same two quarters.",
   "<b>Demand looks strong but is not scored yet.</b> Only 34% of the Demand weight has live data (the bucket needs 50%), so it is left out; the live readings are all bullish. In the June quarter, vs the same quarter a year earlier, Connectivity (Starlink) revenue grew 66%, AI 247% and Space 29%; Google searches for Starlink were 24.4% above the same 4 weeks of 2025 (a noisy measure: the Starship flight fell in that window). Much of the AI jump came from renting out computing capacity, and one AI customer alone was 12.2% of company revenue in the 6 months to June (10-Q).",
-  "<b>The price is extreme vs peers.</b> Valuation scores −100: investors pay 107.9x expected profit over the next 12 months vs 30.8x for Iridium, the only space peer with a usable P/E, a one-peer comparison (+250%); SpaceX's 108x is above the 80x range peers must pass, so the page adds a caution, but it still counts as very expensive. On total company value vs operating profit before depreciation it is 327x vs 8.5x for the median of four peers.",
-  "<b>Price trend scores +100, yet the shares are still down over 3 months.</b> The price is 5.1% above its average since listing ($143.51) and 19.5 points ahead of the space peers over 63 trading days, but only because the peers fell further (average −23.7% vs SpaceX −4.2% over the same 63 days). The shares closed at $150.86, +1.1% on the day vs +0.23% for the Nasdaq-100, 29% below their post-listing high close ($211.40 on 16 Jun) and 12% above the $135 IPO price.",
-  "<b>Money flows are no longer leaning against it.</b> Liquidity scores +8, up from −54 yesterday: buying vs selling volume is now neutral (0.88x up-day vs down-day volume, last 20 trading days), the dollar index is 1.80 points higher than 20 trading days ago, and markets price a 34% chance of a Fed rate rise at the next meeting vs 27% a month earlier. Short interest fell 12.0% vs a month earlier (2.6% of float). Share supply is rising: 656m shares (5.0% of all shares) unlock in October and about 1.3bn (9.9%) just after Q3 results."
+  "<b>The price is extreme vs peers.</b> Valuation scores −100: investors pay 101.6x expected profit over the next 12 months vs 30.8x for Iridium, the only space peer with a usable P/E, a one-peer comparison (+250%); SpaceX's 102x is above the 80x range peers must pass, so the page adds a caution, but it still counts as very expensive. On total company value vs operating profit before depreciation it is 321x vs 8.5x for the median of four peers.",
+  "<b>Price trend scores +100, yet the shares are still down over 3 months.</b> The price is 3.1% above its average since listing ($143.57) and 15.4 points ahead of the space peers over 63 trading days, but only because the peers fell further (average −24.0% vs SpaceX −8.6% over the same 63 days). The shares closed at $148.07, −1.85% on the day vs +0.31% for the Nasdaq-100, 30% below their post-listing high close ($211.40 on 16 Jun) and 10% above the $135 IPO price.",
+  "<b>Money flows are no longer leaning against it.</b> Liquidity scores +8, unchanged from yesterday: buying vs selling volume is neutral (0.86x up-day vs down-day volume, last 20 trading days), the dollar index is 2.54 points higher than 20 trading days ago, and markets price a 24% chance of a Fed rate rise at the next meeting vs 27% a month earlier. Short interest fell 12.0% vs a month earlier (2.6% of float). Share supply is rising: 656m shares (5.0% of all shares) unlock in October and about 1.3bn (9.9%) just after Q3 results."
  ],
  "defects": [
   "Coverage 62% (below the 70% floor): no call. Forecast revisions (DM2) stay out while the forecast 90 days earlier is too small a base (under $0.05, or under 10% of today's); it was $0.03 vs $1.89 today.",

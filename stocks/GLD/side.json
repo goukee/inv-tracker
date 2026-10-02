@@ -102,9 +102,9 @@
    },
    "status": "Hurting",
    "evidence": [
-    "Real rate 2.91% on 29 Sep vs 2.44% on 31 Aug: +0.47 points vs a month earlier (FRED DFII10).",
+    "Real rate 2.93% on 30 Sep vs 2.44% on 1 Sep: +0.49 points vs a month earlier (FRED DFII10).",
     "Fed raised rates 0.25 points to 3.75-4.00% on 16 Sep, its first rise since 2023 (MUFG recap).",
-    "Markets price a 34% chance of another rise at the 27-28 Oct meeting, vs 27% four weeks earlier (Polymarket, 30 Sep close)."
+    "Markets price a 24% chance of another rise at the 27-28 Oct meeting, vs 27% four weeks earlier (Polymarket, 1 Oct close)."
    ]
   },
   {
@@ -123,7 +123,7 @@
    },
    "status": "Building",
    "evidence": [
-    "Dollar index 101.45 on 30 Sep vs 99.67 twenty trading days earlier: +1.8% (+1.78 index points), under this chain's 2% line; the dollar indicator LQ4 uses a 1-point line and scores it bearish.",
+    "Dollar index 102.10 on 1 Oct vs 99.56 twenty trading days earlier: +2.6% (+2.54 index points), now over this chain's 2% line (status label not changed by this refresh); the dollar indicator LQ4 uses a 1-point line and scores it bearish.",
     "The reverse also works: doubts about US debt weakened the dollar in the week of 17 Aug 2026 and GLD rose 5.4% (Kitco)."
    ]
   },
@@ -204,7 +204,7 @@
    "d": "2026-10-28",
    "t": "Fed decision (27-28 Oct meeting)",
    "link": "C1",
-   "note": "Confirmed: Wed 28 Oct, 2pm ET (2am Thu Singapore). 34% odds of a rise (Polymarket, 30 Sep)."
+   "note": "Confirmed: Wed 28 Oct, 2pm ET (2am Thu Singapore). 24% odds of a rise (Polymarket, 1 Oct)."
   },
   {
    "d": "2026-10-29",
@@ -222,11 +222,11 @@
  "valuation_plain": [],
  "lead": "GLD's reading is building history (today's zone: <b>Sell</b>, <b>−34</b> on a −100 to +100 scale): rising real interest rates and a firmer dollar are pressing on gold, while investors keep adding to GLD on the dip. Read it as a pressure gauge, not a timing signal.",
  "bullets": [
-  "<b>Rates are the main pressure.</b> The 10-year real interest rate is 2.91% on 29 Sep vs 2.44% on 31 Aug (+0.47 points, bearish); the dollar index rose 1.78 points over 20 trading days (bearish). Net Fed odds (chance of a cut minus chance of a rise) moved 11 points towards rises in 28 days, under the 15-point line (neutral).",
-  "<b>The price trend is down.</b> $380.84 is 8.5% below its 200-day average and the 50-day average is 4.9% below the 200-day (both bearish); over 3 months GLD is level with the S&P 500 (+0.2 points including dividends, neutral). Price trend bucket −72 on −100 to +100.",
-  "<b>Demand is mixed, and one figure tips it to Sell.</b> Central bank buying is 20.5% lower over 4 quarters vs the 4 before (780 t vs 981 t, bearish), mostly because WGC moved 187 t of Q1 2026 into another category, so it counts at half weight (6 of 12 points) until WGC's Q3 report; on WGC's first Q1 figure it would be neutral and the composite about −27 (Hold). Consumer buying is 10.1% lower vs a year earlier (bearish); GLD's gold holdings rose 5.3% in 60 trading days (bullish). Demand bucket −41.",
-  "<b>Not stretched to an extreme.</b> GLD is 38.7% above its 200-week average (bearish only at 60%+) and gold vs the S&P 500 is 15.0% above its 10-year median (bearish at 25%+). Valuation (stretch) bucket 0.",
-  "<b>Not a call yet.</b> Day 1 of 10. Confidence High means only that data coverage is 100% and 3 of 4 buckets agree, not that the reading has a good record: in the 5-year replay, weeks reading Sell were followed by GLD +12.9% over 6 months on average (vs +10.8% for all weeks)."
+  "<b>Rates are the main pressure.</b> The 10-year real interest rate is 2.93% on 30 Sep vs 2.44% on 1 Sep (+0.49 points, bearish); the dollar index rose 2.54 points over 20 trading days (bearish). Net Fed odds (chance of a cut minus chance of a rise) moved 1.2 points towards rises in 28 days, under the 15-point line (neutral).",
+  "<b>The price trend is down.</b> $382.76 is 8.0% below its 200-day average and the 50-day average is 4.8% below the 200-day (both bearish); over 3 months GLD is 1.6 points behind the S&P 500 (neutral). Price trend bucket −72 on −100 to +100.",
+  "<b>Demand is mixed, and one figure tips it to Sell.</b> Central bank buying is 20.5% lower over 4 quarters vs the 4 before (780 t vs 981 t, bearish), mostly because WGC moved 187 t of Q1 2026 into another category, so it counts at half weight (6 of 12 points) until WGC's Q3 report; on WGC's first Q1 figure it would be neutral and the composite about −27 (Hold). Consumer buying is 10.1% lower vs a year earlier (bearish); GLD's gold holdings rose 5.4% in 60 trading days (bullish). Demand bucket −41.",
+  "<b>Not stretched to an extreme.</b> GLD is 39.4% above its 200-week average (bearish only at 60%+) and gold vs the S&P 500 is 15.2% above its 10-year median (bearish at 25%+). Valuation (stretch) bucket 0.",
+  "<b>Not a call yet.</b> Day 2 of 10. Confidence High means only that data coverage is 100% and 3 of 4 buckets agree, not that the reading has a good record: in the 5-year replay, weeks reading Sell were followed by GLD +12.9% over 6 months on average (vs +10.8% for all weeks)."
  ],
  "defects": [
   "Staging build, first day: a call needs 7 of the last 10 trading days in one zone.",

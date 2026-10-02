@@ -158,8 +158,8 @@
    },
    "status": "Active",
    "evidence": [
-    "Markets now price a 34% chance of a Fed rate rise at the 28 Oct meeting, up from 27% a month earlier (Polymarket, 30 Sep close).",
-    "Apple's earnings yield (expected profit over the next 12 months as a % of the share price, the inverse of the 34.5x forward P/E) is 2.9%, vs 5.26% on the US 10-year Treasury (29 Sep close; 4.76% 20 trading days earlier). Bonds pay more than Apple's profits per dollar invested."
+    "Markets now price a 24% chance of a Fed rate rise at the 28 Oct meeting, down from 27% a month earlier (Polymarket, 1 Oct close).",
+    "Apple's earnings yield (expected profit over the next 12 months as a % of the share price, the inverse of the 34.5x forward P/E) is 2.9%, vs 5.24% on the US 10-year Treasury (1 Oct close; 4.80% 20 trading days earlier). Bonds pay more than Apple's profits per dollar invested."
    ]
   },
   {
@@ -235,7 +235,7 @@
    "d": "2026-10-28",
    "t": "Fed rate decision",
    "link": "C2",
-   "note": "Markets price a 34% chance of a rise (Polymarket, 30 Sep close), vs 27% a month earlier."
+   "note": "Markets price a 24% chance of a rise (Polymarket, 1 Oct close), vs 27% a month earlier."
   },
   {
    "d": "2026-10-29",
@@ -245,16 +245,16 @@
   }
  ],
  "valuation_plain": [],
- "lead": "Apple is <b>Building history</b> (today's zone: <b>Hold</b>), at <b>+5</b> on a −100 to +100 scale, up from +3 yesterday: a strong business priced for perfection, with interest-rate and dollar pressure still weighing on it.",
+ "lead": "Apple is <b>Building history</b> (today's zone: <b>Hold</b>), at <b>+5</b> on a −100 to +100 scale, unchanged from +5 on 30 Sep: a strong business priced for perfection, with interest-rate and dollar pressure still weighing on it.",
  "bullets": [
   "<b>The business is strong, with soft spots.</b> Demand scores +43: revenue grew 16.4% in the June quarter vs a year earlier, faster than the 12.5% average of the prior four quarters; gross margin over the last 4 quarters was 48.2% vs 46.7% for the 4 quarters a year earlier once one-off tariff refunds are removed (48.7% as reported); Services revenue +12.1% and iPhone revenue +21.7% (June quarter vs a year earlier); IDC counts iPhone shipments +15% in Apr-Jun vs a year earlier. Soft spots: September-quarter guidance of 9-11% growth was below the ~12% analysts expected, gross margin is guided down to 47-48% (from 50.1% in the June quarter, which included about 2 points of one-off tariff refunds), and analysts' profit forecast for the year to Sep 2027 slipped 1.1% in 90 days.",
-  "<b>It is priced for perfection.</b> Valuation scores −76: investors pay 67% more per dollar of expected profit over the next 12 months than for the peer median (34.8x vs 20.8x forward P/E), 25% more after allowing for growth, and 44% more on EV/EBITDA (29.1x vs 20.3x). On trailing (last-12-month) earnings it is 22% above its own 5-year median (38.2x vs 31.3x); that scores as expensive only at +25%.",
-  "<b>The money backdrop has turned.</b> Liquidity scores −13, up from −27 yesterday: markets price a 34% chance of a Fed rate rise on 28 Oct, up from 27% a month earlier (Polymarket), and the dollar index is 1.80 points higher than 20 trading days earlier. Buying and selling volume is balanced (1.01x up-day vs down-day volume, last 20 trading days). Short interest rose 10.7% vs the previous month's report, but at only 0.9% of freely traded shares it is too small to count (the minimum is 2%).",
-  "<b>The price trend is up but lagging, and the call is not yet confirmed.</b> Price scores +44: Apple is 15.4% above its 200-day average, but 6.8 points behind its peers' average return over the last 3 months. It closed at $333.02, +1.1% on the day vs −0.25% for the S&P 500. This is day 2 of the 10 trading days of score history needed to confirm a call; next big test: results expected on 29 Oct.",
+  "<b>It is priced for perfection.</b> Valuation scores −76: investors pay 71% more per dollar of expected profit over the next 12 months than for the peer median (34.5x vs 20.1x forward P/E), 26% more after allowing for growth, and 42% more on EV/EBITDA (28.8x vs 20.3x). On trailing (last-12-month) earnings it is 21% above its own 5-year median (37.9x vs 31.3x); that scores as expensive only at +25%.",
+  "<b>The money backdrop has turned.</b> Liquidity scores −13, unchanged from 30 Sep: markets price a 24% chance of a Fed rate rise on 28 Oct, down from 27% a month earlier (Polymarket), but the dollar index is 2.54 points higher than 20 trading days earlier. Buying and selling volume is balanced (1.01x up-day vs down-day volume, last 20 trading days). Short interest rose 10.7% vs the previous month's report, but at only 0.9% of freely traded shares it is too small to count (the minimum is 2%).",
+  "<b>The price trend is up but lagging, and the call is not yet confirmed.</b> Price scores +44: Apple is 14.4% above its 200-day average, but 10.8 points behind its peers' average return over the last 3 months. It closed at $330.32, −0.8% on the day vs +0.19% for the S&P 500. This is day 3 of the 10 trading days of score history needed to confirm a call; next big test: results expected on 29 Oct.",
   "<b>Newer signals are softer than the scores.</b> The Demand readings use April-June data. iPhone 18 Pro delivery waits in launch week were 7 days vs 15 for iPhone 17 Pro a year earlier, with the biggest drop in China (JPMorgan, 14 Sep); UBS (24 Sep) found waits about flat vs a year earlier outside China and 4 days shorter in China. Shorter waits can mean weaker demand or better supply: which one is not yet clear. Jefferies (Underperform, $263.66 target, 20% below the 29 Sep close) and Phillip Securities (Reduce, $290, 12% below) cut Apple on 11 Aug, citing memory costs and no clear sign that Apple Intelligence drives upgrades."
  ],
  "defects": [
-  "Staging build, second day of history: the call needs 10 trading days of scores before it can be confirmed.",
+  "Staging build, third day of history: the call needs 10 trading days of scores before it can be confirmed.",
   "Valuation vs own history (VL3) uses trailing P/E: free forward P/E history is too short.",
   "EV/EBITDA uses last-12-month EBITDA (free source).",
   "Interest-cover check excluded: Apple no longer reports interest expense separately.",

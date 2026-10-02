@@ -189,7 +189,7 @@
    },
    "status": "Active",
    "evidence": [
-    "10-year yield 5.26% vs 4.76% 20 trading days earlier (Yahoo, 29 Sep 2026 close).",
+    "10-year yield 5.24% vs 4.80% 20 trading days earlier (Yahoo, 1 Oct 2026 close).",
     "AMD's beta is 3.2 (last 252 trading days vs the S&P 500): on average it has moved about 3x as much as the market, so rate scares hit it harder."
    ]
   },
@@ -233,7 +233,7 @@
    "d": "2026-10-28",
    "t": "Fed rate decision",
    "link": "C4",
-   "note": "Markets price a 34% chance of a rise vs 27% a month earlier (Polymarket, 30 Sep close)."
+   "note": "Markets price a 24% chance of a rise vs 27% a month earlier (Polymarket, 1 Oct close)."
   },
   {
    "d": "2026-10-29",
@@ -249,16 +249,16 @@
   }
  ],
  "valuation_plain": [],
- "lead": "AMD reads <b>Buy</b> at <b>+50</b> on a −100 to +100 scale, up from +48 yesterday (Buy line +30): demand and the price trend score the maximum, but investors already pay a steep premium, and the reading depends on AI spending and the price momentum both holding up.",
+ "lead": "AMD reads <b>Buy</b> at <b>+50</b> on a −100 to +100 scale, unchanged from +50 on 30 Sep (Buy line +30): demand and the price trend score the maximum, but investors already pay a steep premium, and the reading depends on AI spending and the price momentum both holding up.",
  "bullets": [
-  "<b>Demand is at full strength, but it is one bet.</b> Demand scores +100: revenue grew 50.1% vs a year earlier, faster than its 34.8% average of the prior four quarters; Data Center grew 107% and PC chips 22.5% (Jun 2026 quarter vs a year earlier), and the big-4 cloud firms' capital spending 77%. Guidance (40.6% growth) beat the roughly 35.6% expected, and the 2027 earnings forecast rose 18.2% in 90 days ($15.58 vs $13.18 a share). Almost all of these track AI data-centre spending, so a pause there would turn them together. Gross margin is up 5.6 points (last 4 quarters vs the 4 a year earlier), but about 2.7 points of that comes from a one-off $800m China chip write-down in the year-ago figures.",
-  "<b>It is priced for it, before counting dilution.</b> Valuation scores −63: investors pay 47% more per dollar of expected next-12-month profit than the peer median (45.1x vs 30.7x forward P/E). On company value including debt vs last-12-month operating profit before depreciation (EV/EBITDA) it is 103.5x vs 30.0x, a gap overstated because AMD's revenue is growing 50% a year. Only the growth-adjusted P/E is in line (0.6 vs 0.7, 12% below the peer median). Not scored: warrants to OpenAI and Meta could add up to 320m shares (about 20% of today's), which would lift the forward P/E to about 54x if all vested.",
-  "<b>The money backdrop is mixed.</b> Liquidity scores +40: volume on up days is 2.62x that on down days (last 20 trading days) and institutions already holding AMD added a net 3.80% of shares last quarter (new and closed positions not counted), but the dollar index is 1.80 points higher than 20 trading days ago and markets now give a 34% chance of a Fed rate rise on 28 Oct, up from 27% a month earlier.",
-  "<b>The trend is strongly up, and stretched.</b> Price scores +100: AMD is 65.1% above its 200-day average and 14.7 points ahead of its peers over the last 3 months; it closed at $611.76, +0.7% on the day vs −0.25% for the S&P 500. That distance trips the stretch flag: a sign the run may be overextended and prone to sharp pullbacks (timing context only, not scored). The Buy leans on momentum: with a neutral price trend the composite would be about +25, which is Hold.",
-  "<b>Not yet a confirmed call.</b> Day 2 of the 10 trading days of score history needed. Next big test: results, expected 3 Nov (date not yet announced)."
+  "<b>Demand is at full strength, but it is one bet.</b> Demand scores +100: revenue grew 50.1% vs a year earlier, faster than its 34.8% average of the prior four quarters; Data Center grew 107% and PC chips 22.5% (Jun 2026 quarter vs a year earlier), and the big-4 cloud firms' capital spending 77%. Guidance (40.6% growth) beat the roughly 35.6% expected, and the 2027 earnings forecast rose 18.3% in 90 days ($15.58 vs $13.18 a share). Almost all of these track AI data-centre spending, so a pause there would turn them together. Gross margin is up 5.6 points (last 4 quarters vs the 4 a year earlier), but about 2.7 points of that comes from a one-off $800m China chip write-down in the year-ago figures.",
+  "<b>It is priced for it, before counting dilution.</b> Valuation scores −63: investors pay 46% more per dollar of expected next-12-month profit than the peer median (45.3x vs 31.0x forward P/E). On company value including debt vs last-12-month operating profit before depreciation (EV/EBITDA) it is 104.2x vs 29.8x, a gap overstated because AMD's revenue is growing 50% a year. Only the growth-adjusted P/E is in line (0.6 vs 0.7, 12% below the peer median). Not scored: warrants to OpenAI and Meta could add up to 320m shares (about 20% of today's), which would lift the forward P/E to about 54x if all vested.",
+  "<b>The money backdrop is mixed.</b> Liquidity scores +40: volume on up days is 3.06x that on down days (last 20 trading days) and institutions already holding AMD added a net 3.82% of shares last quarter (new and closed positions not counted), but the dollar index is 2.54 points higher than 20 trading days ago and markets now give a 24% chance of a Fed rate rise on 28 Oct, down from 27% a month earlier.",
+  "<b>The trend is strongly up, and stretched.</b> Price scores +100: AMD is 65.3% above its 200-day average and 15.3 points ahead of its peers over the last 3 months; it closed at $615.73, +0.65% on the day vs +0.19% for the S&P 500. That distance trips the stretch flag: a sign the run may be overextended and prone to sharp pullbacks (timing context only, not scored). The Buy leans on momentum: with a neutral price trend the composite would be about +25, which is Hold.",
+  "<b>Not yet a confirmed call.</b> Day 3 of the 10 trading days of score history needed. Next big test: results, expected 3 Nov (date not yet announced)."
  ],
  "defects": [
-  "Staging build, second day of history: the call needs 10 trading days of scores before it can be confirmed.",
+  "Staging build, third day of history: the call needs 10 trading days of scores before it can be confirmed.",
   "VL3 (P/E vs own history) is removed for AMD and left out of the score (applied by the shared engine from 30 Sep): trailing P/E is distorted by 2023 losses and Xilinx amortisation.",
   "EV/EBITDA uses last-12-month EBITDA (free source); for a company growing 50% a year this makes AMD look expensive. Debt in EV ($4.3bn) includes leases (Yahoo); AMD reports $3.2bn of borrowings, a 0.1% effect on EV.",
   "Forward P/E uses 2027 earnings forecasts (AMD's next fiscal year), not strictly the next 12 months; peers use their own next fiscal years, which end at different dates.",

@@ -22,11 +22,21 @@ window.__RUN=async function(){
  const avg=a=>a.reduce((x,y)=>x+y,0)/a.length;
  const sd=a=>{const m=avg(a);return Math.sqrt(avg(a.map(x=>(x-m)**2)))};
  const put=(k,...v)=>L.push(k+'|'+v.map(x=>x==null?'':x).join('|'));
+ /* Yahoo sometimes leaves the newest daily bar's close EMPTY for hours after the US close (seen 1-2 Oct 2026 for every US stock and
+    ETF, while indices were filled). The official closing price is then in meta.regularMarketPrice, stamped at the close.
+    Use it ONLY when that stamp is on the bar's own date and at or after the end of the regular session (market closed);
+    never during trading hours. Recorded as FILLED|symbol|date|price so the report can say so. History self-corrects on the
+    next run once Yahoo fills the bar in. */
+ const fillLast=(s,r,q,mk)=>{const m=r.meta||{},T=r.timestamp||[],n=T.length-1;if(n<0||q.close[n]!=null)return null;
+   const end=m.currentTradingPeriod?.regular?.end, t=m.regularMarketTime, px=m.regularMarketPrice;
+   if(px==null||!t||!end||t<end||iso(t*1000)!==iso(T[n]*1000))return null;
+   put('FILLED',s,iso(T[n]*1000),px);return mk(iso(T[n]*1000),px,q.volume?.[n]||m.regularMarketVolume||0)};
 
  if(C.stage==='A'){
   const chart=async(s,range,iv)=>{const j=await J(`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(s)}?range=${range}&interval=${iv}`);
     const r=j.chart.result[0],q=r.indicators.quote[0],a=r.indicators.adjclose?.[0]?.adjclose||q.close;const out=[];
-    r.timestamp.forEach((t,i)=>{if(q.close[i]!=null)out.push({d:iso(t*1000),c:q.close[i],a:a[i]??q.close[i],v:q.volume?.[i]||0})});return out};
+    r.timestamp.forEach((t,i)=>{if(q.close[i]!=null)out.push({d:iso(t*1000),c:q.close[i],a:a[i]??q.close[i],v:q.volume?.[i]||0})});
+    if(iv==='1d'){const f=fillLast(s,r,q,(d,c,v)=>({d,c,a:c,v}));if(f)out.push(f)}return out};
   const crumb=await safe('crumb',async()=>(await fetch('https://query1.finance.yahoo.com/v1/test/getcrumb',{credentials:'include'})).text(),'');
   const QS=async(s,m)=>(await J(`https://query1.finance.yahoo.com/v10/finance/quoteSummary/${encodeURIComponent(s)}?modules=${m}&crumb=${encodeURIComponent(crumb)}`,{credentials:'include'})).quoteSummary.result[0];
 
@@ -121,7 +131,8 @@ window.__RUN=async function(){
      days earlier; Fed odds at 21:00 UTC on asof and 28 days earlier. Run from https://query1.finance.yahoo.com/. Output feeds
      refresh_stock.py --macro-in (as macro.json). Extra symbols: __CFG.extraMacro=[['ITA','ITA']]. */
   const chart=async(s,range)=>{const j=await J(`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(s)}?range=${range}&interval=1d`);
-    const r=j.chart.result[0],q=r.indicators.quote[0];const out=[];r.timestamp.forEach((t,i)=>{if(q.close[i]!=null)out.push({d:iso(t*1000),c:q.close[i]})});return out};
+    const r=j.chart.result[0],q=r.indicators.quote[0];const out=[];r.timestamp.forEach((t,i)=>{if(q.close[i]!=null)out.push({d:iso(t*1000),c:q.close[i]})});
+    const f=fillLast(s,r,q,(d,c)=>({d,c}));if(f)out.push(f);return out};
   for(const [key,sym] of [['DXY','DX-Y.NYB'],['TNX','^TNX'],['CNY','CNY=X'],['MU','MU'],...(C.extraMacro||[])]){
    await safe('macro '+key,async()=>{const X=(await chart(sym,'6mo')).filter(x=>x.d<=C.asof);const m=X.length-1;
      put('MACRO',key,sym,r2(X[m].c),r2(X[Math.max(0,m-20)].c),r2(X[Math.max(0,m-21)].c),X[m].d)},null);
