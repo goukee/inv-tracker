@@ -4,5 +4,6 @@
  {"id": "AAPL", "label": "AAPL", "template": "stock", "src": "templates/stock.html#AAPL", "status": "live", "folder": "03 Stocks/AAPL-US"},
  {"id": "AMD", "label": "AMD", "template": "stock", "src": "templates/stock.html#AMD", "status": "live", "folder": "03 Stocks/AMD-US"},
  {"id": "SPCX", "label": "SPCX", "template": "stock", "src": "templates/stock.html#SPCX", "status": "live", "folder": "03 Stocks/SPCX-US"},
- {"id": "GLD", "label": "GLD", "template": "stock", "src": "templates/stock.html#GLD", "status": "live", "folder": "03 Stocks/GLD-US"}
+ {"id": "GLD", "label": "GLD", "template": "stock", "src": "templates/stock.html#GLD", "status": "live", "folder": "03 Stocks/GLD-US"},
+ {"id": "TSLA", "label": "TSLA", "template": "stock", "src": "templates/stock.html#TSLA", "status": "live", "folder": "03 Stocks/TSLA-US"}
 ]}

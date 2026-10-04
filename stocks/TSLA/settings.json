@@ -1,0 +1,345 @@
+{
+ "_note": "Per-stock settings for TSLA (plan v0.6, runbook v0.5). Only this stock's chat edits it.",
+ "code": "TSLA",
+ "market": "US",
+ "exchange": "NASDAQ",
+ "name": "Tesla, Inc.",
+ "currency": "USD",
+ "benchmark": {
+  "name": "S&P 500",
+  "symbol": "^GSPC"
+ },
+ "peers": [
+  {
+   "code": "1211.HK",
+   "name": "BYD",
+   "why": "World's largest EV maker; main rival in China, Europe and Asia; also sells grid batteries"
+  },
+  {
+   "code": "TM",
+   "name": "Toyota",
+   "why": "Largest carmaker; same mass-market buyers"
+  },
+  {
+   "code": "GM",
+   "name": "General Motors",
+   "why": "Second-largest US EV seller; same US buyers"
+  },
+  {
+   "code": "F",
+   "name": "Ford",
+   "why": "US EVs and pickups; same US buyers"
+  },
+  {
+   "code": "XPEV",
+   "name": "XPeng",
+   "why": "Chinese EV maker with its own self-driving software and robots"
+  },
+  {
+   "code": "NVDA",
+   "name": "Nvidia",
+   "why": "How the market prices AI hardware and compute (Kenneth's request)"
+  },
+  {
+   "code": "GOOGL",
+   "name": "Alphabet",
+   "why": "Owns Waymo, the main robotaxi rival (Kenneth's request)"
+  },
+  {
+   "code": "UBER",
+   "name": "Uber",
+   "why": "Ride-hailing network a Tesla robotaxi service would compete with (Kenneth's request)"
+  }
+ ],
+ "valuation": {
+  "metric": "forward_pe",
+  "fallback": "trailing_pe",
+  "vl3_basis": "trailing P/E, 5 years (price / last-12-month SEC diluted EPS), labelled"
+ },
+ "dm4": [
+  {
+   "id": "DM4a",
+   "name": "Vehicle deliveries growth",
+   "weight": 5,
+   "source": "Tesla quarterly production and deliveries release (on release, ~2nd day of each quarter)",
+   "bullish_if": ">= +5%",
+   "bearish_if": "<= -5%",
+   "measured_against": "same quarter a year earlier",
+   "what": "How many cars Tesla handed to customers in the latest quarter vs the same quarter last year (Tesla's delivery release).",
+   "why": "Cars are about three quarters of Tesla's revenue, and this number arrives two to three weeks before the results.",
+   "bull_means": "More cars delivered than a year ago: car demand is growing.",
+   "neutral_means": "Deliveries roughly flat vs a year ago.",
+   "bear_means": "Fewer cars delivered than a year ago: car demand is shrinking."
+  },
+  {
+   "id": "DM4b",
+   "name": "Energy storage deployed growth",
+   "weight": 3,
+   "source": "Tesla quarterly production and deliveries release (GWh deployed)",
+   "bullish_if": ">= +20%",
+   "bearish_if": "<= 0%",
+   "measured_against": "same quarter a year earlier",
+   "what": "How much battery storage (GWh, Megapack and Powerwall) Tesla installed in the latest quarter vs the same quarter last year.",
+   "why": "Storage is the fastest-growing and most profitable hardware business (energy gross margin 29% vs 19% for automotive, last 4 quarters); it has grown 40-100% a year since 2023, so +20% already means a slowdown.",
+   "bull_means": "Storage still growing fast.",
+   "neutral_means": "Storage growth has slowed to under 20% a year.",
+   "bear_means": "Storage installations have stopped growing or are shrinking."
+  }
+ ],
+ "dm5": {
+  "id": "DM5",
+  "name": "Tesla China retail sales, last 3 months",
+  "weight": 4,
+  "source": "China Passenger Car Association (CPCA) monthly retail figures for Tesla, via CnEVPost / CarNewsChina",
+  "bullish_if": ">= +5%",
+  "bearish_if": "<= -5%",
+  "measured_against": "the same 3 months a year earlier",
+  "what": "Cars Tesla sold to buyers in China over the last 3 months vs the same 3 months a year earlier (retail, so exports are left out).",
+  "why": "China is Tesla's second-biggest market and its most competitive; this independent monthly figure shows demand from actual buyers before Tesla's quarterly numbers, without counting exports already in deliveries.",
+  "bull_means": "Chinese buyers are buying more Teslas than a year ago.",
+  "neutral_means": "China sales roughly flat vs a year ago.",
+  "bear_means": "Chinese buyers are buying fewer Teslas than a year ago."
+ },
+ "overrides": [],
+ "removed_indicators": [
+  {
+   "id": "DM3",
+   "reason": "Tesla gives no numeric next-quarter guidance (only qualitative comments), so guidance vs expectations can never be measured (Kenneth, 2 Oct 2026)."
+  }
+ ],
+ "chains": [
+  {
+   "id": "C1",
+   "trigger": "AI boom",
+   "what_changes": "memory and advanced chips scarce and dearer",
+   "business_hit": "car component costs and Tesla's own AI build-out (2026 capex above $25bn) cost more -> margins and free cash flow down",
+   "company_levers": "multi-year supply deals (Micron), own chip fab (AI5), pricing",
+   "watch": {
+    "name": "Micron share price (stand-in for memory prices)",
+    "source": "shared macro MU",
+    "active_if": "up 10%+",
+    "measured_against": "its level 20 trading days earlier"
+   },
+   "status": "Hurting + Company responding"
+  },
+  {
+   "id": "C2",
+   "trigger": "Iran war / oil / inflation",
+   "what_changes": "bond yields and Fed rate-rise odds up",
+   "business_hit": "value resting on far-off profits (robotaxi, robots, energy) worth less; car loans dearer",
+   "company_levers": "cheap financing offers; none for the share price",
+   "watch": {
+    "name": "US 10-year Treasury yield",
+    "source": "shared macro TNX",
+    "active_if": "up 0.25 percentage points or more",
+    "measured_against": "its level 20 trading days earlier"
+   },
+   "status": "Active"
+  },
+  {
+   "id": "C3",
+   "trigger": "Iran war / Strait of Hormuz",
+   "what_changes": "oil and petrol prices up",
+   "business_hit": "electric cars cheaper to run than petrol cars -> more EV orders (a tailwind)",
+   "company_levers": "production and battery capacity",
+   "watch": {
+    "name": "Brent crude",
+    "source": "shared macro BRENT",
+    "active_if": "up 10%+",
+    "measured_against": "its level 20 trading days earlier"
+   },
+   "status": "Quiet"
+  },
+  {
+   "id": "C4",
+   "trigger": "US policy",
+   "what_changes": "$7,500 EV tax credit ended (30 Sep 2025); fuel-economy fines removed",
+   "business_hit": "regulatory credit revenue collapses; US EVs dearer for buyers",
+   "company_levers": "cheaper versions, financing",
+   "watch": {
+    "name": "news scan only",
+    "source": "web search",
+    "active_if": "any new US rule on EVs, emissions or self-driving",
+    "measured_against": "-"
+   },
+   "status": "Hurting"
+  },
+  {
+   "id": "C5",
+   "trigger": "China price war and tariffs on China-built cars",
+   "what_changes": "Chinese rivals cut prices at home and push abroad; Shanghai exports face tariffs",
+   "business_hit": "lower prices or lost share in China, Europe and Asia",
+   "company_levers": "Shanghai export mix, cheaper Model Y versions, Berlin/Austin supply",
+   "watch": {
+    "name": "Yuan per US dollar + news scan",
+    "source": "shared macro CNY",
+    "active_if": "yuan weakens 2%+ or new tariff / price-war action",
+    "measured_against": "its level 20 trading days earlier"
+   },
+   "status": "Hurting + Company responding"
+  },
+  {
+   "id": "C6",
+   "trigger": "Musk as key person",
+   "what_changes": "politics, attention split across SpaceX/xAI, share sales or pledges, related-party deals",
+   "business_hit": "brand damage with some buyers, slower execution, conflicts over capital and chips -> car demand and the valuation premium",
+   "company_levers": "board oversight",
+   "watch": {
+    "name": "news scan only",
+    "source": "web search",
+    "active_if": "new political fight, share sale or pledge, SpaceX/xAI related-party deal, or role change",
+    "measured_against": "-"
+   },
+   "status": "Quiet"
+  }
+ ],
+ "_chains_note": "6 chains: agreed exception to the plan's 3-5 (MC1), Kenneth 2 Oct 2026; chains are not scored.",
+ "shareholder_sources": [
+  "Nasdaq institutional holdings (13F)",
+  "Yahoo Finance insiderTransactions (SEC Form 4)",
+  "SEC EDGAR 13D/13G"
+ ],
+ "status": "live",
+ "version": "0.2",
+ "onboarded": "2026-10-02",
+ "_peers_status": "approved by Kenneth 2 Oct 2026 (AI/robotaxi names added; Rivian and Li Auto dropped to stay within 8)",
+ "_settings_status": "approved by Kenneth 2 Oct 2026; DM5 switched from Shanghai wholesale to China retail 3 Oct 2026 (Kenneth)",
+ "_chains_status": "approved by Kenneth 2 Oct 2026 (C6 added at his request)",
+ "sec_cik": "0001318605",
+ "splits": [
+  [
+   "2020-08-31",
+   5
+  ],
+  [
+   "2022-08-25",
+   3
+  ]
+ ],
+ "index_holders": [
+  "vanguard",
+  "blackrock",
+  "state street",
+  "geode",
+  "northern trust",
+  "norges",
+  "legal & general",
+  "schwab",
+  "dimensional",
+  "morgan stanley",
+  "jpmorgan",
+  "bank of america",
+  "goldman",
+  "ubs",
+  "royal bank",
+  "wells fargo",
+  "invesco",
+  "bank of new york",
+  "amundi",
+  "deutsche",
+  "swiss national",
+  "hsbc",
+  "mitsubishi",
+  "sumitomo",
+  "ameriprise",
+  "nuveen"
+ ],
+ "mix": {
+  "_note": "Revenue mix (plan v0.4, not scored). Parts are Tesla's own revenue lines; profit is reported for two segments only: Automotive (cars, credits, leasing, services and other) and Energy generation and storage.",
+  "source": "sec",
+  "basis": "gross",
+  "segments": [
+   {
+    "id": "CAR",
+    "name": "Car sales",
+    "match": [
+     "^automotive sales$"
+    ],
+    "recurring": "no",
+    "group": "SAL"
+   },
+   {
+    "id": "CRD",
+    "name": "Regulatory credits",
+    "match": [
+     "^automotive regulatory credits$"
+    ],
+    "recurring": "no",
+    "group": "SAL"
+   },
+   {
+    "id": "LSE",
+    "name": "Car leasing",
+    "match": [
+     "^automotive leasing$"
+    ],
+    "recurring": "yes",
+    "group": "LSE"
+   },
+   {
+    "id": "SVC",
+    "name": "Services and other",
+    "match": [
+     "^services and other$"
+    ],
+    "recurring": "partly",
+    "group": "SVC"
+   },
+   {
+    "id": "ENE",
+    "name": "Energy generation and storage",
+    "match": [
+     "^energy generation and storage$"
+    ],
+    "recurring": "no",
+    "group": "ENE"
+   }
+  ],
+  "groups": [
+   {
+    "id": "SAL",
+    "name": "Car sales and credits",
+    "match": [
+     "^automotive (sales|regulatory credits)$"
+    ]
+   },
+   {
+    "id": "LSE",
+    "name": "Car leasing",
+    "match": [
+     "^automotive leasing$"
+    ]
+   },
+   {
+    "id": "SVC",
+    "name": "Services and other",
+    "match": [
+     "^services and other$"
+    ]
+   },
+   {
+    "id": "ENE",
+    "name": "Energy generation and storage",
+    "match": [
+     "^energy generation and storage$"
+    ]
+   }
+  ],
+  "note": "Gross margin by Tesla's own cost lines: car sales and regulatory credits share one cost line (credits have almost no cost), leasing, services and other, and energy each have their own. Margins 3 years ago are blank for car sales, leasing and the company: Tesla's filings before Q3 2022 do not tag these costs, so Q4 2022 cannot be derived (by difference: automotive about 23.4%, company about 21.5%)."
+ },
+ "drivers": [
+  {
+   "id": "vehicle",
+   "name": "Vehicle demand",
+   "indicators": [
+    "DM1",
+    "DM4a",
+    "DM5"
+   ]
+  }
+ ],
+ "onboard_price": 354.11,
+ "onboard_date": "2026-10-01",
+ "_onboard_note": "Price at the first staging build (1 Oct 2026 close): the reference for O6 winner discipline (\"up since onboarded\") until a positions feed exists.",
+ "promoted": "2026-10-04"
+}

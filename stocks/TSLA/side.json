@@ -1,0 +1,426 @@
+{
+ "custom": {
+  "DM4a": {
+   "value": -2.1,
+   "period": "Jul-Sep 2026: 486,532 vs 497,099 cars (Tesla delivery releases, 2 Oct 2026)"
+  },
+  "DM4b": {
+   "value": 9.6,
+   "period": "Jul-Sep 2026: 13.7 vs 12.5 GWh (Tesla delivery releases)"
+  },
+  "DM5": {
+   "value": -18.2,
+   "period": "Jun-Aug 2026: 130,216 vs 159,253 cars sold in China (CPCA via CnEVPost, CarNewsChina)"
+  }
+ },
+ "move": {
+  "class": "Quiet",
+  "direction": "up",
+  "headline": "Up 4.7% after Q3 deliveries beat forecasts; still a normal-sized day for Tesla",
+  "evidence": [
+   {
+    "d": "2 Oct",
+    "t": "TSLA rose 4.7% while the S&P 500 rose 0.7%: about 1.5 times Tesla's typical daily move (3.1% over the last 60 trading days), below the 2x line, so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
+   {
+    "d": "2 Oct",
+    "t": "Q3 deliveries 486,532 vs 461,974 consensus (Tesla-compiled), but −2.1% vs 497,099 a year earlier; storage 13.7 GWh vs 15.9 GWh expected and 12.5 GWh a year earlier. Results confirmed for Wed 21 Oct after the US close.",
+    "kind": "fact",
+    "src": "Tesla 8-K (2 Oct 2026); Tesla IR consensus"
+   },
+   {
+    "d": "2 Oct",
+    "t": "The rise is likely the delivery beat against lowered forecasts; no single source confirms the cause.",
+    "kind": "speculation",
+    "src": "Yahoo Finance prices; Tesla 8-K"
+   },
+   {
+    "d": "Jun-Aug",
+    "t": "China retail sales 130,216 vs 159,253 a year earlier (−18.2%): falls in June, July and August, while Shanghai exports grew.",
+    "kind": "fact",
+    "src": "CPCA via CnEVPost, CarNewsChina"
+   }
+  ]
+ },
+ "earnings": {
+  "past": [
+   {
+    "q": "Q3 2026 deliveries and storage (no financials)",
+    "date": "Fri 2 Oct 2026, before the US open",
+    "vs": "Deliveries 486,532 vs 461,974 consensus (Tesla-compiled; beat by 5%), −2.1% vs 497,099 a year earlier. Storage 13.7 GWh vs 15.9 GWh expected (miss), +9.6% vs 12.5 GWh a year earlier.",
+    "guide": "None.",
+    "reaction": "+4.7% on 2 Oct vs +0.7% for the S&P 500.",
+    "take": [
+     "<b>Car volume flat on a tough comparison:</b> a year ago US buyers rushed to beat the tax-credit deadline.",
+     "<b>Production below deliveries</b> (464,391 built): inventory fell.",
+     "<b>Storage slowed</b> to +9.6% vs a year earlier after +40.6% in Q2."
+    ],
+    "impact": "DM4a and DM4b turn neutral (were bullish); results on 21 Oct."
+   },
+   {
+    "q": "Jun 2026 quarter (Q2 2026)",
+    "date": "Wed 22 Jul 2026, after the US close (Thu 23 Jul, early morning Singapore)",
+    "vs": "Revenue $28.24bn, +26% vs a year earlier, vs $27.58bn consensus (Tesla-compiled). Adjusted EPS $0.33 vs $0.55 consensus (Tesla-compiled; a 40% miss); GAAP EPS $0.32, helped by a ~$1bn gain on Tesla's SpaceX shares.",
+    "guide": "No numeric guidance. Capex above $25bn for 2026 and rising for 2-3 years; free cash flow under pressure in the second half; energy margin to settle in the low-to-mid 20s % over the long term.",
+    "reaction": "−14.5% on 23 Jul vs −1.2% for the S&P 500 (worst day in nearly a year).",
+    "take": [
+     "<b>Volume back, profit not.</b> Deliveries 480,126 (+25% vs a year earlier, a Q2 record), but operating profit $398m (−57%), a 1.4% operating margin vs 4.1% a year earlier.",
+     "<b>Car margin: better than a year ago, worse than last quarter.</b> Automotive gross margin excluding regulatory credits 16.3% vs 15.0% a year earlier, but down from 19.2% in Q1 2026, which one-off warranty and tariff gains had lifted. Average selling prices fell, and low-rate financing helped volume.",
+     "<b>Regulatory credits nearly gone:</b> $146m vs $439m a year earlier, after US fuel-economy fines were scrapped (chain C4).",
+     "<b>Spending boom:</b> capex $5.79bn (+142%); free cash flow −$1.09bn, the first negative quarter since early 2024; up to $30bn of debt facilities being arranged (chain C1).",
+     "<b>Energy:</b> 13.5 GWh deployed (+41% vs a year earlier); energy gross margin 20.4% after a $240m one-off warranty charge.",
+     "<b>Software:</b> about 1.5m paying FSD customers (+56%); 55% of North American deliveries had FSD enabled.",
+     "<b>Robotaxi and Cybercab:</b> Cybercab production started in Texas; unsupervised robotaxi rides expanded to Miami, Orlando and Tampa. But the fleet is still small (about a dozen cars or fewer per city) and paid robotaxi miles (about 2.4m in total by June vs 1.8m in March) grew more slowly late in the quarter."
+    ],
+    "impact": "Demand indicators strong (DM1, DM4a, DM4b); margin and cash pressure feed the quality check and chains C1 and C4; forecasts cut sharply since (DM2)."
+   },
+   {
+    "q": "Mar 2026 quarter (Q1 2026)",
+    "date": "Wed 22 Apr 2026, after the US close",
+    "vs": "Revenue $22.39bn vs about $21.9bn consensus (+16% vs a year earlier). Adjusted EPS $0.41 vs $0.35-0.39 expected (beat); GAAP EPS $0.13.",
+    "guide": "No numeric guidance. Capex for 2026 raised to above $25bn (from about $20bn a quarter earlier); free cash flow expected to be negative for the rest of 2026.",
+    "reaction": "Up after hours, then −3.6% on 23 Apr vs −0.4% for the S&P 500.",
+    "take": [
+     "<b>Orders up on petrol prices:</b> highest first-quarter order backlog in two years, partly from soaring fuel prices after the Iran conflict (CFO; chain C3).",
+     "<b>Deliveries 358,023</b> (+6% vs a year earlier), below forecasts.",
+     "<b>Capex jump</b> to above $25bn for 2026 for AI compute, the AI5 chip fab, batteries and solar.",
+     "<b>Positive free cash flow</b> (about $1.4bn) before the Q2 capex surge.",
+     "<b>Beat flattered by one-offs:</b> one-off warranty (about $230m) and tariff gains (about $250m) were the biggest driver of the jump in operating profit."
+    ],
+    "impact": "Beat on adjusted EPS, helped by one-offs; spending plans drove the next-day fall."
+   }
+  ],
+  "next": [
+   {
+    "q": "Sep 2026 quarter (Q3 2026) results",
+    "date": "Wed 21 Oct 2026, after the US close (Thu 22 Oct, early morning Singapore)",
+    "iso": "2026-10-21",
+    "status": "Confirmed (Tesla 8-K, 2 Oct)",
+    "watch": [
+     "Automotive gross margin excluding credits vs 16.3% in Q2 (15.0% a year earlier): are incentives still needed?",
+     "Free cash flow after Q2's −$1.09bn; any new debt.",
+     "Robotaxi fleet size and paid miles; Cybercab ramp.",
+     "Consensus EPS $0.44 (range $0.30-0.60, Yahoo)."
+    ]
+   },
+   {
+    "q": "Dec 2026 quarter (Q4 2026) results",
+    "date": "Late January 2027",
+    "iso": "2027-01-27",
+    "status": "Estimated",
+    "watch": [
+     "2027 volume and capex outlook."
+    ]
+   }
+  ]
+ },
+ "shareholder_notes": [
+  "Nasdaq still lists an old Vanguard Group line dated 31 Dec 2025, two filing quarters behind the latest (30 Jun 2026); it is left out as stale (P15).",
+  "Elon Musk's own stake, about 20% after he exercised 304m options on 16 Jun 2026 (SEC 13G/A, 17 Jun 2026), plus 424m unvested performance shares, is held directly, so it is not in the 13F institutional table.",
+  "Yahoo does not mark which insider sales were pre-scheduled trading plans, so they cannot be excluded."
+ ],
+ "chains": [
+  {
+   "id": "C1",
+   "name": "Memory chips and the AI build-out",
+   "path": [
+    "AI boom",
+    "memory and advanced chips scarce",
+    "car parts and Tesla's own AI spending cost more",
+    "margins and free cash flow down"
+   ],
+   "watch": "MU",
+   "watch_label": "Micron share price (stand-in for memory prices)",
+   "active": {
+    "kind": "pct",
+    "t": 10
+   },
+   "status": "Hurting + Company responding",
+   "evidence": [
+    "Micron share price $1,075 on 2 Oct vs $958 20 trading days earlier (+12.2%, above the 10% line).",
+    "Q2 capex $5.79bn (+142% vs a year earlier); 2026 guided above $25bn vs $8.5bn in 2025; free cash flow −$1.09bn (22 Jul).",
+    "Company responding: multi-year memory allocation from Micron on 'reasonable terms' (Musk, 22 Jul; terms not disclosed).",
+    "Battery pack capacity named the main limit on near-term vehicle volume (Q2 call)."
+   ]
+  },
+  {
+   "id": "C2",
+   "name": "Rates squeeze the valuation",
+   "path": [
+    "Iran war, oil",
+    "inflation",
+    "higher bond yields and Fed odds",
+    "value of far-off profits falls"
+   ],
+   "watch": "TNX",
+   "watch_label": "US 10-year Treasury yield",
+   "active": {
+    "kind": "pts",
+    "t": 0.25
+   },
+   "status": "Active",
+   "evidence": [
+    "10-year Treasury yield 5.28% on 2 Oct vs 4.76% 20 trading days earlier (+0.52 points, above the 0.25 line).",
+    "Markets price an 18% chance of a Fed rate rise at the late-October meeting, vs 28% four weeks earlier (Polymarket, 2 Oct close).",
+    "Further out, markets price about a 69% chance of a rise at the December meeting and about 80% of at least one more rise in 2026 (prediction markets, 27 Sep).",
+    "Tesla's earnings yield (next-12-month expected profit as a % of the price, the inverse of its 171.9x forward P/E) is about 0.6%, vs 5.24% on the 10-year Treasury: the price rests almost entirely on long-dated growth, the part most sensitive to yields."
+   ]
+  },
+  {
+   "id": "C3",
+   "name": "Oil prices lift EV demand (tailwind)",
+   "path": [
+    "Iran war, Strait of Hormuz",
+    "oil and petrol up",
+    "EVs cheaper to run",
+    "more EV orders"
+   ],
+   "watch": "BRENT",
+   "watch_label": "Brent crude oil",
+   "active": {
+    "kind": "pct",
+    "t": 10
+   },
+   "status": "Quiet",
+   "evidence": [
+    "Brent crude $102.70 on 2 Oct vs $95.52 20 trading days earlier (+7.5%, under the 10% line).",
+    "Tesla's CFO said soaring petrol prices partly drove its highest first-quarter order backlog in two years (22 Apr).",
+    "Q2 deliveries 480,126, +25% vs a year earlier, the fastest growth in over two years and a Q2 record (2 Jul).",
+    "Does it always work? Only while fuel stays dear for months; a quick fall in oil (e.g. a ceasefire) would remove the tailwind."
+   ]
+  },
+  {
+   "id": "C4",
+   "name": "US policy removes credits and subsidies",
+   "path": [
+    "EV tax credit ended, fuel-economy fines scrapped",
+    "rivals stop buying Tesla's credits",
+    "high-margin credit revenue gone, US EVs dearer"
+   ],
+   "watch": "",
+   "watch_label": "News scan only",
+   "active": {
+    "kind": "news",
+    "t": 0
+   },
+   "status": "Hurting",
+   "evidence": [
+    "Regulatory credit revenue $146m in Q2 2026 vs $439m a year earlier and $2.76bn for all of 2024 (SEC filings).",
+    "Credits added 1.6-2.5 points to gross margin before; 0.6 points in Q2 2026 (Dealroom, Jul 2026).",
+    "US safety regulator NHTSA opened an investigation on 5 Sep 2026 into whether the steering-wheel-free Cybercab meets federal safety rules (Fortune, 5 Sep)."
+   ]
+  },
+  {
+   "id": "C5",
+   "name": "China price war and tariffs",
+   "path": [
+    "Chinese rivals cut prices, tariffs on China-built cars",
+    "Tesla's China share and export margins squeezed",
+    "lower car revenue and margin"
+   ],
+   "watch": "CNY",
+   "watch_label": "Yuan per US dollar (plus news)",
+   "active": {
+    "kind": "pct",
+    "t": 2
+   },
+   "status": "Hurting + Company responding",
+   "evidence": [
+    "Tesla's China retail sales Jun-Aug 2026: 130,216 vs 159,253 a year earlier (−18.2%; CPCA).",
+    "Tesla's sales to Chinese buyers fell 12.4% in August vs a year earlier (CarNewsChina, 8 Sep).",
+    "Company responding: Shanghai exports rose for the eighth month running; Shanghai wholesale +3.6% in August and +25.6% Jan-Aug vs a year earlier (CPCA, 2 Sep)."
+   ]
+  },
+  {
+   "id": "C6",
+   "name": "Musk as key person",
+   "path": [
+    "Musk's politics, attention split, share sales, SpaceX/xAI deals",
+    "brand damage, slower execution, conflicts over capital",
+    "car demand and the valuation premium"
+   ],
+   "watch": "",
+   "watch_label": "News scan only",
+   "active": {
+    "kind": "news",
+    "t": 0
+   },
+   "status": "Quiet",
+   "evidence": [
+    "SpaceX bought xAI (2 Feb 2026); Tesla's $2bn xAI investment became SpaceX shares (3.8m before SpaceX's 2026 split, about 19m after; under 1% of SpaceX) on 12 Mar. Tesla, SpaceX and Intel signed only a non-binding framework for the 'Terafab' chip fab (SpaceX S-1, May 2026): Tesla's AI-chip plans partly depend on a Musk-controlled sister company, on terms not yet set.",
+    "Musk exercised 304m options from his 2018 award on 16 Jun 2026 (286m net shares); his stake is now about 20% (SEC 13G/A, 17 Jun 2026), plus 424m unvested performance shares.",
+    "4 of the 20 biggest weekly moves since 2021 were driven by Musk himself (stake sales, the 2025 feud with Trump).",
+    "No new event found in the last month (checked 2 Oct)."
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "d": "2026-10-08",
+   "t": "CPCA China car sales (September)",
+   "link": "DM5",
+   "note": "Expected in the first week or so of the month."
+  },
+  {
+   "d": "2026-10-14",
+   "t": "US inflation (September CPI)",
+   "link": "C2",
+   "note": "Wed 14 Oct, 8:30am ET (8:30pm Singapore)."
+  },
+  {
+   "d": "2026-10-21",
+   "t": "Tesla Q3 results",
+   "link": "all",
+   "note": "Confirmed (Tesla 8-K): Wed 21 Oct after the US close; Thursday morning Singapore."
+  },
+  {
+   "d": "2026-10-28",
+   "t": "Fed rate decision",
+   "link": "C2",
+   "note": "Markets price an 18% chance of a rise in October (Polymarket, 2 Oct close) and about 69% for December (27 Sep)."
+  }
+ ],
+ "valuation_plain": [],
+ "lead": "Tesla is <b>Building history</b> (today's zone: <b>Sell</b>), at <b>−54</b> on a −100 to +100 scale, 24 points below the −30 Sell line: Q3 deliveries were flat, China sales are falling, the price trend is down and the shares cost about 13 times the peer median on expected profit. Caution: on Tesla, past Sell readings driven by price trend often came near lows.",
+ "bullets": [
+  "<b>Demand has turned slightly negative.</b> Demand scores −10: Q3 deliveries −2.1% and storage deployed +9.6% (Jul-Sep vs a year earlier), both neutral; Tesla's China retail sales −18.2% (Jun-Aug vs a year earlier, bearish); analysts' 2027 profit forecast $2.16 a share vs $2.56 90 days ago (−15.6%, bearish). Still positive: revenue grew 25.5% in the June quarter vs a year earlier against a 3.1% average for the prior four, and gross margin was 18.6% over the last 4 quarters vs 17.5% for the 4 a year earlier (one-offs removed).",
+  "<b>Valuation is extreme on every measure.</b> Valuation scores −100: forward P/E 179.8x vs a 14.1x peer median (+1,172%); growth-adjusted P/E 4.2 vs 1.2 (+250%); EV/EBITDA 133.5x vs 20.0x (+567%); trailing P/E 343.1x vs its own median of 202.8x (+69%; only about 2 years of history, see Known defects). The market is paying for robotaxis, robots and energy, not today's car profits.",
+  "<b>Money flows are mixed.</b> Liquidity scores 0: buying vs selling volume 0.83x over 20 days (neutral); funds added a net 1.20% of shares last quarter (bullish); the dollar index rose 2.92 points in 20 trading days (bearish); the market's net odds of a Fed cut vs a rise at the next meeting moved 5.9 points towards a cut over 20 trading days (neutral); only 1.9% of tradable shares are sold short, below the 2% floor.",
+  "<b>The price trend is down.</b> Price trend scores −100: the price is 5.7% below its 200-day average, the 50-day average is 11.6% below the 200-day, and the 3-month return trails the peers by 6.0 points.",
+  "<b>Not confirmed: history starts on promotion.</b> The call needs 7 of 10 trading days in one zone. On staging the score fell from −34 (1 Oct) to −54 (2 Oct) because deliveries, storage and China sales were updated, not because of the price, which rose 4.7% on 2 Oct."
+ ],
+ "defects": [
+  "Live from 4 Oct 2026 (promoted from staging; history starts fresh on production): the call needs 7 of the last 10 trading days in one zone before it is confirmed.",
+  "Caution from the 5-year replay: on Tesla, Sell and Strong Sell days were followed by its best returns, +23 to +28 points vs the S&P 500 over the next 6 months, beating it on about 7 in 10 days. Tesla swings so hard that a trend-following score turns Sell near lows. Treat a Sell reading driven by price trend as weak evidence on its own.",
+  "Nvidia's +19.8% over 3 months pulls the peer average up: without it, the 3-month comparison (PT4) would be neutral, but the composite would still be in the Sell zone (about −47). Kenneth chose to keep all 8 peers (3 Oct).",
+  "Market data, macro and price: 2 Oct close. SEC financials, holders and the revenue mix reuse the 1 Oct collection (no new filings since 23 Jul).",
+  "DM3 (guidance vs expectations) is removed: Tesla gives no numeric next-quarter guidance.",
+  "Valuation vs own history (VL3) uses trailing P/E: free forward P/E history is too short. Trailing earnings include a ~$1bn gain on Tesla's SpaceX shares in Q2 2026, which flatters the last-12-month EPS.",
+  "DM5 counts China retail only (exports from Shanghai now excluded, Kenneth 3 Oct); monthly figures can swing with export timing and model changeovers.",
+  "Deliveries, storage and China sales (DM4a, DM4b, DM5) are typed in from Tesla's releases and CPCA reports, so they update quarterly or monthly.",
+  "Chain C1 watches Micron's share price as a stand-in for memory prices.",
+  "The revenue-mix 3-years-ago automotive and company margins are blank: Tesla's filings before Q3 2022 do not tag automotive cost, so the engine cannot derive Q4 2022. By difference they were about 23.4% and 21.5%.",
+  "The SEC filing for Q1 2022 attaches the Automotive and Energy segment revenue tags to the wrong rows; the revenue mix uses Tesla's product lines (which are correct) for the parts.",
+  "Earnings history uses Yahoo's consensus; the earnings cards use Tesla's own compiled consensus where available (Q2 2026: $0.55 adjusted EPS, $27.58bn revenue).",
+  "One-offs: Q2 2026's $240m warranty charge is added back and Q1 2026's ~$480m of one-off gains removed before scoring DM6; one-offs in the year-earlier window (Q3 2024-Q2 2025) are not adjusted.",
+  "Peer forward P/E for BYD (and XPeng) divides an HKD/USD price by yuan earnings forecasts, overstating BYD's figure (about 14.1x shown vs about 12.2x); open item for the Framework chat. VL1 scores −1 either way.",
+  "VL3's 'own 5-year median' covers only about 2 years: the collector's SEC quarters before mid-2024 are incomplete. It scores −1 on any history tested."
+ ],
+ "sources": [
+  "Yahoo Finance (prices, consensus, valuation, short interest, insiders)",
+  "SEC EDGAR (reported financials, filings)",
+  "Nasdaq (13F institutional holdings)",
+  "Polymarket (Fed odds)",
+  "Tesla delivery releases and Q1/Q2 2026 results (via Electrek, electrive, Shacknews, Hargreaves Lansdown, DigitalToday, Quartz)",
+  "CPCA via CnEVPost; CarNewsChina",
+  "EVWire, Basenor, Gizmodo, Dealroom/startupmap, Yahoo Finance news (Micron deal, capex, consensus, petrol prices, credits, SpaceX)"
+ ],
+ "dm6_oneoffs": [
+  {
+   "end": "2026-06-30",
+   "gp_add": 240,
+   "label": "one-off energy warranty charge (Q2 2026)",
+   "source": "Tesla Q2 2026 call summary (platformaeronaut.com)"
+  },
+  {
+   "end": "2026-03-31",
+   "gp_add": -480,
+   "label": "one-off gains in Q1 2026: warranty true-downs (~$230m) and tariff recognitions from earlier quarters (~$250m)",
+   "source": "Tikr Q1 2026 results review; Electrek (22 Apr 2026)"
+  }
+ ],
+ "quality_info": [
+  {
+   "name": "Dilution",
+   "value": "424m restricted performance shares awarded to Musk (10.7% of the 3.95bn shares) were issued in late 2025 and are already in the share count; they vest only if very large targets are hit. A further ~286m net shares were issued in Jun 2026 when Musk exercised his 2018 options.",
+   "source": "Tesla 10-Q (Jul 2026); SEC 13G/A (17 Jun 2026)"
+  },
+  {
+   "name": "Customer concentration",
+   "value": "None: Tesla sells to millions of consumers; no customer is 10%+ of revenue.",
+   "source": "Tesla 10-K 2025"
+  }
+ ],
+ "mix": {
+  "updated": "2026-10-02",
+  "segments": {
+   "CAR": {
+    "sells": "New Tesla cars (Model 3, Model Y, Cybertruck, Cybercab; Model S and X production ended in 2026) sold outright.",
+    "buyers": "Consumers worldwide, plus fleets and rental firms, sold directly by Tesla (no dealers).",
+    "pos": [
+     "Still the engine: 70% of sales over the last 4 quarters, growing again (+9.6% vs the 4 quarters before; +26.7% in the June quarter vs a year earlier).",
+     "Each car is a future customer for FSD subscriptions, Supercharging and insurance (Services)."
+    ],
+    "neg": [
+     "Not recurring: sold once, and volume swings with prices, incentives and subsidies.",
+     "Cheap financing helped 2026 volume and average prices fell. Car sales earn below the company gross margin (see the car-sales margin); in the June quarter the automotive margin excluding credits was 16.3%, up from 15.0% a year earlier but down from Q1's one-off-boosted 19.2%.",
+     "Exposed to the China price war, tariffs and memory costs (chains C1, C5)."
+    ]
+   },
+   "CRD": {
+    "sells": "Regulatory credits sold to other carmakers that miss emissions or fuel-economy rules.",
+    "buyers": "Other carmakers (US, Europe, China).",
+    "pos": [
+     "Almost pure profit when sold: no cost of goods (shown with car sales because Tesla reports their cost together)."
+    ],
+    "neg": [
+     "Disappearing: −39.8% over the last 4 quarters vs the 4 before, and $146m in the June quarter vs $439m a year earlier, after US fuel-economy fines were scrapped (chain C4).",
+     "Its loss hits gross profit almost one-for-one."
+    ]
+   },
+   "LSE": {
+    "sells": "Cars leased to customers (Tesla keeps ownership).",
+    "buyers": "Consumers and businesses that lease rather than buy.",
+    "pos": [
+     "Recurring monthly payments, and leasing has its own, much higher margin than car sales."
+    ],
+    "neg": [
+     "Small and shrinking: 1.5% of sales, −11.3% vs the 4 quarters before."
+    ]
+   },
+   "SVC": {
+    "sells": "Services and other: FSD subscriptions, Supercharging, insurance, used cars, repairs, parts and merchandise.",
+    "buyers": "Tesla owners (and other EV drivers at Superchargers).",
+    "pos": [
+     "Fastest-growing part: +34.0% over the last 4 quarters vs the 4 before; 14.6% of sales now vs 7.8% three years ago.",
+     "Partly recurring (FSD subscriptions, charging, insurance): about 1.5m paying FSD customers at the June quarter, and future FSD sales will mostly be subscriptions.",
+     "Margin rising fast: 10.9% (last 4 quarters) vs 5.6% a year earlier."
+    ],
+    "neg": [
+     "Still earns below the company gross margin (10.9% vs 18.9%), because used cars and repairs are low-margin.",
+     "Robotaxi revenue would land here, but the fleet is still small (about a dozen cars or fewer per city in mid-2026)."
+    ]
+   },
+   "ENE": {
+    "sells": "Battery storage (Megapack for utilities, Powerwall for homes) and solar.",
+    "buyers": "Utilities, power developers and data centres; homeowners.",
+    "pos": [
+     "Most profitable part: 29.4% gross margin (last 4 quarters) vs 18.9% for the company, up from 13.0% three years ago.",
+     "Growing: +16.8% over the last 4 quarters vs the 4 before; 12.4% of sales vs 5.8% three years ago. Storage deployed +40.6% in the June quarter vs a year earlier.",
+     "AI data centres need large batteries, a fresh source of demand."
+    ],
+    "neg": [
+     "Lumpy: deployments swing quarter to quarter with big projects.",
+     "June-quarter margin dropped to 20.4% after a $240m one-off warranty charge; management expects the low-to-mid 20s % over the long term, below the last-4-quarter 29.4%.",
+     "Battery cells are scarce: management named battery capacity a limit (chain C1)."
+    ]
+   }
+  },
+  "shift": {
+   "title": "What the shift means for Tesla",
+   "pos": [
+    "Tesla is slowly becoming less of a pure carmaker: car sales fell from 82% to 70% of revenue in 3 years (last 4 quarters vs the 4 quarters to Jun 2023), while energy rose from 6% to 12% and services from 8% to 15%.",
+    "Energy is the profit bright spot: its gross margin rose from 13.0% to 29.4% over the same 3 years, well above the company's 18.9%.",
+    "Company gross margin is up from 17.5% to 18.9% (last 4 quarters vs the 4 a year earlier), helped by energy and services margins."
+   ],
+   "neg": [
+    "Over 3 years margins fell: derived by difference from SEC figures, the automotive margin was about 23.4% and the company gross margin about 21.5% in the 4 quarters to Jun 2023, vs 18.9% for the company now (the engine shows the 3-year figures as blank, see the note).",
+    "The shift is not lifting margins on its own: the mix change alone took about 0.3 points off gross margin vs a year earlier (each part's margin held at that earlier level), because low-margin services grew fastest.",
+    "Regulatory credits, almost pure profit, are fading out (1.4% of sales, −39.8% vs the 4 quarters before).",
+    "Cars are still 70% of sales, so car pricing and incentives still decide most of the profit."
+   ]
+  }
+ }
+}
