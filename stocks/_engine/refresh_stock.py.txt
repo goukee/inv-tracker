@@ -389,7 +389,7 @@ def _pick(series, patterns, e):
     return None
 
 SNAP_DAYS = 40   # trading days of day-by-day detail kept for the timeline (plan S16)
-SNAP_KEYS = ('price', 'call', 'zone', 'composite', 'coverage', 'buckets', 'bucket_live', 'driver_notes', 'direction', 'confidence',
+SNAP_KEYS = ('price', 'call', 'zone', 'composite', 'coverage', 'buckets', 'bucket_live', 'driver_notes', 'direction', 'demand_direction', 'confidence',
              'flags', 'changers', 'lead', 'bullets', 'move', 'changes', 'new_listing')
 
 def snap_of(d):
@@ -949,15 +949,17 @@ def build(S, A, B, C, side, prev, D=None, G=None):
 
     # ---- score
     ids = [k for k in I if I[k]['s'] is not None]
-    # driver cap (Kenneth, 30 Sep): Demand indicators tagged to one driver (settings.drivers) share at most half of the Demand
-    # weight (17.5 of 35 points); their weights are scaled down inside the Demand bucket only
+    # driver cap (Kenneth, 30 Sep; base changed 3 Oct): Demand indicators tagged to one driver (settings.drivers) share at most half
+    # of the Demand weight LEFT after removed indicators (35 points with none removed; TSLA without DM3: 29 -> cap 14.5);
+    # their weights are scaled down inside the Demand bucket only
     ew = {k: I[k]['w'] for k in I}; driver_notes = []
+    dem_left = sum(I[k]['w'] for k in I if I[k]['bucket'] == 'Demand')
     for drv in S.get('drivers', []):
         mem = [k for k in drv.get('indicators', []) if k in I and I[k]['bucket'] == 'Demand']
-        tot = sum(I[k]['w'] for k in mem); cap = BUCKET_W['Demand'] * DRIVER_CAP
+        tot = sum(I[k]['w'] for k in mem); cap = dem_left * DRIVER_CAP
         if tot > cap:
             for k in mem: ew[k] = I[k]['w'] * cap / tot
-            driver_notes.append(f"{drv.get('name', drv.get('id'))}: {', '.join(mem)} ({tot:g} of {BUCKET_W['Demand']} Demand points) scaled to {cap:g} points inside the Demand bucket.")
+            driver_notes.append(f"{drv.get('name', drv.get('id'))}: {', '.join(mem)} ({tot:g} of the {dem_left:g} Demand points in use) scaled to {cap:g} points inside the Demand bucket.")
     buckets = {}; bucket_live = {}
     for b in BUCKET_W:
         allk = [k for k in I if I[k]['bucket'] == b]; ks = [k for k in ids if I[k]['bucket'] == b]; w = sum(ew[k] for k in ks)
@@ -1020,7 +1022,7 @@ def build(S, A, B, C, side, prev, D=None, G=None):
 
     # ---- history, persistence, direction
     hist = [h for h in (prev or {}).get('history', []) if h['d'] < asof]
-    hist.append({'d': asof, 'px': px, 'comp': comp, 'z': zone(comp)})
+    hist.append({'d': asof, 'px': px, 'comp': comp, 'z': zone(comp), 'dem': buckets.get('Demand')})
     hist = hist[-260:]
     last_call = (prev or {}).get('call', {}).get('code')
     win = [h['z'] for h in hist[-PERSIST[1]:]]
@@ -1044,6 +1046,16 @@ def build(S, A, B, C, side, prev, D=None, G=None):
         if a5 and b5:
             dlt = sum(a5) / len(a5) - sum(b5) / len(b5)
             direction = {'label': 'Improving' if dlt >= DIR_T else 'Deteriorating' if dlt <= -DIR_T else 'Steady', 'delta': round(dlt)}
+    # Demand's own direction (P8 gate and O6, Kenneth 3 Oct): same rule as the composite's direction, on the Demand bucket.
+    # Days recorded before 4 Oct carry no 'dem' in history; their Demand score is taken from the saved daily snapshots.
+    snapdem = {d_: (s.get('buckets') or {}).get('Demand') for d_, s in ((prev or {}).get('snapshots') or {}).items() if isinstance(s, dict)}
+    dser = [h.get('dem', snapdem.get(h['d'])) for h in hist]
+    demand_direction = None
+    if len(dser) >= 25:
+        a5 = [x for x in dser[-5:] if x is not None]; b5 = [x for x in dser[-25:-20] if x is not None]
+        if a5 and b5:
+            dlt = sum(a5) / len(a5) - sum(b5) / len(b5)
+            demand_direction = {'label': 'Improving' if dlt >= DIR_T else 'Deteriorating' if dlt <= -DIR_T else 'Steady', 'delta': round(dlt)}
     signs = [buckets[b] for b in buckets if buckets[b]]
     agree = max(sum(1 for x in signs if x > 0), sum(1 for x in signs if x < 0))
     conf = 'High' if cov >= 0.9 and agree >= 3 else 'Low' if cov < 0.8 or agree <= 2 and len(signs) == 4 and sum(1 for x in signs if x > 0) == 2 else 'Medium'
@@ -1064,12 +1076,25 @@ def build(S, A, B, C, side, prev, D=None, G=None):
             hist[-1]['call'] = 'H'
         elif call['code'] is None and zn in ('SB', 'B'):
             call['detail'] += f" Once confirmed it would be capped at Hold by {' and '.join(caps)}."
+    # P8 gate (Kenneth, 3 Oct; every stock): a Sell / Strong Sell needs the Demand bucket at or below 0, or Demand deteriorating on
+    # its own history, or a structural negative move Kenneth has confirmed; otherwise the weakness is price-led and the call shows
+    # 'Hold (price-led weakness)'
+    dem = buckets.get('Demand')
+    struct_ok = mv.get('class') == 'Structural' and mv.get('direction') == 'down' and bool(mv.get('reviewed'))
+    p8_ok = (dem is not None and dem <= 0) or (demand_direction or {}).get('label') == 'Deteriorating' or struct_ok
+    dem_txt = 'no Demand score' if dem is None else f'Demand at {dem:+d}, above 0'
+    if call['code'] in ('S', 'SS') and not p8_ok:
+        flags.append({'code': 'P8', 'text': f'Hold (price-led weakness): the indicators read {ZONES[call["code"]]}, but a Sell needs Demand at or below 0 or deteriorating, and today shows {dem_txt}' + ('' if demand_direction else ' with too little history to judge its direction') + '.'})
+        call = {'code': 'H', 'label': 'Hold (price-led weakness)', 'detail': f'P8 gate: indicators read {ZONES[call["code"]]}, but demand is not weakening ({dem_txt}); shown as Hold.', 'capped': ZONES[call['code']]}
+        hist[-1]['call'] = 'H'
+    elif call['code'] is None and zn in ('S', 'SS') and comp is not None and not p8_ok:
+        call['detail'] += f" Once confirmed it would show Hold (price-led weakness): {dem_txt}."
     # O6 winner discipline: on a stock up since onboarding, Sell / Strong Sell needs Valuation <= -50 AND Demand deteriorating,
     # or a structural negative move Kenneth has confirmed; otherwise it shows 'Trim consideration' (a Hold)
     onb_px = num(S.get('onboard_price')) or (hist[0]['px'] if hist else None)
     if call['code'] in ('S', 'SS') and onb_px and px > onb_px:
-        dem_det = (buckets.get('Demand') or 0) < 0 or (direction or {}).get('label') == 'Deteriorating'
-        ok = ((buckets.get('Valuation vs peers') or 0) <= -50 and dem_det) or (mv.get('class') == 'Structural' and mv.get('direction') == 'down' and mv.get('reviewed'))
+        dem_det = (buckets.get('Demand') or 0) < 0 or (demand_direction or {}).get('label') == 'Deteriorating'   # Demand's own direction (fixed 4 Oct; was the composite's)
+        ok = ((buckets.get('Valuation vs peers') or 0) <= -50 and dem_det) or struct_ok
         if not ok:
             flags.append({'code': 'O6', 'text': f'Trim consideration: the indicators read {ZONES[call["code"]]}, but the price is up since onboarding (${onb_px:.2f}) and the Sell conditions are not met.'})
             call = {'code': 'H', 'label': 'Trim consideration', 'detail': f'Winner discipline (O6): indicators read {ZONES[call["code"]]}; shown as Trim consideration, not Sell.', 'capped': ZONES[call['code']]}
@@ -1139,7 +1164,7 @@ def build(S, A, B, C, side, prev, D=None, G=None):
                  'version': S.get('version'), 'macro_src': macro_src, 'bench': S['benchmark']['name'], 'plan': 'Framework plan v0.5'},
         'price': {'px': px, 'd1': move[0], 'd5': move[1], 'm3': move[2], 'bench_d1': b1d, 'bench_d5': num(bench[2])},
         'call': call, 'zone': zn, 'composite': comp, 'coverage': round(cov, 2), 'buckets': buckets, 'bucket_w': BUCKET_W, 'bucket_live': bucket_live, 'driver_notes': driver_notes, 'lines': LINES,
-        'direction': direction, 'confidence': conf, 'flags': flags, 'changers': changers,
+        'direction': direction, 'demand_direction': demand_direction, 'confidence': conf, 'flags': flags, 'changers': changers,
         'indicators': list(I.values()), 'removed': S.get('removed_indicators', []),
         'new_listing': {'active': bool(nl_subs) or bool(dm2_until), 'listed': listed, 'days': ndays, 'subs': nl_subs, 'first_13f': first_13f, 'q13': q13.isoformat() if q13 else None, 'dm2_until': dm2_until},
         'stretch': {'v': stretch, 'flag': stretch is not None and stretch > 25, 'measured': "the average of every close since listing" if pt_short else "the stock's own 200-day average"},
