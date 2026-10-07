@@ -5,5 +5,10 @@
  {"id": "AMD", "label": "AMD", "template": "stock", "src": "templates/stock.html#AMD", "status": "live", "folder": "03 Stocks/AMD-US"},
  {"id": "SPCX", "label": "SPCX", "template": "stock", "src": "templates/stock.html#SPCX", "status": "live", "folder": "03 Stocks/SPCX-US"},
  {"id": "GLD", "label": "GLD", "template": "stock", "src": "templates/stock.html#GLD", "status": "live", "folder": "03 Stocks/GLD-US"},
- {"id": "TSLA", "label": "TSLA", "template": "stock", "src": "templates/stock.html#TSLA", "status": "live", "folder": "03 Stocks/TSLA-US"}
+ {"id": "TSLA", "label": "TSLA", "template": "stock", "src": "templates/stock.html#TSLA", "status": "live", "folder": "03 Stocks/TSLA-US"},
+ {"id": "NVDA", "label": "NVDA", "template": "stock", "src": "templates/stock.html#NVDA", "status": "live", "folder": "03 Stocks/NVDA-US"},
+ {"id": "GOOG", "label": "GOOG", "template": "stock", "src": "templates/stock.html#GOOG", "status": "live", "folder": "03 Stocks/GOOG-US"},
+ {"id": "MSFT", "label": "MSFT", "template": "stock", "src": "templates/stock.html#MSFT", "status": "live", "folder": "03 Stocks/MSFT-US"},
+ {"id": "DELL", "label": "DELL", "template": "stock", "src": "templates/stock.html#DELL", "status": "live", "folder": "03 Stocks/DELL-US"},
+ {"id": "KO", "label": "KO", "template": "stock", "src": "templates/stock.html#KO", "status": "live", "folder": "03 Stocks/KO-US"}
 ]}

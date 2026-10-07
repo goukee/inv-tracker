@@ -153,7 +153,14 @@ window.__RUN=async function(){
 
  if(C.stage==='B'){
   const cik=C.cik;
-  const concept=async(tag,unit)=>{const j=await J(`/api/xbrl/companyconcept/CIK${cik}/us-gaap/${tag}.json`);return j.units[unit||Object.keys(j.units)[0]]};
+  /* SEC's per-concept API sometimes answers 200 with empty units for a company (KO, Oct 2026); the full company-facts file
+     still holds the data, so fall back to it (fetched once per run) when a concept comes back empty. */
+  let FACTS=null;
+  const concept=async(tag,unit)=>{const j=await J(`/api/xbrl/companyconcept/CIK${cik}/us-gaap/${tag}.json`);let u=j.units[unit||Object.keys(j.units)[0]];
+   if(!Array.isArray(u)||!u.length){FACTS=FACTS||await J(`/api/xbrl/companyfacts/CIK${cik}.json`);const f=((FACTS.facts||{})['us-gaap']||{})[tag];
+    if(!f)throw new Error(tag+': empty in SEC concept API and not in company facts');u=f.units[unit||Object.keys(f.units)[0]];
+    if(!Array.isArray(u))throw new Error(tag+': no '+(unit||'')+' values in company facts')}
+   return u};
   const dur=(s,e)=>(new Date(e)-new Date(s))/864e5;
   const quarterly=async(tag,unit)=>{const u=await concept(tag,unit);const q={},fy={};
    for(const x of u){if(!x.start)continue;const d=dur(x.start,x.end);

@@ -1,0 +1,255 @@
+{
+ "_note": "Per-stock settings for NVDA. Only this stock's chat edits it; anything not set here uses the framework plan defaults.",
+ "code": "NVDA",
+ "market": "US",
+ "exchange": "NASDAQ",
+ "name": "NVIDIA Corporation",
+ "currency": "USD",
+ "benchmark": {
+  "name": "S&P 500",
+  "symbol": "^GSPC"
+ },
+ "peers": [
+  {
+   "code": "AMD",
+   "name": "AMD",
+   "why": "Direct GPU rival: Instinct AI accelerators to the same cloud buyers, plus gaming GPUs"
+  },
+  {
+   "code": "AVGO",
+   "name": "Broadcom",
+   "why": "Custom AI chips for Google, Meta and others (the main alternative to Nvidia) and data-centre Ethernet switch chips"
+  },
+  {
+   "code": "MRVL",
+   "name": "Marvell",
+   "why": "Custom AI chips for Amazon and Microsoft, plus optical and networking chips in AI data centres"
+  },
+  {
+   "code": "ANET",
+   "name": "Arista Networks",
+   "why": "Data-centre Ethernet switches competing with Nvidia networking; same cloud buyers"
+  },
+  {
+   "code": "ALAB",
+   "name": "Astera Labs",
+   "why": "Connectivity chips inside AI servers; same hyperscaler buyers and capex cycle"
+  }
+ ],
+ "valuation": {
+  "metric": "forward_pe",
+  "fallback": "trailing_pe",
+  "vl3_basis": "trailing P/E, 5 years (price / last-12-month SEC diluted EPS, split-adjusted), labelled"
+ },
+ "dm4": [
+  {
+   "id": "DM4a",
+   "name": "Data Center revenue growth vs the prior quarter",
+   "weight": 4,
+   "source": "Nvidia quarterly CFO commentary (on results)",
+   "bullish_if": ">= +10%",
+   "bearish_if": "<= +3%",
+   "measured_against": "the prior quarter (written exception to the year-earlier default, Kenneth 5 Oct 2026)",
+   "latest": "+18% (Q2 FY27: $89.0bn vs $75.2bn)",
+   "what": "How fast Nvidia's Data Center sales grew from one quarter to the next.",
+   "why": "At +117% vs a year earlier, year-on-year growth would read strong for quarters after the AI build-out peaks; quarter-on-quarter growth shows a slowdown two to three quarters sooner.",
+   "bull_means": "The AI build-out is still growing fast quarter to quarter.",
+   "neutral_means": "Growth is slowing to single digits per quarter.",
+   "bear_means": "Data Center sales are flat or falling: the classic sign of a capex peak."
+  },
+  {
+   "id": "DM4b",
+   "name": "ACIE revenue growth (demand beyond the big clouds)",
+   "weight": 4,
+   "source": "Nvidia quarterly CFO commentary (on results)",
+   "bullish_if": ">= +50%",
+   "bearish_if": "<= +20%",
+   "measured_against": "same quarter a year earlier",
+   "latest": "+138% (Q2 FY27: $40.3bn vs $16.9bn restated)",
+   "what": "Growth in Data Center sales to customers other than the giant clouds (AI clouds and start-ups, sovereign AI, industrial and enterprise) vs the same quarter last year.",
+   "why": "Shows whether demand is broadening beyond four or five buyers who are also building their own chips. Part of ACIE is AI clouds that Nvidia invests in or guarantees, so strong ACIE growth is not purely independent demand.",
+   "bull_means": "Demand is spreading widely beyond the big clouds.",
+   "neutral_means": "Broadening is slowing.",
+   "bear_means": "Nvidia is back to depending on the big clouds."
+  }
+ ],
+ "dm5": {
+  "id": "DM5",
+  "name": "Big-4 cloud capital spending (Microsoft, Alphabet, Amazon, Meta)",
+  "weight": 4,
+  "source": "The four companies' quarterly results and SEC filings",
+  "bullish_if": ">= +30%",
+  "bearish_if": "<= +10%",
+  "measured_against": "same calendar quarter a year earlier",
+  "latest": "about +79% (Jun 2026 quarter: $170.1bn vs about $95.0bn a year earlier; Alphabet cash capex only)",
+  "what": "Combined capital spending (data centres and equipment) of the four biggest cloud buyers in the latest quarter vs the same quarter a year earlier.",
+  "why": "It is Nvidia's customers' budget, reported by the customers, and it arrives before Nvidia reports.",
+  "bull_means": "Customer budgets are still growing fast.",
+  "neutral_means": "Budget growth is slowing.",
+  "bear_means": "Budgets are close to flat, which historically comes before chip orders fall."
+ },
+ "overrides": [],
+ "removed_indicators": [],
+ "chains": [
+  {
+   "id": "C1",
+   "trigger": "US-China chip policy",
+   "what_changes": "US export licences and China's own buying restrictions",
+   "business_hit": "China Data Center sales near zero; reopening = upside, new US/China action = downside",
+   "company_levers": "China-specific chips (H20, RTX Pro), guiding China at zero",
+   "watch": {
+    "name": "USD/CNY + news scan",
+    "source": "Yahoo CNY=X (shared macro)",
+    "active_if": "yuan weakens 2%+ or new US or Chinese action on chips",
+    "measured_against": "its level one month earlier"
+   },
+   "status": "Hurting, but contained (zero China compute in guidance; checked 5 Oct 2026)"
+  },
+  {
+   "id": "C2",
+   "trigger": "AI boom",
+   "what_changes": "memory (HBM/DRAM) scarce and dearer",
+   "business_hit": "cost per system up -> gross margin down unless passed on",
+   "company_levers": "multi-year memory purchase commitments, pricing power, product mix (Vera Rubin)",
+   "watch": {
+    "name": "Micron share price (stand-in for memory prices)",
+    "source": "Yahoo MU (shared macro)",
+    "active_if": "up 10%+",
+    "measured_against": "its level one month earlier"
+   },
+   "status": "Hurting + Company responding"
+  },
+  {
+   "id": "C3",
+   "trigger": "Iran war / oil / inflation",
+   "what_changes": "bond yields and Fed rate-rise odds up",
+   "business_hit": "lower multiple; dearer debt for AI clouds and data-centre builders that buy Nvidia systems",
+   "company_levers": "none on the share price; vendor financing and stakes in customers (adds risk)",
+   "watch": {
+    "name": "US 10-year Treasury yield",
+    "source": "Yahoo ^TNX (shared macro)",
+    "active_if": "up 0.25 percentage points or more",
+    "measured_against": "its level one month earlier"
+   },
+   "status": "Active"
+  },
+  {
+   "id": "C4",
+   "trigger": "Taiwan / supply chain",
+   "what_changes": "conflict, blockade or outage at TSMC or its advanced packaging",
+   "business_hit": "no product to sell for months",
+   "company_levers": "TSMC Arizona, second sources (years away), inventory",
+   "watch": {
+    "name": "news scan only",
+    "source": "web search",
+    "active_if": "military exercise beyond routine, blockade talk, or a TSMC outage",
+    "measured_against": "-"
+   },
+   "status": "Quiet (checked 5 Oct 2026)"
+  }
+ ],
+ "shareholder_sources": [
+  "Nasdaq institutional holdings (13F)",
+  "Yahoo Finance insiderTransactions (SEC Form 4)",
+  "SEC EDGAR 13D/13G"
+ ],
+ "status": "live",
+ "version": "0.1",
+ "onboarded": "2026-10-05",
+ "_peers_status": "approved by Kenneth 5 Oct 2026",
+ "_settings_status": "approved by Kenneth 5 Oct 2026 (DM4a vs prior quarter as a written exception)",
+ "sec_cik": "0001045810",
+ "sec_rev_tag": "Revenues",
+ "_sec_rev_tag_note": "Nvidia files revenue under us-gaap:Revenues; stage B must run with __CFG.revTag='Revenues' (the default tag stops in Jan 2022). Open item for the Framework chat: the production task must read this setting.",
+ "splits": [
+  [
+   "2021-07-20",
+   4
+  ],
+  [
+   "2024-06-10",
+   10
+  ]
+ ],
+ "index_holders": [
+  "vanguard",
+  "blackrock",
+  "state street",
+  "geode",
+  "northern trust",
+  "norges",
+  "legal & general",
+  "schwab",
+  "dimensional",
+  "morgan stanley",
+  "jpmorgan",
+  "bank of america",
+  "goldman",
+  "ubs",
+  "royal bank",
+  "wells fargo",
+  "invesco",
+  "bank of new york",
+  "amundi",
+  "deutsche",
+  "swiss national",
+  "hsbc",
+  "mitsubishi",
+  "sumitomo",
+  "ameriprise",
+  "nuveen"
+ ],
+ "drivers": [
+  {
+   "id": "ai_dc",
+   "name": "AI data-centre spending",
+   "indicators": [
+    "DM1",
+    "DM4a",
+    "DM4b",
+    "DM5"
+   ]
+  }
+ ],
+ "_chains_status": "approved by Kenneth 5 Oct 2026; C2 status changed to 'Hurting + Company responding' (Kenneth, 6 Oct 2026)",
+ "mix": {
+  "_note": "Revenue mix (not scored). Nvidia changed its market-platform reporting in Q1 FY27: Data Center (split into Hyperscale and ACIE, only 4 quarters published) and Edge Computing. Edge Computing = the old Gaming + Professional Visualization + Automotive + OEM & Other lines (checked: Q1 FY26 4,950 and Q2 FY26 5,647 match exactly), so the second pattern rebuilds its history.",
+  "source": "sec",
+  "basis": "gross",
+  "segments": [
+   {
+    "id": "DC",
+    "name": "Data Center",
+    "match": [
+     "^data center$"
+    ],
+    "recurring": "no",
+    "group": "CO"
+   },
+   {
+    "id": "EDGE",
+    "name": "Edge Computing (gaming, workstations, auto, other)",
+    "match": [
+     "^edge computing$",
+     "^(gaming|professional visualization|automotive|oem and other)$"
+    ],
+    "recurring": "no",
+    "group": "CO"
+   }
+  ],
+  "groups": [
+   {
+    "id": "CO",
+    "name": "Whole company",
+    "match": [
+     "^total$"
+    ]
+   }
+  ],
+  "note": "Nvidia reports profit only for its two legal segments (Compute & Networking; Graphics), which do not line up with Data Center and Edge Computing, so both parts show the whole-company gross margin (marked *). The Hyperscale / ACIE split of Data Center is published only from FY26 comparatives (4 quarters) and is tracked in DM4b instead."
+ },
+ "onboard_price": 238.9,
+ "onboard_date": "2026-10-05",
+ "_onboard_note": "Price at the first staging build (5 Oct 2026 close): the reference for O6 winner discipline until a positions feed exists.",
+ "promoted": "2026-10-06"
+}

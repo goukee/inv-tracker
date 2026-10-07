@@ -1,0 +1,385 @@
+{
+ "_note": "Text and on-results inputs only a chat can write. See AAPL-US/side.json for a full example.",
+ "dm3": {
+  "guide_mid": 16.4,
+  "consensus": 15.5,
+  "measured": "analysts' consensus revenue growth for the September 2026 quarter (Q1 FY27) when guidance was given (29 Jul 2026), both vs the Sep-25 quarter's $77.67bn",
+  "source": "Microsoft Q4 FY26 call (segment ranges summed: $89.85-90.95bn); consensus about $89.7bn per Reuters/LSEG via INDmoney (secondary source)",
+  "note": "Guided midpoint $90.40bn = +16.4% vs consensus $89.7bn = +15.5%: 0.9 points above, just inside the neutral band (bullish needs 1 point or more). Consensus figure is from a secondary source quoting LSEG."
+ },
+ "custom": {
+  "DM4a": {
+   "value": 43,
+   "period": "Jun-26 quarter (Q4 FY26), constant currency (Microsoft release: 43%) vs a 39-40% guide"
+  },
+  "DM4b": {
+   "value": 14,
+   "period": "Jun-26 quarter (Q4 FY26), constant currency (release: 14%; Microsoft's 'adjusted' figure, which also removes a one-off in the year-earlier quarter, is 16%)"
+  },
+  "DM5": {
+   "value": 50.6,
+   "period": "Q2 2026 (Jun-26 quarter): AWS $42.2bn + Google Cloud $24.8bn vs $30.9bn + $13.6bn a year earlier"
+  }
+ },
+ "move": {
+  "class": "Quiet",
+  "direction": "up",
+  "headline": "A normal-sized gain after a strong three months",
+  "evidence": [
+   {
+    "d": "6 Oct",
+    "t": "Microsoft rose 0.78% while the S&P 500 rose 0.58%. A typical day's move over the last 60 days is about 2.5%, so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
+   {
+    "d": "Last 3 months",
+    "t": "Up 38.3% over the last 3 months; the 15.5% jump on 30 Jul after Azure grew 43% is the main driver.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices; Ringside (30 Jul)"
+   },
+   {
+    "d": "No dated news",
+    "t": "No Microsoft-specific news found for 6 Oct; results are expected on 28 Oct (not yet confirmed).",
+    "kind": "fact",
+    "src": "web search, 6 Oct"
+   }
+  ]
+ },
+ "earnings": {
+  "past": [
+   {
+    "q": "Jun 2026 quarter (Q4 FY26)",
+    "date": "Wed 29 Jul 2026, after the US close (Thu 30 Jul, about 4am Singapore)",
+    "vs": "Revenue $90.0bn, +18% vs a year earlier, vs $87.6bn consensus (Reuters/Visible Alpha): +2.7% beat. EPS $4.81 reported; $4.74 excluding OpenAI vs $4.24 expected (+11.8%). Azure +43% (also +43% excluding currency) vs about 40% expected and Microsoft's own 39-40% guide.",
+    "guide": "September quarter: revenue $89.85-90.95bn (+15.7% to +17.1% vs $77.7bn a year earlier; midpoint +16.4%) vs about $89.7bn consensus (+15.5%); Azure about +45% in constant currency vs about 41% expected.",
+    "reaction": "Shares +15.5% on 30 Jul ($451.10 vs $390.54), Microsoft's biggest one-day gain since 2008 (about $450bn of market value).",
+    "take": [
+     "<b>Azure accelerated.</b> +43% vs +40% in the March quarter and +39% in December (each vs a year earlier); guided to about +45% for September.",
+     "<b>Still short of capacity.</b> Demand exceeds the data-centre capacity Microsoft has; no end date given.",
+     "<b>Capex keeps rising.</b> $41bn in the quarter including finance leases; over $50bn guided for September. The calendar-2026 plan was cut to about $175bn from $190bn because more data-centre leases are now operating leases, which Microsoft does not count as capex; the CFO said spending plans are unchanged. Data-centre buildings are also now depreciated over 25 years instead of 15 (profit effect 'minimal', per the CFO).",
+     "<b>Copilot is selling.</b> Over 30m paid Microsoft 365 Copilot seats (20m+ in March); net new seats more than doubled vs the March quarter.",
+     "<b>Backlog is OpenAI-heavy.</b> Contracted future revenue (RPO) $678bn, +84%; excluding OpenAI +25%. OpenAI was $24.1bn of FY26 revenue, 7.3% of the total (annual report); a broker (BNP Paribas) estimates about 23% of Azure.",
+     "<b>Margins slipping slowly.</b> Gross margin 67.2% vs 68.6% a year earlier; FY27 operating margin guided down by less than 1 point.",
+     "<b>Cash.</b> Free cash flow $19.6bn in the quarter on $55.4bn operating cash flow."
+    ],
+    "impact": "Demand indicators mostly strong (DM4a, DM5 bullish; DM4b neutral at 14% constant currency); guidance only 0.9 points above consensus (DM3 neutral); capex pressure shows in chain C1."
+   },
+   {
+    "q": "Mar 2026 quarter (Q3 FY26)",
+    "date": "Wed 29 Apr 2026, after the US close",
+    "vs": "Revenue $82.9bn, +18% vs a year earlier, vs $81.5bn consensus (Bloomberg): +1.8% beat. EPS $4.27 vs $4.04 expected (+5.7%). Azure +40% (+39% excluding currency) vs about 39% expected and a 37-38% guide.",
+    "guide": "June quarter: revenue $86.7-87.8bn (+13.4% to +14.9% vs $76.4bn a year earlier) vs $87.2bn consensus: in line. Azure 39-40%.",
+    "reaction": "Shares -3.9% on 30 Apr ($407.78 vs $424.46) as investors focused on a calendar-2026 capex plan of about $190bn.",
+    "take": [
+     "<b>Beat, but capex dominated.</b> A calendar-2026 capex plan of about $190bn was announced; the June quarter guided above $40bn.",
+     "<b>Capacity-constrained through 2026,</b> management said.",
+     "<b>Copilot</b> passed 20m seats (from 15m).",
+     "<b>Backlog</b> $627bn, +99%; excluding OpenAI about +26%.",
+     "<b>AI business</b> running at about $37bn a year, +123%.",
+     "<b>Gross margin</b> 67.6%, the lowest since 2022; free cash flow $15.8bn, -22% vs a year earlier."
+    ],
+    "impact": "Results beat but the stock fell on spending: the pattern chain C1 describes."
+   }
+  ],
+  "next": [
+   {
+    "q": "Sep 2026 quarter (Q1 FY27)",
+    "date": "Wed 28 Oct 2026 (expected), after the US close (Thu 29 Oct morning in Singapore)",
+    "iso": "2026-10-28",
+    "status": "Estimated (not yet announced by Microsoft as of 6 Oct; last year it confirmed on 8 Oct)",
+    "watch": [
+     "Azure vs the ~45% guide: a miss to 39-40% would still score bullish here (bullish line 38%), so watch the guide gap, not just the score.",
+     "Capex vs the $50bn+ guide and any change to the calendar-2026 ~$175bn plan (C1).",
+     "First quarter on the new segments (Agents and Infra; Devices and Consumer, from the 2 Sep 8-K): the revenue-mix section needs re-mapping.",
+     "First quarter with more data-centre leases classed as operating leases: reported capex falls and lease payments move into operating cash flow, so capex, free cash flow and margin comparisons with earlier quarters are not like-for-like.",
+     "OpenAI share of new bookings (C4).",
+     "Copilot price per seat: large-customer discounts of 30-50% are reported from Oct 2026 (Benzinga, Sep 2026); watch whether Microsoft 365 commercial cloud growth (DM4b) holds above 15%.",
+     "If Azure growth is no longer disclosed the same way under the new segments, DM4a falls back to the 'Azure' revenue line in the 10-Q (growth vs a year earlier)."
+    ]
+   },
+   {
+    "q": "Dec 2026 quarter (Q2 FY27)",
+    "date": "Late January 2027 (about 27 Jan)",
+    "iso": "2027-01-27",
+    "status": "Estimated",
+    "watch": [
+     "Whether the capacity shortage eases and Azure growth holds above 38%.",
+     "Copilot seat growth and pricing (DM4b)."
+    ]
+   }
+  ]
+ },
+ "shareholder_notes": [
+  "Nasdaq still lists an old Vanguard Group line dated 31 Dec 2025, from before Vanguard split its reporting; it is left out as stale.",
+  "Janus Henderson's line is dated 31 Mar 2026, a quarter older than the rest.",
+  "Yahoo does not mark which insider sales were pre-scheduled trading plans, so they cannot be excluded.",
+  "SG Americas Securities' +339% change is a trading-desk position, not an investment view."
+ ],
+ "chains": [
+  {
+   "id": "C1",
+   "name": "AI computing boom squeezes cash",
+   "path": [
+    "AI boom",
+    "chips, memory and power scarce",
+    "capex and depreciation up",
+    "margin and free cash flow down"
+   ],
+   "watch": "MU",
+   "watch_label": "Micron share price (stand-in for memory prices)",
+   "active": {
+    "kind": "pct",
+    "t": 10
+   },
+   "status": "Hurting",
+   "evidence": [
+    "Watch number below its trigger: Micron $1,045.56 at the 6 Oct close vs $1,000.26 20 trading days earlier (+4.5%; active at +10%). The strain shows in Microsoft's own figures instead:",
+    "Capex $41bn in the June quarter including finance leases; $50bn+ guided for September (Microsoft, 29 Jul). Cash capex in FY26 was $116.0bn vs operating cash $182.9bn (SEC 10-K).",
+    "Gross margin 67.2% in the June quarter vs 68.6% a year earlier; FY27 operating margin guided down by less than 1 point (29 Jul).",
+    "Company responding: own chips; capacity still short of demand (29 Jul)."
+   ]
+  },
+  {
+   "id": "C2",
+   "name": "Rates squeeze the valuation",
+   "path": [
+    "Iran war, oil",
+    "inflation",
+    "higher bond yields, Fed odds",
+    "Microsoft's ~25x forward P/E gets squeezed"
+   ],
+   "watch": "TNX",
+   "watch_label": "US 10-year Treasury yield",
+   "active": {
+    "kind": "pts",
+    "t": 0.25
+   },
+   "status": "Active",
+   "evidence": [
+    "10-year yield 5.27% at the 6 Oct close vs 4.81% 20 trading days earlier (+0.46 points; active at +0.25). Brent oil $100.3 vs $96.3 (shared macro).",
+    "6 of Microsoft's 10 worst weeks in the last 5 years were driven by inflation or Fed news (past big moves check, 5 Oct)."
+   ]
+  },
+  {
+   "id": "C3",
+   "name": "Strong dollar",
+   "path": [
+    "Dollar up",
+    "overseas sales worth fewer dollars",
+    "reported revenue and profit lower"
+   ],
+   "watch": "DXY",
+   "watch_label": "US dollar index",
+   "active": {
+    "kind": "pct",
+    "t": 2
+   },
+   "status": "Hurting",
+   "evidence": [
+    "Dollar index 101.83 at the 6 Oct close vs 98.84 20 trading days earlier (+3.0%; hurting at +2%)."
+   ]
+  },
+  {
+   "id": "C4",
+   "name": "OpenAI's fortunes",
+   "path": [
+    "OpenAI funding, IPO or cloud choices",
+    "Azure demand and backlog",
+    "Azure growth; swings in reported EPS"
+   ],
+   "watch": null,
+   "watch_label": "News scan only",
+   "active": null,
+   "status": "Active",
+   "evidence": [
+    "30 Sep 2026: OpenAI pushed its IPO beyond 2026 and began raising about $30bn (Bloomberg via Semafor; NYT; CoinDesk).",
+    "OpenAI was $24.1bn of Microsoft's FY26 revenue, 7.3% of the total (FY26 annual report, via Techzine); a broker (BNP Paribas) estimates about 23% of Azure.",
+    "Backlog $678bn, +84% vs a year earlier; excluding OpenAI +25% (29 Jul). OpenAI was about 45% of the backlog at Dec-25 (The Register, 29 Jan).",
+    "OpenAI's stake swings GAAP EPS: +$1.02 gain in the Dec-25 quarter, -$0.41 loss in the Sep-25 quarter (Microsoft releases)."
+   ]
+  },
+  {
+   "id": "C5",
+   "name": "Regulation of cloud and AI bundling",
+   "path": [
+    "FTC probe",
+    "cloud licensing, Entra ID, Copilot bundling",
+    "pricing power in cloud and Office"
+   ],
+   "watch": null,
+   "watch_label": "News scan only",
+   "active": null,
+   "status": "Quiet",
+   "evidence": [
+    "FTC investigation opened Nov 2024, widened Feb 2026 (Bloomberg, 13 Feb 2026); still at the information-request stage, no complaint filed (checked 5 Oct 2026)."
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "d": "2026-10-14",
+   "t": "US inflation (September CPI)",
+   "link": "C2",
+   "note": "Wed 14 Oct, 8:30am ET (8:30pm Singapore). Hotter than forecast = higher yields."
+  },
+  {
+   "d": "2026-10-28",
+   "t": "Fed rate decision",
+   "link": "C2",
+   "note": "Polymarket (6 Oct close): 17% chance of a rise vs 31% 28 days earlier; under 1% chance of a cut. Decision 2pm ET Wed 28 Oct (2am Thu 29 Oct Singapore), the same day as Microsoft's expected results."
+  },
+  {
+   "d": "2026-10-28",
+   "t": "Microsoft results (Sep quarter, Q1 FY27)",
+   "link": "all",
+   "note": "Expected, not yet announced by Microsoft. After the US close; Thu 29 Oct morning in Singapore. First quarter on the new segments."
+  }
+ ],
+ "valuation_plain": [],
+ "lead": "Microsoft is <b>Building history</b> (today's zone: <b>Buy</b>), at <b>+39</b> on a −100 to +100 scale, up from +33 on 5 Oct and 9 points above the Buy line, mainly because the liquidity score rose from −13 to +27 (buying volume on up days now outweighs selling volume on down days, and the chance of a Fed rate rise fell): cloud demand and the share-price trend are strong, but the stock costs more than its cloud peers and the dollar is working against it. Caution: over the last 5 years, Buy readings driven by Microsoft's price trend were followed by it lagging the S&P 500 by 8-14 points over the next 6 months.",
+ "bullets": [
+  "<b>Demand is strong but not universal.</b> Demand scores +49: Azure grew 43% in the June quarter vs a year earlier, excluding currency, beating Microsoft's own 39-40% guide (bullish at the guide midpoint, 39.5%; the September guide is about 45%), and AWS plus Google Cloud together grew 50.6% (line: 30%). Analysts' EPS forecast for the year to June 2028 is up 4.8% in 90 days ($23.68 vs $22.60); measured over the next 12 months as the plan intends, it would be about +2.8% and neutral (engine fix pending). Neutral: Microsoft 365 commercial cloud +14% excluding currency (line: 15%), revenue +17.7% vs a 17.9% average for the prior four quarters, gross margin 67.9% over the last 4 quarters vs 68.8% for the 4 before, and September guidance (+16.4%) only 0.9 points above the +15.5% expected.",
+  "<b>It is dearer than its cloud peers.</b> Valuation scores −28 (unchanged): 25.4x next-12-month earnings vs 21.3x for the median of Amazon, Alphabet and Oracle (+19%; expensive only at +25%), 38% above them after allowing for growth (1.7 vs 1.2), and 20% above on EV/EBITDA (20.5x vs 17.1x). Against its own history it is not expensive: 29.5x last-12-month earnings vs a 33.9x 5-year median (−13%), though a one-off OpenAI gain flatters last-12-month earnings.",
+  "<b>The price trend is as strong as it gets, and that is the least reliable part.</b> Price trend scores +100 (unchanged): $529.30 is 22.1% above its 200-day average, the 50-day average is 13.9% above the 200-day, and the 3-month return is 36.8 points ahead of the three cloud peers. In the 5-year replay, Microsoft's Buy readings were followed by it lagging the S&P 500 by 8-14 points over 6 months.",
+  "<b>The money backdrop has improved to mildly positive.</b> Liquidity scores +27, up from −13: up-day vs down-day volume is now 1.34x (bullish above 1.3x; it was 1.12x and balanced yesterday). Still against it, the dollar index is 2.99 points higher than 20 trading days earlier (bearish at +1). Markets price a 17% chance of a Fed rate rise on 28 Oct, down from 31% a month earlier (an 11.3-point shift, below the 15 points needed to count; a cut is priced at under 1%). Only 0.9% of shares are sold short, too little to count.",
+  "<b>No call yet; 28 Oct results are the test.</b> Day 2 of history: a call needs 7 of the last 10 trading days in one zone (2 of 10 recorded; today reads Buy). None of the automatic quality checks is flagged: free cash flow $67.0bn over the 12 months to Jun 2026, though that figure leaves out data centres leased on finance leases (lower once they are counted), and interest cover 50.9x. Results are expected on 28 Oct, the same day as the Fed decision."
+ ],
+ "defects": [
+  "Revenue mix: the last 363 characters of the SEC segment file were rebuilt after a browser disconnect; an independent check (6 Oct) found them identical, value for value, to an earlier full download.",
+  "Staging build, second day of history: the call needs 10 trading days of scores before it can be confirmed.",
+  "Earnings-forecast revisions (DM2) use only the year to June 2028, not the next 12 months the plan asks for. On a 12-month blend the revision is about +2.8% (neutral), which would put today's score in the Hold zone. Engine fix requested from the Framework chat.",
+  "The 90-day window for earnings-forecast revisions (DM2) includes 29 Jul, when Microsoft changed its data-centre accounting, so part of the forecast rise may be accounting rather than business.",
+  "Peer median is pulled down by one-off 2026 investment gains at Alphabet ($99bn in the June quarter alone) and Amazon. On 2027 forecasts alone Microsoft's premium to the peers is about +11%, not +19%.",
+  "From the Sep-26 quarter more data-centre leases count as operating leases: reported capex falls and lease payments move into operating cash, so capex, free cash flow and margin comparisons with earlier quarters are not like-for-like. Free cash flow here excludes finance-lease data centres.",
+  "Peer set is 3 cloud companies (Kenneth, 5 Oct), below the plan's 4-8: the median is the middle company, so one stale or distorted forecast moves VL1, VL2, VL4 and PT4.",
+  "Valuation vs own history (VL3) uses trailing P/E on GAAP EPS, which includes OpenAI gains and losses: the last 12 months include +$0.68 net (about 4%), so trailing P/E is about 4% too low.",
+  "Revenue mix uses the 3 segments that end in FY26. Microsoft reports 2 new segments (Agents and Infra; Devices and Consumer) from FY27 (8-K, 2 Sep 2026): the section needs re-mapping after the Sep-26 10-Q.",
+  "DM3, DM4a, DM4b and DM5 are entered from results releases, so they update quarterly. DM3's consensus comes from a secondary source quoting LSEG.",
+  "Chain C1 watches Micron's share price as a stand-in for memory and chip prices.",
+  "Institutional change (LQ3) counts changes in existing positions only.",
+  "Insider sales cannot be split into pre-scheduled plan sales and others.",
+  "Microsoft 365 commercial cloud (DM4b) uses the constant-currency figure (14%), not Microsoft's adjusted 16%.",
+  "Insider table covers the last 6 months only (Yahoo), so earlier purchases are not shown.",
+  "Own-history P/E (VL3): the reading is 1 point from bullish, but a one-off OpenAI gain in the Dec-25 quarter flatters last-12-month earnings; without it the reading is about -9% to -10%. The template's fixed sentence ('upper end when above +15%') does not fit a -14% reading (Framework fix requested).",
+  "The large 'Buy' heading shows today's zone, not a confirmed call (day 2 of 10); the plan's wording is 'No confirmed call' (Framework fix requested)."
+ ],
+ "sources": [
+  "Yahoo Finance (prices, consensus, valuation, short interest, insiders)",
+  "SEC EDGAR (reported financials, 10-Q/10-K segment data, 8-K of 2 Sep 2026)",
+  "Nasdaq (13F institutional holdings)",
+  "Polymarket (Fed odds)",
+  "Microsoft investor relations results releases (FY26 Q1-Q4)",
+  "Amazon and Alphabet results (AWS, Google Cloud), via Quartz and tech-insider.org",
+  "Reuters/LSEG and Visible Alpha consensus via Investing.com, INDmoney, Star-Advertiser; Bloomberg via Yahoo; Fortune; CFO Dive; Motley Fool transcript; Newsquawk; Ringside; StockInvest (news)",
+  "Checks 6 Oct: CoinDesk (OpenAI, 30 Sep), Techzine (OpenAI revenue), The Register (backlog), PYMNTS and TIKR (lease and depreciation change), Hargreaves Lansdown (consensus), Amazon and Alphabet Q2 2026 releases"
+ ],
+ "mix": {
+  "updated": "2026-10-06",
+  "segments": {
+   "AZR": {
+    "sells": "Azure cloud computing and AI capacity, plus server software (SQL Server, Windows Server) and GitHub.",
+    "buyers": "Companies, governments and AI labs (OpenAI the largest), mostly on pay-as-you-use or multi-year contracts.",
+    "pos": [
+     "Biggest and fastest-growing part: about 39% of sales and +31% over the last 4 quarters vs the 4 quarters before (Azure alone +43% in the June quarter).",
+     "Contracted backlog of $678bn (all commercial, Jun-26) gives years of visibility.",
+     "Usage-based: grows as customers run more AI workloads, without new licence sales."
+    ],
+    "neg": [
+     "Earns below the company's segment operating margin: Intelligent Cloud 41% vs about 47% for all segments (last 4 quarters), and slipping as AI capacity costs rise.",
+     "Needs about $175bn of capex in calendar 2026 (including leases); payback depends on growth staying high.",
+     "Concentrated: OpenAI was 7.3% of all FY26 revenue (annual report) and an estimated ~23% of Azure (broker estimate)."
+    ]
+   },
+   "ENT": {
+    "sells": "Enterprise support contracts, consulting and partner services.",
+    "buyers": "Large companies and Microsoft partners.",
+    "pos": [
+     "Steady, contract-based revenue."
+    ],
+    "neg": [
+     "Small (about 2.5% of sales) and slow-growing (+7% vs a year earlier, last 4 quarters).",
+     "Shares Intelligent Cloud's margin, which is falling."
+    ]
+   },
+   "M365": {
+    "sells": "Office, Teams, Exchange, security and Copilot subscriptions sold to companies (per user, per month).",
+    "buyers": "Businesses and public bodies worldwide; over 30m paid Copilot seats (Jun-26).",
+    "pos": [
+     "Recurring subscriptions: about 31% of sales, +16% over the last 4 quarters vs the 4 before (Microsoft 365 commercial cloud alone +14% in the June quarter, excluding currency).",
+     "Earns the highest margin: Productivity and Business Processes 60% segment operating margin (last 4 quarters), up from 58% a year earlier.",
+     "Copilot adds a price uplift on an installed base of hundreds of millions of users."
+    ],
+    "neg": [
+     "Growth depends on price rises and Copilot add-ons more than new users.",
+     "AI tools from rivals (Google, Anthropic, OpenAI) threaten to change how office work is done: the Feb-26 software sell-off was about this.",
+     "Seat counts are tied to employment at customers."
+    ]
+   },
+   "LNK": {
+    "sells": "LinkedIn premium subscriptions, recruiting tools and advertising.",
+    "buyers": "Professionals, recruiters and advertisers.",
+    "pos": [
+     "+11% over the last 4 quarters vs the 4 before; unique professional data.",
+     "Shares the high Productivity margin (60%)."
+    ],
+    "neg": [
+     "Recruiting revenue swings with the hiring cycle.",
+     "Advertising part competes with Google and Meta."
+    ]
+   },
+   "DYC": {
+    "sells": "Dynamics business software (finance, sales, customer service) and Microsoft 365 subscriptions for households.",
+    "buyers": "Mid-size and large companies (Dynamics); consumers (Microsoft 365 Personal/Family).",
+    "pos": [
+     "Fastest growth in the Productivity segment: +19% over the last 4 quarters vs the 4 before.",
+     "Recurring subscriptions."
+    ],
+    "neg": [
+     "Dynamics competes with Salesforce, SAP and Oracle.",
+     "Consumer subscriptions are price-sensitive."
+    ]
+   },
+   "MPC": {
+    "sells": "Windows licences for PC makers, Surface devices, Xbox consoles, games and Game Pass, and Bing/news advertising.",
+    "buyers": "PC makers, consumers, gamers and advertisers.",
+    "pos": [
+     "Search advertising and Windows still generate cash.",
+     "Xbox content (incl. Activision) is a large library."
+    ],
+    "neg": [
+     "Shrinking: about 16% of sales vs 19% a year earlier; revenue -1% over the last 4 quarters vs the 4 before (June quarter -4%).",
+     "Lowest margin: 27% segment operating margin (last 4 quarters).",
+     "Not recurring: depends on PC and console cycles."
+    ]
+   }
+  },
+  "shift": {
+   "title": "What the shift means for Microsoft",
+   "pos": [
+    "Sales are moving towards cloud and subscriptions: Azure & server products rose from about 35% to 39% of sales in a year (last 4 quarters vs the 4 a year earlier), and the low-margin personal computing segment fell from 19% to 16%.",
+    "The mix shift on its own added about 0.4 points to segment operating margin vs a year earlier, because personal computing (27% margin) shrank.",
+    "More of revenue is contracted or subscription-based, which makes earnings steadier."
+   ],
+   "neg": [
+    "The fastest-growing part (Azure & server products, +31%) earns below the company's segment margin (41% vs about 47%), and its margin is falling as AI capacity costs rise.",
+    "Growth now depends heavily on AI demand, much of it from one customer (OpenAI).",
+    "Capex is growing faster than operating cash: free cash flow was $67.0bn over the 12 months to Jun 2026 (excluding finance-lease data centres), while cash capex was $116.0bn."
+   ]
+  },
+  "quarters": []
+ },
+ "quality_info": [
+  {
+   "name": "Customer concentration (OpenAI)",
+   "value": "OpenAI was $24.1bn of FY26 revenue, 7.3% of the total (annual report); about 45% of the backlog at Dec-25. Backlog growth excluding OpenAI +25% vs +84% including it (Jun-26 quarter).",
+   "source": "Microsoft FY26 10-K via Techzine; The Register 29 Jan 2026; Microsoft Q4 FY26 call"
+  },
+  {
+   "name": "Capex vs operating cash",
+   "value": "FY26 cash capex $116.0bn vs operating cash $182.9bn (free cash flow $67.0bn, excluding finance-lease data centres). Calendar-2026 plan about $175bn including finance leases.",
+   "source": "SEC 10-K FY26; CFO Dive (29 Jul call)"
+  }
+ ],
+ "dm6_oneoffs": []
+}

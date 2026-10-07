@@ -1,0 +1,569 @@
+{
+ "dm3": {
+  "guide_mid": 81.4,
+  "consensus": 53.4,
+  "measured": "analysts' consensus revenue for the October 2026 quarter (Q3 FY27) when guidance was given (1 Sep 2026): $41.43bn, i.e. +53.4% vs the $27.0bn a year earlier",
+  "source": "Dell Q2 FY27 results release (1 Sep 2026); consensus per Benzinga (1 Sep 2026)",
+  "note": "Dell guided about $49.0bn of revenue for the October quarter, +81% vs a year earlier, about 28 points above the +53% analysts expected. Non-GAAP EPS guide $6.50 vs $4.49 expected."
+ },
+ "custom": {
+  "DM4a": {
+   "value": 382,
+   "period": "Q1+Q2 FY27 (Feb-Jul 2026): AI orders $85.3bn vs $17.7bn a year earlier (Dell results)"
+  },
+  "DM4b": {
+   "value": 22,
+   "period": "Jul 2026 quarter (Q2 FY27): commercial PCs $13.2bn vs a year earlier, Dell results"
+  },
+  "DM4c": {
+   "value": 26,
+   "period": "Jul 2026 quarter (Q2 FY27): storage $4.9bn vs $3.9bn a year earlier, Dell results"
+  },
+  "DM5": {
+   "value": 96.8,
+   "period": "Jun-Aug 2026: Quanta + Wistron + Wiwynn sales NT$2,639bn vs NT$1,341bn a year earlier (TWSE MOPS)"
+  }
+ },
+ "move": {
+  "class": "Quiet",
+  "direction": "up",
+  "headline": "A normal-sized jump after a huge run",
+  "evidence": [
+   {
+    "d": "6 Oct",
+    "t": "Dell rose 3.93% while the S&P 500 rose 0.58%. A typical day for Dell moves about 5.1% (last 60 trading days), so this is well inside its normal range and no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
+   {
+    "d": "5 Oct",
+    "t": "Peers fell too: HPE −1.4%, Super Micro −1.1%, HP Inc −2.0%, NetApp −1.1%, Celestica −1.2% on the day.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
+   {
+    "d": "Last 3 months",
+    "t": "Shares are up 33.1% over 3 months and stand 93% above their 200-day average after the 1 Sep results and guidance raise.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   }
+  ]
+ },
+ "earnings": {
+  "past": [
+   {
+    "q": "Jul 2026 quarter (Q2 FY27)",
+    "date": "Tue 1 Sep 2026, after the US close (Wed 2 Sep, about 4am Singapore)",
+    "vs": "Revenue $47.0bn, +58% vs a year earlier, vs $44.95bn expected (+4.5%). Non-GAAP EPS $7.04 vs $4.91 expected (+43%).",
+    "guide": "October quarter: revenue about $49.0bn (+81% vs a year earlier) vs $41.43bn expected; non-GAAP EPS $6.50 vs $4.49 expected. Full year FY27 raised to $192bn revenue (from $167bn) and $74bn of AI server revenue (from about $60bn).",
+    "reaction": "Shares fell 6.8% on results day (1 Sep, to $425.0), then rose 15.8% the next day ($425.0 to $492.2) and 25.6% over four sessions to $533.88 (8 Sep), each measured against the 1 Sep close.",
+    "take": [
+     "<b>AI orders exploded.</b> $60.9bn of AI server orders in the quarter (a record), $16.4bn shipped, backlog $95bn.",
+     "<b>Margins rose, not fell.</b> Gross margin 20.9% vs 17.7% the quarter before; ISG operating margin 15.0% vs 8.8% a year earlier.",
+     "<b>PCs are growing again.</b> Commercial PCs +22% and storage +26% vs a year earlier: growth beyond AI.",
+     "<b>Supply, not demand, is the limit.</b> COO Jeff Clarke: 'DRAM, DRAM, DRAM followed by NAND, NAND, NAND. We have spotty CPU shortages.'",
+     "<b>Cash lagged profit.</b> Operating cash $2.2bn vs $4.1bn net income in the quarter; inventories $21.3bn vs $10.4bn at end-January 2026 as AI orders are built.",
+     "<b>$4.3bn returned</b> in the quarter: $3.8bn buybacks plus dividends."
+    ],
+    "impact": "Guidance far above expectations (DM3 bullish); AI orders (DM4a), PCs (DM4b) and storage (DM4c) all bullish; forecasts revised up sharply (DM2)."
+   },
+   {
+    "q": "Apr 2026 quarter (Q1 FY27)",
+    "date": "Thu 28 May 2026, after the US close (Fri 29 May, about 4am Singapore)",
+    "vs": "Revenue $43.8bn, +88% vs a year earlier, vs about $35.5bn expected. Non-GAAP EPS $4.86 vs about $2.96 expected.",
+    "guide": "July quarter: revenue $44.0-45.0bn vs $35.06bn expected; non-GAAP EPS $4.70-4.90 vs $3.05 expected. Full year FY27 $165-169bn vs about $142bn expected; AI servers about $60bn.",
+    "reaction": "Shares +33% the next day ($317.0 to $420.9; best day ever, CNBC).",
+    "take": [
+     "<b>AI servers took over.</b> $16.1bn of AI server revenue, +757% vs a year earlier; orders $24.4bn; backlog $51.3bn.",
+     "<b>Traditional servers +92%</b> and storage +8% vs a year earlier.",
+     "<b>Memory costs forced fast repricing</b> of PCs, servers and storage (COO Jeff Clarke).",
+     "<b>5,000+ AI customers</b>, widening beyond a few large AI clouds."
+    ],
+    "impact": "First quarter of the AI step-change; guidance far above expectations."
+   }
+  ],
+  "next": [
+   {
+    "q": "Oct 2026 quarter (Q3 FY27)",
+    "date": "Tue 24 Nov 2026 (estimated)",
+    "iso": "2026-11-24",
+    "status": "Estimated: Dell reported this quarter on Tue 25 Nov 2025 and announced the date about 2 weeks ahead; Yahoo shows 27 Nov; not yet confirmed by Dell",
+    "watch": [
+     "Revenue vs the ~$49bn guide; AI server revenue vs the ~$20.7bn a quarter that the $74bn full-year AI guide implies for the second half (vs $16.4bn in the July quarter).",
+     "New AI orders vs $60.9bn last quarter, and the $95bn backlog: is it still growing?",
+     "Gross margin vs 20.9%: do memory costs bite (chain C1)?",
+     "Cash flow and inventory: does cash catch up with profit?"
+    ]
+   },
+   {
+    "q": "Jan 2027 quarter (Q4 FY27)",
+    "date": "Late February 2027",
+    "iso": "2027-02-25",
+    "status": "Estimated",
+    "watch": [
+     "FY28 outlook for AI servers.",
+     "PC demand after price rises."
+    ]
+   }
+  ]
+ },
+ "shareholder_notes": [
+  "Only Dell's Class C shares trade (about 315m per Nasdaq). Michael Dell and Silver Lake hold unlisted Class A/B shares; the engine uses the share count implied by Yahoo's market value (about 636m, all classes) for holder %, so percentages are of all shares, not of the tradable float.",
+  "Nasdaq still lists an old Vanguard Group line dated 31 Dec 2025, two filing quarters behind; it is left out as stale.",
+  "The Michael & Susan Dell Foundation holds 2.5m Class C shares (30 Jun 2026); Michael Dell's main holding is in the unlisted classes and does not appear in the 13F table.",
+  "Yahoo does not mark which insider sales were pre-scheduled trading plans, so they cannot be excluded."
+ ],
+ "chains": [
+  {
+   "id": "C1",
+   "name": "Memory and chip costs",
+   "path": [
+    "AI boom",
+    "memory, flash and CPU prices up",
+    "Dell's cost of PCs, servers and storage up",
+    "price rises; PC demand risk"
+   ],
+   "watch": "MU",
+   "watch_label": "Micron share price (stand-in for memory prices)",
+   "active": {
+    "kind": "pct",
+    "t": 10
+   },
+   "status": "Hurting + Company responding",
+   "evidence": [
+    "COO Jeff Clarke: rising costs for NAND, DRAM, CPUs, fuel and raw materials forced Dell to reprice quickly (28 May 2026 call).",
+    "Company responding: gross margin 20.9% in the July quarter vs 17.7% in the April quarter (SEC); COO Jeff Clarke on supply: 'DRAM, DRAM, DRAM followed by NAND, NAND, NAND' (1 Sep).",
+    "Micron's share price is +4.5% vs 20 trading days earlier (6 Oct close), below the 10% 'Active' line: memory pressure persists in Dell's own comments rather than in the latest price move."
+   ]
+  },
+  {
+   "id": "C2",
+   "name": "AI customers' funding",
+   "path": [
+    "Debt gets dearer for AI clouds",
+    "orders delayed or cancelled",
+    "AI backlog shrinks; unpaid-bill risk"
+   ],
+   "watch": null,
+   "watch_label": "News scan (CoreWeave share price to be added to the shared data)",
+   "active": null,
+   "status": "Active",
+   "evidence": [
+    "Status set to Active on 6 Oct 2026 (Kenneth): funding stress is visible among AI cloud customers even though Dell's orders are not yet hit.",
+    "CoreWeave's interest cost was $640m in Apr-Jun 2026 vs $267m a year earlier; its shares are down 36% over a year (Yahoo Finance, Oct 2026).",
+    "Dell's AI orders were still a record $60.9bn in the July quarter (1 Sep 2026).",
+    "TD Cowen (29 Sep 2026, Hold, $550 target) flags that much of the $95bn backlog is with neocloud customers whose funding depends on debt markets."
+   ]
+  },
+  {
+   "id": "C3",
+   "name": "US tariffs",
+   "path": [
+    "Chip tariffs, server exemption review",
+    "import cost of servers and PCs up",
+    "margin or price"
+   ],
+   "watch": "CNY",
+   "watch_label": "Chinese yuan per US dollar (higher = weaker yuan) + news",
+   "active": {
+    "kind": "pct",
+    "t": 2
+   },
+   "status": "Watching (proposal not yet in force)",
+   "evidence": [
+    "Phase 2 of the Section 232 chip tariffs, which could reach servers and laptops, is being prepared but had not been signed as of early September: no rate or start date (reports 27 Aug-2 Sep 2026, incl. Commerce Secretary Lutnick, 2 Sep).",
+    "The exemption shielding about $143bn of US server imports is 'now on the table' (Digitimes, 28 Aug 2026).",
+    "The watch number is quiet: yuan 6.7045 per dollar vs 6.7108 a month earlier (−0.1%, vs a 2% 'Active' line)."
+   ]
+  },
+  {
+   "id": "C4",
+   "name": "Rates",
+   "path": [
+    "Inflation, oil",
+    "10-year yield up",
+    "lower valuation multiple; dearer funding for AI customers"
+   ],
+   "watch": "TNX",
+   "watch_label": "US 10-year Treasury yield",
+   "active": {
+    "kind": "pts",
+    "t": 0.25
+   },
+   "status": "Active",
+   "evidence": [
+    "10-year yield 5.27% at the 6 Oct close vs 4.81% 20 trading days earlier (+0.46 points; shared macro)."
+   ]
+  },
+  {
+   "id": "C5",
+   "name": "Nvidia generation switch",
+   "path": [
+    "New GPU generation or GPU shortage",
+    "buyers pause old-generation orders",
+    "lumpy AI shipments, quarter misses"
+   ],
+   "watch": null,
+   "watch_label": "News scan only",
+   "active": null,
+   "status": "Quiet",
+   "evidence": [
+    "No order pause reported; AI orders a record $60.9bn in the July quarter (1 Sep 2026)."
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "d": "2026-10-09",
+   "t": "Taiwan AI-server makers' September sales (Quanta, Wistron, Wiwynn)",
+   "link": "DM5",
+   "note": "Due by 10 Oct (TWSE monthly filing deadline). Updates DM5."
+  },
+  {
+   "d": "2026-10-14",
+   "t": "US inflation (September CPI)",
+   "link": "C4",
+   "note": "Confirmed (BLS): Wed 14 Oct, 8:30am ET (8:30pm Singapore). Hotter than forecast = higher yields."
+  },
+  {
+   "d": "2026-10-28",
+   "t": "Fed rate decision",
+   "link": "C4",
+   "note": "Markets price a 17% chance of a rise vs 1% for a cut (Polymarket, 6 Oct close)."
+  },
+  {
+   "d": "2026-11-17",
+   "t": "Nvidia results (Oct quarter)",
+   "link": "C5",
+   "note": "Listed as Tue 17 Nov by Wall Street Horizon; check Nvidia's site. Read for AI demand and GPU supply."
+  },
+  {
+   "d": "2026-11-24",
+   "t": "Dell results (Oct quarter)",
+   "link": "all",
+   "note": "Estimated around Tue 24 Nov (not yet announced by Dell). After the US close; next morning in Singapore."
+  }
+ ],
+ "lead": "Dell is <b>Building history</b> (today's zone: <b>Buy</b>), <b>unchanged at +36</b> on a −100 to +100 scale as of 6 Oct (also +36 on 5 Oct), just 6 points above the Hold line: the share price jumped 3.93% on the day vs +0.58% for the S&P 500, but no bucket score moved, so the call stays driven by exceptional AI-driven demand against a stretched price and a valuation well above its hardware peers.",
+ "bullets": [
+  "<b>Demand is exceptional.</b> Demand scores +76: revenue grew 57.7% in the July quarter vs a year earlier, well above the 39.2% average of the prior four quarters; AI server orders over the last two quarters were +382% vs the same two quarters a year earlier ($85.3bn vs $17.7bn); October-quarter guidance (+81.4% vs a year earlier) beat what analysts expected (+53.4%) by 28 points; analysts' profit forecast for the year to Jan 2028 rose 34.4% in 90 days; Taiwan AI-server makers' sales were +96.8% (Jun-Aug vs a year earlier). Soft spot: gross margin over the last 4 quarters was 19.8% vs 21.1% a year earlier, as lower-margin AI servers grow.",
+  "<b>It is expensive vs its hardware peers.</b> Valuation scores −44 (unchanged): investors pay 22.9x expected next-12-month profit vs a 13.0x peer median (+76%), EV/EBITDA is 21.9x vs 14.1x (+55%), and trailing P/E is 33.4x vs Dell's own 5-year median of 21.5x (+56%). Only the growth-adjusted P/E looks cheap (0.6 vs a 1.0 peer median, −44%), and that rests on long-term growth forecasts: analysts expect slightly lower earnings per share in the year to Jan 2028 ($24.66) than this year ($25.90).",
+  "<b>Money flows are mixed.</b> Liquidity scores +13 (unchanged): volume on up days was 1.45x volume on down days over the last 20 trading days (bullish), but institutions cut a net 2.38 points of shares last quarter (Jun 30 filings) and the dollar index rose 2.99 points in 20 trading days (both bearish).",
+  "<b>The price trend is strong but stretched.</b> Price trend scores +72 (unchanged): at $574.00 (+3.93% on the day vs +0.58% for the S&P 500) the stock is 93% above its 200-day average and the 50-day average is 66% above the 200-day; over 3 months it is 0.7 points behind its peers (neutral; it turns bearish at 5 points behind).",
+  "<b>Fragile and not confirmed.</b> Day 2 of 10 trading days of history; the call is confirmed after 7 of 10 days in one zone. One indicator moving (growth-adjusted P/E turning neutral, or relative strength vs peers turning bearish) would take the score below +30, into Hold. Watch: cash lagging profit (free cash flow $986m in the July quarter vs $1,868m a year earlier), about $1.03bn of insider and Silver Lake share sales in 6 months with no buying, and the 10-year yield (5.27%, +0.46 points in 20 trading days)."
+ ],
+ "defects": [
+  "Staging build, second day of history: the call needs 7 of 10 trading days in one zone before it is confirmed.",
+  "Valuation vs own history (VL3) uses trailing P/E: free forward P/E history is too short.",
+  "DM3, DM4a-c and DM5 are typed in from Dell's results and the Taiwan exchange, so they update quarterly (DM5 monthly).",
+  "Holder percentages use all ~636m shares (Class A, B and C), not the 315m tradable Class C shares.",
+  "Lenovo (peer) is priced in HKD but reports in USD; its EV/EBITDA is excluded and its P/E may be distorted (Framework chat item).",
+  "Yahoo shows the VMware spin-off (1 Nov 2021) as a 1.973-for-1 split; older SEC EPS is divided by 1.973 to match.",
+  "Chain C2 has no live watch number until the Framework chat adds CoreWeave to the shared data.",
+  "Revenue mix is typed in from SEC filings (manual source) until Dell restates the Oct 2025 quarter (Q3 FY27 10-Q, early Dec 2026): the engine cannot derive servers for the Jan 2026 quarter (ISG minus storage, $14,805m) from the relabelled rows. AI servers are described in the text, not shown as their own part, until then.",
+  "Two peers (Lenovo, Quanta) trade in Asia: their prices are taken from the Asian session running when the page is built, not the US close (relative strength PT4 reads −0.7 vs a −5 line).",
+  "Growth-adjusted P/E (VL2) uses Yahoo's PEG (0.56), which does not show its growth basis; analysts' EPS for the year to Jan 2028 ($24.66) is below this year's ($25.90), so the 'cheap after growth' reading rests on longer-term growth forecasts.",
+  "VL2 kept as scored with Yahoo's PEG (Kenneth, 6 Oct 2026); its growth basis is a Framework chat item."
+ ],
+ "sources": [
+  "Yahoo Finance (prices, consensus, valuation, short interest, insiders)",
+  "SEC EDGAR (reported financials, filings, segment data)",
+  "Nasdaq (13F institutional holdings)",
+  "Polymarket (Fed odds)",
+  "Dell results releases (28 May, 1 Sep 2026)",
+  "TWSE MOPS monthly revenue (Quanta, Wistron, Wiwynn)",
+  "Benzinga, CNBC, Futurum, 247wallst, money365, digitalcitizen, TrendForce, TechTimes, Digitimes (news)"
+ ],
+ "dm6_oneoffs": [],
+ "quality_info": [
+  {
+   "name": "Dilution",
+   "value": "Shrinking share count: $3.8bn of buybacks in the July quarter; 652m diluted shares",
+   "source": "Dell Q2 FY27 results release, 1 Sep 2026"
+  },
+  {
+   "name": "Customer concentration",
+   "value": "AI servers (35% of July-quarter revenue) go mostly to large AI cloud and AI-lab buyers; Dell cites 5,000+ AI customers but does not disclose concentration",
+   "source": "Dell results, 28 May and 1 Sep 2026"
+  },
+  {
+   "name": "Working capital",
+   "value": "Inventories $21.3bn vs $10.4bn at end-January 2026, and financing receivables $20.4bn ($12.8bn due within a year), as the AI backlog is built",
+   "source": "Dell 10-Q, quarter to 31 Jul 2026"
+  },
+  {
+   "name": "Cash vs profit (latest quarter)",
+   "value": "Free cash flow $986m in the July quarter vs $1,868m a year earlier; operating cash $2.2bn vs $4.1bn net income",
+   "source": "SEC 10-Q cash flow (engine quality block); Dell Q2 FY27 release"
+  },
+  {
+   "name": "Insider and major-holder selling (last 6 months)",
+   "value": "About $1.03bn of shares sold and none bought; about $0.94bn of it by Silver Lake entities",
+   "source": "Yahoo Finance insider transactions (SEC Form 4), 5 Oct 2026"
+  }
+ ],
+ "mix": {
+  "updated": "2026-10-06",
+  "segments": {
+   "SRV": {
+    "sells": "Servers and networking: AI-optimized servers (GPU racks, $16.4bn in the July quarter, 35% of Dell's revenue) and traditional servers ($10.5bn, 22%).",
+    "buyers": "AI cloud providers ('neoclouds'), AI labs, large companies and governments.",
+    "pos": [
+     "The growth engine: AI servers +100% and traditional servers +122% in the July quarter vs a year earlier.",
+     "Backed by a $95bn AI order backlog (1 Sep 2026), about two quarters of total company revenue.",
+     "ISG's operating margin rose to 15.0% from 8.8% a year earlier as volume grew."
+    ],
+    "neg": [
+     "Not recurring: big, lumpy deals that can slip between quarters.",
+     "Concentrated in a small number of very large AI buyers whose funding depends on debt markets (chain C2).",
+     "Depends on Nvidia's GPU supply and memory prices (chains C1, C5)."
+    ]
+   },
+   "STO": {
+    "sells": "Data storage systems (all-flash arrays, file and object storage).",
+    "buyers": "Companies and governments; increasingly for AI data.",
+    "pos": [
+     "Usually one of Dell's higher-margin hardware lines (Dell does not report storage margin separately), so growth here helps profit more than its size suggests.",
+     "+26% in the July quarter vs a year earlier, after −1% in the Oct 2025 quarter."
+    ],
+    "neg": [
+     "Shrinking share: 11.9% of revenue over the last 4 quarters vs 16.3% a year earlier, as servers grow faster.",
+     "Faces strong specialists (NetApp, Everpure)."
+    ]
+   },
+   "COM": {
+    "sells": "PCs, laptops and monitors for businesses.",
+    "buyers": "Companies, governments and schools.",
+    "pos": [
+     "Growing again: +22% in the July quarter vs a year earlier (PC upgrade cycle).",
+     "A steady, diversified customer base that does not depend on AI."
+    ],
+    "neg": [
+     "Low margin: CSG earns about 6.6% operating margin (last 4 quarters) vs ISG's 13.2%.",
+     "Memory price rises force PC price increases that can dent demand (chain C1)."
+    ]
+   },
+   "CON": {
+    "sells": "PCs and laptops for consumers (incl. Alienware gaming).",
+    "buyers": "Households, through Dell.com and retailers.",
+    "pos": [
+     "Small (about 4% of revenue), so swings matter little.",
+     "+7% in the July quarter vs a year earlier."
+    ],
+    "neg": [
+     "Long decline: share of revenue fell from about 10% to under 5% in 3 years.",
+     "Most price-sensitive part of Dell; memory-driven price rises hit it first."
+    ]
+   }
+  },
+  "shift": {
+   "title": "What the shift means for Dell",
+   "pos": [
+    "Servers (mostly AI) rose from 20% of revenue (4 quarters to Jan 2024) to 51% (4 quarters to Jul 2026; 57% in the July 2026 quarter alone), turning Dell from a PC company into an AI infrastructure company.",
+    "Profit followed: operating profit $5.4bn in the July quarter vs $1.8bn a year earlier (SEC); ISG margin rose with scale."
+   ],
+   "neg": [
+    "Lower-margin mix: AI servers earn less per dollar than storage and services, so company gross margin is structurally lower than before (20.0% in FY26 vs 23.8% in FY24, SEC).",
+    "More concentrated and more cyclical: a pause in AI spending would hit a much larger share of Dell's revenue than before."
+   ]
+  },
+  "quarters": [
+   {
+    "end": "2023-05-05",
+    "total": 20922.0,
+    "rev": {
+     "SRV": 3837.0,
+     "STO": 3756.0,
+     "COM": 9862.0,
+     "CON": 2121.0
+    },
+    "profit": {
+     "ISG": 740.0,
+     "CSG": 892.0
+    }
+   },
+   {
+    "end": "2023-08-04",
+    "total": 22934.0,
+    "rev": {
+     "SRV": 4274.0,
+     "STO": 4187.0,
+     "COM": 10554.0,
+     "CON": 2388.0
+    },
+    "profit": {
+     "ISG": 1049.0,
+     "CSG": 969.0
+    }
+   },
+   {
+    "end": "2023-11-03",
+    "total": 22251.0,
+    "rev": {
+     "SRV": 4656.0,
+     "STO": 3843.0,
+     "COM": 9835.0,
+     "CON": 2441.0
+    },
+    "profit": {
+     "ISG": 1069.0,
+     "CSG": 925.0
+    }
+   },
+   {
+    "end": "2024-02-02",
+    "total": 22318.0,
+    "rev": {
+     "SRV": 4857.0,
+     "STO": 4475.0,
+     "COM": 9563.0,
+     "CON": 2152.0
+    },
+    "profit": {
+     "ISG": 1428.0,
+     "CSG": 926.0
+    }
+   },
+   {
+    "end": "2024-05-03",
+    "total": 22244.0,
+    "rev": {
+     "SRV": 5466.0,
+     "STO": 3761.0,
+     "COM": 10154.0,
+     "CON": 1813.0
+    },
+    "profit": {
+     "ISG": 736.0,
+     "CSG": 777.0
+    }
+   },
+   {
+    "end": "2024-08-02",
+    "total": 25026.0,
+    "rev": {
+     "SRV": 7672.0,
+     "STO": 3974.0,
+     "COM": 10556.0,
+     "CON": 1858.0
+    },
+    "profit": {
+     "ISG": 1284.0,
+     "CSG": 817.0
+    }
+   },
+   {
+    "end": "2024-11-01",
+    "total": 24366.0,
+    "rev": {
+     "SRV": 7364.0,
+     "STO": 4004.0,
+     "COM": 10138.0,
+     "CON": 1993.0
+    },
+    "profit": {
+     "ISG": 1508.0,
+     "CSG": 747.0
+    }
+   },
+   {
+    "end": "2025-01-31",
+    "total": 23931.0,
+    "rev": {
+     "SRV": 6634.0,
+     "STO": 4718.0,
+     "COM": 9996.0,
+     "CON": 1885.0
+    },
+    "profit": {
+     "ISG": 2051.0,
+     "CSG": 631.0
+    }
+   },
+   {
+    "end": "2025-05-02",
+    "total": 23378.0,
+    "rev": {
+     "SRV": 6321.0,
+     "STO": 3996.0,
+     "COM": 11046.0,
+     "CON": 1463.0
+    },
+    "profit": {
+     "ISG": 998.0,
+     "CSG": 653.0
+    }
+   },
+   {
+    "end": "2025-08-01",
+    "total": 29776.0,
+    "rev": {
+     "SRV": 12944.0,
+     "STO": 3856.0,
+     "COM": 10781.0,
+     "CON": 1722.0
+    },
+    "profit": {
+     "ISG": 1470.0,
+     "CSG": 803.0
+    }
+   },
+   {
+    "end": "2025-10-31",
+    "total": 27005.0,
+    "rev": {
+     "SRV": 10125.0,
+     "STO": 3982.0,
+     "COM": 10621.0,
+     "CON": 1857.0
+    },
+    "profit": {
+     "ISG": 1743.0,
+     "CSG": 748.0
+    }
+   },
+   {
+    "end": "2026-01-30",
+    "total": 33379.0,
+    "rev": {
+     "SRV": 14805.0,
+     "STO": 4797.0,
+     "COM": 11614.0,
+     "CON": 1880.0
+    },
+    "profit": {
+     "ISG": 2900.0,
+     "CSG": 629.0
+    }
+   },
+   {
+    "end": "2026-05-01",
+    "total": 43842.0,
+    "rev": {
+     "SRV": 24675.0,
+     "STO": 4334.0,
+     "COM": 13020.0,
+     "CON": 1589.0
+    },
+    "profit": {
+     "ISG": 3055.0,
+     "CSG": 1170.0
+    }
+   },
+   {
+    "end": "2026-07-31",
+    "total": 46971.0,
+    "rev": {
+     "SRV": 26932.0,
+     "STO": 4850.0,
+     "COM": 13192.0,
+     "CON": 1842.0
+    },
+    "profit": {
+     "ISG": 4781.0,
+     "CSG": 1142.0
+    }
+   }
+  ]
+ }
+}

@@ -1,0 +1,326 @@
+{
+ "_note": "Per-stock settings (schema as AAPL). Only this stock's chat edits it.",
+ "code": "GOOG",
+ "market": "US",
+ "exchange": "NASDAQ",
+ "name": "Alphabet Inc. (Class C)",
+ "currency": "USD",
+ "benchmark": {
+  "name": "S&P 500",
+  "symbol": "^GSPC"
+ },
+ "peers": [
+  {
+   "code": "META",
+   "name": "Meta Platforms",
+   "why": "Main rival for digital ad budgets; same AI-capex story"
+  },
+  {
+   "code": "MSFT",
+   "name": "Microsoft",
+   "why": "Cloud (Azure vs Google Cloud), Bing search ads, 365 vs Workspace, AI models"
+  },
+  {
+   "code": "AMZN",
+   "name": "Amazon",
+   "why": "Cloud leader (AWS) and third-largest US ad business"
+  },
+  {
+   "code": "ORCL",
+   "name": "Oracle",
+   "why": "Cloud infrastructure and AI data-centre capacity for the same enterprise buyers"
+  },
+  {
+   "code": "NFLX",
+   "name": "Netflix",
+   "why": "YouTube competes for TV viewing time, subscriptions and ad budgets"
+  },
+  {
+   "code": "APP",
+   "name": "AppLovin",
+   "why": "Ad technology rival to Google's ad network and AdMob"
+  }
+ ],
+ "valuation": {
+  "metric": "forward_pe",
+  "fallback": "trailing_pe",
+  "vl3_basis": "removed (trailing EPS inflated by gains on SpaceX/Anthropic stakes)"
+ },
+ "dm4": [
+  {
+   "id": "DM4a",
+   "name": "Search & other revenue growth",
+   "weight": 4,
+   "source": "Alphabet quarterly results release / 10-Q, revenue by type (on results)",
+   "bullish_if": ">= +12%",
+   "bearish_if": "<= +6%",
+   "measured_against": "same quarter a year earlier",
+   "latest": "+16.8% (Q2 2026: $63.3bn vs $54.2bn)",
+   "what": "Growth in revenue from Google Search ads and related vs the same quarter last year.",
+   "why": "About half of revenue and most of the profit; the first place AI-chatbot competition would show.",
+   "bull_means": "Search ads still growing double digits despite AI chatbots.",
+   "neutral_means": "Search growth slowing but still positive.",
+   "bear_means": "Search is stalling: the core profit engine is under threat."
+  },
+  {
+   "id": "DM4b",
+   "name": "Google Cloud revenue growth",
+   "weight": 4,
+   "source": "Alphabet quarterly results release / 10-Q, segment revenue (on results)",
+   "bullish_if": ">= +50%",
+   "bearish_if": "<= +35%",
+   "measured_against": "same quarter a year earlier",
+   "latest": "+81.9% (Q2 2026: $24.8bn vs $13.6bn)",
+   "what": "Growth in Google Cloud revenue vs the same quarter last year.",
+   "why": "Cloud is where the $195-205bn of 2026 capital spending has to earn its return.",
+   "bull_means": "AI demand is turning the spending into revenue fast.",
+   "neutral_means": "Cloud still growing, but slower than the spending implies.",
+   "bear_means": "Cloud growth back near 2025 levels while capex has doubled: spending is running ahead of demand."
+  }
+ ],
+ "dm5": {
+  "id": "DM5",
+  "name": "Google worldwide search share (StatCounter)",
+  "weight": 4,
+  "source": "StatCounter Global Stats, search engine market share, worldwide, monthly",
+  "bullish_if": ">= +1.0",
+  "bearish_if": "<= -1.0",
+  "measured_against": "same month a year earlier",
+  "latest": "-0.44 pts (Sep 2026: 89.94% vs 90.38%)",
+  "what": "Google's share of web searches worldwide from StatCounter, an independent web-traffic tracker, vs the same month a year earlier.",
+  "why": "Monthly and independent, so it shows search losing ground before Alphabet reports. It does not count chatbot questions (see Known defects).",
+  "bull_means": "Google is gaining share of searches.",
+  "neutral_means": "Search share is steady (this does not prove chatbots aren't taking queries).",
+  "bear_means": "Google is losing search share: a strong warning for the profit engine.",
+  "unit": "points of search share"
+ },
+ "overrides": [],
+ "removed_indicators": [
+  {
+   "id": "DM3",
+   "reason": "Alphabet gives no numeric next-quarter revenue or profit guidance (only capital-spending guidance), so guidance vs expectations can never be measured (Kenneth, 5 Oct 2026)."
+  },
+  {
+   "id": "VL3",
+   "reason": "Trailing EPS is dominated by paper gains on the SpaceX and Anthropic stakes (gains added $2.35 to Q1 2026 and $6.26 to Q2 2026 diluted EPS), so trailing P/E vs its own history would read falsely cheap (Kenneth, 5 Oct 2026)."
+  }
+ ],
+ "chains": [
+  {
+   "id": "C1",
+   "trigger": "AI spending race",
+   "what_changes": "chips, memory, power and data centres scarce and dearer",
+   "business_hit": "capex $195-205bn in 2026 (about 2x 2025); free cash flow negative in Q2 2026; depreciation weighs on margins",
+   "company_levers": "own TPU chips, Cloud pricing, $514bn Cloud backlog, slowing capex, debt",
+   "watch": {
+    "name": "Micron (MU) share price (AI-hardware tightness proxy)",
+    "source": "shared macro (MU)",
+    "active_if": "up 10%+",
+    "measured_against": "its level one month earlier"
+   },
+   "status": "Hurting (Micron +4.7% in a month to 5 Oct, below its line)"
+  },
+  {
+   "id": "C2",
+   "trigger": "Oil / Iran war / inflation",
+   "what_changes": "bond yields and Fed rate odds up",
+   "business_hit": "long-duration, high-capex valuation compresses; debt-funded capex dearer",
+   "company_levers": "none on the multiple; can slow capex",
+   "watch": {
+    "name": "US 10-year Treasury yield",
+    "source": "Yahoo ^TNX (shared macro)",
+    "active_if": "up 0.25 percentage points or more",
+    "measured_against": "its level one month earlier"
+   },
+   "status": "Active"
+  },
+  {
+   "id": "C3",
+   "trigger": "SpaceX and Anthropic valuations",
+   "what_changes": "stakes revalued every quarter",
+   "business_hit": "reported net profit and EPS swing by tens of billions (Q2 2026 +$98.0bn non-operating income); share price follows SPCX on big days",
+   "company_levers": "hold or sell down; analysts' forecasts exclude the gains",
+   "watch": {
+    "name": "SpaceX share price (SPCX)",
+    "source": "shared macro, needs extraMacro ['SPCX','SPCX'] (Framework chat)",
+    "active_if": "moves 15%+ either way",
+    "measured_against": "its level one month earlier"
+   },
+   "status": "Active (SPCX +15.6% in a month to 5 Oct)"
+  },
+  {
+   "id": "C4",
+   "trigger": "Antitrust and regulation (US search and ad-tech cases, EU DMA)",
+   "what_changes": "forced changes to default-search payments and ad-tech rules; fines",
+   "business_hit": "Search revenue and ad-network margins",
+   "company_levers": "appeals, product changes, compliance monitors",
+   "watch": {
+    "name": "news scan only",
+    "source": "web search",
+    "active_if": "any ruling, new case or fine",
+    "measured_against": "-"
+   },
+   "status": "Active (company responding): 16 Sep 2026 ad-tech remedies, no AdX sale, 6-year monitor; both cases under appeal"
+  },
+  {
+   "id": "C5",
+   "trigger": "Strong US dollar",
+   "what_changes": "overseas revenue (about half) worth fewer dollars",
+   "business_hit": "reported revenue and profit growth",
+   "company_levers": "hedging, local pricing",
+   "watch": {
+    "name": "US dollar index",
+    "source": "shared macro (DX-Y.NYB)",
+    "active_if": "up 2%+",
+    "measured_against": "its level one month earlier"
+   },
+   "status": "Hurting"
+  }
+ ],
+ "shareholder_sources": [
+  "Nasdaq institutional holdings (13F)",
+  "Yahoo Finance insiderTransactions (SEC Form 4)",
+  "SEC EDGAR 13D/13G"
+ ],
+ "status": "live",
+ "version": "0.1",
+ "onboarded": "2026-10-05",
+ "_peers_status": "approved by Kenneth 5 Oct 2026",
+ "_settings_status": "approved by Kenneth 5 Oct 2026",
+ "sec_cik": "0001652044",
+ "splits": [
+  [
+   "2022-07-18",
+   20
+  ]
+ ],
+ "index_holders": [
+  "vanguard",
+  "blackrock",
+  "state street",
+  "geode",
+  "northern trust",
+  "norges",
+  "legal & general",
+  "schwab",
+  "dimensional",
+  "morgan stanley",
+  "jpmorgan",
+  "bank of america",
+  "goldman",
+  "ubs",
+  "royal bank",
+  "wells fargo",
+  "invesco",
+  "bank of new york",
+  "amundi",
+  "deutsche",
+  "swiss national",
+  "hsbc",
+  "mitsubishi",
+  "sumitomo",
+  "ameriprise",
+  "nuveen"
+ ],
+ "drivers": [
+  {
+   "id": "search",
+   "name": "Search",
+   "indicators": [
+    "DM4a",
+    "DM5"
+   ]
+  }
+ ],
+ "_chains_status": "approved by Kenneth 6 Oct 2026",
+ "mix": {
+  "_note": "Revenue mix (not scored). match = patterns on the row label printed in the SEC filing. groups = where Alphabet reports operating profit (segments).",
+  "source": "sec",
+  "basis": "operating",
+  "segments": [
+   {
+    "id": "SRC",
+    "name": "Search & other",
+    "match": [
+     "^google search and other$"
+    ],
+    "recurring": "no",
+    "group": "SVC"
+   },
+   {
+    "id": "YT",
+    "name": "YouTube ads",
+    "match": [
+     "^youtube ads$"
+    ],
+    "recurring": "no",
+    "group": "SVC"
+   },
+   {
+    "id": "NET",
+    "name": "Google Network",
+    "match": [
+     "^google network$"
+    ],
+    "recurring": "no",
+    "group": "SVC"
+   },
+   {
+    "id": "SUB",
+    "name": "Subscriptions, platforms & devices",
+    "match": [
+     "^google subscriptions",
+     "^google other$"
+    ],
+    "recurring": "partly",
+    "group": "SVC"
+   },
+   {
+    "id": "CLD",
+    "name": "Google Cloud",
+    "match": [
+     "^google cloud$"
+    ],
+    "recurring": "partly",
+    "group": "CLD"
+   },
+   {
+    "id": "OB",
+    "name": "Other Bets",
+    "match": [
+     "^other bets$"
+    ],
+    "recurring": "no",
+    "group": "OB"
+   }
+  ],
+  "groups": [
+   {
+    "id": "SVC",
+    "name": "Google Services",
+    "match": [
+     "^google services$"
+    ]
+   },
+   {
+    "id": "CLD",
+    "name": "Google Cloud",
+    "match": [
+     "^google cloud$"
+    ]
+   },
+   {
+    "id": "OB",
+    "name": "Other Bets",
+    "match": [
+     "^other bets$"
+    ]
+   }
+  ],
+  "note": "Alphabet reports operating profit for three segments only: Google Services (Search, YouTube ads, Network, Subscriptions), Google Cloud and Other Bets. So the four Services parts all show the Google Services margin. Hedging gains and losses are not a part (shown as Other when material). The 'whole company' margin in the mix table is the segment total before Alphabet's unallocated costs (e.g. part of AI research); Alphabet's reported operating margin is lower."
+ },
+ "onboard_price": 343.83,
+ "onboard_date": "2026-10-05",
+ "_onboard_note": "Close at the first staging build (5 Oct 2026): the reference for O6 winner discipline until a positions feed exists.",
+ "promoted": "2026-10-06"
+}

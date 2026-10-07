@@ -1,0 +1,314 @@
+{
+ "custom": {
+  "DM4a": {
+   "value": 6,
+   "period": "Jun 2026 quarter, Coca-Cola release 28 Jul 2026"
+  },
+  "DM4b": {
+   "value": 5,
+   "period": "Jun 2026 quarter, Coca-Cola release 28 Jul 2026"
+  },
+  "DM5": {
+   "value": 4.2,
+   "period": "Apr-Jun 2026: CCEP +3.2% (days-adjusted), Coca-Cola HBC +5.8% (underlying), Coca-Cola FEMSA +3.5%"
+  }
+ },
+ "lead": "Coca-Cola is <b>Building history</b> (today's zone: <b>Hold</b>), at <b>+26</b> on a −100 to +100 scale, up from +19 on 5 Oct and 4 points below the Buy line, mainly because the valuation score eased from −100 to −76 now that its price/earnings ratio vs its own 5-year history is scored (neutral), with demand edging up from +60 to +62 as the revenue-growth trend scores bullish: demand and the price trend are strong, but investors already pay well above its peers for it.",
+ "bullets": [
+  "<b>Demand is strong, but sits on a knife-edge.</b> Demand scores +62, up from +60: organic revenue grew 6.0% and unit case volume 5.0% in the June quarter vs a year earlier, and the three big Coca-Cola bottlers' volumes rose 4.2% on average (Apr-Jun vs a year earlier). Revenue growth now scores bullish at 12.1% vs a 1.8% average for the prior four quarters (+10.2 points); gross margin is neutral at 61.7% vs 61.1% a year earlier (+0.7 points; bullish at +1.0). Organic growth sits exactly on its +6% bullish line, and the June quarter had help from the World Cup campaign; at +5.9% the composite would drop to about +20. Analysts' 2027 profit forecast is up 1.2% in 90 days ($3.52 vs $3.48), short of the +3% line.",
+  "<b>It is priced at a big premium to peers, not to its own past.</b> Valuation scores −76, up from −100: investors pay 27% more per dollar of expected profit over the next 12 months than for the peer median (24.8x vs 19.5x forward P/E; it turns neutral below +25%), 175% more after allowing for growth (3.9 vs 1.4), and 50% more on EV/EBITDA (23.5x vs 15.6x). Against its own history it looks normal and now scores neutral: the P/E on the last 12 months' actual profit is 27.1x vs a 26.5x 5-year median (+2%). What it means for you: the price already assumes Coca-Cola keeps delivering; a miss on 27 Oct has more room to hurt than a beat has to help.",
+  "<b>The money backdrop is slightly negative.</b> Liquidity scores −13 (unchanged): the dollar index is 2.99 points higher than 20 trading days earlier, a headwind for a company that earns most of its revenue abroad. Fed odds moved 11.3 points towards cuts (1% cut, 17% rise now vs 4% and 31% a month earlier), not enough to count (the line is 15 points). Buying and selling volume is balanced (0.91x up-day vs down-day volume, last 20 trading days; 1.14x yesterday). Not scored but relevant: the US 10-year yield rose 0.46 points in a month to 5.27%, above KO's earnings yield of about 4.0% (chain C2).",
+  "<b>The price trend is up, but cooling.</b> Price scores +100 on slow measures: KO is 7.5% above its 200-day average (8.0% yesterday), its 50-day average is 9.8% above the 200-day, and it is 7.7 points ahead of its peers' average return over the last 3 months. On the day it slipped 0.39% to $86.17 vs +0.58% for the S&P 500, and over the last 5 trading days it slipped 0.8% while the S&P 500 rose 1.9%.",
+  "<b>Not yet confirmed.</b> Day 2 of the 10 trading days of history needed for a call (2 of 10 recorded; today reads Hold); coverage is now 100% of the weight left after removing DM3. Next big test: results on 27 Oct, where the stronger dollar, a tough organic-growth comparison and the fading World Cup boost are the risks. A pending US tax-court appeal (about $20bn exposure) is not scored but could move the stock."
+ ],
+ "move": {
+  "class": "Quiet",
+  "direction": "down",
+  "headline": "A normal day: down 0.4% while the S&P 500 rose 0.6%",
+  "evidence": [
+   {
+    "d": "6 Oct",
+    "t": "KO fell 0.39% to $86.17 vs +0.58% for the S&P 500. A typical day for KO is about 1.3% either way (last 60 trading days), so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
+   {
+    "d": "30 Sep-6 Oct",
+    "t": "Over 5 trading days KO slipped 0.8% while the S&P 500 rose 1.9%. It is still 7.5% above its 200-day average and 7.7 points ahead of its peers over 3 months, after a record run on the 28 Jul results (Q2 volume +5%, guidance raised).",
+    "kind": "fact",
+    "src": "Yahoo Finance prices; Coca-Cola release 28 Jul 2026"
+   },
+   {
+    "d": "Oct 2025-Oct 2026",
+    "t": "Over the last 252 trading days KO has moved slightly against the market (sensitivity to the S&P 500 of -0.23: it has tended to rise on days the market fell), consistent with money rotating into defensive stocks when tech sells off. Yahoo's longer-run 5-year figure is 0.32.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices (engine calculation); Yahoo beta"
+   }
+  ]
+ },
+ "earnings": {
+  "past": [
+   {
+    "q": "Jun 2026 quarter (Q2 2026)",
+    "date": "Tue 28 Jul 2026, before the US open",
+    "vs": "Comparable EPS $0.97 vs $0.93 expected (+4%, Yahoo consensus), +11% vs a year earlier. Revenue $13.38bn vs about $13.17bn expected; +7% reported, +6% organic.",
+    "guide": "2026 organic revenue raised to about +5% (from 4-5%); comparable EPS growth raised to 9-10% (from 8-9%), including about a 3-point currency tailwind. Free cash flow about $12.4bn.",
+    "reaction": "+5.0% on the day (close to close); +6.5% for the week vs +1.0% for the S&P 500.",
+    "take": [
+     "<b>Volume surge.</b> Unit case volume +5% vs a year earlier; Coca-Cola credits its global FIFA World Cup campaign with part of the gain (the tournament ran 11 Jun-19 Jul, so it also helps Q3). Price/mix +2%; concentrate sales +4%.",
+     "<b>Every region grew.</b> Volume: Asia Pacific +8%, Bottling Investments +5%, EMEA +4%, Latin America +3%, North America +3%.",
+     "<b>Margins up.</b> Operating margin 34.9% vs 34.1% a year earlier; comparable 35.6% vs 34.7%.",
+     "<b>Acquisitions and divestitures</b> (including the CCBA sale, a 75% stake to Coca-Cola HBC, expected to complete by end-2026) take 2-3 points off 2026 reported revenue growth and about 1 point off EPS growth (Coca-Cola's 2026 guidance).",
+     "<b>Calendar shift:</b> Q4 2026 has six fewer days than Q4 2025, so reported Q4 growth will look weak."
+    ],
+    "impact": "DM4a (organic +6%) and DM4b (volume +5%) both bullish; the World Cup boost will not repeat."
+   },
+   {
+    "q": "Mar 2026 quarter (Q1 2026)",
+    "date": "Tue 28 Apr 2026",
+    "vs": "Comparable EPS $0.86 vs $0.81 expected (+6%), +18% vs a year earlier. Revenue $12.47bn, above expectations; +12% reported, +10% organic (six extra days helped).",
+    "guide": "Comparable EPS growth raised to 8-9% (from 7-8%), mainly a lower tax rate; organic revenue kept at 4-5%.",
+    "reaction": "+3.8% on the day (close to close).",
+    "take": [
+     "<b>Volume +3%</b>, up in every operating segment; North America +4%.",
+     "<b>Price/mix +2%</b>, held back 2 points by Easter timing and mix.",
+     "<b>Gross margin down about 0.3 points</b> on tea and coffee costs; operating margin up about 0.7 points.",
+     "<b>New CEO:</b> Henrique Braun succeeded James Quincey at the end of March 2026."
+    ],
+    "impact": "Demand solid; the guidance raise drove the move."
+   }
+  ],
+  "next": [
+   {
+    "q": "Sep 2026 quarter (Q3 2026)",
+    "date": "Tue 27 Oct 2026, before the US open (evening in Singapore)",
+    "iso": "2026-10-27",
+    "status": "Confirmed (Yahoo)",
+    "watch": [
+     "Organic revenue vs the +6% line (DM4a): +6.0% in Q2 sits exactly on the line, and Q3 2025 was a tough +6% comparison. Consensus reported revenue growth is +3.9% vs a year earlier.",
+     "Volume (DM4b; line +3%): Q3 2025 was only +1%, an easy comparison, and the World Cup ran into July.",
+     "Currency: the dollar index is up about 3 points in a month; guidance assumes a 3-point tailwind (chain C1).",
+     "CCBA completion timing (Coca-Cola HBC says by end-2026).",
+     "Consensus comparable EPS $0.88 (18 analysts)."
+    ]
+   },
+   {
+    "q": "Dec 2026 quarter (Q4 2026)",
+    "date": "About 10 Feb 2027",
+    "iso": "2027-02-10",
+    "status": "Estimated",
+    "watch": [
+     "Six fewer days than Q4 2025: organic and reported growth will look weak for calendar reasons.",
+     "2027 guidance.",
+     "Costa: the sale was shelved in Jan 2026 when bids fell short; watch for a write-down."
+    ]
+   }
+  ]
+ },
+ "shareholder_notes": [
+  "Berkshire Hathaway holds 400m shares (9.3% of shares outstanding), unchanged; it is the largest holder and is not an index fund.",
+  "Nasdaq still lists an old Vanguard Group line dated 31 Dec 2025, from before Vanguard split its reporting; it is left out as stale.",
+  "Insider activity over the last 6 months is all selling (about $157m), led by chairman and former CEO James Quincey's $98.8m. The Form 4 filings for Quincey and Pietracci say the sales were under pre-arranged Rule 10b5-1 plans, largely to cover tax on vesting shares (SEC Form 4; MarketBeat, 30 Jul 2026).",
+  "Vanguard appears as several entities (Vanguard Capital Management, Vanguard Portfolio Management, Vanguard Fiduciary Trust) after it split its reporting; together they hold about 360m shares (8.4% of shares outstanding)."
+ ],
+ "chains": [
+  {
+   "id": "C1",
+   "name": "Strong dollar",
+   "path": [
+    "Dollar up",
+    "overseas sales worth fewer dollars",
+    "reported revenue and EPS lower"
+   ],
+   "watch": "DXY",
+   "watch_label": "US dollar index",
+   "active": {
+    "kind": "pct",
+    "t": 2
+   },
+   "status": "Hurting",
+   "evidence": [
+    "Dollar index 101.83 at the 6 Oct close vs 98.84 twenty trading days earlier: +3.0%.",
+    "2026 EPS guidance (+9-10%) includes about a 3-point currency tailwind (Coca-Cola, 28 Jul); a stronger dollar since then puts that tailwind at risk at the 27 Oct results.",
+    "The dollar index is mostly the euro; Coca-Cola's bigger exposures (Mexican peso, Brazilian real and other emerging-market currencies) can move differently. The first read on the actual hit comes at the 27 Oct results."
+   ]
+  },
+  {
+   "id": "C2",
+   "name": "Bond yields squeeze the valuation",
+   "path": [
+    "Oil-led inflation, Fed",
+    "higher bond yields",
+    "KO's bond-like valuation harder to justify"
+   ],
+   "watch": "TNX",
+   "watch_label": "US 10-year Treasury yield",
+   "active": {
+    "kind": "pts",
+    "t": 0.25
+   },
+   "status": "Active",
+   "evidence": [
+    "10-year yield 5.27% at the 6 Oct close vs 4.81% twenty trading days earlier: +0.46 points.",
+    "KO's dividend yield is about 2.5% of the share price and its earnings yield (inverse of the 24.8x forward P/E) about 4.0%, both below the 5.27% on the 10-year."
+   ]
+  },
+  {
+   "id": "C3",
+   "name": "Oil and aluminium costs",
+   "path": [
+    "Iran war, 50% US aluminium tariff",
+    "bottles, cans, transport cost more",
+    "bottlers squeezed, less room for price rises"
+   ],
+   "watch": "BRENT",
+   "watch_label": "Brent crude oil",
+   "active": {
+    "kind": "pct",
+    "t": 10
+   },
+   "status": "Watch",
+   "evidence": [
+    "Brent $100.32 at the 5 Oct close vs $96.28 twenty trading days earlier: +4.2%, under the +10% line. It was $73.74 on 24 Jun 2026, so the rise since mid-year is large.",
+    "US Midwest aluminium premium now over 40% of the all-in aluminium price (Manufacturing Dive, 19 Aug 2026)."
+   ]
+  },
+  {
+   "id": "C4",
+   "name": "Health rules on sugary drinks",
+   "path": [
+    "SNAP soda bans, sugar taxes, GLP-1 drugs",
+    "fewer full-sugar drinks bought",
+    "sparkling volume"
+   ],
+   "watch": null,
+   "watch_label": "News scan only",
+   "active": null,
+   "status": "Active (slow)",
+   "evidence": [
+    "At least 23 US states have approval to bar SNAP (food-stamp) money for soda; about 10 started in H1 2026 and about 20 by year-end. In the first 10, sugary-drink purchases by SNAP households fell 12% in H1 2026, and they did not switch to paying cash (Stanford/MIT/Chicago study, via Grocery Dive, 2 Sep 2026).",
+    "Numerator puts 2026 lost soda sales at up to $430m (29 May 2026), small vs Coca-Cola's $47.9bn revenue in 2025.",
+    "Mexico raised its tax on sugary drinks from Jan 2026; Coca-Cola FEMSA cited it for slightly lower Mexican volumes in H1 2026 (27 Jul 2026).",
+    "GLP-1 weight-loss drugs: outside estimates put about 12% of US adults on them, a drag of roughly 0.2% a year on US food and drink volume (OC&C, 2026)."
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "d": "2026-10-14",
+   "t": "US inflation (September CPI)",
+   "link": "C2",
+   "note": "Confirmed (BLS): Wed 14 Oct, 8:30am ET (8:30pm Singapore). Hotter than forecast = higher yields."
+  },
+  {
+   "d": "2026-10-27",
+   "t": "Coca-Cola results (Sep quarter)",
+   "link": "all",
+   "note": "Confirmed (Yahoo). Before the US open; evening in Singapore."
+  },
+  {
+   "d": "2026-10-28",
+   "t": "Fed rate decision",
+   "link": "C2",
+   "note": "Markets price a 17% chance of a rise and 1% of a cut (Polymarket, 6 Oct close), vs 31% and 4% a month earlier."
+  }
+ ],
+ "defects": [
+  "Staging build, second day of history: the call needs 10 trading days of scores before it can be confirmed.",
+  "SEC's data service returned no figures for Coca-Cola on 5 Oct 2026 (Apple's worked); the 6 Oct build now has them, so DM1 (revenue trend), DM6 (gross margin trend), VL3 (P/E vs own history), the quality & cash check and the free cash flow history are scored. Coverage is 100% of the weight left after removing DM3.",
+  "When SEC works again, stage B must read Coca-Cola's revenue under the tag 'Revenues' (it does not use the default revenue tag).",
+  "DM1 compares reported revenue growth, which bottler sales cut: acquisitions and divestitures (including CCBA) take 2-3 points off 2026 reported revenue growth (Coca-Cola guidance). DM4a (organic growth) carries the clean demand read (Kenneth, 5 Oct 2026).",
+  "DM4a (organic revenue growth) is +6.0% in the June quarter, exactly on its +6% bullish line: at +5.9% it would score neutral and the composite would fall to about +20. 'What would change the call' does not yet list DM4 and DM5 (engine).",
+  "DM5 (bottler volumes) is shown as a leading read, but the bottlers report a few days after Coca-Cola, so it confirms rather than leads.",
+  "DM4a, DM4b and DM5 are entered from results releases, so they update quarterly. DM5 averages three bottlers whose bases differ slightly (CCEP days-adjusted, Coca-Cola HBC underlying, Coca-Cola FEMSA reported).",
+  "Q2 2026 volume (+5%) was helped by the global FIFA World Cup campaign (11 Jun-19 Jul) and good weather in Europe; the boost fades from Q4 2026.",
+  "Free cash flow in the quality check is $12.6bn for the last 12 months to Mar 2026 (SEC), but the 2025 quarters include a one-off $6.1bn payment to fairlife's former owners in Q1 2025. Coca-Cola guides about $12.4bn for 2026. The quality check shows 1 flag of 5: cash conversion (operating cash ÷ net profit) of 64% and 57% over the last two years, below the 70% line.",
+  "Revenue mix: Asia Pacific (about 12% of revenue) sits in Other with corporate and the removal of sales between segments, because its filing tag changed between filings. Costa and innocent moved into EMEA from 1 Jan 2025 (2024 restated), so EMEA's 3-year comparison is not like-for-like, and the Dec 2023 quarter is wrong (EMEA about $4.45bn, Other negative): its fourth quarter is worked out from a restated full year minus quarters on the old basis. Open item for the Framework chat.",
+  "Institutional change (LQ3) counts changes in existing positions only.",
+  "Short interest (LQ2) is only 0.9% of freely traded shares, below the 2% minimum, so it scores neutral.",
+  "EV/EBITDA uses last-12-month EBITDA (free source).",
+  "Not scored but material: Coca-Cola's US tax case (transfer pricing; about $20bn exposure, $6bn already deposited) awaits an appeals court ruling after the 25 Jun 2026 hearing; and the Costa coffee sale was shelved in Jan 2026, with a possible write-down.",
+  "Peer set (Kenneth, 5 Oct: brand owners only): Mondelez's 31% gross margin is closer to the bottlers that were excluded than to Coca-Cola's 62%. Without Mondelez, VL1 would read neutral (24.8x vs a 20.9x median, +19%) and the composite would be about +34, above the Buy line (+30). The zone is sensitive to this choice."
+ ],
+ "sources": [
+  "Yahoo Finance (prices, consensus, valuation, short interest, insiders)",
+  "SEC EDGAR (filings list; segment figures from 10-Q/10-K inline XBRL)",
+  "Nasdaq (13F institutional holdings)",
+  "Polymarket (Fed odds)",
+  "Coca-Cola results releases (28 Apr, 28 Jul 2026)",
+  "CCEP (4 Aug 2026), Coca-Cola HBC (5 Aug 2026), Coca-Cola FEMSA (27 Jul 2026) results",
+  "US Bureau of Labor Statistics release schedule",
+  "MarketBeat, StockStory, TIKR, Hargreaves Lansdown, Grocery Dive, Food Business News, Manufacturing Dive, FinancialContent, Nasdaq/Motley Fool (news)",
+  "Hoodline and Bloomberg Tax (IRS appeal), Finviz/FT (Costa), OC&C (GLP-1), BusinessDay (CCBA), SEC Form 4"
+ ],
+ "quality_info": [
+  {
+   "name": "Shares outstanding",
+   "value": "4,303m (13F summary); Coca-Cola buys back shares mainly to offset employee stock awards",
+   "source": "Nasdaq institutional holdings"
+  }
+ ],
+ "mix": {
+  "updated": "2026-10-06",
+  "segments": {
+   "NA": {
+    "sells": "Concentrate to US and Canadian bottlers, plus finished drinks it makes itself (fairlife milk, juices, some fountain syrup).",
+    "buyers": "Coca-Cola's North American bottlers, restaurants and retailers.",
+    "pos": [
+     "Largest part: 40.9% of revenue (last 4 quarters), up from 37.0% three years earlier.",
+     "Growing +7.0% (last 4 quarters vs the 4 before); +7.5% in the June quarter vs a year earlier."
+    ],
+    "neg": [
+     "Margin 26.4% (last 4 quarters) vs 29.5% a year earlier, but only because of a one-off $960m BodyArmor trademark write-down in Q4 2025; without it the margin is about 31.1%, up about 1.6 points.",
+     "Most exposed to US health rules (SNAP soda bans, chain C4)."
+    ]
+   },
+   "EMEA": {
+    "sells": "Concentrate to bottlers in Europe, the Middle East, Africa and India.",
+    "buyers": "Bottlers such as CCEP and Coca-Cola HBC.",
+    "pos": [
+     "Growing fastest: +7.2% (last 4 quarters vs the 4 before).",
+     "Margin 37.5% (last 4 quarters), above the 32.1% figure for all segments together (which is itself held down about 2 points by the BodyArmor write-down)."
+    ],
+    "neg": [
+     "Only +2.0% in the June quarter vs a year earlier.",
+     "Most exposed to the dollar (chain C1) and to oil-driven costs and consumer strain from the Iran war (chain C3)."
+    ]
+   },
+   "LATAM": {
+    "sells": "Concentrate to bottlers across Mexico, Brazil and the rest of Latin America.",
+    "buyers": "Bottlers such as Coca-Cola FEMSA.",
+    "pos": [
+     "Highest margin: 60.4% segment operating margin (last 4 quarters), up from 58.0% three years earlier.",
+     "+15.9% in the June quarter vs a year earlier."
+    ],
+    "neg": [
+     "Mexico's higher sugar tax (from Jan 2026) and lower Argentina volumes (Coca-Cola FEMSA, 27 Jul 2026).",
+     "Currency swings are large."
+    ]
+   },
+   "BI": {
+    "sells": "Finished drinks from bottlers Coca-Cola still owns (mainly CCBA in Africa, plus India and parts of Asia).",
+    "buyers": "Retailers, wholesalers and restaurants.",
+    "pos": [
+     "Margin improving: 8.8% (last 4 quarters) vs 7.3% a year earlier and 5.7% three years earlier."
+    ],
+    "neg": [
+     "Lowest margin by far (8.8%).",
+     "Shrinking by design: 12.0% of revenue vs 17.6% three years earlier; the CCBA sale (expected by end-2026) will cut it sharply."
+    ]
+   }
+  },
+  "shift": {
+   "title": "Coca-Cola is turning back into a pure concentrate business",
+   "pos": [
+    "Bottling Investments fell from 17.6% to 12.0% of revenue in 3 years. The engine puts the margin gain from the change in mix at 3.1 points vs 3 years earlier, but much of that is an accounting artefact: Costa and innocent moved into EMEA from 1 Jan 2025 (2024 restated), which inflates EMEA's share. The gain from the bottler sales alone is smaller and not separately measured here.",
+    "The highest-margin regions (Latin America 60.4%, EMEA 37.5%) are growing at least as fast as the company (+6.5%, last 4 quarters vs the 4 before)."
+   ],
+   "neg": [
+    "Reported revenue shrinks with each bottler sale, so headline growth looks slower than the business: acquisitions and divestitures take 2-3 points off 2026 reported revenue growth (Coca-Cola guidance).",
+    "North America's reported margin dip (29.5% to 26.4%) is a one-off write-down, not a trend; excluding it the margin rose."
+   ]
+  }
+ }
+}

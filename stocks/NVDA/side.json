@@ -1,0 +1,386 @@
+{
+ "dm3": {
+  "guide_mid": 89.5,
+  "consensus": 82.8,
+  "measured": "analysts' consensus revenue growth for the October quarter (Q3 FY27) when guidance was given (26 Aug 2026), both vs Q3 FY26 revenue of $57.0bn",
+  "source": "Nvidia Q2 FY27 results release (guide $108.0bn ±2%); consensus $104.2bn per XTB (parameter.io: $103.9bn)",
+  "note": "Nvidia guided $108.0bn (+89.5% vs a year earlier) vs about $104.2bn expected (+82.8%): +6.7 points. Q2's guide had been +9.0 points above LSEG consensus."
+ },
+ "custom": {
+  "DM4a": {
+   "value": 18.3,
+   "period": "Jul 2026 quarter (Q2 FY27): Data Center $89.0bn vs $75.2bn in Q1, Nvidia CFO commentary Q2 FY27 (26 Aug 2026)"
+  },
+  "DM4b": {
+   "value": 138.1,
+   "period": "Jul 2026 quarter (Q2 FY27): ACIE $40.3bn vs $16.9bn a year earlier, Nvidia CFO commentary Q2 FY27 (26 Aug 2026) (Q1 and year-earlier figures restated in August for one customer moved to Hyperscale)"
+  },
+  "DM5": {
+   "value": 79,
+   "period": "Apr-Jun 2026: Microsoft $41.0bn, Alphabet $44.9bn, Amazon $53.1bn, Meta $31.1bn = $170.1bn vs about $95.0bn a year earlier (24.2 + 22.4 + 31.4 + 17.0; companies' Jul 2025 reports). Alphabet counts cash capex only; the others include finance leases (TMT Finance, 18 Aug 2026)"
+  }
+ },
+ "earnings": {
+  "past": [
+   {
+    "q": "Jul 2026 quarter (Q2 FY27)",
+    "date": "Wed 26 Aug 2026, after the US close (Thu 27 Aug, about 4:20am Singapore)",
+    "vs": "Revenue $96.2bn, +106% vs a year earlier, vs about $92.2bn expected (+4.3%). Non-GAAP EPS $2.22 vs $2.10 expected (+5.7%).",
+    "guide": "October quarter: revenue $108.0bn ±2% (+89.5% vs a year earlier) vs about $104.2bn expected: +6.7 points of growth above consensus. Gross margin 74.0% ±0.5 points, down from 75.0%. Zero China compute assumed.",
+    "reaction": "+8.7% the next day ($209.76 to $227.98) vs +0.7% for the S&P 500.",
+    "take": [
+     "<b>Data Center carried it.</b> $89.0bn, +117% vs a year earlier, 92.5% of revenue.",
+     "<b>Demand broadened.</b> On restated figures (one customer moved to Hyperscale), AI clouds, industrial and enterprise (ACIE) grew +25% vs Q1 to $40.3bn (+138% vs a year earlier); Hyperscale grew +13% vs Q1 to $48.7bn (+102%).",
+     "<b>Margin flat, guided down.</b> 75.0% in the July quarter, guided to 74.0% for October on memory costs (chain C2).",
+     "<b>Cash lagged profit.</b> Receivables $63.1bn = 60 days of sales vs 45 in Q1 (longer payment terms on large deals); operating cash flow $24.1bn vs $50.3bn in Q1.",
+     "<b>Bigger commitments.</b> Supply commitments $279bn vs $119bn a quarter earlier, mostly memory; inventory $31.6bn vs $25.8bn ahead of Vera Rubin, whose production shipments began in the August-October quarter.",
+     "<b>About $26bn returned</b> ($19.7bn buybacks plus dividends); $99.3bn of authorisation left at 26 Jul, raised by $150bn on 28 Sep to about $235bn."
+    ],
+    "impact": "Demand and guidance strong (DM3, DM4 bullish); watch cash conversion, customer financing and the guided margin dip."
+   },
+   {
+    "q": "Apr 2026 quarter (Q1 FY27)",
+    "date": "Wed 20 May 2026, after the US close",
+    "vs": "Revenue $81.6bn, +85% vs a year earlier, vs $78.8bn-$80.4bn expected (sources differ). Non-GAAP EPS $1.87 vs $1.70-$1.78.",
+    "guide": "July quarter: $91.0bn ±2% vs $86.8bn LSEG consensus: +9.0 points of growth above consensus.",
+    "reaction": "−1.8% the next day vs +0.2% for the S&P 500: a buy-side whisper of $89-90bn was already priced.",
+    "take": [
+     "<b>Networking boomed.</b> Data Center $75.2bn (+92%): compute $60.4bn (+77%), networking $14.8bn (+199%) vs a year earlier.",
+     "<b>New reporting.</b> Data Center split into Hyperscale ($37.9bn) and ACIE ($37.4bn) as first published (restated in August to $43.1bn and $32.2bn); Gaming and others folded into Edge Computing ($6.4bn).",
+     "<b>Record cash.</b> Operating cash flow $50.3bn, free cash flow $48.6bn.",
+     "<b>China at zero</b>: no Hopper Data Center shipments vs $4.6bn a year earlier.",
+     "<b>Shareholder returns up.</b> New $80bn buyback; dividend from $0.01 to $0.25 a quarter."
+    ],
+    "impact": "Strong numbers, already expected."
+   }
+  ],
+  "next": [
+   {
+    "q": "Oct 2026 quarter (Q3 FY27)",
+    "date": "Tue 17 Nov 2026, after the US close (expected; Wed 18 Nov morning in Singapore)",
+    "iso": "2026-11-17",
+    "status": "Estimated (Yahoo and Wall Street Horizon: Tue 17 Nov; Nvidia's own confirmation usually comes about 4 weeks ahead)",
+    "watch": [
+     "Falsification tests F2 and F3: Data Center growth vs the prior quarter below +8%, guidance at or below consensus, days of sales above 65, or operating cash below 60% of non-GAAP profit.",
+     "Revenue vs the $108.0bn guide, and the January-quarter guide vs consensus (DM3).",
+     "Data Center growth vs the prior quarter: still above the +10% line (DM4a)?",
+     "Gross margin vs the 74.0% guide: how much memory cost bites (chain C2).",
+     "Receivables and operating cash flow: does cash catch up with profit?",
+     "Vera Rubin ramp, and any China reopening (chain C1)."
+    ]
+   },
+   {
+    "q": "Jan 2027 quarter (Q4 FY27)",
+    "date": "Late February 2027",
+    "iso": "2027-02-25",
+    "status": "Estimated",
+    "watch": [
+     "FY28 outlook and supply commitments.",
+     "Hyperscale vs ACIE mix."
+    ]
+   }
+  ]
+ },
+ "shareholder_notes": [
+  "Nasdaq still lists an old Vanguard Group line dated 31 Dec 2025, from before Vanguard split its reporting; it is left out as stale.",
+  "Janus Henderson's line is dated 31 Mar 2026, one filing quarter behind the rest.",
+  "'Jupiter Topco Llc' appears as a new holder of 80.8m shares (30 Jun 2026); its identity is not confirmed.",
+  "Yahoo does not mark which insider sales were pre-scheduled trading plans, so they cannot be excluded."
+ ],
+ "chains": [
+  {
+   "id": "C1",
+   "name": "US-China chip policy",
+   "path": [
+    "US export licences or Chinese buying limits",
+    "China Data Center sales near zero",
+    "reopening = upside; new action = downside"
+   ],
+   "watch": "CNY",
+   "watch_label": "Chinese yuan per US dollar (higher = weaker yuan)",
+   "active": {
+    "kind": "pct",
+    "t": 2
+   },
+   "status": "Hurting, but contained",
+   "evidence": [
+    "The October-quarter guide assumes zero China Data Center compute revenue; Hopper shipments to China were under 1% of Data Center revenue in Q2 (Nvidia, 26 Aug). China in total was about 13% of revenue in the year to Jan 2025.",
+    "Nvidia holds limited US licences for some H200 sales, but Beijing has blocked buyers; a $400m provision on excess H200 inventory was taken in the first half of FY27 (Nvidia 10-Q, 26 Jul 2026).",
+    "Speculation: China's industry ministry reportedly asked companies about RTX Pro 5500 orders; ByteDance said to consider about 1 million (The Information via The Coin Republic, 28 Sep; not confirmed)."
+   ]
+  },
+  {
+   "id": "C2",
+   "name": "Memory costs",
+   "path": [
+    "AI boom",
+    "memory (HBM/DRAM) scarce and dearer",
+    "Nvidia's cost per system up",
+    "gross margin down unless passed on"
+   ],
+   "watch": "MU",
+   "watch_label": "Micron share price (stand-in for memory prices)",
+   "active": {
+    "kind": "pct",
+    "t": 10
+   },
+   "status": "Hurting + Company responding",
+   "evidence": [
+    "Gross margin guided to 74.0% for the October quarter vs 75.0% in July (26 Aug).",
+    "Company responding: supply commitments $279bn vs $119bn a quarter earlier, mostly memory, locking in supply at the cost of large fixed obligations (CFO commentary, 26 Aug).",
+    "Watch number: Micron $1,045.56 on 6 Oct vs $1,000.26 20 trading days earlier (+4.5%), under the 10% line; the margin hit is already in guidance, so the status stays Hurting."
+   ]
+  },
+  {
+   "id": "C3",
+   "name": "Rates and AI financing",
+   "path": [
+    "Iran war, oil, inflation",
+    "higher bond yields, Fed odds",
+    "lower multiple; dearer debt for AI clouds that buy Nvidia systems"
+   ],
+   "watch": "TNX",
+   "watch_label": "US 10-year Treasury yield",
+   "active": {
+    "kind": "pts",
+    "t": 0.25
+   },
+   "status": "Active",
+   "evidence": [
+    "Watch number: the US 10-year yield was 5.27% on 6 Oct vs 4.81% 20 trading days earlier (+0.46 points, above the 0.25-point line), so the chain is Active.",
+    "Nvidia's expected profit for the next 12 months is about 5.7% of its share price, vs 5.3% on the 10-year, so the price does not rest mainly on distant profits; higher rates bite mainly through customers who borrow to buy Nvidia systems."
+   ]
+  },
+  {
+   "id": "C4",
+   "name": "Taiwan and TSMC supply",
+   "path": [
+    "Conflict, blockade or outage in Taiwan",
+    "TSMC chip or packaging output stops",
+    "no product to sell for months"
+   ],
+   "watch": null,
+   "watch_label": "News scan only",
+   "active": null,
+   "status": "Quiet",
+   "evidence": [
+    "No new event found in the last month (checked 5 Oct 2026). Kept because the impact would be far beyond the materiality line (about $6.5bn of operating profit)."
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "d": "2026-10-14",
+   "t": "US inflation (September CPI)",
+   "link": "C3",
+   "note": "Confirmed (BLS): Wed 14 Oct, 8:30am ET (8:30pm Singapore). Hotter than forecast = higher yields."
+  },
+  {
+   "d": "2026-10-15",
+   "t": "TSMC results (September quarter)",
+   "link": "DM5",
+   "note": "Confirmed (TSMC): Thu 15 Oct, 2pm Taiwan/Singapore time. AI demand and packaging capacity commentary."
+  },
+  {
+   "d": "2026-10-28",
+   "t": "Fed rate decision",
+   "link": "C3",
+   "note": "Markets price a 17% chance of a rise (Polymarket, 6 Oct close), vs 31% four weeks earlier."
+  },
+  {
+   "d": "2026-10-29",
+   "t": "Microsoft, Alphabet, Meta, Amazon results (late Oct)",
+   "link": "DM5",
+   "note": "Estimated dates. Their September-quarter capex updates DM5 before Nvidia reports. Falsification test F1: big-4 capex growth below +40% vs a year earlier, or a flat/down 2027 capex guide."
+  },
+  {
+   "d": "2026-11-17",
+   "t": "Nvidia results (October quarter)",
+   "link": "all",
+   "note": "Estimated (Yahoo). After the US close; Wed 18 Nov morning in Singapore."
+  }
+ ],
+ "valuation_plain": [],
+ "dm6_oneoffs": [
+  {
+   "end": "2025-04-27",
+   "gp_add": 4500,
+   "label": "H20 inventory and purchase-obligation charge after US export licence rules (one-time cost, added back)",
+   "source": "Nvidia CFO commentary Q2 FY27, footnote: H20 charges/(releases), net, $4.5bn in Q1 FY26"
+  },
+  {
+   "end": "2025-07-27",
+   "gp_add": -180,
+   "label": "release of previously reserved H20 inventory (one-time benefit, removed)",
+   "source": "Nvidia CFO commentary Q2 FY27, footnote: ($180m) in Q2 FY26"
+  }
+ ],
+ "quality_info": [
+  {
+   "name": "Customer concentration",
+   "value": "One direct customer was 16% of revenue in the July quarter (a year earlier: two at 23% and 16%); in the first half, three were 16%, 15% and 13% (a year earlier: two at 20% and 15%)",
+   "source": "Nvidia 10-Q, quarter to 26 Jul 2026"
+  },
+  {
+   "name": "Receivables",
+   "value": "$63.1bn = 60 days of sales vs 45 days in the April quarter: longer payment terms on large multi-quarter deals",
+   "source": "Nvidia CFO commentary, 26 Aug 2026"
+  },
+  {
+   "name": "Supply commitments",
+   "value": "$279bn vs $119bn a quarter earlier, mostly memory; $92bn due in the rest of FY27",
+   "source": "Nvidia CFO commentary, 26 Aug 2026"
+  },
+  {
+   "name": "Dilution",
+   "value": "None: diluted shares 24,285m in the July quarter vs 24,391m in April (−0.4%), as buybacks exceed stock pay",
+   "source": "Nvidia 10-Q"
+  },
+  {
+   "name": "Cash conversion, latest quarters",
+   "value": "Operating cash was 63% of GAAP net profit in the first half of FY27 ($74.4bn ÷ $118.0bn) and 40% in the July quarter ($24.1bn ÷ $59.7bn), vs 86-88% for the last two full years; receivables grew 55% vs the prior quarter while revenue grew 18% (shown as Info: Kenneth chose not to flag it, 6 Oct 2026; tested by falsification test F3 at the 17 Nov results)",
+   "source": "SEC 10-Q (26 Jul 2026); Nvidia results releases"
+  },
+  {
+   "name": "Customer financing",
+   "value": "Guarantees of up to $105bn on SB Energy's Ohio campus (exposure falls as OpenAI pays its leases); unlisted equity stakes $47.9bn vs $22.3bn in January; $23.7bn of first-half GAAP profit came from gains on equity holdings",
+   "source": "Nvidia CFO commentary Q2 FY27; 10-Q (26 Jul 2026)"
+  }
+ ],
+ "defects": [
+  "Staging build: 2 of 10 trading days of history so far; the call needs 10 trading days of scores before it can be confirmed.",
+  "Valuation vs own history (VL3) uses trailing P/E: free forward P/E history is too short.",
+  "VL3's 5-year P/E median (87.3x) is overstated: the collector derives fourth-quarter EPS as full year minus three quarters, which goes wrong across stock splits (Q4 FY Jan 2022 shows −$1.09 instead of $1.18; Q4 FY Jan 2025 −$4.49 instead of $0.89). The first inflates 2022-23 P/Es, the second drops about a year of lower readings. With corrected EPS the median is about 55-57x and today's 30.2x is about 45-47% below it: still bullish. The median also reflects depressed 2022-23 earnings, so 'cheap vs history' carries little information. Framework fix pending.",
+  "EV/EBITDA uses last-12-month EBITDA (free source); three of the five peers fall outside the 2x-80x range, so the peer median rests on Broadcom and Arista.",
+  "Chain C2 watches Micron's share price as a stand-in for memory prices.",
+  "DM4a deliberately measures growth vs the prior quarter, not vs a year earlier (Kenneth, 5 Oct 2026), to catch a slowdown sooner.",
+  "Revenue mix: Nvidia reports profit only for its Compute & Networking and Graphics segments, which do not match Data Center and Edge Computing, so both parts show the whole-company margin.",
+  "A $400m provision on excess H200 inventory (10-Q, first half of FY27) is not removed from DM6 because its split between quarters is not disclosed; removing it would raise the latest margin by about 0.1 point.",
+  "Trailing GAAP earnings include $23.7bn of first-half gains on equity holdings, so the trailing P/E (30.2x) understates the operating P/E (about 34x without them).",
+  "DM4a, DM4b and DM5 are entered by hand at each results date (Nvidia CFO commentary; cloud companies' reports). DM5 mixes bases: Alphabet reports cash capex only, the others include finance leases; Microsoft's change to data-centre asset lives will distort future comparisons.",
+  "One driver: price trend, Demand and Valuation all depend on the AI capex cycle and the FY28 consensus ($15.80); the driver cap does not bite when every input is bullish, so 'High' confidence overstates how much independent evidence there is.",
+  "Not scored: customers' own chips (Google TPU, Amazon Trainium), power and grid delays to data-centre build-outs, memory prices (HBM reported up to +50% in 2027), and a low P/E on possibly peak earnings. The 5-year replay found the score did not separate good from bad entry days for NVDA (research/sanity_check.md)."
+ ],
+ "sources": [
+  "Yahoo Finance (prices, consensus, valuation, short interest, insiders)",
+  "SEC EDGAR (reported financials, filings, 10-Q customer concentration)",
+  "Nasdaq (13F institutional holdings)",
+  "Polymarket (Fed odds)",
+  "Nvidia results releases and CFO commentary (20 May, 26 Aug 2026)",
+  "TMT Finance (cloud capex, 18 Aug 2026)",
+  "XTB, parameter.io, KuCoin/LSEG, Mitrade (consensus and reaction)",
+  "The Coin Republic / The Information (China)",
+  "US Bureau of Labor Statistics release schedule"
+ ],
+ "mix": {
+  "updated": "2026-10-06",
+  "segments": {
+   "DC": {
+    "sells": "AI accelerators (GPUs and full rack systems such as Blackwell and Vera Rubin), the CPUs and networking that link them, and software.",
+    "buyers": "The big clouds (Microsoft, Alphabet, Amazon, Meta, Oracle: 'Hyperscale', about 55% of Data Center in the July quarter) and AI clouds, AI labs, sovereign and corporate buyers ('ACIE', about 45%).",
+    "pos": [
+     "Grew 117% in the July quarter vs a year earlier; the fastest-growing part.",
+     "Sold as complete systems with networking and software, which makes customers stickier and supports a 75% company gross margin.",
+     "Demand is broadening: ACIE grew 138% vs a year earlier."
+    ],
+    "neg": [
+     "Not contracted recurring revenue: it depends on customers' capex budgets, which are cyclical.",
+     "A handful of direct customers buy most of it (one was 16% of company revenue in the July quarter).",
+     "Several of the biggest buyers design their own chips (Google TPU, Amazon Trainium) with Broadcom and Marvell.",
+     "China Data Center sales are near zero (under 1% of Data Center revenue in the July quarter); China in total was about 13% of company revenue in the year to Jan 2025.",
+     "Part of the demand is financed by Nvidia itself: guarantees of up to $105bn on a data-centre campus leased to OpenAI, and $47.9bn of stakes in unlisted companies, many of them AI customers."
+    ]
+   },
+   "EDGE": {
+    "sells": "Gaming GPUs, professional workstations, chips for cars and robots, PCs and AI-RAN telecom equipment.",
+    "buyers": "Gamers and PC makers, designers and engineers, carmakers and robot builders, telecom operators.",
+    "pos": [
+     "Grew 27% in the July quarter vs a year earlier.",
+     "Spreads Nvidia's platform into PCs, cars and robots, a longer-dated growth option."
+    ],
+    "neg": [
+     "Small: under a tenth of revenue.",
+     "Consumer PC sales slowed as memory made PCs dearer (Nvidia, Q2 FY27)."
+    ]
+   }
+  },
+  "shift": {
+   "title": "What the shift means for Nvidia",
+   "pos": [
+    "Data Center rose from 67% of sales to 92% in 3 years (last 4 quarters vs the 4 quarters to Jul 2023), and company gross margin rose from 64.6% to 74.7% over the same period: the AI systems business carries the margin.",
+    "Data Center sales grew 90% over the last 4 quarters vs the 4 quarters before; Edge Computing grew 35%.",
+    "Free cash flow (operating cash minus capital spending) was $127.0bn over the last 12 months to Jul 2026."
+   ],
+   "neg": [
+    "Concentration has risen: over nine-tenths of sales now depend on data-centre capex budgets that can be cut quickly.",
+    "The biggest buyers are also building alternatives (Google TPU, Amazon Trainium), so share of their spend is not guaranteed.",
+    "Margin is guided down 1 point for the October quarter (74.0% vs 75.0%) on memory costs."
+   ]
+  }
+ },
+ "move": {
+  "class": "Quiet",
+  "direction": "up",
+  "headline": "A record close on a normal-sized rise, helped by supplier news",
+  "evidence": [
+   {
+    "d": "5 Oct",
+    "t": "Nvidia rose 2.1% to a record close of $238.90 (previous high $235.70 on 14 May) while the S&P 500 rose 0.7%. That is within Nvidia's normal daily range (2.4% typical), so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
+   {
+    "d": "5 Oct",
+    "t": "Foxconn, which assembles Nvidia's AI servers, reported record September revenue of NT$1.16tn (about $36.5bn), +38% vs a year earlier; TSMC (+3%) and Broadcom (+2%) also rose.",
+    "kind": "fact",
+    "src": "24/7 Wall St.; Investing.com, 5 Oct 2026"
+   },
+   {
+    "d": "28 Sep",
+    "t": "Nvidia added $150bn to its buyback authorisation, about $235bn in total, to be used through FY2028.",
+    "kind": "fact",
+    "src": "Nvidia press release, 28 Sep 2026"
+   },
+   {
+    "d": "5 Oct",
+    "t": "The stock is up about 28% this year and about 26% from its 29 Jul low of $190.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   }
+  ]
+ },
+ "lead": "Nvidia is <b>Building history</b> (today's zone: <b>Strong Buy</b>), at <b>+82</b> on a −100 to +100 scale, <b>down from +89</b> on 5 Oct because its 3-month lead over its peers narrowed (price trend score +72, from +100): every demand and valuation read is still positive, but the cheapness rests on forecasts that rose 24% in 90 days, and cash is lagging profit.",
+ "bullets": [
+  "<b>Demand is as strong as the framework can read it.</b> Demand scores +100: revenue grew 105.9% in the July quarter vs a year earlier, against a 69.1% average for the prior four quarters; Data Center sales +18.3% vs the April quarter (bullish line +10%); ACIE +138.1% vs a year earlier; consensus EPS for the year to Jan 2028 $15.80 vs $12.71 90 days ago (+24.3%); October-quarter guidance +6.7 points of growth above consensus; big-4 cloud capex about +79% vs a year earlier; gross margin 74.7% over the last 4 quarters vs 72.5% a year earlier (one-off H20 items removed).",
+  "<b>Cheap vs peers and its own history, if the forecasts hold.</b> Valuation scores +100: 17.4x next-12-month earnings vs a 47.0x peer median (−63%), though only 12% below Broadcom's 19.9x; growth-adjusted P/E 0.3 vs 0.8 (−63%); EV/EBITDA 28.6x vs 45.3x (−37%, two peers only); trailing P/E 30.2x vs its own 5-year median of 87.3x (−65%; overstated, see Known defects). The discount depends on forecasts that rose 24% in 90 days.",
+  "<b>Money flows are mixed.</b> Liquidity scores +27: volume on up days was 2.20x volume on down days over the last 20 trading days (bullish), but the dollar index rose 2.99 points vs 20 trading days earlier (bearish); short interest (1.3% of float), institutional holdings (+1.0 point of shares, just under the +1 line) and Fed odds (rate-rise odds 17% vs 31% four weeks earlier) are neutral.",
+  "<b>The price trend is positive but slightly less so than yesterday.</b> Price trend scores +72, down from +100: a record close of $239.24 (+0.14% on the day vs +0.58% for the S&P 500), 18.8% above its 200-day average; the 50-day average is 9.1% above the 200-day; over 3 months Nvidia is 4.5 points ahead of its five peers, down from 10.1 points and just under the +5 point line for a bullish read.",
+  "<b>What could go wrong.</b> Gross margin is guided down to 74.0% from 75.0% on memory costs; operating cash flow fell to $24.1bn in the July quarter from $50.3bn in April as customers took longer to pay (60 days of sales vs 45); supply commitments rose to $279bn from $119bn a quarter earlier; one customer was 16% of revenue; Nvidia guarantees up to $105bn of a customer's data-centre leases; and the 10-year yield rose to 5.27% from 4.81% a month earlier (chain C3 Active). The call is not confirmed yet: 2 of the 10 trading days needed are recorded, and today reads Strong Buy. Next tests: US inflation 14 Oct and the Fed 28 Oct (C3), TSMC results 15 Oct, big-4 cloud capex in late October (DM5) and Nvidia's results, estimated 17 Nov (DM3, DM4a)."
+ ],
+ "falsification": {
+  "adopted": "Kenneth, 6 Oct 2026",
+  "rule": "One test broken = no adding; two broken = cut to half within 5 trading days.",
+  "tests": [
+   {
+    "id": "F1",
+    "when": "late Oct 2026 (cloud results)",
+    "test": "Big-4 cloud capex growth below +40% vs the same quarter a year earlier, or any 2027 capex guide flat or down"
+   },
+   {
+    "id": "F2",
+    "when": "17 Nov 2026 (Nvidia results, estimated)",
+    "test": "Data Center revenue growth below +8% vs the prior quarter, or next-quarter revenue guidance at or below consensus"
+   },
+   {
+    "id": "F3",
+    "when": "17 Nov 2026",
+    "test": "Receivables above 65 days of sales (60 in Jul, 45 in Apr), or operating cash below 60% of non-GAAP net profit for the quarter"
+   },
+   {
+    "id": "F4",
+    "when": "weekly",
+    "test": "Consensus EPS for the year to Jan 2028 down 10% or more from $15.80 (5 Oct 2026)"
+   }
+  ]
+ }
+}

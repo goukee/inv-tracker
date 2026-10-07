@@ -1,0 +1,292 @@
+{
+ "_note": "Per-stock settings, schema v0.3 (pattern: AAPL-US). Only this stock's chat edits it.",
+ "code": "KO",
+ "market": "US",
+ "exchange": "NYSE",
+ "name": "The Coca-Cola Company",
+ "currency": "USD",
+ "benchmark": {
+  "name": "S&P 500",
+  "symbol": "^GSPC"
+ },
+ "peers": [
+  {
+   "code": "PEP",
+   "name": "PepsiCo",
+   "why": "Direct global soft-drink rival, same retailers and food service"
+  },
+  {
+   "code": "KDP",
+   "name": "Keurig Dr Pepper",
+   "why": "US soft drinks and coffee, same US shelf"
+  },
+  {
+   "code": "MNST",
+   "name": "Monster Beverage",
+   "why": "Energy drinks; distributed by Coca-Cola, which owns about a fifth of it"
+  },
+  {
+   "code": "PG",
+   "name": "Procter & Gamble",
+   "why": "Mega-cap consumer brand sold through the same retailers; the defensive-quality multiple"
+  },
+  {
+   "code": "MDLZ",
+   "name": "Mondelez",
+   "why": "Global snacks brand owner, same retailers and emerging-market reach"
+  },
+  {
+   "code": "CL",
+   "name": "Colgate-Palmolive",
+   "why": "Global staples brand owner with a similar ~60% gross margin and emerging-market weight"
+  }
+ ],
+ "valuation": {
+  "metric": "forward_pe",
+  "fallback": "trailing_pe",
+  "vl3_basis": "trailing P/E, 5 years (price / last-12-month SEC diluted EPS), labelled"
+ },
+ "dm4": [
+  {
+   "id": "DM4a",
+   "name": "Organic revenue growth",
+   "weight": 5,
+   "source": "Coca-Cola quarterly results release (on results)",
+   "bullish_if": ">= +6%",
+   "bearish_if": "<= +4%",
+   "measured_against": "same quarter a year earlier",
+   "latest": "+6% (Jun 2026 quarter, Coca-Cola release 28 Jul 2026)",
+   "what": "Coca-Cola's own growth measure: revenue growth vs the same quarter last year, excluding currency moves and bottlers bought or sold.",
+   "why": "It is the number management guides on (2026: about +5%) and the market trades on; unlike reported revenue it is not distorted by the sale of bottlers such as CCBA.",
+   "bull_means": "At or above the top (+6%) of Coca-Cola's long-run 4-6% target range.",
+   "neutral_means": "Between +4% and +6%: inside the target range.",
+   "bear_means": "At or below the bottom (+4%) of the target range."
+  },
+  {
+   "id": "DM4b",
+   "name": "Unit case volume growth",
+   "weight": 3,
+   "source": "Coca-Cola quarterly results release (on results)",
+   "bullish_if": ">= +3%",
+   "bearish_if": "<= +1%",
+   "measured_against": "same quarter a year earlier",
+   "latest": "+5% (Jun 2026 quarter, Coca-Cola release 28 Jul 2026)",
+   "what": "How many more drinks the whole Coca-Cola system sold to consumers vs the same quarter last year.",
+   "why": "Shows whether growth comes from people buying more, not just from higher prices. Price-only growth is the warning sign for a consumer brand.",
+   "bull_means": "Consumers are buying clearly more cases.",
+   "neutral_means": "Volume is creeping up.",
+   "bear_means": "Volume is flat or falling: growth is price-led."
+  }
+ ],
+ "dm5": {
+  "id": "DM5",
+  "name": "Coca-Cola bottlers' volume growth (CCEP, Coca-Cola HBC, Coca-Cola FEMSA)",
+  "weight": 4,
+  "source": "Bottlers' quarterly results and trading updates (average of the three)",
+  "bullish_if": ">= +3%",
+  "bearish_if": "<= 0%",
+  "measured_against": "same quarter a year earlier",
+  "latest": "+4.2% (Apr-Jun 2026: CCEP +3.2% days-adjusted, Coca-Cola HBC +5.8% underlying, Coca-Cola FEMSA +3.5%)",
+  "what": "Average volume growth reported by the three largest listed Coca-Cola bottlers vs the same quarter last year.",
+  "why": "An outside check on demand for Coca-Cola drinks across Europe, Africa, Asia-Pacific and Latin America, reported by the companies that make and deliver them.",
+  "bull_means": "Bottlers are selling clearly more Coca-Cola drinks.",
+  "neutral_means": "Bottler volumes are roughly flat to modestly up.",
+  "bear_means": "Bottler volumes are shrinking."
+ },
+ "overrides": [],
+ "removed_indicators": [
+  {
+   "id": "DM3",
+   "reason": "Coca-Cola gives full-year guidance only, never a number for next quarter, so DM3 would be blank every quarter (Kenneth, 5 Oct 2026)."
+  }
+ ],
+ "chains": [
+  {
+   "id": "C1",
+   "trigger": "Strong US dollar",
+   "what_changes": "overseas sales and profit translate into fewer dollars",
+   "business_hit": "reported revenue and EPS; 2026 EPS guidance assumes about a 3-point currency tailwind",
+   "company_levers": "local pricing, partial hedging",
+   "watch": {
+    "name": "US dollar index",
+    "source": "shared macro (DX-Y.NYB)",
+    "active_if": "up 2%+",
+    "measured_against": "its level one month earlier"
+   },
+   "status": "Hurting"
+  },
+  {
+   "id": "C2",
+   "trigger": "Higher bond yields (oil-led inflation, Fed)",
+   "what_changes": "safe bonds pay more",
+   "business_hit": "KO's bond-like valuation (about 25x forward earnings) is harder to justify",
+   "company_levers": "none (acts on the share price)",
+   "watch": {
+    "name": "US 10-year Treasury yield",
+    "source": "Yahoo ^TNX",
+    "active_if": "up 0.25 percentage points or more",
+    "measured_against": "its level one month earlier"
+   },
+   "status": "Active"
+  },
+  {
+   "id": "C3",
+   "trigger": "Oil and aluminium costs up (Iran war; 50% US aluminium tariff)",
+   "what_changes": "bottles, cans, sweeteners and transport cost more",
+   "business_hit": "bottlers' margins squeezed, less room for concentrate price rises; higher shelf prices",
+   "company_levers": "pack-size and price ladders, hedging, recycled content",
+   "watch": {
+    "name": "Brent crude",
+    "source": "shared macro (BZ=F)",
+    "active_if": "up 10%+",
+    "measured_against": "its level one month earlier"
+   },
+   "status": "Watch"
+  },
+  {
+   "id": "C4",
+   "trigger": "Health rules on sugary drinks (SNAP soda bans, sugar taxes, GLP-1 drugs)",
+   "what_changes": "fewer full-sugar drinks bought by affected groups",
+   "business_hit": "volume in sparkling drinks",
+   "company_levers": "zero-sugar and smaller packs, lobbying",
+   "watch": {
+    "name": "news scan only",
+    "source": "web search",
+    "active_if": "any new state waiver, national tax or GLP-1 evidence of lower drink spend",
+    "measured_against": "-"
+   },
+   "status": "Active (slow)"
+  }
+ ],
+ "shareholder_sources": [
+  "Nasdaq institutional holdings (13F)",
+  "Yahoo Finance insiderTransactions (SEC Form 4)",
+  "SEC EDGAR 13D/13G"
+ ],
+ "status": "live",
+ "version": "0.1",
+ "onboarded": "2026-10-06",
+ "_peers_status": "approved by Kenneth 5 Oct 2026 (brand owners only)",
+ "_settings_status": "approved by Kenneth 5 Oct 2026",
+ "_chains_status": "approved by Kenneth 5 Oct 2026",
+ "sec_cik": "0000021344",
+ "splits": [],
+ "index_holders": [
+  "vanguard",
+  "blackrock",
+  "state street",
+  "geode",
+  "northern trust",
+  "norges",
+  "legal & general",
+  "schwab",
+  "dimensional",
+  "morgan stanley",
+  "jpmorgan",
+  "bank of america",
+  "goldman",
+  "ubs",
+  "royal bank",
+  "wells fargo",
+  "invesco",
+  "bank of new york",
+  "amundi",
+  "deutsche",
+  "swiss national",
+  "hsbc",
+  "mitsubishi",
+  "sumitomo",
+  "ameriprise",
+  "nuveen"
+ ],
+ "mix": {
+  "_note": "Revenue mix (not scored). Coca-Cola's filings print every segment's row as 'operating revenues', so the engine splits the shared label by member tag; patterns match member words. Asia Pacific is left in Other: its tag changed between filings (Pacific / A.Pacific), so its fourth quarter 2025 cannot be derived (open item for the Framework chat).",
+  "source": "sec",
+  "basis": "operating",
+  "segments": [
+   {
+    "id": "NA",
+    "name": "North America",
+    "match": [
+     "^north america"
+    ],
+    "recurring": "no",
+    "group": "NA"
+   },
+   {
+    "id": "EMEA",
+    "name": "Europe, Middle East & Africa",
+    "match": [
+     "^europe"
+    ],
+    "recurring": "no",
+    "group": "EMEA"
+   },
+   {
+    "id": "LATAM",
+    "name": "Latin America",
+    "match": [
+     "^latin america"
+    ],
+    "recurring": "no",
+    "group": "LATAM"
+   },
+   {
+    "id": "BI",
+    "name": "Bottling Investments",
+    "match": [
+     "^bottling"
+    ],
+    "recurring": "no",
+    "group": "BI"
+   }
+  ],
+  "groups": [
+   {
+    "id": "NA",
+    "name": "North America",
+    "match": [
+     "^north america"
+    ]
+   },
+   {
+    "id": "EMEA",
+    "name": "Europe, Middle East & Africa",
+    "match": [
+     "^europe"
+    ]
+   },
+   {
+    "id": "LATAM",
+    "name": "Latin America",
+    "match": [
+     "^latin america"
+    ]
+   },
+   {
+    "id": "BI",
+    "name": "Bottling Investments",
+    "match": [
+     "^bottling"
+    ]
+   }
+  ],
+  "note": "Coca-Cola reports operating profit for each operating segment. Other = Asia Pacific, Global Ventures (Costa, to 2024), corporate and the removal of sales between segments (mainly concentrate sold to Coca-Cola's own bottlers)."
+ },
+ "drivers": [
+  {
+   "id": "volume",
+   "name": "Volume (cases sold)",
+   "indicators": [
+    "DM4b",
+    "DM5"
+   ]
+  }
+ ],
+ "onboard_price": 86.51,
+ "onboard_date": "2026-10-05",
+ "_onboard_note": "Close at the first staging build (5 Oct 2026): the reference for O6 winner discipline until a positions feed exists.",
+ "sec_rev_tag": "Revenues",
+ "_sec_rev_tag_note": "Coca-Cola files revenue under us-gaap:Revenues, not the stage B default; stage B needs __CFG.revTag='Revenues' (open item for the Framework chat).",
+ "promoted": "2026-10-06"
+}

@@ -1,0 +1,308 @@
+{
+ "_note": "Per-stock settings, schema v0.3. Copy AAPL-US/settings.json as the worked example. Only this stock's chat edits it.",
+ "code": "MSFT",
+ "market": "US",
+ "exchange": "NASDAQ",
+ "name": "Microsoft Corporation",
+ "currency": "USD",
+ "benchmark": {
+  "name": "S&P 500",
+  "symbol": "^GSPC"
+ },
+ "peers": [
+  {
+   "code": "AMZN",
+   "name": "Amazon",
+   "why": "AWS: Azure's largest cloud rival"
+  },
+  {
+   "code": "GOOGL",
+   "name": "Alphabet",
+   "why": "Google Cloud vs Azure; Workspace vs Microsoft 365; AI models"
+  },
+  {
+   "code": "ORCL",
+   "name": "Oracle",
+   "why": "Cloud infrastructure and database for the same enterprises; AI data centres"
+  }
+ ],
+ "valuation": {
+  "metric": "forward_pe",
+  "fallback": "trailing_pe",
+  "vl3_basis": "trailing P/E, 5 years (price / last-12-month SEC diluted EPS), labelled; GAAP EPS includes OpenAI gains/losses (about +4% to the last 12 months as of Jun-26)"
+ },
+ "dm4": [
+  {
+   "id": "DM4a",
+   "name": "Azure growth (constant currency)",
+   "weight": 5,
+   "source": "Microsoft quarterly results release (on results)",
+   "bullish_if": ">= +39.5%",
+   "bearish_if": "<= +36.5%",
+   "measured_against": "Microsoft's own guidance for that quarter (midpoint), growth vs the same quarter a year earlier",
+   "latest": "+43% constant currency (Q4 FY26, Jun-26 quarter)",
+   "what": "How fast Microsoft's cloud computing business (Azure) is growing vs the same quarter last year, excluding currency moves.",
+   "why": "Azure is where the AI spending goes (about $175bn of capex planned for calendar 2026, including leases); its growth must stay high to pay that back.",
+   "bull_means": "Azure met or beat Microsoft's own guidance.",
+   "neutral_means": "Azure fell short of guidance by less than 3 points.",
+   "bear_means": "Azure missed Microsoft's own guidance by 3 points or more: the AI payback story is slipping.",
+   "threshold_rule": "Kenneth, 6 Oct 2026: bullish at or above the guide midpoint, bearish 3+ points below it. Jun-26 quarter guide 39-40% -> lines 39.5% / 36.5%. Sep-26 quarter guide ~45% -> lines 45% / 42% when that result is scored (update at each results)."
+  },
+  {
+   "id": "DM4b",
+   "name": "Microsoft 365 Commercial cloud growth (constant currency)",
+   "weight": 3,
+   "source": "Microsoft quarterly results release (on results)",
+   "bullish_if": ">= +15%",
+   "bearish_if": "<= +11%",
+   "measured_against": "same quarter a year earlier",
+   "latest": "+14% constant currency (Q4 FY26); +16% on Microsoft's adjusted basis",
+   "what": "Growth in Microsoft 365 commercial cloud revenue (Office, Teams, Copilot sold to companies) vs a year earlier, excluding currency moves.",
+   "why": "It is Microsoft's most profitable, most recurring revenue, and shows whether Copilot is lifting what customers pay.",
+   "bull_means": "Office is still growing in the mid-teens: price rises and Copilot are working.",
+   "neutral_means": "Office is growing steadily.",
+   "bear_means": "Office growth has slowed: AI is not adding to what customers pay."
+  }
+ ],
+ "dm5": {
+  "id": "DM5",
+  "name": "AWS + Google Cloud combined revenue growth",
+  "weight": 4,
+  "source": "Amazon and Alphabet quarterly results (AWS segment, Google Cloud segment)",
+  "bullish_if": ">= +30%",
+  "bearish_if": "<= +20%",
+  "measured_against": "same calendar quarter a year earlier",
+  "latest": "+50.6% (Q2 2026: $42.2bn + $24.8bn = $67.0bn vs $44.5bn)",
+  "what": "Combined revenue growth of Microsoft's two big cloud rivals, AWS and Google Cloud, vs the same quarter a year earlier.",
+  "why": "It shows whether demand for cloud and AI computing is growing across the whole market, independent of Microsoft's own reporting.",
+  "bull_means": "The whole cloud market is booming (30%+).",
+  "neutral_means": "Cloud demand is growing at a normal pace.",
+  "bear_means": "Cloud demand has slowed to 20% or less, as in the 2023 slowdown."
+ },
+ "overrides": [
+  {
+   "id": "PEERS3",
+   "rule": "Plan step 2: 4-8 peers",
+   "override": "3 peers (cloud only)",
+   "reason": "Kenneth, 5 Oct 2026: Microsoft is valued as a cloud platform, so only the three hyperscale cloud rivals are a like-for-like comparison. Accepted risk: with 3 peers the median is the middle company, so one stale or distorted forecast moves VL1, VL2, VL4 and PT4. Listed under Known defects."
+  }
+ ],
+ "removed_indicators": [],
+ "chains": [
+  {
+   "id": "C1",
+   "trigger": "AI computing boom",
+   "what_changes": "chips, memory and power get scarce and dearer",
+   "business_hit": "capex and depreciation up -> gross margin and free cash flow down",
+   "company_levers": "own chips, long supply contracts, pacing capex to bookings, price rises",
+   "watch": {
+    "name": "Micron (MU) share price (memory-price proxy)",
+    "source": "shared macro MU",
+    "active_if": "up 10%+",
+    "measured_against": "its level one month (20 trading days) earlier"
+   },
+   "status": "Hurting (watch number below trigger)"
+  },
+  {
+   "id": "C2",
+   "trigger": "Inflation / Iran war / oil",
+   "what_changes": "10-year yield and Fed hike odds rise",
+   "business_hit": "valuation multiple compresses (about 25x next-12-month earnings)",
+   "company_levers": "none (acts on the share price)",
+   "watch": {
+    "name": "US 10-year Treasury yield",
+    "source": "shared macro ^TNX",
+    "active_if": "up 0.25 percentage points or more",
+    "measured_against": "its level one month (20 trading days) earlier"
+   },
+   "status": "Active"
+  },
+  {
+   "id": "C3",
+   "trigger": "Strong US dollar",
+   "what_changes": "overseas sales worth fewer dollars",
+   "business_hit": "reported revenue and profit (about half of revenue is outside the US)",
+   "company_levers": "local pricing, hedging",
+   "watch": {
+    "name": "US dollar index",
+    "source": "shared macro DX-Y.NYB",
+    "active_if": "up 2%+",
+    "measured_against": "its level one month (20 trading days) earlier"
+   },
+   "status": "Hurting"
+  },
+  {
+   "id": "C4",
+   "trigger": "OpenAI's fortunes",
+   "what_changes": "OpenAI funding, IPO timing, or moving computing to other clouds",
+   "business_hit": "Azure growth and backlog (OpenAI was about 45% of the backlog at Dec-25; $24.1bn of revenue in FY26, 7.3% of the total); OpenAI stake gains/losses swing GAAP EPS",
+   "company_levers": "diversify models and customers",
+   "watch": {
+    "name": "news scan only",
+    "source": "web search",
+    "active_if": "any OpenAI funding, IPO, contract or cloud-switch news",
+    "measured_against": "-"
+   },
+   "status": "Active"
+  },
+  {
+   "id": "C5",
+   "trigger": "Regulation of cloud and AI bundling",
+   "what_changes": "FTC probe into cloud licensing, Entra ID and Copilot bundling",
+   "business_hit": "cloud licensing terms and Copilot pricing power",
+   "company_levers": "settle, change licensing (as with EU cloud providers 2024-25)",
+   "watch": {
+    "name": "news scan only",
+    "source": "web search",
+    "active_if": "formal complaint, settlement or new EU case",
+    "measured_against": "-"
+   },
+   "status": "Quiet (checked 5 Oct 2026: no complaint filed)"
+  }
+ ],
+ "shareholder_sources": [
+  "Nasdaq institutional holdings (13F)",
+  "Yahoo Finance insiderTransactions (SEC Form 4)",
+  "SEC EDGAR 13D/13G"
+ ],
+ "sec_cik": "0000789019",
+ "splits": [],
+ "index_holders": [
+  "vanguard",
+  "blackrock",
+  "state street",
+  "geode",
+  "northern trust",
+  "norges",
+  "legal & general",
+  "schwab",
+  "dimensional",
+  "morgan stanley",
+  "jpmorgan",
+  "bank of america",
+  "goldman",
+  "ubs",
+  "royal bank",
+  "wells fargo",
+  "invesco",
+  "bank of new york",
+  "amundi",
+  "deutsche",
+  "swiss national",
+  "hsbc",
+  "mitsubishi",
+  "sumitomo",
+  "ameriprise",
+  "nuveen"
+ ],
+ "status": "live",
+ "version": "0.2",
+ "onboarded": "2026-10-05",
+ "mix": {
+  "_note": "Revenue mix (plan section 'Revenue mix', not scored). match = patterns on the row label printed in the SEC filing. Microsoft reports operating income for 3 segments only, so each part shows its segment's operating margin (marked *).",
+  "source": "sec",
+  "basis": "operating",
+  "segments": [
+   {
+    "id": "AZR",
+    "name": "Azure & server products",
+    "match": [
+     "^server products and cloud serv"
+    ],
+    "recurring": "partly",
+    "group": "IC"
+   },
+   {
+    "id": "ENT",
+    "name": "Enterprise & partner services",
+    "match": [
+     "^(enterprise and partner service|other)$",
+     "^enterprise and partner service$"
+    ],
+    "recurring": "partly",
+    "group": "IC"
+   },
+   {
+    "id": "M365",
+    "name": "Microsoft 365 commercial",
+    "match": [
+     "^microsoft commercial products"
+    ],
+    "recurring": "yes",
+    "group": "PBP"
+   },
+   {
+    "id": "LNK",
+    "name": "LinkedIn",
+    "match": [
+     "^linkedin$"
+    ],
+    "recurring": "partly",
+    "group": "PBP"
+   },
+   {
+    "id": "DYC",
+    "name": "Dynamics & Microsoft 365 consumer",
+    "match": [
+     "^(dynamics products and cloud se|microsoft consumer products an)$"
+    ],
+    "recurring": "yes",
+    "group": "PBP"
+   },
+   {
+    "id": "MPC",
+    "name": "Windows, Xbox, search & devices",
+    "match": [
+     "^more personal computing$"
+    ],
+    "recurring": "no",
+    "group": "MPC"
+   }
+  ],
+  "groups": [
+   {
+    "id": "PBP",
+    "name": "Productivity and Business Processes",
+    "match": [
+     "^productivity and business processes$"
+    ]
+   },
+   {
+    "id": "IC",
+    "name": "Intelligent Cloud",
+    "match": [
+     "^intelligent cloud$"
+    ]
+   },
+   {
+    "id": "MPC",
+    "name": "More Personal Computing",
+    "match": [
+     "^more personal computing$"
+    ]
+   }
+  ],
+  "note": "Microsoft reports operating income for its 3 segments only (Productivity and Business Processes, Intelligent Cloud, More Personal Computing), so each part shows its segment's operating margin (*). Windows, Xbox and search are shown together as the More Personal Computing segment because Microsoft renamed the Xbox and search rows in its FY26 annual report, so their Jun-26 quarter cannot be derived separately. Microsoft re-drew its segments in Aug 2024 (restated back to Sep-23); stage D reads the last 8 filings (n=8) so only quarters on the new basis are used."
+ },
+ "_peers_status": "approved by Kenneth 5 Oct 2026: cloud only (3 peers), kept as a logged exception to the plan's 4-8",
+ "drivers": [
+  {
+   "id": "cloud",
+   "name": "Cloud & AI demand",
+   "indicators": [
+    "DM4a",
+    "DM5"
+   ]
+  }
+ ],
+ "_settings_status": "approved by Kenneth 5 Oct 2026 (DM4a Azure 5 pts, DM4b M365 commercial cloud 3 pts, DM5 AWS+Google Cloud 4 pts, no valuation override); 6 Oct 2026 (Kenneth, after adversarial pass): peers stay 3 cloud; DM4a lines tied to Microsoft's guide midpoint (bullish at midpoint, bearish 3+ points below); DM4b stays constant currency; momentum warning flag requested from the Framework chat",
+ "_chains_status": "approved by Kenneth 5 Oct 2026",
+ "stage_d": {
+  "n": 8,
+  "why": "Filings before Oct 2024 mix the pre-Aug-2024 segment basis with restated figures; reading 8 filings gives Sep-23 to latest on one basis. Production task must pass __CFG.n=8 for MSFT (open item for the Framework chat)."
+ },
+ "onboard_price": 525.18,
+ "onboard_date": "2026-10-05",
+ "_onboard_note": "Close at the first staging build (5 Oct 2026): the reference for O6 winner discipline until a positions feed exists.",
+ "promoted": "2026-10-06"
+}

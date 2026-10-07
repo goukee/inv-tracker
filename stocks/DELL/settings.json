@@ -1,0 +1,325 @@
+{
+ "_note": "Per-stock settings for DELL. Pattern: AAPL-US/settings.json. Only this stock's chat edits it.",
+ "code": "DELL",
+ "market": "US",
+ "exchange": "NYSE",
+ "name": "Dell Technologies Inc.",
+ "currency": "USD",
+ "benchmark": {
+  "name": "S&P 500",
+  "symbol": "^GSPC"
+ },
+ "peers": [
+  {
+   "code": "HPE",
+   "name": "Hewlett Packard Enterprise",
+   "why": "Servers (incl. AI), storage and networking to the same enterprise buyers"
+  },
+  {
+   "code": "SMCI",
+   "name": "Super Micro Computer",
+   "why": "Pure AI-server rival for the same GPU-server deals"
+  },
+  {
+   "code": "0992.HK",
+   "name": "Lenovo",
+   "why": "Only rival in both PCs and servers; HKD price vs USD results (see Known defects)"
+  },
+  {
+   "code": "HPQ",
+   "name": "HP Inc",
+   "why": "Main PC rival to Dell's Client Solutions Group"
+  },
+  {
+   "code": "NTAP",
+   "name": "NetApp",
+   "why": "Storage rival to ISG storage"
+  },
+  {
+   "code": "CLS",
+   "name": "Celestica",
+   "why": "Builds AI and networking hardware for the same cloud buyers"
+  },
+  {
+   "code": "2382.TW",
+   "name": "Quanta Computer",
+   "why": "Largest contract maker of AI servers for hyperscalers: the build-it-yourself alternative to Dell"
+  }
+ ],
+ "valuation": {
+  "metric": "forward_pe",
+  "fallback": "trailing_pe",
+  "vl3_basis": "trailing P/E, 5 years (price / last-12-month SEC diluted EPS), labelled"
+ },
+ "dm4": [
+  {
+   "id": "DM4a",
+   "name": "AI server orders",
+   "weight": 4,
+   "source": "Dell quarterly results release (AI-optimized server orders booked; on results)",
+   "bullish_if": ">= +50%",
+   "bearish_if": "<= +15%",
+   "measured_against": "the same 2 quarters a year earlier (sum of the last 2 quarters)",
+   "latest": "+382% (Q1+Q2 FY27 $85.3bn vs Q1+Q2 FY26 $17.7bn)",
+   "what": "New AI server orders Dell booked over the last two quarters vs the same two quarters a year earlier.",
+   "why": "Orders show demand before it becomes revenue; two quarters smooth out single giant deals.",
+   "bull_means": "AI order intake is growing: future revenue is being filled in.",
+   "neutral_means": "AI orders are flat vs a year ago.",
+   "bear_means": "AI orders are shrinking: future AI revenue is at risk.",
+   "_threshold_note": "Raised 6 Oct 2026 (Kenneth, adversarial pass) from +20% / 0% so a slowdown shows before orders actually fall."
+  },
+  {
+   "id": "DM4b",
+   "name": "Commercial PC revenue growth",
+   "weight": 2,
+   "source": "Dell quarterly results release (CSG commercial client revenue; on results)",
+   "bullish_if": ">= +5%",
+   "bearish_if": "<= -3%",
+   "measured_against": "same quarter a year earlier",
+   "latest": "+22% (Q2 FY27, $13.2bn)",
+   "what": "Growth in revenue from PCs sold to businesses and governments vs the same quarter last year.",
+   "why": "About a quarter of Dell's revenue; a demand read that does not depend on AI.",
+   "bull_means": "Businesses are upgrading PCs: the non-AI half of Dell is growing.",
+   "neutral_means": "Business PC sales are roughly flat.",
+   "bear_means": "Business PC sales are shrinking."
+  },
+  {
+   "id": "DM4c",
+   "name": "Storage revenue growth",
+   "weight": 2,
+   "source": "Dell quarterly results release (ISG storage revenue; on results)",
+   "bullish_if": ">= +5%",
+   "bearish_if": "<= 0%",
+   "measured_against": "same quarter a year earlier",
+   "latest": "+26% (Q2 FY27, $4.9bn)",
+   "what": "Growth in Dell's storage revenue vs the same quarter last year.",
+   "why": "Storage is Dell's highest-margin hardware and had been shrinking; growth here lifts profit more than AI servers do.",
+   "bull_means": "Storage is growing: the profitable part of ISG is healthy.",
+   "neutral_means": "Storage is roughly flat.",
+   "bear_means": "Storage is shrinking: a hit to Dell's best margins."
+  }
+ ],
+ "dm5": {
+  "id": "DM5",
+  "name": "Taiwan AI-server makers' monthly sales",
+  "weight": 4,
+  "source": "TWSE MOPS monthly revenue (Quanta 2382, Wistron 3231, Wiwynn 6669), free; published by the 10th of each month",
+  "bullish_if": ">= +50%",
+  "bearish_if": "<= +15%",
+  "measured_against": "the same 3 months a year earlier (combined sales of the three, NT$)",
+  "latest": "+96.8% (Jun-Aug 2026 NT$2,639bn vs NT$1,341bn a year earlier; MOPS, checked 5 Oct 2026)",
+  "what": "Combined monthly sales of Taiwan's three biggest AI-server makers over the last 3 months vs the same months a year earlier.",
+  "why": "They build the servers for the same AI buyers and report monthly, so they show AI demand weeks before Dell's quarterly results.",
+  "bull_means": "AI server building across the industry is growing fast.",
+  "neutral_means": "Industry AI server sales are flat-ish.",
+  "bear_means": "Industry AI server sales are shrinking: an early warning for Dell's AI orders.",
+  "_threshold_note": "Raised 6 Oct 2026 (Kenneth, adversarial pass) from +20% / 0%."
+ },
+ "overrides": [
+  {
+   "id": "DM4a/DM5 lines",
+   "what": "Bullish at +50% or more, bearish at +15% or less (framework default: set per stock)",
+   "reason": "In an AI build-out boom, +20% / 0% lines would read bullish almost regardless of a slowdown; Kenneth, 6 Oct 2026."
+  }
+ ],
+ "removed_indicators": [],
+ "chains": [
+  {
+   "id": "C1",
+   "trigger": "AI boom",
+   "what_changes": "memory, flash and CPU prices up",
+   "business_hit": "cost of PCs, servers and storage up -> margin squeeze or price rises that dent PC demand",
+   "company_levers": "fast repricing, configuring around shortages, long-term supply deals",
+   "watch": {
+    "name": "Micron share price (MU)",
+    "source": "shared macro (MU)",
+    "active_if": "up 10%+",
+    "measured_against": "its level 20 trading days earlier"
+   },
+   "status": "Hurting + Company responding"
+  },
+  {
+   "id": "C2",
+   "trigger": "AI customers' funding tightens",
+   "what_changes": "neoclouds and AI labs delay or cancel GPU-server orders",
+   "business_hit": "AI backlog shrinks; unpaid-bill risk",
+   "company_levers": "widen to enterprise buyers (5,000+ AI customers); Dell Financial Services funding",
+   "watch": {
+    "name": "CoreWeave share price (CRWV)",
+    "source": "extraMacro CRWV (Framework chat to add); news scan until then",
+    "active_if": "down 20%+",
+    "measured_against": "its level 20 trading days earlier"
+   },
+   "status": "Active"
+  },
+  {
+   "id": "C3",
+   "trigger": "US tariffs",
+   "what_changes": "Section 232 chip tariffs phase 2; server import exemption under review",
+   "business_hit": "import cost of servers and PCs up -> margin or price",
+   "company_levers": "US/Mexico assembly, pass-through pricing",
+   "watch": {
+    "name": "USD/CNY + news scan",
+    "source": "Yahoo CNY=X (shared macro)",
+    "active_if": "new tariff action, or yuan weakens 2%+",
+    "measured_against": "its level one month earlier"
+   },
+   "status": "Active"
+  },
+  {
+   "id": "C4",
+   "trigger": "Inflation / oil",
+   "what_changes": "10-year yield up",
+   "business_hit": "lower valuation multiple; higher funding costs for AI customers (links to C2)",
+   "company_levers": "none for the multiple; customer financing",
+   "watch": {
+    "name": "US 10-year Treasury yield",
+    "source": "Yahoo ^TNX (shared macro)",
+    "active_if": "up 0.25 percentage points or more",
+    "measured_against": "its level 20 trading days earlier"
+   },
+   "status": "Active"
+  },
+  {
+   "id": "C5",
+   "trigger": "Nvidia generation switch or GPU shortage",
+   "what_changes": "buyers pause orders for the old generation; shipments slip between quarters",
+   "business_hit": "lumpy AI revenue, quarter misses",
+   "company_levers": "early access to new platforms, backlog management",
+   "watch": {
+    "name": "news scan only",
+    "source": "web search",
+    "active_if": "any Nvidia supply problem or generation-switch pause reported",
+    "measured_against": "-"
+   },
+   "status": "Quiet"
+  }
+ ],
+ "shareholder_sources": [
+  "Nasdaq institutional holdings (13F)",
+  "Yahoo Finance insiderTransactions (SEC Form 4)",
+  "SEC EDGAR 13D/13G"
+ ],
+ "status": "live",
+ "version": "0.1",
+ "onboarded": "2026-10-05",
+ "_peers_status": "approved by Kenneth 5 Oct 2026",
+ "_settings_status": "approved by Kenneth 5 Oct 2026 (DM4 4+2+2, DM5 Taiwan AI-server makers); DM4a/DM5 lines raised to +50% / +15% and C2 Active, 6 Oct 2026 (adversarial decisions)",
+ "_chains_status": "approved by Kenneth 5 Oct 2026",
+ "sec_cik": "0001571996",
+ "sec_rev_tag": "Revenues",
+ "_sec_rev_tag_note": "Dell files total revenue under us-gaap:Revenues (the default tag has no quarters). Stage B must run with __CFG.revTag='Revenues'. Open item for the Framework chat: the production task must read this setting (same as NVDA).",
+ "splits": [
+  [
+   "2021-11-01",
+   1.973
+  ]
+ ],
+ "_splits_note": "Not a true split: Yahoo treats the VMware spin-off (1 Nov 2021) as a 1.973-for-1 split and adjusts older prices; listed so old SEC EPS lines up with Yahoo's adjusted prices.",
+ "index_holders": [
+  "vanguard",
+  "blackrock",
+  "state street",
+  "geode",
+  "northern trust",
+  "norges",
+  "legal & general",
+  "schwab",
+  "dimensional",
+  "morgan stanley",
+  "jpmorgan",
+  "bank of america",
+  "goldman",
+  "ubs",
+  "royal bank",
+  "wells fargo",
+  "invesco",
+  "bank of new york",
+  "amundi",
+  "deutsche",
+  "swiss national",
+  "hsbc",
+  "mitsubishi",
+  "sumitomo",
+  "ameriprise",
+  "nuveen"
+ ],
+ "mix": {
+  "_note": "Revenue mix (plan v0.4, not scored). Source set to MANUAL on 6 Oct 2026 (adversarial pass): the engine cannot derive servers & networking for the Jan 2026 quarter from SEC rows (Dell changed the row labels in FY27), although it follows from the filings: ISG minus storage = $14,805m. Quarters are taken from SEC filings (stage D raw, archive/2026-10-05/rawD.txt) into side.json mix.quarters; Q4 = full year minus the first three quarters. Switch back to source 'sec' after Dell's Q3 FY27 10-Q (early Dec 2026) restates Oct 2025, and then split AI servers into their own part. Match patterns kept for that switch.",
+  "source": "manual",
+  "basis": "operating",
+  "segments": [
+   {
+    "id": "SRV",
+    "name": "Servers & networking (incl. AI servers)",
+    "match": [
+     "^servers and networking$",
+     "^(ai optimized servers|traditional servers and networ)"
+    ],
+    "recurring": "no",
+    "group": "ISG"
+   },
+   {
+    "id": "STO",
+    "name": "Storage",
+    "match": [
+     "^storage$"
+    ],
+    "recurring": "partly",
+    "group": "ISG"
+   },
+   {
+    "id": "COM",
+    "name": "Commercial PCs",
+    "match": [
+     "^commercial$"
+    ],
+    "recurring": "no",
+    "group": "CSG"
+   },
+   {
+    "id": "CON",
+    "name": "Consumer PCs",
+    "match": [
+     "^consumer$"
+    ],
+    "recurring": "no",
+    "group": "CSG"
+   }
+  ],
+  "groups": [
+   {
+    "id": "ISG",
+    "name": "Infrastructure Solutions Group (ISG)",
+    "match": [
+     "^infrastructure solutions group$"
+    ]
+   },
+   {
+    "id": "CSG",
+    "name": "Client Solutions Group (CSG)",
+    "match": [
+     "^client solutions group$"
+    ]
+   }
+  ],
+  "note": "Segment operating margin = the segment's operating profit ÷ its revenue, before costs Dell does not allocate (mainly amortisation of purchase intangibles, share-based pay and other corporate costs). Dell reports profit only for ISG and CSG, so servers and storage share ISG's margin, and commercial and consumer PCs share CSG's."
+ },
+ "drivers": [
+  {
+   "id": "ai",
+   "name": "AI build-out",
+   "indicators": [
+    "DM1",
+    "DM2",
+    "DM3",
+    "DM4a",
+    "DM5"
+   ]
+  }
+ ],
+ "onboard_price": 552.29,
+ "onboard_date": "2026-10-05",
+ "_onboard_note": "Price at the first staging build (5 Oct 2026 close): the reference for O6 winner discipline until a positions feed exists.",
+ "promoted": "2026-10-06"
+}

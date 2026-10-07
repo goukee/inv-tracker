@@ -1,0 +1,384 @@
+{
+ "custom": {
+  "DM4a": {
+   "value": 16.8,
+   "period": "Apr-Jun 2026: Search & other $63.27bn vs $54.19bn a year earlier (Alphabet 10-Q, 23 Jul 2026)"
+  },
+  "DM4b": {
+   "value": 81.8,
+   "period": "Apr-Jun 2026: Google Cloud $24.77bn vs $13.62bn a year earlier (Alphabet 10-Q, 23 Jul 2026)"
+  },
+  "DM5": {
+   "value": -0.44,
+   "period": "Sep 2026: 89.94% of worldwide searches vs 90.38% in Sep 2025 (StatCounter)"
+  }
+ },
+ "move": {
+  "class": "Quiet",
+  "direction": "up",
+  "headline": "Up 1.0% on 5 Oct, a normal-sized day; SpaceX shares rose 7.6% the same day",
+  "evidence": [
+   {
+    "d": "5 Oct",
+    "t": "GOOG rose 1.0% to $343.83 while the S&P 500 rose 0.7%: about half of GOOG's typical daily move (2.1% over the last 60 trading days), well below the 2x line, so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
+   {
+    "d": "5 Oct",
+    "t": "SpaceX (SPCX) rose 7.6% to $171.09; Alphabet owns a stake reported at about $94bn, so a rising SPCX lifts the value of what Alphabet holds (chain C3). No Alphabet-specific news found; Q3 results expected 28 Oct (estimated, not yet confirmed).",
+    "kind": "fact",
+    "src": "Yahoo Finance prices; web search, 6 Oct 2026"
+   },
+   {
+    "d": "5 Oct",
+    "t": "The SpaceX jump may explain part of GOOG's rise; no source confirms the cause.",
+    "kind": "speculation",
+    "src": "Yahoo Finance prices"
+   }
+  ]
+ },
+ "earnings": {
+  "past": [
+   {
+    "q": "Jun 2026 quarter (Q2 2026)",
+    "date": "Wed 22 Jul 2026, after the US close (Thu 23 Jul, early morning Singapore)",
+    "vs": "Revenue $119.8bn, +24% vs a year earlier; revenue after partner payouts $103.6bn vs $101.3bn consensus (Zacks; beat by 2.3%). EPS $9.11 reported, but paper gains on equity stakes added $6.26: $2.85 excluding gains vs $2.88 consensus (a 1% miss).",
+    "guide": "No revenue or EPS guidance. 2026 capex raised to $195-205bn (from $180-190bn); a 'significant' further rise in 2027.",
+    "reaction": "−6.9% on 23 Jul vs −1.2% for the S&P 500.",
+    "take": [
+     "<b>Cloud is the story:</b> revenue $24.8bn, +82% vs a year earlier; operating profit $8.8bn vs $2.8bn (35.6% margin); orders not yet billed $514bn, up from about $462bn in Q1.",
+     "<b>Search still growing fast:</b> $63.3bn, +16.8% vs a year earlier (Q1: +19.1%); AI Mode passed 1 billion monthly users.",
+     "<b>Free cash flow turned negative:</b> −$5.9bn (operating cash $39.1bn minus capex $44.9bn), the first negative quarter since the 2004 listing (Parameter, 27 Jul 2026; chain C1).",
+     "<b>No share buybacks</b> in Q1 or Q2 2026 ($0; dividends $2.5-2.7bn a quarter). Instead, on 2 Jun 2026 Alphabet announced an $84.75bn equity raise (new A and C shares, convertible preferred, a $10bn Berkshire Hathaway placement and a $40bn at-the-market share sale programme starting in Q3) to fund AI spending.",
+     "<b>Operating margin 34%</b> vs 32% a year earlier, despite rising depreciation.",
+     "<b>Headline profit is mostly paper gains:</b> net profit $112.1bn includes $98.0bn of other income, mainly SpaceX and Anthropic revaluations (chain C3)."
+    ],
+    "impact": "DM4a and DM4b bullish; analysts raised 2027 forecasts after the call (DM2)."
+   },
+   {
+    "q": "Mar 2026 quarter (Q1 2026)",
+    "date": "Wed 29 Apr 2026, after the US close (Thu 30 Apr, early morning Singapore)",
+    "vs": "Revenue $109.9bn, +22% vs a year earlier; after partner payouts $94.7bn vs $92.2bn consensus (Zacks; beat by 2.7%). EPS $5.11 reported; gains added $2.35, so $2.76 excluding gains vs $2.64 consensus (beat by 4.5%).",
+    "guide": "Capex raised to $180-190bn for 2026.",
+    "reaction": "+10.0% on 30 Apr vs +1.0% for the S&P 500.",
+    "take": [
+     "<b>Cloud above $20bn a quarter</b> for the first time, +63%; operating margin 33% vs 18% a year earlier.",
+     "<b>Cloud orders nearly doubled</b> in one quarter to about $462bn.",
+     "<b>Search +19.1%</b> with queries at an all-time high: the AI-threat fear eased.",
+     "<b>Buybacks stopped</b> ($0) and debt issued to fund capex."
+    ],
+    "impact": "Start of the Cloud re-rating: the week rose 11.9%."
+   }
+  ],
+  "next": [
+   {
+    "q": "Sep 2026 quarter (Q3 2026) results",
+    "date": "Wed 28 Oct 2026, after the US close (Thu 29 Oct, early morning Singapore)",
+    "iso": "2026-10-28",
+    "status": "Estimated (Yahoo; Alphabet has not announced the date)",
+    "watch": [
+     "Cloud growth vs +82% in Q2 (DM4b bearish at +35% or less).",
+     "Search growth vs +16.8% in Q2 (DM4a bearish at +6% or less).",
+     "Free cash flow after Q2's −$5.9bn, and 2027 capex.",
+     "A likely paper loss on the SpaceX stake: SPCX fell 11.7% over the quarter ($170.86 on 30 Jun to $150.86 on 30 Sep), so reported EPS may look weak while operations are fine (chain C3).",
+     "Consensus EPS $3.03 for Q3 (Yahoo; analysts' forecasts exclude investment gains).",
+     "How many new shares the $40bn at-the-market programme sold in Q3 (dilution)."
+    ]
+   },
+   {
+    "q": "Dec 2026 quarter (Q4 2026) results",
+    "date": "Early February 2027",
+    "iso": "2027-02-03",
+    "status": "Estimated (Q4 2025 was released 4 Feb 2026)",
+    "watch": [
+     "2027 capex guidance.",
+     "Full-year 2026 cash conversion: paper gains inflate net profit."
+    ]
+   }
+  ]
+ },
+ "shareholder_notes": [
+  "Founders Larry Page and Sergey Brin control a majority of votes through 10-vote Class B shares; GOOG (Class C) shares carry no vote.",
+  "Figures here are for GOOG (Class C) only: 69.4% of the 5,527m GOOG shares are held by institutions; they also hold Class A (GOOGL).",
+  "Notable buyers last quarter (to 30 Jun 2026): Berkshire Hathaway +23.6m GOOG shares to 27.2m (the 2 Jun equity raise included a $10bn Berkshire private placement; how much of this increase came from it is not disclosed); Norges Bank +29.7%; JPMorgan +15.0%. Notable seller: T. Rowe Price −12.7%.",
+  "Nasdaq still lists an old Vanguard Group line dated 31 Dec 2025, two filing quarters behind the latest (30 Jun 2026); it is left out as stale.",
+  "Yahoo does not mark which insider sales were pre-scheduled trading plans or share-award tax sales, so they cannot be excluded.",
+  "Part of the institutions' increase last quarter is new shares from the 2 Jun equity raise (25.5m new GOOG shares sold publicly, plus the Berkshire placement), not buying from existing holders."
+ ],
+ "chains": [
+  {
+   "id": "C1",
+   "name": "AI spending race",
+   "path": [
+    "AI arms race",
+    "chips, memory, power and data centres scarce",
+    "capex $195-205bn in 2026, about double 2025",
+    "free cash flow negative; depreciation weighs on margins"
+   ],
+   "watch": "MU",
+   "watch_label": "Micron share price (stand-in for AI-hardware tightness)",
+   "active": {
+    "kind": "pct",
+    "t": 10
+   },
+   "status": "Hurting (watch number below its line)",
+   "evidence": [
+    "Micron share price $1,046 on 6 Oct vs $1,000 20 trading days earlier (+4.5%, below the 10% line): the hardware squeeze is no longer accelerating.",
+    "2026 capex guidance raised to $195-205bn on 22 Jul (from $180-190bn); a 'significant' further rise in 2027.",
+    "Q2 2026 free cash flow −$5.9bn (operating cash $39.1bn minus capex $44.9bn): first negative quarter since the 2004 listing.",
+    "Company levers: own TPU chips, Cloud pricing and $514bn of signed Cloud orders; buybacks stopped in 2026 and an $84.75bn equity raise (2 Jun 2026) funds AI capex."
+   ]
+  },
+  {
+   "id": "C2",
+   "name": "Rates squeeze the valuation",
+   "path": [
+    "Iran war, oil",
+    "inflation",
+    "higher bond yields and Fed odds",
+    "valuation of a high-capex growth stock falls; debt-funded capex dearer"
+   ],
+   "watch": "TNX",
+   "watch_label": "US 10-year Treasury yield",
+   "active": {
+    "kind": "pts",
+    "t": 0.25
+   },
+   "status": "Active",
+   "evidence": [
+    "10-year Treasury yield 5.27% on 6 Oct vs 4.81% 20 trading days earlier (+0.46 points, above the 0.25 line).",
+    "Brent crude $100.32 vs $96.28 20 trading days earlier (+4.2%).",
+    "Markets price a 17% chance of a Fed rate rise at the 28 Oct meeting, vs 31% four weeks earlier (Polymarket, 6 Oct close)."
+   ]
+  },
+  {
+   "id": "C3",
+   "name": "SpaceX and Anthropic stake values",
+   "path": [
+    "SpaceX and Anthropic revalued",
+    "stakes marked up or down every quarter",
+    "reported profit and EPS swing by tens of billions",
+    "share price follows SPCX on big days"
+   ],
+   "watch": "",
+   "watch_label": "SpaceX share price (SPCX), 15%+ move vs a month earlier; not yet in the shared macro feed (Framework request)",
+   "active": {
+    "kind": "news",
+    "t": 0
+   },
+   "status": "Active",
+   "evidence": [
+    "SPCX $171.92 on 6 Oct vs $153.47 20 trading days earlier (+12.0%, below the 15% line); the +7.6% jump on 5 Oct is described under 'move'.",
+    "Over Q3, SPCX fell 11.7% ($170.86 on 30 Jun to $150.86 on 30 Sep): on a stake reported at about $94bn, expect a paper loss of roughly $11bn in Q3 other income (estimate; an Anthropic revaluation could offset). The October rebound counts only in Q4.",
+    "Gains on equity stakes added $2.35 to Q1 2026 EPS and $6.26 to Q2 2026 EPS (Alphabet results releases).",
+    "22 Jun 2026 (US trading day): SPCX −16.5% in a day; GOOG closed about 5% lower (Kaohoon International)."
+   ]
+  },
+  {
+   "id": "C4",
+   "name": "Antitrust and regulation",
+   "path": [
+    "US search and ad-tech cases; EU Digital Markets Act",
+    "forced changes to default-search payments and ad-tech rules; fines",
+    "Search revenue and ad-network margins hit"
+   ],
+   "watch": "",
+   "watch_label": "news scan",
+   "active": {
+    "kind": "news",
+    "t": 0
+   },
+   "status": "Active (company responding)",
+   "evidence": [
+    "16 Sep 2026: ad-tech remedies ruling: no forced sale of AdX; Google must open it to rival ad servers under a 6-year compliance monitor; Google is appealing the liability ruling (Reuters via The Star).",
+    "Sep 2025: search remedies: no forced sale of Chrome; default-search payments allowed with conditions. Both cases are under appeal, so the rules could still tighten."
+   ]
+  },
+  {
+   "id": "C5",
+   "name": "Strong dollar",
+   "path": [
+    "strong US dollar",
+    "overseas revenue (about half) worth fewer dollars",
+    "reported revenue and profit growth lower"
+   ],
+   "watch": "DXY",
+   "watch_label": "US dollar index",
+   "active": {
+    "kind": "pct",
+    "t": 2
+   },
+   "status": "Hurting",
+   "evidence": [
+    "Dollar index 101.83 on 6 Oct vs 98.84 20 trading days earlier (+3.0%, above the 2% line).",
+    "Alphabet hedges part of its currency exposure (hedging gains or losses of up to about 0.3% of revenue a quarter since 2023)."
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "d": "2026-10-14",
+   "t": "US inflation (September CPI)",
+   "link": "C2",
+   "note": "Wed 14 Oct, 8:30am ET (8:30pm Singapore)."
+  },
+  {
+   "d": "2026-10-28",
+   "t": "Fed rate decision",
+   "link": "C2",
+   "note": "Markets price a 17% chance of a rise at this meeting (Polymarket, 6 Oct close)."
+  },
+  {
+   "d": "2026-10-28",
+   "t": "Alphabet Q3 results (estimated)",
+   "link": "all",
+   "note": "Not yet confirmed by Alphabet (last year the date was announced on 8 Oct). Same day as the Fed decision."
+  },
+  {
+   "d": "2026-11-01",
+   "t": "StatCounter October search share",
+   "link": "DM5",
+   "note": "Monthly; published in the first days of the month."
+  }
+ ],
+ "lead": "Alphabet is <b>Building history</b> (today's zone: <b>Buy</b>), at <b>+30</b> on a −100 to +100 scale, <b>down from +37</b> on 5 Oct and exactly on the +30 Buy line, because the revenue growth trend, blank yesterday, now has data and reads neutral (12.0% vs a 14.0% average), which pulls Demand to +62 from +80: Search and Cloud are growing fast and analysts are raising forecasts, but the shares cost more than peers on EV/EBITDA and have lagged them for 3 months.",
+ "bullets": [
+  "<b>Demand is strong.</b> Demand scores +62, down from +80: Search & other revenue +16.8% and Google Cloud +81.8% (Apr-Jun 2026 vs a year earlier), both bullish; analysts' 2027 profit forecast $15.17 a share vs $14.53 90 days ago (+4.4%, bullish). Google's search share −0.4 points vs a year earlier (neutral). Revenue growth trend now has data: 12.0% vs a 14.0% average for the prior four quarters (−1.9 points, neutral), which is what lowered the score. Margin trend (DM6) is still blank: see Known defects.",
+  "<b>Valuation is above peers, not extreme.</b> Valuation scores −21: forward P/E 23.8x vs a 20.2x peer median (+18%, neutral); growth-adjusted P/E 1.2 vs 1.1 (+15%, neutral); EV/EBITDA 23.6x vs 17.3x (+36%, bearish).",
+  "<b>Money flows are mixed.</b> Liquidity scores +20: buying volume 1.61x selling volume over 20 days and institutions added +1.15 points of shares (both bullish, though part of the institutional increase is new shares from the June equity raise); the dollar rose 2.99 points in 20 trading days (bearish). Short interest +20.7% in a month scores bearish, which is an engine defect for GOOG (see Known defects).",
+  "<b>Price trend is positive but lagging peers.</b> Price trend scores +44: price $344.59 (+0.22% on the day vs +0.58% for the S&P 500), 2.0% above its 200-day average and the 50-day average 1.4% above the 200-day (both bullish), but the 3-month return is 6.2 points behind the peers (bearish).",
+  "<b>Not confirmed, and sitting on the line.</b> Day 2 of history (2 of 10 trading days recorded): the call needs 7 of the last 10 trading days in one zone. Coverage 97% of the weight left after removals. At +30 it is exactly on the Buy line, so one indicator turning (forecast revisions or relative valuation) would move it into the Hold zone; the revenue growth trend is 0.1 point from turning bearish (−1.9 vs the −2 line). Next test: Q3 results, estimated 28 Oct."
+ ],
+ "defects": [
+  "Staging tab, first built 6 Oct 2026: the call needs 7 of the last 10 trading days in one zone before it is confirmed.",
+  "DM6 (gross margin trend) is blank: Alphabet files no gross-profit line (not filed for 8 quarters). DM1 (revenue growth trend) was also blank until 6 Oct because Alphabet switched the SEC tag it files revenue under in 2025; it now computes (12.0% vs a 14.0% average, neutral). Fix logged for the Framework chat; until then 3 of Demand's 29 points are missing.",
+  "Reported EPS includes large paper gains on equity stakes ($2.35 a share in Q1 2026, $6.26 in Q2). VL3 (trailing P/E vs own history) is removed for this reason; forward P/E uses analysts' forecasts, which exclude the gains.",
+  "Cash conversion (operating cash ÷ net profit) will look weak once full-year 2026 is filed, because net profit includes the paper gains. It needs two weak years to flag.",
+  "DM5 (StatCounter search share) counts search engines only, not questions asked to ChatGPT or other chatbots. A steady share does not prove Search is safe; a falling share would be a strong warning.",
+  "EV/EBITDA does not subtract Alphabet's private and listed stakes (SpaceX about $94bn reported, Anthropic and others), which are in the share price but earn nothing in EBITDA. Allowing for $150-200bn of stakes would still leave GOOG about 28-30% above the peer median, past the 25% bearish line.",
+  "Caution from the 5-year replay: GOOG's price-trend signals had no useful order (Buy days were followed by below-average returns vs the S&P 500). Treat a call driven by price trend as weak evidence.",
+  "Holders and short interest are for GOOG (Class C) shares only.",
+  "LQ2 (short interest) scores bearish (+20.7% in a month) although only about 0.9% of GOOG shares are sold short (51.8m of 5,527m), below the 2% minimum. Yahoo gives no 'share of float' figure for GOOG, so the engine skips the 2% rule. Engine fix requested from the Framework chat; with it, Liquidity would read +40 and the composite about +40.",
+  "LQ3 divides the GOOG-only institutional change (+139.8m shares, Nasdaq) by all Alphabet shares (about 12.2bn, market value ÷ price), so it reads +1.15 points; on GOOG shares alone it is +2.5 points. Both are bullish, but part of the increase is new shares from the 2 Jun equity raise, not buying; without the 25.5m new public GOOG shares it would read +0.93 points on the current base (neutral). Holder percentages on the page are understated about 2.2x for the same reason.",
+  "Revenue mix: the reported parts miss total revenue by up to 0.9% in 2022 because of currency hedging gains, which Alphabet reports outside its revenue lines; shown as Other.",
+  "DM2 uses analysts' 2027 forecast (+4.4% in 90 days). Kenneth decided on 6 Oct that DM2 should use the next 12 months, as the plan says; the Framework chat will change the engine. On that blend (2026 cut 5.2%, 2027 raised 3.7%) DM2 is about +1.8% (neutral), Demand +40 and the composite about +23 (Hold zone). The 2026 forecast covers only 6 analysts.",
+  "The score sits close to the Buy line: DM2 turning neutral, VL1 moving 5 points further above peers (bearish at +25%), or PT1 slipping would each move it into the Hold zone.",
+  "DM4a, DM4b (Search and Cloud growth) and DM5 (search share) are typed in by hand from results and StatCounter; check they are updated after Q3 results (28 Oct, estimated) and each month for DM5."
+ ],
+ "sources": [
+  "Yahoo Finance (prices, consensus, valuation, short interest, insiders)",
+  "SEC EDGAR (reported financials, segment revenue, filings)",
+  "Nasdaq (13F institutional holdings)",
+  "Polymarket (Fed odds)",
+  "Alphabet Q1 and Q2 2026 results releases (SEC 8-K exhibits)",
+  "StatCounter Global Stats (search share)",
+  "Zacks via AP (consensus); Fortune, Shacknews, Parameter, Kaohoon, The Star/Reuters (news)"
+ ],
+ "quality_info": [
+  {
+   "name": "Dilution",
+   "value": "Rising again: on 2 Jun 2026 Alphabet announced an $84.75bn equity raise: 25.5m new Class A and 25.5m new Class C shares, $16.75bn of preferred shares that convert into shares by May 2029, a $10bn Berkshire Hathaway private placement and a $40bn at-the-market programme selling shares from Q3 2026. Together roughly 2% more shares (estimate). Buybacks were $0 in Q1 and Q2 2026.",
+   "source": "Alphabet SEC filing, 2 Jun 2026 (exhibit 99.2); Q1 and Q2 2026 results releases"
+  },
+  {
+   "name": "Customer concentration",
+   "value": "None: no customer is 10%+ of revenue (millions of advertisers and cloud customers).",
+   "source": "Alphabet 10-K 2025"
+  }
+ ],
+ "mix": {
+  "updated": "2026-10-06",
+  "segments": {
+   "SRC": {
+    "sells": "Ads shown next to Google Search results (including AI Overviews and AI Mode), Maps, Gmail and Play Store search.",
+    "buyers": "Advertisers of every size, from retailers and travel firms to banks and insurers, paying per click.",
+    "pos": [
+     "The profit engine: 54.6% of revenue over the last 4 quarters, growing 16.8% vs the 4 quarters before.",
+     "Growth sped up from +11.7% (Q2 2025) to +16.8% (Q2 2026) despite AI chatbots: AI Mode passed 1 billion monthly users.",
+     "Shares the Google Services segment margin of 41.9% (last 4 quarters), vs Alphabet's reported operating margin of 33.1% after costs it does not allocate to segments."
+    ],
+    "neg": [
+     "Most exposed to AI chatbots answering questions without ads (DM5 cannot see chatbot usage).",
+     "Antitrust remedies on default-search payments still under appeal (chain C4).",
+     "Not recurring: ad budgets can be cut quickly in a downturn."
+    ]
+   },
+   "YT": {
+    "sells": "Ads on YouTube videos, Shorts and YouTube on TV screens.",
+    "buyers": "Brand and performance advertisers; competes with TV, Netflix and Meta for ad budgets.",
+    "pos": [
+     "$42.6bn over the last 4 quarters, +11.7% vs the 4 before; Q2 2026 +12.9%.",
+     "YouTube is the most-watched streaming service on US TV screens, pulling TV ad money."
+    ],
+    "neg": [
+     "Growing slower than the company (+20.1%): share of revenue down from 10.3% to 9.6% in a year.",
+     "Cyclical: brand advertising is the first budget cut in a downturn."
+    ]
+   },
+   "NET": {
+    "sells": "Ads Google places on other companies' websites and apps (AdSense, AdMob, Ad Manager).",
+    "buyers": "Advertisers, with most of the money passed on to the website and app owners.",
+    "pos": [
+     "Small and shrinking slowly: 6.6% of revenue, so its decline barely moves the total."
+    ],
+    "neg": [
+     "Shrinking: −2.2% over the last 4 quarters vs the 4 before; its share fell from 10.9% to 6.6% in 3 years.",
+     "Ad-tech remedies (16 Sep 2026) force Google to open AdX to rival ad servers under a 6-year monitor (chain C4).",
+     "Its own margin is not disclosed (it shares the Google Services margin on this page), but most of its revenue is paid out to publishers, so its true margin is likely far lower."
+    ]
+   },
+   "SUB": {
+    "sells": "YouTube Premium and Music, YouTube TV, Google One storage and AI plans, Play Store fees, Pixel phones and devices.",
+    "buyers": "Consumers paying monthly, app developers paying store fees, phone buyers.",
+    "pos": [
+     "Mostly monthly subscriptions: steady and growing 17.9% over the last 4 quarters vs the 4 before.",
+     "Google One AI plans add a way to charge for Gemini directly."
+    ],
+    "neg": [
+     "Includes low-margin hardware (Pixel) and Play Store fees under legal pressure (Epic case).",
+     "Reported inside Google Services, so its own margin is not disclosed (it shares the Services margin on this page)."
+    ]
+   },
+   "CLD": {
+    "sells": "Cloud computing, AI chips (TPUs) and models (Gemini) rented to businesses, plus Workspace (Gmail, Docs for companies).",
+    "buyers": "Large companies, governments and AI labs, often on multi-year contracts.",
+    "pos": [
+     "Fastest-growing part: +57.8% over the last 4 quarters vs the 4 before, +81.8% in Q2 2026.",
+     "Margin up from about 0% (4 quarters to Jun 2023) to 31.3% (last 4 quarters).",
+     "$514bn of signed orders not yet billed, more than 6 times the last 4 quarters' Cloud revenue ($77.6bn)."
+    ],
+    "neg": [
+     "Where the $195-205bn of 2026 capex must earn its return: if growth slows, depreciation will crush the margin (chain C1).",
+     "A few AI labs are large customers; Alphabet does not disclose how much of the backlog they hold.",
+     "Still below the Google Services margin (31.3% vs 41.9%)."
+    ]
+   },
+   "OB": {
+    "sells": "Waymo robotaxis, Verily (health), and other early-stage businesses.",
+    "buyers": "Waymo riders; health and other partners.",
+    "pos": [
+     "Waymo is the leading US robotaxi service: an option on a large market."
+    ],
+    "neg": [
+     "Losing money fast: −$8.9bn operating loss over the last 4 quarters vs −$4.8bn for the 4 before.",
+     "Revenue tiny (0.3% of the total) and not growing (−6.5%)."
+    ]
+   }
+  },
+  "shift": {
+   "title": "What the shift means for Alphabet",
+   "pos": [
+    "Cloud rose from 10.2% to 17.4% of revenue in 3 years (last 4 quarters vs the 4 quarters to Jun 2023), and its margin from about 0% to 31.3%.",
+    "Alphabet's reported operating margin rose from 25.7% to 33.1% over the same 3 years (after costs not allocated to segments).",
+    "Less dependent on the declining Network business (10.9% → 6.6% of revenue)."
+   ],
+   "neg": [
+    "Search is still 54.6% of revenue and most of the profit: the AI-chatbot risk is concentrated in one part.",
+    "Cloud's margin (31.3%) is below Services' (41.9%), so as Cloud grows the mix alone slightly pulls the company margin down.",
+    "Other Bets losses nearly doubled in a year (−$8.9bn vs −$4.8bn, last 4 quarters)."
+   ]
+  },
+  "quarters": []
+ }
+}
