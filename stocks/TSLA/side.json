@@ -16,8 +16,14 @@
  "move": {
   "class": "Quiet",
   "direction": "up",
-  "headline": "Up 4.7% after Q3 deliveries beat forecasts; still a normal-sized day for Tesla",
+  "headline": "Down 0.75% today, a quiet day for Tesla; the 2 Oct delivery beat is still the latest news",
   "evidence": [
+   {
+    "d": "7 Oct",
+    "t": "TSLA fell 0.75% while the S&P 500 fell 0.22%: about a quarter of Tesla's typical daily move (3.1% over the last 60 trading days), so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
    {
     "d": "2 Oct",
     "t": "TSLA rose 4.7% while the S&P 500 rose 0.7%: about 1.5 times Tesla's typical daily move (3.1% over the last 60 trading days), below the 2x line, so no classification is triggered.",
@@ -139,7 +145,7 @@
    },
    "status": "Hurting + Company responding",
    "evidence": [
-    "Micron share price $1,075 on 2 Oct vs $958 20 trading days earlier (+12.2%, above the 10% line).",
+    "Micron share price $1,088 on 7 Oct vs $1,028 20 trading days earlier (+5.9%, under the 10% line).",
     "Q2 capex $5.79bn (+142% vs a year earlier); 2026 guided above $25bn vs $8.5bn in 2025; free cash flow −$1.09bn (22 Jul).",
     "Company responding: multi-year memory allocation from Micron on 'reasonable terms' (Musk, 22 Jul; terms not disclosed).",
     "Battery pack capacity named the main limit on near-term vehicle volume (Q2 call)."
@@ -162,10 +168,10 @@
    },
    "status": "Active",
    "evidence": [
-    "10-year Treasury yield 5.28% on 2 Oct vs 4.76% 20 trading days earlier (+0.52 points, above the 0.25 line).",
-    "Markets price an 18% chance of a Fed rate rise at the late-October meeting, vs 28% four weeks earlier (Polymarket, 2 Oct close).",
+    "10-year Treasury yield 5.28% on 7 Oct vs 4.84% 20 trading days earlier (+0.44 points, above the 0.25 line).",
+    "Markets price a 16% chance of a Fed rate rise at the late-October meeting, vs 31% four weeks earlier (Polymarket, 7 Oct).",
     "Further out, markets price about a 69% chance of a rise at the December meeting and about 80% of at least one more rise in 2026 (prediction markets, 27 Sep).",
-    "Tesla's earnings yield (next-12-month expected profit as a % of the price, the inverse of its 185.9x forward P/E) is about 0.5%, vs 5.24% on the 10-year Treasury: the price rests almost entirely on long-dated growth, the part most sensitive to yields."
+    "Tesla's earnings yield (next-12-month expected profit as a % of the price, the inverse of its 184.2x forward P/E) is about 0.5%, vs 5.28% on the 10-year Treasury: the price rests almost entirely on long-dated growth, the part most sensitive to yields."
    ]
   },
   {
@@ -185,7 +191,7 @@
    },
    "status": "Quiet",
    "evidence": [
-    "Brent crude $102.70 on 2 Oct vs $95.52 20 trading days earlier (+7.5%, under the 10% line).",
+    "Brent crude $100.58 on 6 Oct vs $97.92 20 trading days earlier (+2.7%, under the 10% line).",
     "Tesla's CFO said soaring petrol prices partly drove its highest first-quarter order backlog in two years (22 Apr).",
     "Q2 deliveries 480,126, +25% vs a year earlier, the fastest growth in over two years and a Q2 record (2 Jul).",
     "Does it always work? Only while fuel stays dear for months; a quick fall in oil (e.g. a ceasefire) would remove the tailwind."
@@ -279,23 +285,23 @@
    "d": "2026-10-28",
    "t": "Fed rate decision",
    "link": "C2",
-   "note": "Markets price an 18% chance of a rise in October (Polymarket, 2 Oct close) and about 69% for December (27 Sep)."
+   "note": "Markets price a 16% chance of a rise in October (Polymarket, 7 Oct) and about 69% for December (27 Sep)."
   }
  ],
  "valuation_plain": [],
- "lead": "Tesla is <b>Building history</b> (today's zone: <b>Sell</b>), at <b>−37</b> on a −100 to +100 scale, 7 points below the −30 Sell line and unchanged at −37 from 5 Oct (up from −54 on 2 Oct): no bucket score moved today, Q3 deliveries were flat, China sales are falling and the shares cost about 12 times the peer median on expected profit, while the price trend stayed improved after the shares rose. Caution: on Tesla, past Sell readings driven by price trend often came near lows.",
+ "lead": "Tesla is <b>Building history</b> (today's zone: <b>Sell</b>), at <b>−37</b> on a −100 to +100 scale, 7 points below the −30 Sell line and unchanged at −37 from 6 Oct (up from −54 on 2 Oct): no bucket score moved today, Q3 deliveries were flat, China sales are falling and the shares cost about 12 times the peer median on expected profit, while the price trend stayed improved from 2 Oct even though the shares slipped 0.75% today. Caution: on Tesla, past Sell readings driven by price trend often came near lows.",
  "bullets": [
-  "<b>Demand has turned slightly negative.</b> Demand scores −11: Q3 deliveries −2.1% and storage deployed +9.6% (Jul-Sep vs a year earlier), both neutral; Tesla's China retail sales −18.2% (Jun-Aug vs a year earlier, bearish); analysts' 2027 profit forecast $2.14 a share vs $2.56 90 days ago (−16.3%, bearish). Still positive: revenue grew 25.5% in the June quarter vs a year earlier against a 3.1% average for the prior four, and gross margin was 18.6% over the last 4 quarters vs 17.5% for the 4 a year earlier (one-offs removed).",
-  "<b>Valuation is extreme on every measure.</b> Valuation scores −100: forward P/E 185.9x vs a 15.3x peer median (+1,111%, down from +1,203% on 5 Oct); growth-adjusted P/E 4.5 vs 1.2 (+265%); EV/EBITDA 137.2x vs 20.3x (+577%); trailing P/E 352.5x vs its own median of 215.8x (+63%; only about 2 years of history, see Known defects). The market is paying for robotaxis, robots and energy, not today's car profits.",
-  "<b>Money flows are mixed.</b> Liquidity scores 0: buying vs selling volume 1.03x over 20 days (neutral); funds added a net 1.21% of shares last quarter (bullish); the dollar index rose 2.99 points in 20 trading days (bearish); the market's net odds of a Fed cut vs a rise at the next meeting moved 11.3 points towards a cut vs four weeks earlier (neutral; now 1% cut vs 17% rise, a month ago 4% vs 31%); only 1.9% of tradable shares are sold short, below the 2% floor.",
-  "<b>The price trend is still −32 and negative.</b> Price trend scores −32 (−100 on 2 Oct, unchanged from 5 Oct): the price is 2.9% below its 200-day average (neutral), the 50-day average is 10.7% below the 200-day (bearish), and the 3-month return trails the peers by 0.2 points (neutral). The shares closed at $380.68, +0.51% on the day vs +0.58% for the S&P 500, and are up 7.9% over 5 trading days.",
-  "<b>Not confirmed: day 3 of 10.</b> The call needs 7 of 10 trading days in one zone. The score rose from −54 (2 Oct) to −37 (5 Oct) because the price rose: the 200-day-average and peer-relative-strength readings both moved from bearish to neutral. It stayed at −37 on 6 Oct."
+  "<b>Demand has turned slightly negative.</b> Demand scores −11: Q3 deliveries −2.1% and storage deployed +9.6% (Jul-Sep vs a year earlier), both neutral; Tesla's China retail sales −18.2% (Jun-Aug vs a year earlier, bearish); analysts' 2027 profit forecast $2.15 a share vs $2.57 90 days ago (−16.7%, bearish). Still positive: revenue grew 25.5% in the June quarter vs a year earlier against a 3.1% average for the prior four, and gross margin was 18.6% over the last 4 quarters vs 17.5% for the 4 a year earlier (one-offs removed).",
+  "<b>Valuation is extreme on every measure.</b> Valuation scores −100: forward P/E 184.2x vs a 15.3x peer median (+1,107%, down from +1,111% on 6 Oct); growth-adjusted P/E 4.5 vs 1.2 (+267%); EV/EBITDA 136.2x vs 20.1x (+578%); trailing P/E 349.8x vs its own median of 215.8x (+62%; only about 2 years of history, see Known defects). The market is paying for robotaxis, robots and energy, not today's car profits.",
+  "<b>Money flows are mixed.</b> Liquidity scores 0: buying vs selling volume 1.06x over 20 days (neutral); funds added a net 1.20% of shares last quarter (bullish); the dollar index rose 2.99 points in 20 trading days (bearish); the market's net odds of a Fed cut vs a rise at the next meeting moved 12.5 points towards a cut vs four weeks earlier (neutral; now 1% cut vs 16% rise, a month ago 4% vs 31%); only 1.9% of tradable shares are sold short, below the 2% floor.",
+  "<b>The price trend is still −32 and negative.</b> Price trend scores −32 (−100 on 2 Oct, unchanged from 6 Oct): the price is 3.5% below its 200-day average (neutral), the 50-day average is 10.2% below the 200-day (bearish), and the 3-month return trails the peers by 3.2 points (neutral). The shares closed at $377.81, −0.75% on the day vs −0.22% for the S&P 500, and are up 6.5% over 5 trading days.",
+  "<b>Not confirmed: day 4 of 10.</b> The call needs 7 of 10 trading days in one zone. The score rose from −54 (2 Oct) to −37 (5 Oct) because the price rose: the 200-day-average and peer-relative-strength readings both moved from bearish to neutral. It stayed at −37 on 6 Oct and 7 Oct."
  ],
  "defects": [
   "Live from 4 Oct 2026 (promoted from staging; history starts fresh on production): the call needs 7 of the last 10 trading days in one zone before it is confirmed.",
   "Caution from the 5-year replay: on Tesla, Sell and Strong Sell days were followed by its best returns, +23 to +28 points vs the S&P 500 over the next 6 months, beating it on about 7 in 10 days. Tesla swings so hard that a trend-following score turns Sell near lows. Treat a Sell reading driven by price trend as weak evidence on its own.",
-  "Nvidia's +19.8% over 3 months pulls the peer average up: without it, the 3-month comparison (PT4) would be neutral, but the composite would still be in the Sell zone (about −47). Kenneth chose to keep all 8 peers (3 Oct).",
-  "Market data, macro and price: 2 Oct close. SEC financials, holders and the revenue mix reuse the 1 Oct collection (no new filings since 23 Jul).",
+  "Nvidia's +17.2% over 3 months pulls the peer average up: with all 8 peers Tesla trails by 3.2 points (neutral); without Nvidia it would be roughly level with the other seven (also neutral). The earlier composite estimate without Nvidia (about −47) has not been recomputed for today. Kenneth chose to keep all 8 peers (3 Oct).",
+  "Market data, macro and price: 7 Oct close (dollar index, yuan and Brent at 6 Oct). SEC financials, holders and the revenue mix reuse the 1 Oct collection (no new filings since 23 Jul).",
   "DM3 (guidance vs expectations) is removed: Tesla gives no numeric next-quarter guidance.",
   "Valuation vs own history (VL3) uses trailing P/E: free forward P/E history is too short. Trailing earnings include a ~$1bn gain on Tesla's SpaceX shares in Q2 2026, which flatters the last-12-month EPS.",
   "DM5 counts China retail only (exports from Shanghai now excluded, Kenneth 3 Oct); monthly figures can swing with export timing and model changeovers.",

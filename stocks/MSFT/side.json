@@ -24,23 +24,23 @@
  "move": {
   "class": "Quiet",
   "direction": "up",
-  "headline": "A normal-sized gain after a strong three months",
+  "headline": "A tiny gain after a strong three months",
   "evidence": [
    {
-    "d": "6 Oct",
-    "t": "Microsoft rose 0.78% while the S&P 500 rose 0.58%. A typical day's move over the last 60 days is about 2.5%, so no classification is triggered.",
+    "d": "7 Oct",
+    "t": "Microsoft rose 0.09% while the S&P 500 fell 0.22%. A typical day's move over the last 60 days is about 2.5%, so no classification is triggered.",
     "kind": "fact",
     "src": "Yahoo Finance prices"
    },
    {
     "d": "Last 3 months",
-    "t": "Up 38.3% over the last 3 months; the 15.5% jump on 30 Jul after Azure grew 43% is the main driver.",
+    "t": "Up 38.1% over the last 3 months; the 15.5% jump on 30 Jul after Azure grew 43% is the main driver.",
     "kind": "fact",
     "src": "Yahoo Finance prices; Ringside (30 Jul)"
    },
    {
     "d": "No dated news",
-    "t": "No Microsoft-specific news found for 6 Oct; results are expected on 28 Oct (not yet confirmed).",
+    "t": "No Microsoft-specific news found at the 6 Oct check (not re-checked for 7 Oct); results are expected on 28 Oct (not yet confirmed).",
     "kind": "fact",
     "src": "web search, 6 Oct"
    }
@@ -134,7 +134,7 @@
    },
    "status": "Hurting",
    "evidence": [
-    "Watch number below its trigger: Micron $1,045.56 at the 6 Oct close vs $1,000.26 20 trading days earlier (+4.5%; active at +10%). The strain shows in Microsoft's own figures instead:",
+    "Watch number below its trigger: Micron $1,088.00 at the 7 Oct close vs $1,027.77 20 trading days earlier (+5.9%; active at +10%). The strain shows in Microsoft's own figures instead:",
     "Capex $41bn in the June quarter including finance leases; $50bn+ guided for September (Microsoft, 29 Jul). Cash capex in FY26 was $116.0bn vs operating cash $182.9bn (SEC 10-K).",
     "Gross margin 67.2% in the June quarter vs 68.6% a year earlier; FY27 operating margin guided down by less than 1 point (29 Jul).",
     "Company responding: own chips; capacity still short of demand (29 Jul)."
@@ -157,7 +157,7 @@
    },
    "status": "Active",
    "evidence": [
-    "10-year yield 5.27% at the 6 Oct close vs 4.81% 20 trading days earlier (+0.46 points; active at +0.25). Brent oil $100.3 vs $96.3 (shared macro).",
+    "10-year yield 5.28% at the 7 Oct close vs 4.84% 20 trading days earlier (+0.44 points; active at +0.25). Brent oil $100.6 vs $97.9 (6 Oct close, shared macro).",
     "6 of Microsoft's 10 worst weeks in the last 5 years were driven by inflation or Fed news (past big moves check, 5 Oct)."
    ]
   },
@@ -227,7 +227,7 @@
    "d": "2026-10-28",
    "t": "Fed rate decision",
    "link": "C2",
-   "note": "Polymarket (6 Oct close): 17% chance of a rise vs 31% 28 days earlier; under 1% chance of a cut. Decision 2pm ET Wed 28 Oct (2am Thu 29 Oct Singapore), the same day as Microsoft's expected results."
+   "note": "Polymarket (7 Oct): 16% chance of a rise vs 31% 28 days earlier; under 1% chance of a cut. Decision 2pm ET Wed 28 Oct (2am Thu 29 Oct Singapore), the same day as Microsoft's expected results."
   },
   {
    "d": "2026-10-28",
@@ -237,20 +237,20 @@
   }
  ],
  "valuation_plain": [],
- "lead": "Microsoft is <b>Building history</b> (today's zone: <b>Buy</b>), at <b>+39</b> on a −100 to +100 scale, up from +33 on 5 Oct and 9 points above the Buy line, mainly because the liquidity score rose from −13 to +27 (buying volume on up days now outweighs selling volume on down days, and the chance of a Fed rate rise fell): cloud demand and the share-price trend are strong, but the stock costs more than its cloud peers and the dollar is working against it. Caution: over the last 5 years, Buy readings driven by Microsoft's price trend were followed by it lagging the S&P 500 by 8-14 points over the next 6 months.",
+ "lead": "Microsoft is <b>Building history</b> (today's zone: <b>Buy</b>), at <b>+39</b> on a −100 to +100 scale, unchanged from +39 on 6 Oct (up from +33 on 5 Oct) and 9 points above the Buy line. The 6 Oct jump came from the liquidity score rising from −13 to +27 (buying volume on up days outweighs selling volume on down days, and the chance of a Fed rate rise fell); it held at +27 today: cloud demand and the share-price trend are strong, but the stock costs more than its cloud peers and the dollar is working against it. Caution: over the last 5 years, Buy readings driven by Microsoft's price trend were followed by it lagging the S&P 500 by 8-14 points over the next 6 months.",
  "bullets": [
-  "<b>Demand is strong but not universal.</b> Demand scores +49: Azure grew 43% in the June quarter vs a year earlier, excluding currency, beating Microsoft's own 39-40% guide (bullish at the guide midpoint, 39.5%; the September guide is about 45%), and AWS plus Google Cloud together grew 50.6% (line: 30%). Analysts' EPS forecast for the year to June 2028 is up 4.8% in 90 days ($23.68 vs $22.60); measured over the next 12 months as the plan intends, it would be about +2.8% and neutral (engine fix pending). Neutral: Microsoft 365 commercial cloud +14% excluding currency (line: 15%), revenue +17.7% vs a 17.9% average for the prior four quarters, gross margin 67.9% over the last 4 quarters vs 68.8% for the 4 before, and September guidance (+16.4%) only 0.9 points above the +15.5% expected.",
-  "<b>It is dearer than its cloud peers.</b> Valuation scores −28 (unchanged): 25.4x next-12-month earnings vs 21.3x for the median of Amazon, Alphabet and Oracle (+19%; expensive only at +25%), 38% above them after allowing for growth (1.7 vs 1.2), and 20% above on EV/EBITDA (20.5x vs 17.1x). Against its own history it is not expensive: 29.5x last-12-month earnings vs a 33.9x 5-year median (−13%), though a one-off OpenAI gain flatters last-12-month earnings.",
-  "<b>The price trend is as strong as it gets, and that is the least reliable part.</b> Price trend scores +100 (unchanged): $529.30 is 22.1% above its 200-day average, the 50-day average is 13.9% above the 200-day, and the 3-month return is 36.8 points ahead of the three cloud peers. In the 5-year replay, Microsoft's Buy readings were followed by it lagging the S&P 500 by 8-14 points over 6 months.",
-  "<b>The money backdrop has improved to mildly positive.</b> Liquidity scores +27, up from −13: up-day vs down-day volume is now 1.34x (bullish above 1.3x; it was 1.12x and balanced yesterday). Still against it, the dollar index is 2.99 points higher than 20 trading days earlier (bearish at +1). Markets price a 17% chance of a Fed rate rise on 28 Oct, down from 31% a month earlier (an 11.3-point shift, below the 15 points needed to count; a cut is priced at under 1%). Only 0.9% of shares are sold short, too little to count.",
-  "<b>No call yet; 28 Oct results are the test.</b> Day 2 of history: a call needs 7 of the last 10 trading days in one zone (2 of 10 recorded; today reads Buy). None of the automatic quality checks is flagged: free cash flow $67.0bn over the 12 months to Jun 2026, though that figure leaves out data centres leased on finance leases (lower once they are counted), and interest cover 50.9x. Results are expected on 28 Oct, the same day as the Fed decision."
+  "<b>Demand is strong but not universal.</b> Demand scores +49 (unchanged): Azure grew 43% in the June quarter vs a year earlier, excluding currency, beating Microsoft's own 39-40% guide (bullish at the guide midpoint, 39.5%; the September guide is about 45%), and AWS plus Google Cloud together grew 50.6% (line: 30%). Analysts' EPS forecast for the year to June 2028 is up 4.9% in 90 days ($23.68 vs $22.58, was +4.8% yesterday); measured over the next 12 months as the plan intends, it was about +2.8% and neutral on 6 Oct (not recomputed today; engine fix pending). Neutral: Microsoft 365 commercial cloud +14% excluding currency (line: 15%), revenue +17.7% vs a 17.9% average for the prior four quarters, gross margin 67.9% over the last 4 quarters vs 68.8% for the 4 before, and September guidance (+16.4%) only 0.9 points above the +15.5% expected.",
+  "<b>It is dearer than its cloud peers.</b> Valuation scores −28 (unchanged): 25.4x next-12-month earnings vs 21.5x for the median of Amazon, Alphabet and Oracle (+18%; expensive only at +25%), 39% above them after allowing for growth (1.7 vs 1.2), and 18% above on EV/EBITDA (20.5x vs 17.4x). Against its own history it is not expensive: 29.5x last-12-month earnings vs a 33.9x 5-year median (−13%), though a one-off OpenAI gain flatters last-12-month earnings.",
+  "<b>The price trend is as strong as it gets, and that is the least reliable part.</b> Price trend scores +100 (unchanged): $529.76 is 22.2% above its 200-day average, the 50-day average is 14.4% above the 200-day, and the 3-month return is 37.1 points ahead of the three cloud peers. In the 5-year replay, Microsoft's Buy readings were followed by it lagging the S&P 500 by 8-14 points over 6 months.",
+  "<b>The money backdrop stays mildly positive.</b> Liquidity scores +27, unchanged from 6 Oct (up from −13 on 5 Oct): up-day vs down-day volume is now 1.54x (bullish at 1.3x or higher; 1.34x yesterday). Still against it, the dollar index is 2.99 points higher than 20 trading days earlier (bearish at +1). Markets price a 16% chance of a Fed rate rise on 28 Oct, down from 31% a month earlier (a 12.5-point shift towards cuts, below the 15 points needed to count; a cut is priced at under 1%). Only 0.9% of shares are sold short, too little to count.",
+  "<b>No call yet; 28 Oct results are the test.</b> Day 3 of history: a call needs 7 of the last 10 trading days in one zone (3 of 10 recorded; today reads Buy). None of the automatic quality checks is flagged: free cash flow $67.0bn over the 12 months to Jun 2026, though that figure leaves out data centres leased on finance leases (lower once they are counted), and interest cover 50.9x. Results are expected on 28 Oct, the same day as the Fed decision."
  ],
  "defects": [
   "Revenue mix: the last 363 characters of the SEC segment file were rebuilt after a browser disconnect; an independent check (6 Oct) found them identical, value for value, to an earlier full download.",
-  "Staging build, second day of history: the call needs 10 trading days of scores before it can be confirmed.",
-  "Earnings-forecast revisions (DM2) use only the year to June 2028, not the next 12 months the plan asks for. On a 12-month blend the revision is about +2.8% (neutral), which would put today's score in the Hold zone. Engine fix requested from the Framework chat.",
+  "Staging build, third day of history: the call needs 10 trading days of scores before it can be confirmed.",
+  "Earnings-forecast revisions (DM2) use only the year to June 2028, not the next 12 months the plan asks for. On a 12-month blend the revision was about +2.8% on 6 Oct (neutral), which would have put the score in the Hold zone. Engine fix requested from the Framework chat.",
   "The 90-day window for earnings-forecast revisions (DM2) includes 29 Jul, when Microsoft changed its data-centre accounting, so part of the forecast rise may be accounting rather than business.",
-  "Peer median is pulled down by one-off 2026 investment gains at Alphabet ($99bn in the June quarter alone) and Amazon. On 2027 forecasts alone Microsoft's premium to the peers is about +11%, not +19%.",
+  "Peer median is pulled down by one-off 2026 investment gains at Alphabet ($99bn in the June quarter alone) and Amazon. On 2027 forecasts alone Microsoft's premium to the peers is about +11%, not +18%.",
   "From the Sep-26 quarter more data-centre leases count as operating leases: reported capex falls and lease payments move into operating cash, so capex, free cash flow and margin comparisons with earlier quarters are not like-for-like. Free cash flow here excludes finance-lease data centres.",
   "Peer set is 3 cloud companies (Kenneth, 5 Oct), below the plan's 4-8: the median is the middle company, so one stale or distorted forecast moves VL1, VL2, VL4 and PT4.",
   "Valuation vs own history (VL3) uses trailing P/E on GAAP EPS, which includes OpenAI gains and losses: the last 12 months include +$0.68 net (about 4%), so trailing P/E is about 4% too low.",
@@ -261,8 +261,8 @@
   "Insider sales cannot be split into pre-scheduled plan sales and others.",
   "Microsoft 365 commercial cloud (DM4b) uses the constant-currency figure (14%), not Microsoft's adjusted 16%.",
   "Insider table covers the last 6 months only (Yahoo), so earlier purchases are not shown.",
-  "Own-history P/E (VL3): the reading is 1 point from bullish, but a one-off OpenAI gain in the Dec-25 quarter flatters last-12-month earnings; without it the reading is about -9% to -10%. The template's fixed sentence ('upper end when above +15%') does not fit a -14% reading (Framework fix requested).",
-  "The large 'Buy' heading shows today's zone, not a confirmed call (day 2 of 10); the plan's wording is 'No confirmed call' (Framework fix requested)."
+  "Own-history P/E (VL3): the reading (−13%) is 2 points from bullish, but a one-off OpenAI gain in the Dec-25 quarter flatters last-12-month earnings; without it the reading is about -9% to -10%. The template's fixed sentence ('upper end when above +15%') does not fit a -13% reading (Framework fix requested).",
+  "The large 'Buy' heading shows today's zone, not a confirmed call (day 3 of 10); the plan's wording is 'No confirmed call' (Framework fix requested)."
  ],
  "sources": [
   "Yahoo Finance (prices, consensus, valuation, short interest, insiders)",

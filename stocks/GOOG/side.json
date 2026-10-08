@@ -16,23 +16,23 @@
  "move": {
   "class": "Quiet",
   "direction": "up",
-  "headline": "Up 1.0% on 5 Oct, a normal-sized day; SpaceX shares rose 7.6% the same day",
+  "headline": "Up 0.8% on 7 Oct, a normal-sized day; SpaceX shares fell 2.5% the same day",
   "evidence": [
    {
-    "d": "5 Oct",
-    "t": "GOOG rose 1.0% to $343.83 while the S&P 500 rose 0.7%: about half of GOOG's typical daily move (2.1% over the last 60 trading days), well below the 2x line, so no classification is triggered.",
+    "d": "7 Oct",
+    "t": "GOOG rose 0.8% to $347.37 while the S&P 500 fell 0.2%: about 40% of GOOG's typical daily move (2.1% over the last 60 trading days), well below the 2x line, so no classification is triggered.",
     "kind": "fact",
     "src": "Yahoo Finance prices"
    },
    {
-    "d": "5 Oct",
-    "t": "SpaceX (SPCX) rose 7.6% to $171.09; Alphabet owns a stake reported at about $94bn, so a rising SPCX lifts the value of what Alphabet holds (chain C3). No Alphabet-specific news found; Q3 results expected 28 Oct (estimated, not yet confirmed).",
+    "d": "7 Oct",
+    "t": "SpaceX (SPCX) fell 2.5% to $167.60 (from $171.92 on 6 Oct); Alphabet owns a stake reported at about $94bn, so a falling SPCX lowers the value of what Alphabet holds (chain C3). Q3 results expected 28 Oct (estimated, not yet confirmed).",
     "kind": "fact",
-    "src": "Yahoo Finance prices; web search, 6 Oct 2026"
+    "src": "Yahoo Finance prices"
    },
    {
-    "d": "5 Oct",
-    "t": "The SpaceX jump may explain part of GOOG's rise; no source confirms the cause.",
+    "d": "7 Oct",
+    "t": "SpaceX fell on the day, so it does not explain GOOG's rise; no source confirms the cause.",
     "kind": "speculation",
     "src": "Yahoo Finance prices"
    }
@@ -124,7 +124,7 @@
    },
    "status": "Hurting (watch number below its line)",
    "evidence": [
-    "Micron share price $1,046 on 6 Oct vs $1,000 20 trading days earlier (+4.5%, below the 10% line): the hardware squeeze is no longer accelerating.",
+    "Micron share price $1,088 on 7 Oct vs $1,028 20 trading days earlier (+5.9%, below the 10% line): the hardware squeeze is no longer accelerating.",
     "2026 capex guidance raised to $195-205bn on 22 Jul (from $180-190bn); a 'significant' further rise in 2027.",
     "Q2 2026 free cash flow −$5.9bn (operating cash $39.1bn minus capex $44.9bn): first negative quarter since the 2004 listing.",
     "Company levers: own TPU chips, Cloud pricing and $514bn of signed Cloud orders; buybacks stopped in 2026 and an $84.75bn equity raise (2 Jun 2026) funds AI capex."
@@ -147,9 +147,9 @@
    },
    "status": "Active",
    "evidence": [
-    "10-year Treasury yield 5.27% on 6 Oct vs 4.81% 20 trading days earlier (+0.46 points, above the 0.25 line).",
-    "Brent crude $100.32 vs $96.28 20 trading days earlier (+4.2%).",
-    "Markets price a 17% chance of a Fed rate rise at the 28 Oct meeting, vs 31% four weeks earlier (Polymarket, 6 Oct close)."
+    "10-year Treasury yield 5.28% on 7 Oct vs 4.84% 20 trading days earlier (+0.44 points, above the 0.25 line).",
+    "Brent crude $100.58 vs $97.92 20 trading days earlier (+2.7%).",
+    "Markets price a 16% chance of a Fed rate rise at the 28 Oct meeting, vs 31% four weeks earlier (Polymarket, 7 Oct close)."
    ]
   },
   {
@@ -169,7 +169,7 @@
    },
    "status": "Active",
    "evidence": [
-    "SPCX $171.92 on 6 Oct vs $153.47 20 trading days earlier (+12.0%, below the 15% line); the +7.6% jump on 5 Oct is described under 'move'.",
+    "SPCX $167.60 on 7 Oct vs $147.55 20 trading days earlier (+13.6%, below the 15% line); the 2.5% fall on 7 Oct is described under 'move'.",
     "Over Q3, SPCX fell 11.7% ($170.86 on 30 Jun to $150.86 on 30 Sep): on a stake reported at about $94bn, expect a paper loss of roughly $11bn in Q3 other income (estimate; an Anthropic revaluation could offset). The October rebound counts only in Q4.",
     "Gains on equity stakes added $2.35 to Q1 2026 EPS and $6.26 to Q2 2026 EPS (Alphabet results releases).",
     "22 Jun 2026 (US trading day): SPCX −16.5% in a day; GOOG closed about 5% lower (Kaohoon International)."
@@ -227,7 +227,7 @@
    "d": "2026-10-28",
    "t": "Fed rate decision",
    "link": "C2",
-   "note": "Markets price a 17% chance of a rise at this meeting (Polymarket, 6 Oct close)."
+   "note": "Markets price a 16% chance of a rise at this meeting (Polymarket, 7 Oct close)."
   },
   {
    "d": "2026-10-28",
@@ -242,13 +242,13 @@
    "note": "Monthly; published in the first days of the month."
   }
  ],
- "lead": "Alphabet is <b>Building history</b> (today's zone: <b>Buy</b>), at <b>+30</b> on a −100 to +100 scale, <b>down from +37</b> on 5 Oct and exactly on the +30 Buy line, because the revenue growth trend, blank yesterday, now has data and reads neutral (12.0% vs a 14.0% average), which pulls Demand to +62 from +80: Search and Cloud are growing fast and analysts are raising forecasts, but the shares cost more than peers on EV/EBITDA and have lagged them for 3 months.",
+ "lead": "Alphabet is <b>Building history</b> (today's zone: <b>Buy</b>), at <b>+37</b> on a −100 to +100 scale, <b>up from +30</b> on 6 Oct and now 7 points above the +30 Buy line, because its 3-month gap to its peers narrowed (3.1 points behind, from 6.2, so that read moves from bearish to neutral and price trend rises to +72 from +44): Search and Cloud are growing fast and analysts are raising forecasts, but the shares cost more than peers on EV/EBITDA and are still behind them over 3 months.",
  "bullets": [
-  "<b>Demand is strong.</b> Demand scores +62, down from +80: Search & other revenue +16.8% and Google Cloud +81.8% (Apr-Jun 2026 vs a year earlier), both bullish; analysts' 2027 profit forecast $15.17 a share vs $14.53 90 days ago (+4.4%, bullish). Google's search share −0.4 points vs a year earlier (neutral). Revenue growth trend now has data: 12.0% vs a 14.0% average for the prior four quarters (−1.9 points, neutral), which is what lowered the score. Margin trend (DM6) is still blank: see Known defects.",
-  "<b>Valuation is above peers, not extreme.</b> Valuation scores −21: forward P/E 23.8x vs a 20.2x peer median (+18%, neutral); growth-adjusted P/E 1.2 vs 1.1 (+15%, neutral); EV/EBITDA 23.6x vs 17.3x (+36%, bearish).",
-  "<b>Money flows are mixed.</b> Liquidity scores +20: buying volume 1.61x selling volume over 20 days and institutions added +1.15 points of shares (both bullish, though part of the institutional increase is new shares from the June equity raise); the dollar rose 2.99 points in 20 trading days (bearish). Short interest +20.7% in a month scores bearish, which is an engine defect for GOOG (see Known defects).",
-  "<b>Price trend is positive but lagging peers.</b> Price trend scores +44: price $344.59 (+0.22% on the day vs +0.58% for the S&P 500), 2.0% above its 200-day average and the 50-day average 1.4% above the 200-day (both bullish), but the 3-month return is 6.2 points behind the peers (bearish).",
-  "<b>Not confirmed, and sitting on the line.</b> Day 2 of history (2 of 10 trading days recorded): the call needs 7 of the last 10 trading days in one zone. Coverage 97% of the weight left after removals. At +30 it is exactly on the Buy line, so one indicator turning (forecast revisions or relative valuation) would move it into the Hold zone; the revenue growth trend is 0.1 point from turning bearish (−1.9 vs the −2 line). Next test: Q3 results, estimated 28 Oct."
+  "<b>Demand is strong.</b> Demand scores +62, unchanged from yesterday: Search & other revenue +16.8% and Google Cloud +81.8% (Apr-Jun 2026 vs a year earlier), both bullish; analysts' 2027 profit forecast $15.17 a share vs $14.53 90 days ago (+4.4%, bullish). Google's search share −0.4 points vs a year earlier (neutral). Revenue growth trend: 12.0% vs a 14.0% average for the prior four quarters (−1.9 points, neutral), also unchanged. Margin trend (DM6) is still blank: see Known defects.",
+  "<b>Valuation is above peers, not extreme.</b> Valuation scores −21, unchanged: forward P/E 24.0x vs a 20.1x peer median (+19%, neutral); growth-adjusted P/E 1.2 vs 1.1 (+14%, neutral); EV/EBITDA 23.8x vs 17.4x (+37%, bearish).",
+  "<b>Money flows are mixed.</b> Liquidity scores +20: buying volume 1.98x selling volume over 20 days and institutions added +1.14 points of shares (both bullish, though part of the institutional increase is new shares from the June equity raise); the dollar rose 2.99 points in 20 trading days (bearish). Short interest +20.7% in a month scores bearish, which is an engine defect for GOOG (see Known defects).",
+  "<b>Price trend is positive but still behind peers.</b> Price trend scores +72, up from +44: price $347.37 (+0.81% on the day vs −0.22% for the S&P 500), 2.8% above its 200-day average and the 50-day average 1.5% above the 200-day (both bullish); the 3-month return is 3.1 points behind the peers (neutral), up from 6.2 points behind yesterday (bearish); the bearish line is more than 5 points behind.",
+  "<b>Not confirmed, and no longer on the line.</b> Day 3 of history (3 of 10 trading days recorded): the call needs 7 of the last 10 trading days in one zone. Coverage 97% of the weight left after removals. At +37 it is 7 points above the +30 Buy line, but one indicator turning (forecast revisions or relative valuation) could still move it into the Hold zone; the revenue growth trend is 0.1 point from turning bearish (−1.9 vs the −2 line). Next test: Q3 results, estimated 28 Oct."
  ],
  "defects": [
   "Staging tab, first built 6 Oct 2026: the call needs 7 of the last 10 trading days in one zone before it is confirmed.",
@@ -256,14 +256,14 @@
   "Reported EPS includes large paper gains on equity stakes ($2.35 a share in Q1 2026, $6.26 in Q2). VL3 (trailing P/E vs own history) is removed for this reason; forward P/E uses analysts' forecasts, which exclude the gains.",
   "Cash conversion (operating cash ÷ net profit) will look weak once full-year 2026 is filed, because net profit includes the paper gains. It needs two weak years to flag.",
   "DM5 (StatCounter search share) counts search engines only, not questions asked to ChatGPT or other chatbots. A steady share does not prove Search is safe; a falling share would be a strong warning.",
-  "EV/EBITDA does not subtract Alphabet's private and listed stakes (SpaceX about $94bn reported, Anthropic and others), which are in the share price but earn nothing in EBITDA. Allowing for $150-200bn of stakes would still leave GOOG about 28-30% above the peer median, past the 25% bearish line.",
+  "EV/EBITDA does not subtract Alphabet's private and listed stakes (SpaceX about $94bn reported, Anthropic and others), which are in the share price but earn nothing in EBITDA. Allowing for $150-200bn of stakes would still leave GOOG about 30-32% above the peer median, past the 25% bearish line.",
   "Caution from the 5-year replay: GOOG's price-trend signals had no useful order (Buy days were followed by below-average returns vs the S&P 500). Treat a call driven by price trend as weak evidence.",
   "Holders and short interest are for GOOG (Class C) shares only.",
   "LQ2 (short interest) scores bearish (+20.7% in a month) although only about 0.9% of GOOG shares are sold short (51.8m of 5,527m), below the 2% minimum. Yahoo gives no 'share of float' figure for GOOG, so the engine skips the 2% rule. Engine fix requested from the Framework chat; with it, Liquidity would read +40 and the composite about +40.",
-  "LQ3 divides the GOOG-only institutional change (+139.8m shares, Nasdaq) by all Alphabet shares (about 12.2bn, market value ÷ price), so it reads +1.15 points; on GOOG shares alone it is +2.5 points. Both are bullish, but part of the increase is new shares from the 2 Jun equity raise, not buying; without the 25.5m new public GOOG shares it would read +0.93 points on the current base (neutral). Holder percentages on the page are understated about 2.2x for the same reason.",
+  "LQ3 divides the GOOG-only institutional change (+139.8m shares, Nasdaq) by all Alphabet shares (about 12.2bn, market value ÷ price), so it reads +1.14 points; on GOOG shares alone it is +2.5 points. Both are bullish, but part of the increase is new shares from the 2 Jun equity raise, not buying; without the 25.5m new public GOOG shares it would read +0.94 points on the current base (neutral). Holder percentages on the page are understated about 2.2x for the same reason.",
   "Revenue mix: the reported parts miss total revenue by up to 0.9% in 2022 because of currency hedging gains, which Alphabet reports outside its revenue lines; shown as Other.",
-  "DM2 uses analysts' 2027 forecast (+4.4% in 90 days). Kenneth decided on 6 Oct that DM2 should use the next 12 months, as the plan says; the Framework chat will change the engine. On that blend (2026 cut 5.2%, 2027 raised 3.7%) DM2 is about +1.8% (neutral), Demand +40 and the composite about +23 (Hold zone). The 2026 forecast covers only 6 analysts.",
-  "The score sits close to the Buy line: DM2 turning neutral, VL1 moving 5 points further above peers (bearish at +25%), or PT1 slipping would each move it into the Hold zone.",
+  "DM2 uses analysts' 2027 forecast (+4.4% in 90 days). Kenneth decided on 6 Oct that DM2 should use the next 12 months, as the plan says; the Framework chat will change the engine. On that blend (2026 cut 5.2%, 2027 raised 3.7%) DM2 is about +1.8% (neutral), Demand +40 and the composite about +30 (on the Buy line). The 2026 forecast covers only 6 analysts.",
+  "The score sits 7 points above the Buy line (+37 vs +30): DM2 turning neutral, VL1 moving about 6 points further above peers (bearish at +25%), or PT1 slipping would each move it into the Hold zone.",
   "DM4a, DM4b (Search and Cloud growth) and DM5 (search share) are typed in by hand from results and StatCounter; check they are updated after Q3 results (28 Oct, estimated) and each month for DM5."
  ],
  "sources": [
