@@ -30,6 +30,18 @@
   "headline": "A normal-sized fall, inside SpaceX's usual daily range",
   "evidence": [
    {
+    "d": "8 Oct",
+    "t": "Shares were down 0.8% at $166.30 in US trading (down as much as 2% during the day) while the S&P 500 was down 0.3%, after Musk tweeted on 7 Oct blaming Indian 'oligarchs' (naming Reliance Jio and Bharti Airtel as making a launch difficult) for blocking Starlink. Starlink is still waiting for satellite spectrum in India. This delays one future market; it does not change current revenue (Starlink operates in 160+ countries).",
+    "kind": "fact",
+    "src": "Dow Jones, 8 Oct 2026 (via Tiger Brokers)"
+   },
+   {
+    "d": "8 Oct",
+    "t": "Deutsche Bank (analyst Edison Yu) estimates 13.5m Starlink consumer subscribers at end-September, up from 12.0m at end-June, with over 370,000 added in September alone; North America 5.5m (41% of the total), +126,000 in September. Starlink Q3 revenue is expected at about $4.8bn vs $4.3bn in Q2 (+12% vs the previous quarter), and Q3 AI revenue is expected to exceed Starlink's for the first time.",
+    "kind": "speculation",
+    "src": "Deutsche Bank estimate, quoted by Dow Jones, 8 Oct 2026"
+   },
+   {
     "d": "7 Oct",
     "t": "SpaceX fell 2.5% while the Nasdaq-100 fell 0.2%. Its typical daily move over the last 60 trading days is 4.5%, so no classification is triggered.",
     "kind": "fact",
@@ -95,7 +107,9 @@
     "watch": [
      "Revenue vs the $12.6bn consensus: do the AI contracts show up?",
      "Capex vs the ~$18bn a quarter signalled (chain C3), and how long the $100bn of cash and securities lasts.",
-     "Starlink subscribers vs 12.0m; about 1.3bn shares unlock on the second full trading day after the release (chain C1)."
+     "Starlink subscribers vs 12.0m; about 1.3bn shares unlock on the second full trading day after the release (chain C1).",
+     "Starlink: 13.5m subscribers at end-Sep and about $4.8bn Q3 revenue expected (Deutsche Bank, vs 12.0m and $4.3bn in Q2); AI revenue expected to pass Starlink's for the first time.",
+     "India: any news on Starlink's satellite spectrum (launch delayed; Musk blamed local carriers on 7 Oct)."
     ]
    },
    {
@@ -284,7 +298,8 @@
   "Polymarket (Fed odds)",
   "SpaceX Q2 2026 results release (4 Aug 2026) and call highlights (Nasdaq)",
   "Motley Fool and Tokenomist (lock-up schedule); BLS and Federal Reserve calendars",
-  "CNBC, CNN, Axios, Electrek, Aerospace America, Unite.AI, RocketLaunch.org, Reuters, Morningstar, 24/7 Wall St (news)"
+  "CNBC, CNN, Axios, Electrek, Aerospace America, Unite.AI, RocketLaunch.org, Reuters, Morningstar, 24/7 Wall St (news)",
+  "Dow Jones, 'Elon Musk Can't Get Starlink in India. What It Means for SpaceX Stock', 8 Oct 2026 (Kenneth, via Tiger Brokers)"
  ],
  "mix": {
   "updated": "2026-09-30",
