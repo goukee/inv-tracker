@@ -3,7 +3,7 @@
   "guide_mid": 89.5,
   "consensus": 82.8,
   "measured": "analysts' consensus revenue growth for the October quarter (Q3 FY27) when guidance was given (26 Aug 2026), both vs Q3 FY26 revenue of $57.0bn",
-  "source": "Nvidia Q2 FY27 results release (guide $108.0bn ±2%); consensus $104.2bn per XTB (parameter.io: $103.9bn)",
+  "source": "Nvidia Q2 FY27 results release (guide $108.0bn \u00b12%); consensus $104.2bn per XTB (parameter.io: $103.9bn)",
   "note": "Nvidia guided $108.0bn (+89.5% vs a year earlier) vs about $104.2bn expected (+82.8%): +6.7 points. Q2's guide had been +9.0 points above LSEG consensus."
  },
  "custom": {
@@ -26,7 +26,7 @@
     "q": "Jul 2026 quarter (Q2 FY27)",
     "date": "Wed 26 Aug 2026, after the US close (Thu 27 Aug, about 4:20am Singapore)",
     "vs": "Revenue $96.2bn, +106% vs a year earlier, vs about $92.2bn expected (+4.3%). Non-GAAP EPS $2.22 vs $2.10 expected (+5.7%).",
-    "guide": "October quarter: revenue $108.0bn ±2% (+89.5% vs a year earlier) vs about $104.2bn expected: +6.7 points of growth above consensus. Gross margin 74.0% ±0.5 points, down from 75.0%. Zero China compute assumed.",
+    "guide": "October quarter: revenue $108.0bn \u00b12% (+89.5% vs a year earlier) vs about $104.2bn expected: +6.7 points of growth above consensus. Gross margin 74.0% \u00b10.5 points, down from 75.0%. Zero China compute assumed.",
     "reaction": "+8.7% the next day ($209.76 to $227.98) vs +0.7% for the S&P 500.",
     "take": [
      "<b>Data Center carried it.</b> $89.0bn, +117% vs a year earlier, 92.5% of revenue.",
@@ -42,8 +42,8 @@
     "q": "Apr 2026 quarter (Q1 FY27)",
     "date": "Wed 20 May 2026, after the US close",
     "vs": "Revenue $81.6bn, +85% vs a year earlier, vs $78.8bn-$80.4bn expected (sources differ). Non-GAAP EPS $1.87 vs $1.70-$1.78.",
-    "guide": "July quarter: $91.0bn ±2% vs $86.8bn LSEG consensus: +9.0 points of growth above consensus.",
-    "reaction": "−1.8% the next day vs +0.2% for the S&P 500: a buy-side whisper of $89-90bn was already priced.",
+    "guide": "July quarter: $91.0bn \u00b12% vs $86.8bn LSEG consensus: +9.0 points of growth above consensus.",
+    "reaction": "\u22121.8% the next day vs +0.2% for the S&P 500: a buy-side whisper of $89-90bn was already priced.",
     "take": [
      "<b>Networking boomed.</b> Data Center $75.2bn (+92%): compute $60.4bn (+77%), networking $14.8bn (+199%) vs a year earlier.",
      "<b>New reporting.</b> Data Center split into Hyperscale ($37.9bn) and ACIE ($37.4bn) as first published (restated in August to $43.1bn and $32.2bn); Gaming and others folded into Edge Computing ($6.4bn).",
@@ -233,12 +233,12 @@
   },
   {
    "name": "Dilution",
-   "value": "None: diluted shares 24,285m in the July quarter vs 24,391m in April (−0.4%), as buybacks exceed stock pay",
+   "value": "None: diluted shares 24,285m in the July quarter vs 24,391m in April (\u22120.4%), as buybacks exceed stock pay",
    "source": "Nvidia 10-Q"
   },
   {
    "name": "Cash conversion, latest quarters",
-   "value": "Operating cash was 63% of GAAP net profit in the first half of FY27 ($74.4bn ÷ $118.0bn) and 40% in the July quarter ($24.1bn ÷ $59.7bn), vs 86-88% for the last two full years; receivables grew 55% vs the prior quarter while revenue grew 18% (shown as Info: Kenneth chose not to flag it, 6 Oct 2026; tested by falsification test F3 at the 17 Nov results)",
+   "value": "Operating cash was 63% of GAAP net profit in the first half of FY27 ($74.4bn \u00f7 $118.0bn) and 40% in the July quarter ($24.1bn \u00f7 $59.7bn), vs 86-88% for the last two full years; receivables grew 55% vs the prior quarter while revenue grew 18% (shown as Info: Kenneth chose not to flag it, 6 Oct 2026; tested by falsification test F3 at the 17 Nov results)",
    "source": "SEC 10-Q (26 Jul 2026); Nvidia results releases"
   },
   {
@@ -250,7 +250,7 @@
  "defects": [
   "Staging build: 3 of 10 trading days of history so far; the call needs 10 trading days of scores before it can be confirmed.",
   "Valuation vs own history (VL3) uses trailing P/E: free forward P/E history is too short.",
-  "VL3's 5-year P/E median (87.3x) is overstated: the collector derives fourth-quarter EPS as full year minus three quarters, which goes wrong across stock splits (Q4 FY Jan 2022 shows −$1.09 instead of $1.18; Q4 FY Jan 2025 −$4.49 instead of $0.89). The first inflates 2022-23 P/Es, the second drops about a year of lower readings. With corrected EPS the median is about 55-57x and today's 30.0x is about 45-47% below it: still bullish. The median also reflects depressed 2022-23 earnings, so 'cheap vs history' carries little information. Framework fix pending.",
+  "VL3's 5-year P/E median (87.3x) is overstated: the collector derives fourth-quarter EPS as full year minus three quarters, which goes wrong across stock splits (Q4 FY Jan 2022 shows \u2212$1.09 instead of $1.18; Q4 FY Jan 2025 \u2212$4.49 instead of $0.89). The first inflates 2022-23 P/Es, the second drops about a year of lower readings. With corrected EPS the median is about 55-57x and today's 30.0x is about 45-47% below it: still bullish. The median also reflects depressed 2022-23 earnings, so 'cheap vs history' carries little information. Framework fix pending.",
   "EV/EBITDA uses last-12-month EBITDA (free source); three of the five peers fall outside the 2x-80x range, so the peer median rests on Broadcom and Arista.",
   "Chain C2 watches Micron's share price as a stand-in for memory prices.",
   "DM4a deliberately measures growth vs the prior quarter, not vs a year earlier (Kenneth, 5 Oct 2026), to catch a slowdown sooner.",
@@ -349,13 +349,13 @@
    }
   ]
  },
- "lead": "Nvidia is <b>Building history</b> (today's zone: <b>Strong Buy</b>), at <b>+89</b> on a −100 to +100 scale, <b>up from +82</b> on 6 Oct because its 3-month lead over its peers widened (price trend score +100, from +72): every demand and valuation read is still positive, but the cheapness rests on forecasts that rose 25% in 90 days, and cash is lagging profit.",
+ "lead": "Nvidia is <b>Building history</b> (today's zone: <b>Strong Buy</b>), at <b>+93</b> on a \u2212100 to +100 scale, <b>up from +89</b> on 7 Oct because Liquidity rose to +53 from +27 as Fed rate expectations and institutional buying both turned bullish: every demand and valuation read is still positive and the price trend still scores +100 (even though the shares fell 2.94% today), but the cheapness rests on forecasts that rose 25% in 90 days, and cash is lagging profit.",
  "bullets": [
   "<b>Demand is as strong as the framework can read it.</b> Demand scores +100: revenue grew 105.9% in the July quarter vs a year earlier, against a 69.1% average for the prior four quarters; Data Center sales +18.3% vs the April quarter (bullish line +10%); ACIE +138.1% vs a year earlier; consensus EPS for the year to Jan 2028 $15.91 vs $12.71 90 days ago (+25.2%); October-quarter guidance +6.7 points of growth above consensus; big-4 cloud capex about +79% vs a year earlier; gross margin 74.7% over the last 4 quarters vs 72.5% a year earlier (one-off H20 items removed).",
-  "<b>Cheap vs peers and its own history, if the forecasts hold.</b> Valuation scores +100: 17.2x next-12-month earnings vs a 45.5x peer median (−62%), though only 14% below Broadcom's 19.9x; growth-adjusted P/E 0.3 vs 0.8 (−64%); EV/EBITDA 28.4x vs 45.4x (−38%, two peers only); trailing P/E 30.0x vs its own 5-year median of 87.3x (−66%; overstated, see Known defects). The discount depends on forecasts that rose 25% in 90 days.",
-  "<b>Money flows are mixed.</b> Liquidity scores +27: volume on up days was 2.20x volume on down days over the last 20 trading days (bullish), but the dollar index rose 2.99 points vs 20 trading days earlier (bearish); short interest (1.3% of float), institutional holdings (+1.0 point of shares, just under the +1 line) and Fed odds (rate-rise odds 16% vs 31% four weeks earlier) are neutral.",
-  "<b>The price trend is strong again.</b> Price trend scores +100, up from +72: the close was $237.47 (−0.74% on the day vs −0.22% for the S&P 500, a little under the record close of $239.24 on 6 Oct), 17.7% above its 200-day average; the 50-day average is 9.4% above the 200-day; over 3 months Nvidia is 9.7 points ahead of its five peers, up from 4.5 points and above the +5 point line for a bullish read.",
-  "<b>What could go wrong.</b> Gross margin is guided down to 74.0% from 75.0% on memory costs; operating cash flow fell to $24.1bn in the July quarter from $50.3bn in April as customers took longer to pay (60 days of sales vs 45); supply commitments rose to $279bn from $119bn a quarter earlier; one customer was 16% of revenue; Nvidia guarantees up to $105bn of a customer's data-centre leases; and the 10-year yield rose to 5.28% from 4.84% a month earlier (chain C3 Active). The call is not confirmed yet: 3 of the 10 trading days needed are recorded, and today reads Strong Buy. Next tests: US inflation 14 Oct and the Fed 28 Oct (C3), TSMC results 15 Oct, big-4 cloud capex in late October (DM5) and Nvidia's results, estimated 17 Nov (DM3, DM4a)."
+  "<b>Cheap vs peers and its own history, if the forecasts hold.</b> Valuation scores +100: 16.7x next-12-month earnings vs a 43.5x peer median (\u221262%), though only 13% below Broadcom's 19.0x; growth-adjusted P/E 0.3 vs 0.8 (\u221264%); EV/EBITDA 27.5x vs 44.0x (\u221237%, two peers only); trailing P/E 29.1x vs its own 5-year median of 87.3x (\u221267%; overstated, see Known defects). The discount depends on forecasts that rose 25% in 90 days.",
+  "<b>Money flows are mostly positive.</b> Liquidity scores +53, up from +27 on 7 Oct: volume on up days was 2.16x volume on down days over the last 20 trading days (bullish); institutional holdings rose +1.01 points of shares (bullish, just over the +1 line, up from just under it); and Fed odds turned bullish (rate-rise odds 16% vs 34% four weeks earlier, a 17.0-point move towards cuts vs the 15-point line). The dollar index rose 3.05 points vs 20 trading days earlier (bearish); short interest (1.3% of float) is neutral.",
+  "<b>The price trend is strong, though it slipped today.</b> Price trend scores +100, unchanged from 7 Oct: the close was $230.48 (\u22122.94% on the day vs \u22120.47% for the S&P 500, 3.7% under the record close of $239.24 on 6 Oct), 14.1% above its 200-day average; the 50-day average is 9.6% above the 200-day; over 3 months Nvidia is 6.4 points ahead of its five peers, down from 9.7 points but still above the +5 point line for a bullish read.",
+  "<b>What could go wrong.</b> Gross margin is guided down to 74.0% from 75.0% on memory costs; operating cash flow fell to $24.1bn in the July quarter from $50.3bn in April as customers took longer to pay (60 days of sales vs 45); supply commitments rose to $279bn from $119bn a quarter earlier; one customer was 16% of revenue; Nvidia guarantees up to $105bn of a customer's data-centre leases; and the 10-year yield rose to 5.23% from 4.94% 20 trading days earlier (chain C3 Active). The call is not confirmed yet: 4 of the 10 trading days needed are recorded, and today reads Strong Buy. Next tests: US inflation 14 Oct and the Fed 28 Oct (C3), TSMC results 15 Oct, big-4 cloud capex in late October (DM5) and Nvidia's results, estimated 17 Nov (DM3, DM4a)."
  ],
  "falsification": {
   "adopted": "Kenneth, 6 Oct 2026",

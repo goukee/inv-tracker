@@ -4,7 +4,7 @@
   "consensus": 35.6,
   "measured": "September-quarter revenue growth vs the Sep 2025 quarter ($9.25bn): AMD's guidance midpoint vs analysts' consensus when guidance was given (4 Aug 2026)",
   "source": "AMD Q2 2026 results release (guidance); consensus about $12.54bn per INDmoney, a secondary source (approximate; not confirmed from LSEG or FactSet). NewsBytes (5 Aug 2026) confirms the guide was above Wall Street expectations.",
-  "note": "AMD guided about $13.0bn ± $0.3bn vs about $12.54bn expected (approximate consensus). Some analysts had hoped for about $14bn, and the shares fell 7.1% the next day. AMD guides one quarter ahead, so DM3 scores guidance vs expectations, as for AAPL."
+  "note": "AMD guided about $13.0bn \u00b1 $0.3bn vs about $12.54bn expected (approximate consensus). Some analysts had hoped for about $14bn, and the shares fell 7.1% the next day. AMD guides one quarter ahead, so DM3 scores guidance vs expectations, as for AAPL."
  },
  "custom": {
   "DM4a": {
@@ -63,11 +63,11 @@
     "q": "Jun 2026 quarter (Q2 2026)",
     "date": "Tue 4 Aug 2026, after the US close (Wed 5 Aug, about 4am Singapore)",
     "vs": "Revenue $11.54bn, +50% vs a year earlier, vs about $11.30bn consensus (+2.1%). Adjusted EPS $1.66 vs $1.61 expected (+3.2%).",
-    "guide": "September quarter: revenue about $13.0bn ± $0.3bn (+41% vs a year earlier) vs about $12.54bn consensus; adjusted gross margin about 56%, flat.",
-    "reaction": "Shares −7.1% the next day while the S&P 500 fell 0.2%. A few analysts had been hoping for guidance closer to $14bn (Briefs).",
+    "guide": "September quarter: revenue about $13.0bn \u00b1 $0.3bn (+41% vs a year earlier) vs about $12.54bn consensus; adjusted gross margin about 56%, flat.",
+    "reaction": "Shares \u22127.1% the next day while the S&P 500 fell 0.2%. A few analysts had been hoping for guidance closer to $14bn (Briefs).",
     "take": [
      "<b>Data Center doubled.</b> $6.72bn, +107% vs a year earlier; 58% of revenue in the quarter (54% over the last 4 quarters).",
-     "<b>PCs strong, gaming weak.</b> Client $3.06bn (+23%); Gaming $0.78bn (−31%); Embedded $0.98bn (+19%), all vs a year earlier.",
+     "<b>PCs strong, gaming weak.</b> Client $3.06bn (+23%); Gaming $0.78bn (\u221231%); Embedded $0.98bn (+19%), all vs a year earlier.",
      "<b>Margin stalled at a high level.</b> Adjusted gross margin 56%, up 13 points vs a year earlier, but that year-ago quarter carried a one-off $800m write-down of MI308 chips blocked for China. It is guided flat at about 56% for September; investors wanted further improvement.",
      "<b>Helios in full production.</b> Shipments from the end of the Sep quarter, so most rack revenue lands in Q4 2026 and 2027.",
      "<b>New AI customers.</b> Anthropic agreed to deploy up to 2 GW of MI450 chips (GW = gigawatts of data-centre power the chips draw; first 1 GW from H1 2027), and AMD will invest up to $5bn in Anthropic's shares. Management expects Data Center to more than double in 2027.",
@@ -255,13 +255,13 @@
   }
  ],
  "valuation_plain": [],
- "lead": "AMD reads <b>Buy</b> (today's zone: <b>Buy</b>) at <b>+50</b> on a −100 to +100 scale, unchanged at +50 on 6 Oct (Buy line +30): demand and the price trend score the maximum, but investors already pay a steep premium, and the reading depends on AI spending and the price momentum both holding up.",
+ "lead": "AMD reads <b>Buy</b> (today's zone: <b>Buy</b>) at <b>+52</b> on a \u2212100 to +100 scale, up from +50 on 7 Oct (Buy line +30): demand and the price trend score the maximum, but investors already pay a steep premium, and the reading depends on AI spending and the price momentum both holding up.",
  "bullets": [
   "<b>Demand is at full strength, but it is one bet.</b> Demand scores +100: revenue grew 50.1% vs a year earlier, faster than its 34.8% average of the prior four quarters; Data Center grew 107.3% and PC chips 22.5% (Jun 2026 quarter vs a year earlier), and the big-4 cloud firms' capital spending 77.0%. Guidance (40.6% growth) beat the roughly 35.6% expected, and the 2027 earnings forecast rose 19.1% in 90 days ($15.72 vs $13.20 a share). Almost all of these track AI data-centre spending, so a pause there would turn them together. Gross margin is up 5.6 points (last 4 quarters vs the 4 a year earlier), but about 2.7 points of that comes from a one-off $800m China chip write-down in the year-ago figures.",
-  "<b>It is priced for it, before counting dilution.</b> Valuation scores −63: investors pay 46% more per dollar of expected next-12-month profit than the peer median (46.7x vs 32.1x forward P/E). On company value including debt vs last-12-month operating profit before depreciation (EV/EBITDA) it is 109.3x vs 31.7x, a gap overstated because AMD's revenue is growing 50% a year. Only the growth-adjusted P/E is in line (0.7 vs 0.7, 5% below the peer median). Not scored: warrants to OpenAI and Meta could add up to 320m shares (about 20% of today's), which would lift the forward P/E to about 54x if all vested.",
-  "<b>The money backdrop is mixed.</b> Liquidity scores +40: volume on up days is 2.44x that on down days (last 20 trading days) and institutions already holding AMD added a net 3.81% of shares last quarter (new and closed positions not counted), but the dollar index is 2.99 points higher than 20 trading days ago and markets price a 16% chance of a Fed rate rise at the late-October meeting, down from 31% a month earlier (Polymarket).",
-  "<b>The trend is strongly up, and stretched.</b> Price scores +100: AMD is 69.4% above its 200-day average and 15.5 points ahead of its peers over the last 3 months; it closed at $645.86, −0.55% on the day vs −0.22% for the S&P 500. That distance trips the stretch flag: a sign the run may be overextended and prone to sharp pullbacks (timing context only, not scored). The Buy leans on momentum: with a neutral price trend the composite would be about +25, which is Hold.",
-  "<b>Not yet a confirmed call.</b> Day 7 of the 10 trading days of score history needed. Next big test: results, expected 3 Nov (date not yet announced)."
+  "<b>It is priced for it, before counting dilution.</b> Valuation scores \u221263: investors pay 46% more per dollar of expected next-12-month profit than the peer median (44.8x vs 30.6x forward P/E). On company value including debt vs last-12-month operating profit before depreciation (EV/EBITDA) it is 105.0x vs 30.5x, a gap overstated because AMD's revenue is growing 50% a year. Only the growth-adjusted P/E is in line (0.7 vs 0.7, 6% below the peer median). Not scored: warrants to OpenAI and Meta could add up to 320m shares (about 20% of today's), which would lift the forward P/E to about 52x if all vested.",
+  "<b>The money backdrop is mixed.</b> Liquidity scores +53, up from +40 on 7 Oct, because Fed rate expectations turned bullish: markets price a 16% chance of a Fed rate rise at the late-October meeting, down from 34% a month earlier (Polymarket). Volume on up days is 2.31x that on down days (last 20 trading days) and institutions already holding AMD added a net 3.83% of shares last quarter (new and closed positions not counted), but the dollar index is 3.05 points higher than 20 trading days ago.",
+  "<b>The trend is strongly up, and stretched.</b> Price scores +100: AMD is 61.9% above its 200-day average and 11.6 points ahead of its peers over the last 3 months; it closed at $620.68, \u22123.90% on the day vs \u22120.47% for the S&P 500. That distance trips the stretch flag: a sign the run may be overextended and prone to sharp pullbacks (timing context only, not scored). The Buy leans on momentum: with a neutral price trend the composite would be about +27, which is Hold.",
+  "<b>Not yet a confirmed call.</b> Day 8 of the 10 trading days of score history needed. Next big test: results, expected 3 Nov (date not yet announced)."
  ],
  "defects": [
   "Staging build, seventh day of history: the call needs 10 trading days of scores before it can be confirmed.",
@@ -328,7 +328,7 @@
      "A new console generation would lift revenue again (timing not announced)."
     ],
     "neg": [
-     "Shrinking now: −31% in the Jun 2026 quarter vs a year earlier, as current consoles are late in their life (though +30% over the last 4 quarters vs the 4 before, after the 2025 console ramp).",
+     "Shrinking now: \u221231% in the Jun 2026 quarter vs a year earlier, as current consoles are late in their life (though +30% over the last 4 quarters vs the 4 before, after the 2025 console ramp).",
      "Thin margins: the gaming part earned 3-18% operating margin in 2022-24, when AMD still reported it separately.",
      "Graphics cards lose share to NVIDIA."
     ]

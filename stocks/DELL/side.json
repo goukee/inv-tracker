@@ -37,7 +37,7 @@
    },
    {
     "d": "5 Oct",
-    "t": "Peers fell too: HPE −1.4%, Super Micro −1.1%, HP Inc −2.0%, NetApp −1.1%, Celestica −1.2% on the day.",
+    "t": "Peers fell too: HPE \u22121.4%, Super Micro \u22121.1%, HP Inc \u22122.0%, NetApp \u22121.1%, Celestica \u22121.2% on the day.",
     "kind": "fact",
     "src": "Yahoo Finance prices"
    },
@@ -173,7 +173,7 @@
    "evidence": [
     "Phase 2 of the Section 232 chip tariffs, which could reach servers and laptops, is being prepared but had not been signed as of early September: no rate or start date (reports 27 Aug-2 Sep 2026, incl. Commerce Secretary Lutnick, 2 Sep).",
     "The exemption shielding about $143bn of US server imports is 'now on the table' (Digitimes, 28 Aug 2026).",
-    "The watch number is quiet: yuan 6.7045 per dollar vs 6.7105 a month earlier (−0.1%, vs a 2% 'Active' line)."
+    "The watch number is quiet: yuan 6.7045 per dollar vs 6.7105 a month earlier (\u22120.1%, vs a 2% 'Active' line)."
    ]
   },
   {
@@ -244,13 +244,13 @@
    "note": "Estimated around Tue 24 Nov (not yet announced by Dell). After the US close; next morning in Singapore."
   }
  ],
- "lead": "Dell is <b>Building history</b> (today's zone: <b>Buy</b>), <b>unchanged at +36</b> on a −100 to +100 scale as of 7 Oct (also +36 on 6 Oct and 5 Oct), just 6 points above the Hold line: the share price rose 0.86% on the day vs −0.22% for the S&P 500, but no bucket score moved, so the call stays driven by exceptional AI-driven demand against a stretched price and a valuation well above its hardware peers.",
+ "lead": "Dell is <b>Building history</b> (today's zone: <b>Buy</b>), at <b>+38</b> on a \u2212100 to +100 scale, up from +36 on 7 Oct and 8 points above the +30 Buy line: only Liquidity moved, to +27 from +13, as Fed rate expectations turned bullish (the shares fell 0.76% on the day vs \u22120.47% for the S&P 500). The call stays driven by exceptional AI-driven demand against a stretched price and a valuation well above its hardware peers.",
  "bullets": [
-  "<b>Demand is exceptional.</b> Demand scores +76: revenue grew 57.7% in the July quarter vs a year earlier, well above the 39.2% average of the prior four quarters; AI server orders over the last two quarters were +382% vs the same two quarters a year earlier ($85.3bn vs $17.7bn); October-quarter guidance (+81.4% vs a year earlier) beat what analysts expected (+53.4%) by 28 points; analysts' profit forecast for the year to Jan 2028 rose 34.4% in 90 days; Taiwan AI-server makers' sales were +96.8% (Jun-Aug vs a year earlier). Soft spot: gross margin over the last 4 quarters was 19.8% vs 21.1% a year earlier, as lower-margin AI servers grow.",
-  "<b>It is expensive vs its hardware peers.</b> Valuation scores −44 (unchanged): investors pay 23.1x expected next-12-month profit vs a 13.0x peer median (+77%), EV/EBITDA is 22.1x vs 14.3x (+55%), and trailing P/E is 33.7x vs Dell's own 5-year median of 21.5x (+57%). Only the growth-adjusted P/E looks cheap (0.6 vs a 1.0 peer median, −42%), and that rests on long-term growth forecasts: analysts expect slightly lower earnings per share in the year to Jan 2028 ($24.66) than this year ($25.90).",
-  "<b>Money flows are mixed.</b> Liquidity scores +13 (unchanged): volume on up days was 1.40x volume on down days over the last 20 trading days (bullish), but institutions cut a net 2.38 points of shares last quarter (Jun 30 filings) and the dollar index rose 2.99 points in 20 trading days (both bearish).",
-  "<b>The price trend is strong but stretched.</b> Price trend scores +72 (unchanged): at $578.96 (+0.86% on the day vs −0.22% for the S&P 500) the stock is 93% above its 200-day average and the 50-day average is 66% above the 200-day; over 3 months it is 3.4 points behind its peers (neutral; it turns bearish at 5 points behind; it was 0.7 behind yesterday).",
-  "<b>Fragile and not confirmed.</b> Day 3 of 10 trading days of history; the call is confirmed after 7 of 10 days in one zone. One indicator moving (growth-adjusted P/E turning neutral, or relative strength vs peers turning bearish) would take the score below +30, into Hold. Watch: cash lagging profit (free cash flow $986m in the July quarter vs $1,868m a year earlier), about $1.03bn of insider and Silver Lake share sales in 6 months with no buying, and the 10-year yield (5.28%, +0.44 points in 20 trading days)."
+  "<b>Demand is exceptional.</b> Demand scores +76: revenue grew 57.7% in the July quarter vs a year earlier, well above the 39.2% average of the prior four quarters; AI server orders over the last two quarters were +382% vs the same two quarters a year earlier ($85.3bn vs $17.7bn); October-quarter guidance (+81.4% vs a year earlier) beat what analysts expected (+53.4%) by 28 points; analysts' profit forecast for the year to Jan 2028 rose 32.1% in 90 days; Taiwan AI-server makers' sales were +96.8% (Jun-Aug vs a year earlier). Soft spot: gross margin over the last 4 quarters was 19.8% vs 21.1% a year earlier, as lower-margin AI servers grow.",
+  "<b>It is expensive vs its hardware peers.</b> Valuation scores \u221244 (unchanged): investors pay 22.9x expected next-12-month profit vs a 12.9x peer median (+78%), EV/EBITDA is 21.9x vs 14.0x (+56%), and trailing P/E is 33.4x vs Dell's own 5-year median of 21.5x (+56%). Only the growth-adjusted P/E looks cheap (0.6 vs a 1.0 peer median, \u221242%), and that rests on long-term growth forecasts: analysts expect slightly lower earnings per share in the year to Jan 2028 ($24.66) than this year ($25.90).",
+  "<b>Money flows are mixed.</b> Liquidity scores +27, up from +13 on 7 Oct: volume on up days was 1.42x volume on down days over the last 20 trading days (bullish) and Fed odds turned bullish (rate-rise odds 16% vs 34% four weeks earlier, a 17.0-point move towards cuts vs the 15-point line), but institutions cut a net 2.38 points of shares last quarter (Jun 30 filings) and the dollar index rose 3.05 points in 20 trading days (both bearish).",
+  "<b>The price trend is strong but stretched.</b> Price trend scores +72 (unchanged): at $574.55 (\u22120.76% on the day vs \u22120.47% for the S&P 500) the stock is 90% above its 200-day average and the 50-day average is 66% above the 200-day; over 3 months it is 4.3 points ahead of its peers (neutral; it turns bullish at 5 points ahead; it was 3.4 behind on 7 Oct).",
+  "<b>Fragile and not confirmed.</b> Day 4 of 10 trading days of history; the call is confirmed after 7 of 10 days in one zone. The score has a cushion of 8 points, but it is not safe: if the Fed-odds read slipped back under its 15-point line, Liquidity would fall back and the score would return to about +36, and a growth-adjusted P/E turning neutral would take it nearer the +30 Buy line. Watch: cash lagging profit (free cash flow $986m in the July quarter vs $1,868m a year earlier), about $1.03bn of insider and Silver Lake share sales in 6 months with no buying, and the 10-year yield (5.23%, +0.29 points in 20 trading days)."
  ],
  "defects": [
   "Staging build, third day of history: the call needs 7 of 10 trading days in one zone before it is confirmed.",
@@ -261,7 +261,7 @@
   "Yahoo shows the VMware spin-off (1 Nov 2021) as a 1.973-for-1 split; older SEC EPS is divided by 1.973 to match.",
   "Chain C2 has no live watch number until the Framework chat adds CoreWeave to the shared data.",
   "Revenue mix is typed in from SEC filings (manual source) until Dell restates the Oct 2025 quarter (Q3 FY27 10-Q, early Dec 2026): the engine cannot derive servers for the Jan 2026 quarter (ISG minus storage, $14,805m) from the relabelled rows. AI servers are described in the text, not shown as their own part, until then.",
-  "Two peers (Lenovo, Quanta) trade in Asia: their prices are taken from the Asian session running when the page is built, not the US close (relative strength PT4 reads −3.4 vs a −5 line).",
+  "Two peers (Lenovo, Quanta) trade in Asia: their prices are taken from the Asian session running when the page is built, not the US close (relative strength PT4 reads \u22123.4 vs a \u22125 line).",
   "Growth-adjusted P/E (VL2) uses Yahoo's PEG (0.58), which does not show its growth basis; analysts' EPS for the year to Jan 2028 ($24.66) is below this year's ($25.90), so the 'cheap after growth' reading rests on longer-term growth forecasts.",
   "VL2 kept as scored with Yahoo's PEG (Kenneth, 6 Oct 2026); its growth basis is a Framework chat item."
  ],
@@ -324,7 +324,7 @@
     "buyers": "Companies and governments; increasingly for AI data.",
     "pos": [
      "Usually one of Dell's higher-margin hardware lines (Dell does not report storage margin separately), so growth here helps profit more than its size suggests.",
-     "+26% in the July quarter vs a year earlier, after −1% in the Oct 2025 quarter."
+     "+26% in the July quarter vs a year earlier, after \u22121% in the Oct 2025 quarter."
     ],
     "neg": [
      "Shrinking share: 11.9% of revenue over the last 4 quarters vs 16.3% a year earlier, as servers grow faster.",

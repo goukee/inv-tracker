@@ -78,8 +78,8 @@
     "take": [
      "<b>Revenue beat everywhere.</b> Connectivity +66% (12.0m Starlink subscribers, double a year earlier), AI +247%, Space +29%, each vs the same quarter a year earlier.",
      "<b>AI turned EBITDA-positive</b> (operating profit before depreciation) on new AI computing agreements: $1.1bn adjusted EBITDA; computing agreements brought in $1.6bn of revenue.",
-     "<b>Spending is the problem.</b> Capex $18.4bn in the quarter ($15.8bn of it for AI), 2.35x revenue; free cash flow −$25.0bn in the 6 months to Jun 2026.",
-     "<b>Large cash cushion, but it is being spent fast:</b> $93.5bn cash plus $6.5bn marketable securities at 30 Jun ($100.0bn), against $39.4bn of debt, after a $25bn bond that partly repaid a $20bn bridge loan; backlog $47.5bn. At the H1 pace (−$12.5bn a quarter) that cash lasts about 8 quarters; at capex near $18bn a quarter, closer to 6 (rough estimate, before any new borrowing or share sales).",
+     "<b>Spending is the problem.</b> Capex $18.4bn in the quarter ($15.8bn of it for AI), 2.35x revenue; free cash flow \u2212$25.0bn in the 6 months to Jun 2026.",
+     "<b>Large cash cushion, but it is being spent fast:</b> $93.5bn cash plus $6.5bn marketable securities at 30 Jun ($100.0bn), against $39.4bn of debt, after a $25bn bond that partly repaid a $20bn bridge loan; backlog $47.5bn. At the H1 pace (\u2212$12.5bn a quarter) that cash lasts about 8 quarters; at capex near $18bn a quarter, closer to 6 (rough estimate, before any new borrowing or share sales).",
      "<b>Space still loss-making</b> (operating loss $542m) while Starship is developed.",
      "<b>New front:</b> plans a mobile network on EchoStar spectrum, competing with phone carriers."
     ],
@@ -187,7 +187,7 @@
    "status": "Quiet",
    "evidence": [
     "Micron shares $1,088 on 7 Oct vs $1,028 20 trading days earlier, +5.9% (trigger: up 10%, not reached) (Yahoo).",
-    "Q2 capex $18.4bn, $15.8bn of it for AI; shares −13.6% on 5 Aug when it was reported (CNBC).",
+    "Q2 capex $18.4bn, $15.8bn of it for AI; shares \u221213.6% on 5 Aug when it was reported (CNBC).",
     "Terafab chip plant with Tesla, $16.8bn first phase (Electrek, 6 Aug). A deal with a related Musk company."
    ]
   },
@@ -207,7 +207,7 @@
    },
    "status": "Active",
    "evidence": [
-    "Defence ETF (ITA) $203.60 on 7 Oct vs $219.45 20 trading days earlier, −7.2% (trigger: down 5%): the watch number has fired, but nothing has yet shown up in SpaceX's own figures.",
+    "Defence ETF (ITA) $203.60 on 7 Oct vs $219.45 20 trading days earlier, \u22127.2% (trigger: down 5%): the watch number has fired, but nothing has yet shown up in SpaceX's own figures.",
     "FY2027 request includes $17.9bn for Golden Dome, $17.1bn of it through a planned reconciliation package rather than normal appropriations (Aerospace America). Starshield holds $6bn+ of Space Force contracts (24/7 Wall St, 23 Sep)."
    ]
   }
@@ -269,24 +269,24 @@
   }
  ],
  "valuation_plain": [],
- "lead": "SpaceX's call is <b>Building history</b> (day 7 of 10) while today's zone is <b>Buy</b>, at <b>+36</b> on a −100 to +100 scale (Buy line +30), unchanged at +36 from 6 Oct because no bucket score moved (the shares fell 2.51%, and the valuation premium to peers narrowed from +243% to +238%); any call would still be capped at <b>Hold</b> by two quality red flags.",
+ "lead": "SpaceX's call is <b>Building history</b> (day 8 of 10) while today's zone is <b>Buy</b>, at <b>+38</b> on a \u2212100 to +100 scale (Buy line +30), up from +36 on 7 Oct because Liquidity rose to +23 from +8 as Fed rate expectations turned bullish (the shares fell 4.19%, and the valuation premium to peers narrowed from +238% to +230%); any call would still be capped at <b>Hold</b> by two quality red flags.",
  "bullets": [
-  "<b>A reading, but not a call yet.</b> 74% of indicator weight has live data vs the 70% needed (unchanged from 6 Oct; it was 66% on 2 Oct); 7 of the 10 trading days needed are now recorded. Forecast revisions (DM2, 8 of 100 points) show 2027 earnings per share of $2.05 expected today vs $0.64 expected 90 days ago (+220.1%), a big jump from a small base, so treat it with care. Even once confirmed, two quality red flags cap the call at Hold: free cash flow was −$25.0bn in the 6 months to Jun 2026, and the operating loss was 1.6x the interest bill over the same two quarters.",
+  "<b>A reading, but not a call yet.</b> 74% of indicator weight has live data vs the 70% needed (unchanged from 7 Oct; it was 66% on 2 Oct); 8 of the 10 trading days needed are now recorded. Forecast revisions (DM2, 8 of 100 points) show 2027 earnings per share of $2.04 expected today vs $0.68 expected 90 days ago (+201.4%), a big jump from a small base, so treat it with care. Even once confirmed, two quality red flags cap the call at Hold: free cash flow was \u2212$25.0bn in the 6 months to Jun 2026, and the operating loss was 1.6x the interest bill over the same two quarters.",
   "<b>Demand scores +100, on a thin base.</b> 57% of the Demand weight has live data (the bucket needs 50%). In the June quarter, vs the same quarter a year earlier, Connectivity (Starlink) revenue grew 66%, AI 247% and Space 29%; Google searches for Starlink were 24.4% above the same 4 weeks of 2025 (a noisy measure: the Starship flight fell in that window). Much of the AI jump came from renting out computing capacity, and one AI customer alone was 12.2% of company revenue in the 6 months to June (10-Q).",
-  "<b>The price is extreme vs peers.</b> Valuation scores −100: investors pay 104.4x expected profit over the next 12 months vs 30.9x for Iridium, the only space peer with a usable P/E, a one-peer comparison (+238%, down from +243% on 6 Oct); SpaceX's 104x is above the 80x range peers must pass, so the page adds a caution, but it still counts as very expensive. On total company value vs operating profit before depreciation it is 364x vs 8.5x for the median of four peers.",
-  "<b>Price trend scores +100, helped by a fall in the peers.</b> The price is 15.8% above its average since listing ($144.75) and 26.4 points ahead of the space peers over 63 trading days: the shares are up 10.2% over that time while the peers fell an average of 16.3%. The shares closed at $167.60, −2.51% on the day vs −0.21% for the Nasdaq-100, 21% below their post-listing high close ($211.40 on 16 Jun) and 24% above the $135 IPO price.",
-  "<b>Money flows are neutral.</b> Liquidity scores +8, unchanged from 6 Oct: buying vs selling volume is neutral (1.11x up-day vs down-day volume, last 20 trading days), the dollar index is 2.99 points higher than 20 trading days ago, and markets price a 16% chance of a Fed rate rise at the late-October meeting, down from 31% a month earlier (Polymarket). Short interest fell 12.0% vs a month earlier (2.4% of float). Share supply is rising: 656m shares (5.0% of all shares) unlock in October and about 1.3bn (9.9%) just after Q3 results."
+  "<b>The price is extreme vs peers.</b> Valuation scores \u2212100: investors pay 100.2x expected profit over the next 12 months vs 30.3x for Iridium, the only space peer with a usable P/E, a one-peer comparison (+230%, down from +238% on 7 Oct); SpaceX's 100x is above the 80x range peers must pass, so the page adds a caution, but it still counts as very expensive. On total company value vs operating profit before depreciation it is 349x vs 8.3x for the median of four peers.",
+  "<b>Price trend scores +100, helped by a fall in the peers.</b> The price is 10.8% above its average since listing ($144.94) and 28.8 points ahead of the space peers over 63 trading days: the shares are up 10.5% over that time while the peers fell an average of 18.3%. The shares closed at $160.57, \u22124.19% on the day vs \u22121.39% for the Nasdaq-100, 24% below their post-listing high close ($211.40 on 16 Jun) and 19% above the $135 IPO price.",
+  "<b>Money flows are neutral.</b> Liquidity scores +23, up from +8 on 7 Oct, because Fed rate expectations turned bullish: markets price a 16% chance of a Fed rate rise at the late-October meeting, down from 34% a month earlier (Polymarket). Buying vs selling volume is neutral (0.92x up-day vs down-day volume, last 20 trading days) and the dollar index is 3.05 points higher than 20 trading days ago. Short interest fell 12.0% vs a month earlier (2.4% of float). Share supply is rising: 656m shares (5.0% of all shares) unlock in October and about 1.3bn (9.9%) just after Q3 results."
  ],
  "defects": [
   "Coverage 74% (above the 70% floor); a call is possible once 7 of 10 trading days agree. Forecast revisions (DM2) are live again: the forecast 90 days earlier is now $0.64 a share vs $2.05 today, above the minimum base, though still a small one.",
-  "Quality override O3: 2 red flags (free cash flow −$25.0bn in the 6 months to Jun 2026; operating loss 1.6x interest), so any call is capped at Hold.",
+  "Quality override O3: 2 red flags (free cash flow \u2212$25.0bn in the 6 months to Jun 2026; operating loss 1.6x interest), so any call is capped at Hold.",
   "VL3 (P/E vs own history) removed: no earnings history yet. To be reinstated when history allows.",
   "Revenue and margin trends (DM1, DM6) blank: too few quarters filed with the SEC.",
   "No company guidance, so DM3 is blank.",
-  "Forward P/E vs peers rests on one peer (Iridium): the other seven are loss-making or outside the 2x-80x data-quality range. Yahoo's next-fiscal-year figure is 86.7x; price ÷ the FY2027 consensus of $2.05 gives about 82x. SpaceX's own 104.4x and 364x (EV/EBITDA) are above the 80x range that peers must pass, yet are still scored.",
+  "Forward P/E vs peers rests on one peer (Iridium): the other seven are loss-making or outside the 2x-80x data-quality range. Yahoo's next-fiscal-year figure is 86.7x; price \u00f7 the FY2027 consensus of $2.05 gives about 82x. SpaceX's own 104.4x and 364x (EV/EBITDA) are above the 80x range that peers must pass, yet are still scored.",
   "Price trend +100 comes from short-history measures and from peers falling further; the shares rose 10.2% over 63 trading days while the peers fell an average of 16.3%.",
   "Customer concentration and related parties are not scored: one AI customer ('Customer B' in the 10-Q, not named; press reports suggest Anthropic, unconfirmed) was 12.2% of revenue in the 6 months to June, about 19.5% of June-quarter revenue (Unite.AI); another customer was 17.9% across all three segments in the same 6 months. The 10-Q balance sheet shows about $13.3bn of related-party debt at 30 Jun (details in its Note 17, not reviewed here), and Terafab is a joint project with Tesla.",
-  "No cash runway line: cash and securities of $100.0bn vs free cash flow of −$25.0bn in 6 months (rough estimate: 6-8 quarters before new funding).",
+  "No cash runway line: cash and securities of $100.0bn vs free cash flow of \u2212$25.0bn in 6 months (rough estimate: 6-8 quarters before new funding).",
   "Demand inputs (DM4a/b/c, DM5) are entered by hand from results releases and Google Trends. DM5 (search interest) is a noisy attention measure that jumps on news.",
   "Short interest as % of float (LQ2) and trading volume (LQ1) shift mechanically while lock-ups add tradable shares.",
   "Revenue mix uses short-history mode: only the Jun 2026 10-Q is filed, giving four quarters with a gap (Mar/Jun 2025 and Mar/Jun 2026)."
@@ -313,8 +313,8 @@
      "+66% vs the same quarter a year earlier; subscribers doubled to 12.0m."
     ],
     "neg": [
-     "Share of sales fell from 64% to 55% (Jun 2025 → Jun 2026 quarter) because AI grew faster.",
-     "Revenue per subscriber is lower than a year ago: Connectivity revenue grew 66% while subscribers doubled (roughly −17% per subscriber). Management says average revenue per user held at $66 a month vs the March quarter.",
+     "Share of sales fell from 64% to 55% (Jun 2025 \u2192 Jun 2026 quarter) because AI grew faster.",
+     "Revenue per subscriber is lower than a year ago: Connectivity revenue grew 66% while subscribers doubled (roughly \u221217% per subscriber). Management says average revenue per user held at $66 a month vs the March quarter.",
      "Satellites must be replaced every few years, so capital spending never stops."
     ]
    },
@@ -326,7 +326,7 @@
      "New AI computing agreements made the segment EBITDA-positive in the Jun 2026 quarter ($1.1bn adjusted EBITDA; $1.6bn of computing revenue)."
     ],
     "neg": [
-     "Still loses money: segment operating margin −49% in the Jun 2026 quarter (−207% a year earlier).",
+     "Still loses money: segment operating margin \u221249% in the Jun 2026 quarter (\u2212207% a year earlier).",
      "Takes most of the capital spending: $15.8bn of the $18.4bn capex in the Jun 2026 quarter (86%) was for AI, and management expects a similar level in each of the next two quarters.",
      "Advertising on X is shrinking: $367m vs $426m in the same quarter a year earlier.",
      "Much of the jump came from new computing agreements, and one customer (not named) was 12.2% of company revenue in the 6 months to June; how repeatable these deals are is not yet known."
@@ -340,7 +340,7 @@
      "Owning the launcher lets SpaceX put up its own Starlink satellites at cost, which rivals cannot match."
     ],
     "neg": [
-     "Loss-making while Starship is developed: operating loss $542m in the Jun 2026 quarter (segment margin −56%).",
+     "Loss-making while Starship is developed: operating loss $542m in the Jun 2026 quarter (segment margin \u221256%).",
      "One-off missions, not recurring: revenue swings with launch timing ($619m in the Mar 2026 quarter vs $962m in June).",
      "Smallest part: 12% of sales in the Jun 2026 quarter."
     ]
@@ -350,13 +350,13 @@
    "title": "What the shift means for SpaceX",
    "pos": [
     "Faster growth: revenue +92% vs the same quarter a year earlier (Jun 2026), led by AI (+247%).",
-    "Losses narrowed sharply in the June quarter: all segments together earned −1.8% operating margin vs −23.8% a year earlier, helped by the AI computing deals. But the March quarter was −41.4%, and over the half year losses widened: −16.7% (6 months to Jun 2026) vs −11.6% a year earlier."
+    "Losses narrowed sharply in the June quarter: all segments together earned \u22121.8% operating margin vs \u221223.8% a year earlier, helped by the AI computing deals. But the March quarter was \u221241.4%, and over the half year losses widened: \u221216.7% (6 months to Jun 2026) vs \u221211.6% a year earlier."
    ],
    "neg": [
     "Less recurring: subscription-based Connectivity fell from 64% to 55% of sales while AI, which relies on newer and less proven deals, rose from 18% to 33%.",
-    "Heavy cash burn: the AI build-out needs about $18bn of capital spending a quarter, far above operating cash (free cash flow −$25.0bn in the 6 months to Jun 2026, against $100.0bn of cash and securities).",
+    "Heavy cash burn: the AI build-out needs about $18bn of capital spending a quarter, far above operating cash (free cash flow \u2212$25.0bn in the 6 months to Jun 2026, against $100.0bn of cash and securities).",
     "Only four quarters of segment data are filed (with a gap), so the trend is short.",
-    "The '30.5-point mix drag' line reflects AI's very deep loss a year ago (−207% margin) weighing more now AI is a bigger share; AI's own margin improved to −49%."
+    "The '30.5-point mix drag' line reflects AI's very deep loss a year ago (\u2212207% margin) weighing more now AI is a bigger share; AI's own margin improved to \u221249%."
    ]
   }
  },
