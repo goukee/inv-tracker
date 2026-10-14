@@ -15,9 +15,15 @@
  },
  "move": {
   "class": "Quiet",
-  "direction": "up",
-  "headline": "Up 2.05% today, a normal day for Tesla; the 2 Oct delivery beat is still the latest news",
+  "direction": "down",
+  "headline": "A dip of 1.2% while the S&P 500 slipped, inside Tesla's normal daily range",
   "evidence": [
+   {
+    "d": "12 Oct",
+    "t": "Tesla fell 1.2% while the S&P 500 slipped 0.06%. Normal daily range for Tesla is about 3.1%, so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
    {
     "d": "9 Oct",
     "t": "TSLA rose 2.05% while the S&P 500 rose 0.59%: about two thirds of Tesla's typical daily move (3.1% over the last 60 trading days), so no classification is triggered. No company news found for the day.",
@@ -47,12 +53,6 @@
     "t": "The rise is likely the delivery beat against lowered forecasts; no single source confirms the cause.",
     "kind": "speculation",
     "src": "Yahoo Finance prices; Tesla 8-K"
-   },
-   {
-    "d": "Jun-Aug",
-    "t": "China retail sales 130,216 vs 159,253 a year earlier (−18.2%): falls in June, July and August, while Shanghai exports grew.",
-    "kind": "fact",
-    "src": "CPCA via CnEVPost, CarNewsChina"
    }
   ]
  },
@@ -295,13 +295,13 @@
   }
  ],
  "valuation_plain": [],
- "lead": "Tesla is <b>Building history</b> (today's zone: <b>Sell</b>), at <b>−35</b> on a −100 to +100 scale, 5 points below the −30 Sell line and unchanged from 8 Oct (it was −54 on 2 Oct): none of the four bucket scores moved. Q3 deliveries were flat, China sales are falling and the shares cost about 12 times the peer median on expected profit, while the price trend stayed improved from 2 Oct even as the shares rose 2.05% today. Caution: on Tesla, past Sell readings driven by price trend often came near lows.",
+ "lead": "Tesla is <b>Building history</b> (today's zone: <b>Sell</b>), at <b>−35</b> on a −100 to +100 scale, unchanged at −35 on 9 Oct (scores run as of the 12 Oct close). None of the four bucket scores moved since 9 Oct.",
  "bullets": [
-  "<b>Demand has turned slightly negative.</b> Demand scores −11: Q3 deliveries −2.1% and storage deployed +9.6% (Jul-Sep vs a year earlier), both neutral; Tesla's China retail sales −18.2% (Jun-Aug vs a year earlier, bearish); analysts' 2027 profit forecast $2.15 a share vs $2.57 90 days ago (−16.7%, bearish). Still positive: revenue grew 25.5% in the June quarter vs a year earlier against a 3.1% average for the prior four, and gross margin was 18.6% over the last 4 quarters vs 17.5% for the 4 a year earlier (one-offs removed).",
-  "<b>Valuation is extreme on every measure.</b> Valuation scores −100: forward P/E 186.3x vs a 15.6x peer median (+1,097%, up from +1,073% on 8 Oct); growth-adjusted P/E 4.5 vs 1.2 (+267%); EV/EBITDA 138.0x vs 20.1x (+586%); trailing P/E 354.4x vs its own median of 215.8x (+64%; only about 2 years of history, see Known defects). The market is paying for robotaxis, robots and energy, not today's car profits.",
-  "<b>Money flows are mixed.</b> Liquidity scores +13, unchanged from 8 Oct: buying vs selling volume 1.08x over 20 days (neutral); funds added a net 1.22% of shares last quarter (bullish); the dollar index is 3.09 points higher than 20 trading days earlier (bearish); the market's net odds of a Fed cut vs a rise at the next meeting moved 20.1 points towards a cut vs four weeks earlier (bullish, past the 15-point line; now 1% cut vs 16% rise, a month ago 2% vs 37%); only 1.9% of tradable shares are sold short, below the 2% floor.",
-  "<b>The price trend is still −32 and negative.</b> Price trend scores −32 (−100 on 2 Oct, unchanged from 8 Oct): the price is 2.0% below its 200-day average (neutral; 4.1% below on 8 Oct), the 50-day average is 9.2% below the 200-day (bearish), and the 3-month return trails the peers by 0.3 points (neutral). The shares closed at $382.70, +2.05% on the day vs +0.59% for the S&P 500, and are up 3.3% over 5 trading days.",
-  "<b>Not confirmed: day 6 of 10.</b> The call needs 7 of 10 trading days in one zone. The score rose from −54 (2 Oct) to −37 (5 Oct) because the price rose: the 200-day-average and peer-relative-strength readings both moved from bearish to neutral. It stayed at −37 on 6 Oct and 7 Oct, rose to −35 on 8 Oct as Liquidity improved, and was unchanged at −35 on 9 Oct."
+  "<b>The price trend is down.</b> Price trend scores −32, unchanged from −32 on 9 Oct: 50-day vs 200-day average -8.7% (bearish); Price vs 200-day average -3.1% (neutral); Relative strength vs peers, 3 months +0.4 pts (neutral).",
+  "<b>The money backdrop is neutral to mixed.</b> Liquidity scores +13, unchanged from +13 on 9 Oct: Institutional ownership change +1.22 pts of shares (bullish); Dollar backdrop (shared macro) +3.12 pts (bearish); Fed rate expectations (shared macro) +15.6 pts (towards cuts) (bullish); Buying vs selling volume 1.12x (neutral); Short interest trend -4.4% (2.0% of float) (neutral).",
+  "<b>The business signals are mixed.</b> Demand scores −11, unchanged from −11 on 9 Oct: Earnings forecast revisions -15.4% ($2.18 vs $2.58) (bearish); Revenue growth trend 25.5% vs 3.1% avg (+22.4 pts) (bullish); Tesla China retail sales, last 3 months -18.2% (bearish); Gross margin trend (one-offs removed) 18.6% vs 17.5% (+1.1 pts) (bullish); Vehicle deliveries growth -2.1% (neutral).",
+  "<b>It is priced above peers.</b> Valuation vs peers scores −100, unchanged from −100 on 9 Oct: Forward P/E vs peers 181.2 vs 15.2 peer median (+1096%) (bearish); Growth-adjusted P/E vs peers 4.6 vs 1.2 peer median (+272%) (bearish); P/E vs own 5-year history 350.0 vs 215.8 5-yr median (+62%) (bearish); EV/EBITDA vs peers 136.3 vs 20.9 peer median (+551%) (bearish).",
+  "<b>The call: Building history, with the zone at Sell.</b> 7 of 10 trading days recorded; today reads Sell. Tesla closed at $378.03, −1.22% on the day vs −0.06% for the S&P 500; −0.2% over 5 trading days and −4.6% over 3 months. Closest to flipping: <b>Fed rate expectations (shared macro)</b> (2 points): now +15.6 pts (towards cuts), scoring bullish. It turns neutral if it crosses +15 pts, measured against net odds (cut minus rise) for the next Fed meeting, 28 days earlier. <b>Gross margin trend (one-offs removed)</b> (3 points): now 18.6% vs 17.5% (+1.1 pts), scoring bullish. It turns neutral if it crosses +1.00 pts, measured against gross margin of the 4 quarters a year earlier."
  ],
  "defects": [
   "Live from 4 Oct 2026 (promoted from staging; history starts fresh on production): the call needs 7 of the last 10 trading days in one zone before it is confirmed.",

@@ -27,8 +27,14 @@
  "move": {
   "class": "Quiet",
   "direction": "up",
-  "headline": "A normal-sized gain, inside SpaceX's usual daily range",
+  "headline": "A gain of 0.5% while the Nasdaq-100 slipped, inside SpaceX's normal daily range",
   "evidence": [
+   {
+    "d": "12 Oct",
+    "t": "SpaceX rose 0.5% while the Nasdaq-100 slipped 0.71%. Normal daily range for SpaceX is about 4.5%, so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
    {
     "d": "9 Oct",
     "t": "SpaceX rose 1.25% to $162.57 while the Nasdaq-100 rose 0.51%. Its typical daily move over the last 60 trading days is 4.5%, so no classification is triggered. No company news found for the day.",
@@ -58,18 +64,6 @@
     "t": "SpaceX rose 2.6% while the Nasdaq-100 rose 0.2%. Its typical daily move over the last 60 trading days is 4.5%, so no classification is triggered.",
     "kind": "fact",
     "src": "Yahoo Finance prices"
-   },
-   {
-    "d": "28 Sep",
-    "t": "Starship reached orbit for the first time and deployed 26 Starlink V3 satellites (Flight 14), ending with a controlled splashdown in the Pacific.",
-    "kind": "fact",
-    "src": "RocketLaunch.org"
-   },
-   {
-    "d": "22 Sep",
-    "t": "President Gwynne Shotwell exercised options and sold shares at $151-155 (Form 4).",
-    "kind": "fact",
-    "src": "SEC / Yahoo"
    }
   ]
  },
@@ -275,13 +269,13 @@
   }
  ],
  "valuation_plain": [],
- "lead": "SpaceX's call is <b>Building history</b> (day 9 of 10) while today's zone is <b>Buy</b>, at <b>+38</b> on a −100 to +100 scale (Buy line +30), unchanged from 8 Oct: none of the four bucket scores moved (Price trend +100, Demand +100, Liquidity +23, Valuation −100), and the shares rose 1.25% to $162.57 vs +0.51% for the Nasdaq-100; any call would still be capped at <b>Hold</b> by two quality red flags.",
+ "lead": "SpaceX is <b>No confirmed call</b>, at <b>+35</b> on a −100 to +100 scale, down from +38 on 9 Oct (scores run as of the 12 Oct close). Bucket scores that moved since 9 Oct: Liquidity down to 0 from +23. The others did not change.",
  "bullets": [
-  "<b>A reading, but not a call yet.</b> 74% of indicator weight has live data vs the 70% needed (unchanged from 8 Oct; it was 66% on 2 Oct); 9 of the 10 trading days needed are now recorded. Forecast revisions (DM2, 8 of 100 points) show 2027 earnings per share of $2.04 expected today vs $0.68 expected 90 days ago (+201.4%), a big jump from a small base, so treat it with care. Even once confirmed, two quality red flags cap the call at Hold: free cash flow was −$25.0bn in the 6 months to Jun 2026, and the operating loss was 1.6x the interest bill over the same two quarters.",
-  "<b>Demand scores +100, on a thin base.</b> 57% of the Demand weight has live data (the bucket needs 50%). In the June quarter, vs the same quarter a year earlier, Connectivity (Starlink) revenue grew 66%, AI 247% and Space 29%; Google searches for Starlink were 24.4% above the same 4 weeks of 2025 (a noisy measure: the Starship flight fell in that window). Much of the AI jump came from renting out computing capacity, and one AI customer alone was 12.2% of company revenue in the 6 months to June (10-Q).",
-  "<b>The price is extreme vs peers.</b> Valuation scores −100, unchanged: investors pay 101.1x expected profit over the next 12 months vs 30.2x for Iridium, the only space peer with a usable P/E, a one-peer comparison (+234%, vs +230% on 8 Oct); SpaceX's 101x is above the 80x range peers must pass, so the page adds a caution, but it still counts as very expensive. On total company value vs operating profit before depreciation it is 353x vs 8.5x for the median of four peers.",
-  "<b>Price trend scores +100, helped by a fall in the peers.</b> The price is 12.0% above its average since listing (10.8% on 8 Oct) and 33.3 points ahead of the space peers over 63 trading days (28.8 on 8 Oct): the shares are up 16.8% over 3 months while the peers fell. The shares closed at $162.57, +1.25% on the day vs +0.51% for the Nasdaq-100, 23% below their post-listing high close ($211.40 on 16 Jun) and 20% above the $135 IPO price.",
-  "<b>Money flows are neutral.</b> Liquidity scores +23, unchanged from 8 Oct. Fed rate expectations score bullish: markets price a 16% chance of a Fed rate rise at the late-October meeting, down from 37% a month earlier (Polymarket), a net move of 20.1 points towards cuts. Buying vs selling volume is neutral (0.93x up-day vs down-day volume, last 20 trading days) and the dollar index is 3.09 points higher than 20 trading days ago (bearish). Short interest fell 12.0% vs a month earlier (2.4% of float, bullish). Share supply is rising: 656m shares (5.0% of all shares) unlock in October and about 1.3bn (9.9%) just after Q3 results."
+  "<b>The price trend is up.</b> Price trend scores +100, unchanged from +100 on 9 Oct: Price vs average since listing (short-history version) +12.4% (bullish); 20-day vs since-listing average (short-history version) +6.7% (bullish); Relative strength vs peers, 3 months +38.5 pts (bullish).",
+  "<b>The money backdrop is neutral to mixed.</b> Liquidity scores 0, down from +23 on 9 Oct: Dollar backdrop (shared macro) +3.12 pts (bearish); Fed rate expectations (shared macro) +15.6 pts (towards cuts) (bullish); Buying vs selling volume 1.07x (neutral); Short interest trend +4.2% (2.7% of float) (neutral).",
+  "<b>The business signals are strong.</b> Demand scores +100, unchanged from +100 on 9 Oct: Earnings forecast revisions +207.7% ($2.08 vs $0.68) (bullish); Connectivity (Starlink) revenue growth +66.0% (Jun 2026 quarter) (bullish); Google search interest in 'Starlink' +24.4% (bullish); AI (xAI) revenue growth +247.0% (Jun 2026 quarter) (bullish); Space (launch) revenue growth +29.0% (Jun 2026 quarter) (bullish).",
+  "<b>It is priced above peers.</b> Valuation vs peers scores −100, unchanged from −100 on 9 Oct: Forward P/E vs peers 99.4 vs 29.9 peer median (+233%) (bearish); EV/EBITDA vs peers 355.1 vs 8.3 peer median (+4177%) (bearish).",
+  "<b>The call: No confirmed call, with the zone at Buy.</b> no zone held 7 of the last 10 trading days; today reads Buy. Once confirmed it would be capped at Hold by O3. SpaceX closed at $163.42, +0.52% on the day vs −0.71% for the Nasdaq-100; −4.5% over 5 trading days and +20.1% over 3 months. Closest to flipping: <b>Fed rate expectations (shared macro)</b> (2 points): now +15.6 pts (towards cuts), scoring bullish. It turns neutral if it crosses +15 pts, measured against net odds (cut minus rise) for the next Fed meeting, 28 days earlier. <b>Short interest trend</b> (3 points): now +4.2% (2.7% of float), scoring neutral. It turns bearish if it crosses +10%, measured against short interest a month earlier (report 2026-09-30)."
  ],
  "defects": [
   "Coverage 74% (above the 70% floor); a call is possible once 7 of 10 trading days agree. Forecast revisions (DM2) are live again: the forecast 90 days earlier is now $0.64 a share vs $2.05 today, above the minimum base, though still a small one.",

@@ -16,8 +16,14 @@
  "move": {
   "class": "Quiet",
   "direction": "up",
-  "headline": "Up 0.9% today, a normal-sized day; SpaceX shares rose 1.25%",
+  "headline": "A gain of 0.3% while the S&P 500 slipped, inside Alphabet's normal daily range",
   "evidence": [
+   {
+    "d": "12 Oct",
+    "t": "Alphabet rose 0.3% while the S&P 500 slipped 0.06%. Normal daily range for Alphabet is about 2.0%, so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
    {
     "d": "9 Oct",
     "t": "GOOG rose 0.87% to $347.86 while the S&P 500 rose 0.59%: under half of GOOG's typical daily move (2.0% over the last 60 trading days), so no classification is triggered. SpaceX (SPCX) rose 1.25% to $162.57 the same day, which lifts the value of Alphabet's stake slightly. No company news found for the day.",
@@ -248,13 +254,13 @@
    "note": "Monthly; published in the first days of the month."
   }
  ],
- "lead": "Alphabet is <b>Building history</b> (today's zone: <b>Buy</b>), at <b>+39</b> on a −100 to +100 scale, unchanged from 8 Oct and 9 points above the +30 Buy line: none of the four bucket scores moved (Price trend +72, Liquidity +33, Demand +62, Valuation −21). Search and Cloud are growing fast and analysts are raising forecasts, but the shares cost more than peers on EV/EBITDA and are still behind them over 3 months.",
+ "lead": "Alphabet is <b>Building history</b> (today's zone: <b>Buy</b>), at <b>+32</b> on a −100 to +100 scale, down from +39 on 9 Oct (scores run as of the 12 Oct close). Bucket scores that moved since 9 Oct: Price trend down to +44 from +72. The others did not change.",
  "bullets": [
-  "<b>Demand is strong.</b> Demand scores +62, unchanged from 8 Oct: Search & other revenue +16.8% and Google Cloud +81.8% (Apr-Jun 2026 vs a year earlier), both bullish; analysts' 2027 profit forecast $15.17 a share vs $14.53 90 days ago (+4.4%, bullish). Google's search share −0.4 points vs a year earlier (neutral). Revenue growth trend: 12.0% vs a 14.0% average for the prior four quarters (−1.9 points, neutral), also unchanged. Margin trend (DM6) is still blank: see Known defects.",
-  "<b>Valuation is above peers, not extreme.</b> Valuation scores −21, unchanged: forward P/E 24.0x vs a 20.1x peer median (+19%, neutral); growth-adjusted P/E 1.2 vs 1.1 (+14%, neutral); EV/EBITDA 23.9x vs 17.4x (+37%, bearish).",
-  "<b>Money flows are mixed.</b> Liquidity scores +33, unchanged from 8 Oct: buying volume 1.61x selling volume over 20 days and institutions added +1.15 points of shares (both bullish, though part of the institutional increase is new shares from the June equity raise); Fed odds are bullish (rate-rise odds 16% vs 37% four weeks earlier, a 20.1-point move towards cuts vs the 15-point line); the dollar is 3.09 points higher than 20 trading days earlier (bearish). Short interest +20.7% in a month scores bearish, which is an engine defect for GOOG (see Known defects).",
-  "<b>Price trend is positive but still behind peers.</b> Price trend scores +72, unchanged from 8 Oct: price $347.86 (+0.87% on the day vs +0.59% for the S&P 500), 2.8% above its 200-day average and the 50-day average 1.5% above the 200-day (both bullish); the 3-month return is 3.8 points behind the peers (neutral), down from 2.2 points behind on 8 Oct; the bearish line is more than 5 points behind.",
-  "<b>Not confirmed, and no longer on the line.</b> Day 5 of history (5 of 10 trading days recorded): the call needs 7 of the last 10 trading days in one zone. Coverage 97% of the weight left after removals. At +39 it is 9 points above the +30 Buy line, but one indicator turning (forecast revisions or relative valuation) could still move it into the Hold zone; the revenue growth trend is 0.1 point from turning bearish (−1.9 vs the −2 line), and the 3-month peer gap is 1.2 points from its −5 bearish line. Next test: Q3 results, estimated 28 Oct."
+  "<b>The price trend is up.</b> Price trend scores +44, down from +72 on 9 Oct: Price vs 200-day average +3.1% (bullish); 50-day vs 200-day average +1.4% (bullish); Relative strength vs peers, 3 months -6.0 pts (bearish).",
+  "<b>The money backdrop is supportive.</b> Liquidity scores +33, unchanged from +33 on 9 Oct: Buying vs selling volume 1.53x (bullish); Short interest trend +14.5% (0.0% of float) (bearish); Institutional ownership change +1.15 pts of shares (bullish); Dollar backdrop (shared macro) +3.12 pts (bearish); Fed rate expectations (shared macro) +15.6 pts (towards cuts) (bullish).",
+  "<b>The business signals are strong.</b> Demand scores +62, unchanged from +62 on 9 Oct: Earnings forecast revisions +4.2% ($15.21 vs $14.61) (bullish); Search & other revenue growth +16.8% (bullish); Google Cloud revenue growth +81.8% (bullish); Revenue growth trend 12.0% vs 14.0% avg (-1.9 pts) (neutral); Google worldwide search share (StatCounter) -0.4% (neutral).",
+  "<b>Valuation is roughly in line with peers.</b> Valuation vs peers scores −21, unchanged from −21 on 9 Oct: EV/EBITDA vs peers 23.9 vs 17.4 peer median (+38%) (bearish); Forward P/E vs peers 24.0 vs 20.5 peer median (+17%) (neutral); Growth-adjusted P/E vs peers 1.2 vs 1.1 peer median (+13%) (neutral).",
+  "<b>The call: Building history, with the zone at Buy.</b> 6 of 10 trading days recorded; today reads Buy. Alphabet closed at $348.97, +0.32% on the day vs −0.06% for the S&P 500; +1.5% over 5 trading days and −2.3% over 3 months. Closest to flipping: <b>Revenue growth trend</b> (6 points): now 12.0% vs 14.0% avg (-1.9 pts), scoring neutral. It turns bearish if it crosses -2 pts, measured against average growth of the prior 4 quarters, each vs a year earlier. <b>Fed rate expectations (shared macro)</b> (2 points): now +15.6 pts (towards cuts), scoring bullish. It turns neutral if it crosses +15 pts, measured against net odds (cut minus rise) for the next Fed meeting, 28 days earlier."
  ],
  "defects": [
   "Staging tab, first built 6 Oct 2026: the call needs 7 of the last 10 trading days in one zone before it is confirmed (5 of 10 recorded).",

@@ -26,9 +26,15 @@
  },
  "move": {
   "class": "Quiet",
-  "direction": "up",
-  "headline": "A gain of 2%, well inside Dell's normal range after a huge run",
+  "direction": "down",
+  "headline": "A dip of 1.6% while the S&P 500 slipped, inside Dell's normal daily range",
   "evidence": [
+   {
+    "d": "12 Oct",
+    "t": "Dell fell 1.6% while the S&P 500 slipped 0.06%. Normal daily range for Dell is about 4.8%, so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
    {
     "d": "9 Oct",
     "t": "Dell rose 2.00% to $586.06 while the S&P 500 rose 0.59%. A typical day for Dell moves about 4.8% (last 60 trading days), so this is well inside its normal range and no classification is triggered. No company news found for the day.",
@@ -250,16 +256,16 @@
    "note": "Estimated around Tue 24 Nov (not yet announced by Dell). After the US close; next morning in Singapore."
   }
  ],
- "lead": "Dell is <b>Building history</b> (today's zone: <b>Buy</b>), at <b>+39</b> on a −100 to +100 scale, up from +38 on 8 Oct and 9 points above the +30 Buy line: two buckets moved in opposite directions. Price trend rose to +100 from +72 (the 3-month lead over peers passed the 5-point line) and Liquidity fell to −13 from +27 (up-day volume slipped under the 1.3x bullish line), as the shares rose 2.00% on the day vs +0.59% for the S&P 500. The call stays driven by exceptional AI-driven demand against a stretched price and a valuation well above its hardware peers.",
+ "lead": "Dell is <b>Building history</b> (today's zone: <b>Buy</b>), at <b>+41</b> on a −100 to +100 scale, up from +39 on 9 Oct (scores run as of the 12 Oct close). Bucket scores that moved since 9 Oct: Price trend down to +72 from +100; Liquidity up to +47 from −13. The others did not change.",
  "bullets": [
-  "<b>Demand is exceptional.</b> Demand scores +76: revenue grew 57.7% in the July quarter vs a year earlier, well above the 39.2% average of the prior four quarters; AI server orders over the last two quarters were +382% vs the same two quarters a year earlier ($85.3bn vs $17.7bn); October-quarter guidance (+81.4% vs a year earlier) beat what analysts expected (+53.4%) by 28 points; analysts' profit forecast for the year to Jan 2028 rose 32.1% in 90 days; Taiwan AI-server makers' sales were +96.8% (Jun-Aug vs a year earlier). Soft spot: gross margin over the last 4 quarters was 19.8% vs 21.1% a year earlier, as lower-margin AI servers grow.",
-  "<b>It is expensive vs its hardware peers.</b> Valuation scores −44 (unchanged): investors pay 23.4x expected next-12-month profit vs a 13.2x peer median (+78%), EV/EBITDA is 22.4x vs 14.3x (+57%), and trailing P/E is 34.1x vs Dell's own 5-year median of 21.5x (+59%). Only the growth-adjusted P/E looks cheap (0.6 vs a 1.0 peer median, −42%), and that rests on long-term growth forecasts: analysts expect slightly lower earnings per share in the year to Jan 2028 ($24.66) than this year ($25.90).",
-  "<b>Money flows weakened.</b> Liquidity scores −13, down from +27 on 8 Oct: volume on up days was 1.28x volume on down days over the last 20 trading days (neutral; it was 1.42x and bullish on 8 Oct; the bullish line is 1.3x). Fed odds stay bullish (rate-rise odds 16% vs 37% four weeks earlier, a 20.1-point move towards cuts vs the 15-point line), but institutions cut a net 2.37 points of shares last quarter (Jun 30 filings) and the dollar index is 3.09 points higher than 20 trading days earlier (both bearish).",
-  "<b>The price trend is very strong but stretched.</b> Price trend scores +100, up from +72 on 8 Oct: at $586.06 (+2.00% on the day vs +0.59% for the S&P 500) the stock is 92.6% above its 200-day average and the 50-day average is 66.2% above the 200-day; over 3 months it is 7.0 points ahead of its peers (bullish; it was 4.3 points ahead and neutral on 8 Oct, and the bullish line is 5 points ahead).",
-  "<b>Fragile and not confirmed.</b> Day 5 of 10 trading days of history; the call is confirmed after 7 of 10 days in one zone. The score has a cushion of 9 points, but it is not safe: the volume read is 0.02x under its bullish line, the Fed-odds read is 5.1 points above its 15-point line, and a growth-adjusted P/E turning neutral would take the score nearer the +30 Buy line. Watch: cash lagging profit (free cash flow $986m in the July quarter vs $1,868m a year earlier), about $1.03bn of insider and Silver Lake share sales in 6 months with no buying, and the 10-year yield (5.24%, +0.27 points in 20 trading days)."
+  "<b>The price trend is up.</b> Price trend scores +72, down from +100 on 9 Oct: Price vs 200-day average +88.2% (bullish); 50-day vs 200-day average +66.1% (bullish); Relative strength vs peers, 3 months +1.5 pts (neutral).",
+  "<b>The money backdrop is supportive.</b> Liquidity scores +47, up from −13 on 9 Oct: Buying vs selling volume 1.36x (bullish); Short interest trend -14.8% (4.2% of float) (bullish); Institutional ownership change -2.37 pts of shares (bearish); Dollar backdrop (shared macro) +3.12 pts (bearish); Fed rate expectations (shared macro) +15.6 pts (towards cuts) (bullish).",
+  "<b>The business signals are strong.</b> Demand scores +76, unchanged from +76 on 9 Oct: Earnings forecast revisions +32.1% ($24.66 vs $18.67) (bullish); Revenue growth trend 57.7% vs 39.2% avg (+18.5 pts) (bullish); Guidance vs expectations guided 81.4% vs 53.4% expected (+28.0 pts) (bullish); AI server orders +382.0% (bullish); Taiwan AI-server makers' monthly sales +96.8% (bullish).",
+  "<b>It is priced above peers.</b> Valuation vs peers scores −44, unchanged from −44 on 9 Oct: Forward P/E vs peers 23.0 vs 12.8 peer median (+80%) (bearish); Growth-adjusted P/E vs peers 0.6 vs 1.0 peer median (-41%) (bullish); P/E vs own 5-year history 33.6 vs 21.5 5-yr median (+56%) (bearish); EV/EBITDA vs peers 22.0 vs 13.9 peer median (+58%) (bearish).",
+  "<b>The call: Building history, with the zone at Buy.</b> 6 of 10 trading days recorded; today reads Buy. Dell closed at $576.76, −1.59% on the day vs −0.06% for the S&P 500; +4.4% over 5 trading days and +26.3% over 3 months. Closest to flipping: <b>Fed rate expectations (shared macro)</b> (2 points): now +15.6 pts (towards cuts), scoring bullish. It turns neutral if it crosses +15 pts, measured against net odds (cut minus rise) for the next Fed meeting, 28 days earlier. <b>Buying vs selling volume</b> (6 points): now 1.36x, scoring bullish. It turns neutral if it crosses +1.30x, measured against volume on up days ÷ down days, last 20 trading days."
  ],
  "defects": [
-  "Staging build, fifth day of history: the call needs 7 of 10 trading days in one zone before it is confirmed.",
+  "Staging build, day 6 of history: the call needs 7 of 10 trading days in one zone before it is confirmed.",
   "Valuation vs own history (VL3) uses trailing P/E: free forward P/E history is too short.",
   "DM3, DM4a-c and DM5 are typed in from Dell's results and the Taiwan exchange, so they update quarterly (DM5 monthly).",
   "Holder percentages use all ~636m shares (Class A, B and C), not the 315m tradable Class C shares.",
