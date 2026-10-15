@@ -23,9 +23,21 @@
  },
  "move": {
   "class": "Quiet",
-  "direction": "up",
-  "headline": "A gain of 1.1% while the S&P 500 slipped, inside Microsoft's normal daily range",
+  "direction": "down",
+  "headline": "A dip of 1.8% while the S&P 500 fell, inside Microsoft's normal daily range",
   "evidence": [
+   {
+    "d": "14 Oct",
+    "t": "Microsoft fell 1.80% while the S&P 500 fell 1.11%. Normal daily range for Microsoft is about 2.5%, so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
+   {
+    "d": "13 Oct",
+    "t": "Microsoft rose 0.43% while the S&P 500 slipped 0.02%. Normal daily range for Microsoft is about 2.5%, so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
    {
     "d": "12 Oct",
     "t": "Microsoft rose 1.1% while the S&P 500 slipped 0.06%. Normal daily range for Microsoft is about 2.5%, so no classification is triggered.",
@@ -140,7 +152,7 @@
    },
    "status": "Hurting",
    "evidence": [
-    "Watch number below its trigger: Micron $1,029.00 at the 9 Oct close vs $975.26 20 trading days earlier (+5.5%; active at +10%). The strain shows in Microsoft's own figures instead:",
+    "Watch number below its trigger: Micron $914.13 at the 14 Oct close vs $926.55 20 trading days earlier (−1.3%; active at +10%). The strain shows in Microsoft's own figures instead:",
     "Capex $41bn in the June quarter including finance leases; $50bn+ guided for September (Microsoft, 29 Jul). Cash capex in FY26 was $116.0bn vs operating cash $182.9bn (SEC 10-K).",
     "Gross margin 67.2% in the June quarter vs 68.6% a year earlier; FY27 operating margin guided down by less than 1 point (29 Jul).",
     "Company responding: own chips; capacity still short of demand (29 Jul)."
@@ -163,7 +175,7 @@
    },
    "status": "Active",
    "evidence": [
-    "10-year yield 5.24% at the 9 Oct close vs 4.98% 20 trading days earlier (+0.27 points; active at +0.25). Brent oil $104.7 vs $104.6 (9 Oct close, shared macro).",
+    "10-year yield 5.19% at the 14 Oct close vs 5.01% 20 trading days earlier (+0.18 points, just under the +0.25 line; status label not changed by this refresh). Brent oil $105.7 vs $108.8 (14 Oct close, shared macro).",
     "6 of Microsoft's 10 worst weeks in the last 5 years were driven by inflation or Fed news (past big moves check, 5 Oct)."
    ]
   },
@@ -183,7 +195,7 @@
    },
    "status": "Hurting",
    "evidence": [
-    "Dollar index 101.83 at the 6 Oct close vs 98.84 20 trading days earlier (+3.0%; hurting at +2%)."
+    "Dollar index 102.55 at the 14 Oct close vs 100.31 20 trading days earlier (+2.2%; hurting at +2%)."
    ]
   },
   {
@@ -233,7 +245,7 @@
    "d": "2026-10-28",
    "t": "Fed rate decision",
    "link": "C2",
-   "note": "Polymarket (9 Oct): 16% chance of a rise vs 37% 28 days earlier; under 1% chance of a cut. Decision 2pm ET Wed 28 Oct (2am Thu 29 Oct Singapore), the same day as Microsoft's expected results."
+   "note": "Polymarket (14 Oct): 33% chance of a rise vs 48% 28 days earlier; under 1% chance of a cut. Decision 2pm ET Wed 28 Oct (2am Thu 29 Oct Singapore), the same day as Microsoft's expected results."
   },
   {
    "d": "2026-10-28",
@@ -243,13 +255,13 @@
   }
  ],
  "valuation_plain": [],
- "lead": "Microsoft is <b>Building history</b> (today's zone: <b>Buy</b>), at <b>+35</b> on a −100 to +100 scale, down from +41 on 9 Oct (scores run as of the 12 Oct close). Bucket scores that moved since 9 Oct: Liquidity down to 0 from +40. The others did not change.",
+ "lead": "Microsoft is <b>Building history</b> (today's zone: <b>Buy</b>), at <b>+39</b> on a −100 to +100 scale, down from +41 on 13 Oct (scores run as of the 14 Oct close). Bucket scores that moved since 13 Oct: Liquidity down to +27 from +40. The others did not change.",
  "bullets": [
-  "<b>The price trend is up.</b> Price trend scores +100, unchanged from +100 on 9 Oct: Price vs 200-day average +24.6% (bullish); 50-day vs 200-day average +15.6% (bullish); Relative strength vs peers, 3 months +37.2 pts (bullish).",
-  "<b>The money backdrop is neutral to mixed.</b> Liquidity scores 0, down from +40 on 9 Oct: Dollar backdrop (shared macro) +3.12 pts (bearish); Fed rate expectations (shared macro) +15.6 pts (towards cuts) (bullish); Buying vs selling volume 1.29x (neutral); Short interest trend -17.9% (0.8% of float) (neutral); Institutional ownership change +0.84 pts of shares (neutral).",
-  "<b>The business signals are strong.</b> Demand scores +49, unchanged from +49 on 9 Oct: Earnings forecast revisions +4.8% ($23.67 vs $22.59) (bullish); Azure growth (constant currency) +43.0% (bullish); AWS + Google Cloud combined revenue growth +50.6% (bullish); Revenue growth trend 17.7% vs 17.9% avg (-0.1 pts) (neutral); Guidance vs expectations guided 16.4% vs 15.5% expected (+0.9 pts) (neutral).",
-  "<b>Valuation is roughly in line with peers.</b> Valuation vs peers scores −28, unchanged from −28 on 9 Oct: Growth-adjusted P/E vs peers 1.7 vs 1.2 peer median (+41%) (bearish); Forward P/E vs peers 25.9 vs 21.8 peer median (+19%) (neutral); P/E vs own 5-year history 30.1 vs 33.9 5-yr median (-11%) (neutral); EV/EBITDA vs peers 21.0 vs 17.3 peer median (+21%) (neutral).",
-  "<b>The call: Building history, with the zone at Buy.</b> 6 of 10 trading days recorded; today reads Buy. Microsoft closed at $541.15, +1.14% on the day vs −0.06% for the S&P 500; +3.0% over 5 trading days and +40.8% over 3 months. Closest to flipping: <b>Buying vs selling volume</b> (6 points): now 1.29x, scoring neutral. It turns bullish if it crosses +1.30x, measured against volume on up days ÷ down days, last 20 trading days. <b>Fed rate expectations (shared macro)</b> (2 points): now +15.6 pts (towards cuts), scoring bullish. It turns neutral if it crosses +15 pts, measured against net odds (cut minus rise) for the next Fed meeting, 28 days earlier."
+  "<b>The price trend is up.</b> Price trend scores +100, unchanged from +100 on 13 Oct: Price vs 200-day average +22.7% (bullish); 50-day vs 200-day average +15.9% (bullish); Relative strength vs peers, 3 months +31.5 pts (bullish).",
+  "<b>The money backdrop is supportive.</b> Liquidity scores +27, down from +40 on 13 Oct: Buying vs selling volume 1.51x (bullish); Short interest trend -17.9% (0.8% of float) (neutral); Institutional ownership change +0.83 pts of shares (neutral); Dollar backdrop (shared macro) +2.24 pts (bearish); Fed rate expectations (shared macro) +14.3 pts (towards cuts) (neutral).",
+  "<b>The business signals are strong.</b> Demand scores +49, unchanged from +49 on 13 Oct: Revenue growth trend 17.7% vs 17.9% avg (-0.1 pts) (neutral); Gross margin trend 67.9% vs 68.8% (-0.9 pts) (neutral); Earnings forecast revisions +4.8% ($23.69 vs $22.61) (bullish); Guidance vs expectations guided 16.4% vs 15.5% expected (+0.9 pts) (neutral); Azure growth (constant currency) +43.0% (Jun-26 quarter (Q4 FY26), constant currency (Microsoft release: 43%) vs a 39-40% guide) (bullish); Microsoft 365 Commercial cloud growth (constant currency) +14.0% (Jun-26 quarter (Q4 FY26), constant currency (release: 14%; Microsoft's 'adjusted' figure, which also removes a one-off in the year-earlier quarter, is 16%)) (neutral); AWS + Google Cloud combined revenue growth +50.6% (Q2 2026 (Jun-26 quarter): AWS $42.2bn + Google Cloud $24.8bn vs $30.9bn + $13.6bn a year earlier) (bullish).",
+  "<b>It is priced above peers.</b> Valuation vs peers scores −28, unchanged from −28 on 13 Oct: Forward P/E vs peers 25.5 vs 21.4 peer median (+19%) (neutral); Growth-adjusted P/E vs peers 1.8 vs 1.2 peer median (+42%) (bearish); EV/EBITDA vs peers 20.7 vs 17.0 peer median (+22%) (neutral); P/E vs own 5-year history 29.7 vs 33.9 5-yr median (-12%) (neutral).",
+  "<b>The call: Building history, with the zone at Buy.</b> 8 of 10 trading days recorded; today reads Buy. Microsoft closed at $533.69, −1.80% on the day vs −1.11% for the S&P 500; +0.7% over 5 trading days and +33.3% over 3 months. Closest to flipping: <b>Fed rate expectations (shared macro)</b> (2 points): now +14.3 pts (towards cuts), scoring neutral. It turns bullish if it crosses +15 pts, measured against net odds (cut minus rise) for the next Fed meeting, 28 days earlier. <b>Gross margin trend</b> (3 points): now 67.9% vs 68.8% (-0.9 pts), scoring neutral. It turns bearish if it crosses -1.00 pts, measured against gross margin of the 4 quarters a year earlier. <b>P/E vs own 5-year history</b> (6 points): now 29.7 vs 33.9 5-yr median (-12%), scoring neutral. It turns bullish if it crosses -15%, measured against the stock's own median trailing P/E, last 5 years (weekly)."
  ],
  "defects": [
   "Revenue mix: the last 363 characters of the SEC segment file were rebuilt after a browser disconnect; an independent check (6 Oct) found them identical, value for value, to an earlier full download.",

@@ -23,8 +23,20 @@
  "move": {
   "class": "Quiet",
   "direction": "up",
-  "headline": "A gain of 1.3% while the S&P 500 slipped, inside Apple's normal daily range",
+  "headline": "A gain of 0.5% while the S&P 500 fell, inside Apple's normal daily range",
   "evidence": [
+   {
+    "d": "14 Oct",
+    "t": "Apple rose 0.50% while the S&P 500 fell 1.11%. Normal daily range for Apple is about 1.6%, so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
+   {
+    "d": "13 Oct",
+    "t": "Apple rose 0.09% while the S&P 500 slipped 0.02%. Normal daily range for Apple is about 1.6%, so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
    {
     "d": "12 Oct",
     "t": "Apple rose 1.3% while the S&P 500 slipped 0.06%. Normal daily range for Apple is about 1.6%, so no classification is triggered.",
@@ -170,8 +182,8 @@
    },
    "status": "Active",
    "evidence": [
-    "Markets now price a 16% chance of a Fed rate rise at the late-October meeting, down from 37% a month earlier (Polymarket, 9 Oct).",
-    "Apple's earnings yield (expected profit over the next 12 months as a % of the share price, the inverse of the 35.2x forward P/E) is 2.8%, vs 5.24% on the US 10-year Treasury (9 Oct close; 4.98% 20 trading days earlier). Bonds pay more than Apple's profits per dollar invested."
+    "Markets now price a 33% chance of a Fed rate rise at the late-October meeting, down from 48% a month earlier (Polymarket, 14 Oct).",
+    "Apple's earnings yield (expected profit over the next 12 months as a % of the share price, the inverse of the 35.8x forward P/E) is 2.8%, vs 5.19% on the US 10-year Treasury (14 Oct close; 5.01% 20 trading days earlier). Bonds pay more than Apple's profits per dollar invested."
    ]
   },
   {
@@ -247,7 +259,7 @@
    "d": "2026-10-28",
    "t": "Fed rate decision",
    "link": "C2",
-   "note": "Markets price a 16% chance of a rise (Polymarket, 9 Oct), vs 37% a month earlier."
+   "note": "Markets price a 33% chance of a rise (Polymarket, 14 Oct), vs 48% a month earlier."
   },
   {
    "d": "2026-10-29",
@@ -257,13 +269,13 @@
   }
  ],
  "valuation_plain": [],
- "lead": "Apple is <b>Hold</b>, at <b>+14</b> on a −100 to +100 scale, up from +7 on 9 Oct (scores run as of the 12 Oct close). Bucket scores that moved since 9 Oct: Valuation vs peers up to −48 from −76. The others did not change.",
+ "lead": "Apple is <b>Hold</b>, at <b>+5</b> on a −100 to +100 scale, down from +20 on 13 Oct (scores run as of the 14 Oct close). Bucket scores that moved since 13 Oct: Liquidity down to +27 from +40; Valuation vs peers down to −100 from −48. The others did not change.",
  "bullets": [
-  "<b>The price trend is up.</b> Price trend scores +44, unchanged from +44 on 9 Oct: Price vs 200-day average +17.1% (bullish); 50-day vs 200-day average +11.0% (bullish); Relative strength vs peers, 3 months -5.3 pts (bearish).",
-  "<b>The money backdrop is neutral to mixed.</b> Liquidity scores 0, unchanged from 0 on 9 Oct: Dollar backdrop (shared macro) +3.12 pts (bearish); Fed rate expectations (shared macro) +15.6 pts (towards cuts) (bullish); Buying vs selling volume 1.09x (neutral); Short interest trend -13.6% (0.8% of float) (neutral); Institutional ownership change +0.59 pts of shares (neutral).",
-  "<b>The business signals are strong.</b> Demand scores +43, unchanged from +43 on 9 Oct: Revenue growth trend 16.4% vs 12.5% avg (+3.9 pts) (bullish); Guidance vs expectations guided 10% vs 12% expected (-2.0 pts) (bearish); Services revenue growth +12.1% (Jun 2026 quarter) (bullish); iPhone revenue growth +21.7% (Jun 2026 quarter; $54.3bn vs $44.6bn, Apple 8-K) (bullish); Apple smartphone shipments (research firms) +15.3% (Apr-Jun 2026, IDC: 55.8m vs 48.4m units) (bullish).",
-  "<b>It is priced above peers.</b> Valuation vs peers scores −48, up from −76 on 9 Oct: Forward P/E vs peers 35.6 vs 20.8 peer median (+71%) (bearish); EV/EBITDA vs peers 29.8 vs 21.0 peer median (+42%) (bearish); Growth-adjusted P/E vs peers 2.7 vs 2.2 peer median (+23%) (neutral); P/E vs own 5-year history 39.1 vs 31.4 5-yr median (+25%) (neutral).",
-  "<b>The call is confirmed: Hold.</b> 10 of the last 10 trading days in this zone. Apple closed at $340.97, +1.29% on the day vs −0.06% for the S&P 500; +2.4% over 5 trading days and +8.4% over 3 months. Closest to flipping: <b>P/E vs own 5-year history</b> (6 points): now 39.1 vs 31.4 5-yr median (+25%), scoring neutral. It turns bearish if it crosses +25%, measured against the stock's own median trailing P/E, last 5 years (weekly). <b>Fed rate expectations (shared macro)</b> (2 points): now +15.6 pts (towards cuts), scoring bullish. It turns neutral if it crosses +15 pts, measured against net odds (cut minus rise) for the next Fed meeting, 28 days earlier."
+  "<b>The price trend is up.</b> Price trend scores +44, unchanged from +44 on 13 Oct: Price vs 200-day average +17.5% (bullish); 50-day vs 200-day average +11.2% (bullish); Relative strength vs peers, 3 months -10.6 pts (bearish).",
+  "<b>The money backdrop is supportive.</b> Liquidity scores +27, down from +40 on 13 Oct: Buying vs selling volume 1.36x (bullish); Short interest trend -13.6% (0.8% of float) (neutral); Institutional ownership change +0.59 pts of shares (neutral); Dollar backdrop (shared macro) +2.24 pts (bearish); Fed rate expectations (shared macro) +14.3 pts (towards cuts) (neutral).",
+  "<b>The business signals are strong.</b> Demand scores +43, unchanged from +43 on 13 Oct: Revenue growth trend 16.4% vs 12.5% avg (+3.9 pts) (bullish); Gross margin trend (one-offs removed) 48.2% vs 46.7% (+1.5 pts) (bullish); Earnings forecast revisions -1.1% ($9.58 vs $9.69) (neutral); Guidance vs expectations guided 10% vs 12% expected (-2.0 pts) (bearish); Services revenue growth +12.1% (Jun 2026 quarter) (bullish); iPhone revenue growth +21.7% (Jun 2026 quarter; $54.3bn vs $44.6bn, Apple 8-K) (bullish); Apple smartphone shipments (research firms) +15.3% (Apr-Jun 2026, IDC: 55.8m vs 48.4m units) (bullish).",
+  "<b>It is priced above peers.</b> Valuation vs peers scores −100, down from −48 on 13 Oct: Forward P/E vs peers 35.8 vs 21.3 peer median (+68%) (bearish); Growth-adjusted P/E vs peers 2.7 vs 2.2 peer median (+27%) (bearish); EV/EBITDA vs peers 29.9 vs 21.3 peer median (+41%) (bearish); P/E vs own 5-year history 39.4 vs 31.4 5-yr median (+25%) (bearish).",
+  "<b>The call is confirmed: Hold.</b> 10 of the last 10 trading days in this zone. Apple closed at $342.96, +0.50% on the day vs −1.11% for the S&P 500; +1.9% over 5 trading days and +3.0% over 3 months. Closest to flipping: <b>P/E vs own 5-year history</b> (6 points): now 39.4 vs 31.4 5-yr median (+25%), scoring bearish. It turns neutral if it crosses +25%, measured against the stock's own median trailing P/E, last 5 years (weekly). <b>Fed rate expectations (shared macro)</b> (2 points): now +14.3 pts (towards cuts), scoring neutral. It turns bullish if it crosses +15 pts, measured against net odds (cut minus rise) for the next Fed meeting, 28 days earlier. <b>Growth-adjusted P/E vs peers</b> (7 points): now 2.7 vs 2.2 peer median (+27%), scoring bearish. It turns neutral if it crosses +25%, measured against median of the peer set."
  ],
  "defects": [
   "Staging build, day of history: the call needs 10 trading days of scores before it can be confirmed.",

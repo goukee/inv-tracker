@@ -27,8 +27,20 @@
  "move": {
   "class": "Quiet",
   "direction": "down",
-  "headline": "A dip of 1.6% while the S&P 500 slipped, inside Dell's normal daily range",
+  "headline": "An unusual move: −11.3% on the day (2.3x a typical day) and −12.3% over 5 days (1.1x), cause not yet researched",
   "evidence": [
+   {
+    "d": "14 Oct",
+    "t": "Dell fell 11.27% while the S&P 500 fell 1.11%. Normal daily range for Dell is about 4.9%, so the day is 2.3x a typical day and the 5-day move (−12.3%) is 1.1x a typical 5 days; the engine's line for an unusual move is 2x. Split by the engine (beta-adjusted): market −2.6%, sector −6.0%, company-specific −2.6%. The cause was not researched in this automated refresh, so the classification is left as it was until reviewed.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
+   {
+    "d": "13 Oct",
+    "t": "Dell fell 0.74% while the S&P 500 slipped 0.02%. Normal daily range for Dell is about 4.7%, so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
    {
     "d": "12 Oct",
     "t": "Dell fell 1.6% while the S&P 500 slipped 0.06%. Normal daily range for Dell is about 4.8%, so no classification is triggered.",
@@ -145,7 +157,7 @@
    "evidence": [
     "COO Jeff Clarke: rising costs for NAND, DRAM, CPUs, fuel and raw materials forced Dell to reprice quickly (28 May 2026 call).",
     "Company responding: gross margin 20.9% in the July quarter vs 17.7% in the April quarter (SEC); COO Jeff Clarke on supply: 'DRAM, DRAM, DRAM followed by NAND, NAND, NAND' (1 Sep).",
-    "Micron's share price is +5.5% vs 20 trading days earlier (9 Oct close), below the 10% 'Active' line: memory pressure persists in Dell's own comments rather than in the latest price move."
+    "Micron's share price is −1.3% vs 20 trading days earlier (14 Oct close), below the 10% 'Active' line: memory pressure persists in Dell's own comments rather than in the latest price move."
    ]
   },
   {
@@ -204,7 +216,7 @@
    },
    "status": "Active",
    "evidence": [
-    "10-year yield 5.24% at the 9 Oct close vs 4.98% 20 trading days earlier (+0.27 points; shared macro)."
+    "10-year yield 5.19% at the 14 Oct close vs 5.01% 20 trading days earlier (+0.18 points, just under the chain\\'s +0.25 line; shared macro; status label not changed by this refresh)."
    ]
   },
   {
@@ -241,7 +253,7 @@
    "d": "2026-10-28",
    "t": "Fed rate decision",
    "link": "C4",
-   "note": "Markets price a 16% chance of a rise vs 1% for a cut (Polymarket, 9 Oct)."
+   "note": "Markets price a 33% chance of a rise vs under 1% for a cut (Polymarket, 14 Oct)."
   },
   {
    "d": "2026-11-17",
@@ -256,13 +268,13 @@
    "note": "Estimated around Tue 24 Nov (not yet announced by Dell). After the US close; next morning in Singapore."
   }
  ],
- "lead": "Dell is <b>Building history</b> (today's zone: <b>Buy</b>), at <b>+41</b> on a −100 to +100 scale, up from +39 on 9 Oct (scores run as of the 12 Oct close). Bucket scores that moved since 9 Oct: Price trend down to +72 from +100; Liquidity up to +47 from −13. The others did not change.",
+ "lead": "Dell is <b>Building history</b> (today's zone: <b>Buy</b>), at <b>+40</b> on a −100 to +100 scale, down from +42 on 13 Oct (scores run as of the 14 Oct close). Bucket scores that moved since 13 Oct: Liquidity down to −7 from +7. The others did not change.",
  "bullets": [
-  "<b>The price trend is up.</b> Price trend scores +72, down from +100 on 9 Oct: Price vs 200-day average +88.2% (bullish); 50-day vs 200-day average +66.1% (bullish); Relative strength vs peers, 3 months +1.5 pts (neutral).",
-  "<b>The money backdrop is supportive.</b> Liquidity scores +47, up from −13 on 9 Oct: Buying vs selling volume 1.36x (bullish); Short interest trend -14.8% (4.2% of float) (bullish); Institutional ownership change -2.37 pts of shares (bearish); Dollar backdrop (shared macro) +3.12 pts (bearish); Fed rate expectations (shared macro) +15.6 pts (towards cuts) (bullish).",
-  "<b>The business signals are strong.</b> Demand scores +76, unchanged from +76 on 9 Oct: Earnings forecast revisions +32.1% ($24.66 vs $18.67) (bullish); Revenue growth trend 57.7% vs 39.2% avg (+18.5 pts) (bullish); Guidance vs expectations guided 81.4% vs 53.4% expected (+28.0 pts) (bullish); AI server orders +382.0% (bullish); Taiwan AI-server makers' monthly sales +96.8% (bullish).",
-  "<b>It is priced above peers.</b> Valuation vs peers scores −44, unchanged from −44 on 9 Oct: Forward P/E vs peers 23.0 vs 12.8 peer median (+80%) (bearish); Growth-adjusted P/E vs peers 0.6 vs 1.0 peer median (-41%) (bullish); P/E vs own 5-year history 33.6 vs 21.5 5-yr median (+56%) (bearish); EV/EBITDA vs peers 22.0 vs 13.9 peer median (+58%) (bearish).",
-  "<b>The call: Building history, with the zone at Buy.</b> 6 of 10 trading days recorded; today reads Buy. Dell closed at $576.76, −1.59% on the day vs −0.06% for the S&P 500; +4.4% over 5 trading days and +26.3% over 3 months. Closest to flipping: <b>Fed rate expectations (shared macro)</b> (2 points): now +15.6 pts (towards cuts), scoring bullish. It turns neutral if it crosses +15 pts, measured against net odds (cut minus rise) for the next Fed meeting, 28 days earlier. <b>Buying vs selling volume</b> (6 points): now 1.36x, scoring bullish. It turns neutral if it crosses +1.30x, measured against volume on up days ÷ down days, last 20 trading days."
+  "<b>The price trend is up.</b> Price trend scores +100, unchanged from +100 on 13 Oct: Price vs 200-day average +63.5% (bullish); 50-day vs 200-day average +65.1% (bullish); Relative strength vs peers, 3 months +5.9 pts (bullish).",
+  "<b>The money backdrop is neutral to mixed.</b> Liquidity scores −7, down from +7 on 13 Oct: Buying vs selling volume 0.78x (neutral); Short interest trend -14.8% (4.2% of float) (bullish); Institutional ownership change -2.35 pts of shares (bearish); Dollar backdrop (shared macro) +2.24 pts (bearish); Fed rate expectations (shared macro) +14.3 pts (towards cuts) (neutral).",
+  "<b>The business signals are strong.</b> Demand scores +76, unchanged from +76 on 13 Oct: Revenue growth trend 57.7% vs 39.2% avg (+18.5 pts) (bullish); Gross margin trend 19.8% vs 21.1% (-1.3 pts) (bearish); Earnings forecast revisions +43.6% ($26.81 vs $18.67) (bullish); Guidance vs expectations guided 81.4% vs 53.4% expected (+28.0 pts) (bullish); AI server orders +382.0% (Q1+Q2 FY27 (Feb-Jul 2026): AI orders $85.3bn vs $17.7bn a year earlier (Dell results)) (bullish); Commercial PC revenue growth +22.0% (Jul 2026 quarter (Q2 FY27): commercial PCs $13.2bn vs a year earlier, Dell results) (bullish); Storage revenue growth +26.0% (Jul 2026 quarter (Q2 FY27): storage $4.9bn vs $3.9bn a year earlier, Dell results) (bullish); Taiwan AI-server makers' monthly sales +96.8% (Jun-Aug 2026: Quanta + Wistron + Wiwynn sales NT$2,639bn vs NT$1,341bn a year earlier (TWSE MOPS)) (bullish).",
+  "<b>It is priced above peers.</b> Valuation vs peers scores −44, unchanged from −44 on 13 Oct: Forward P/E vs peers 19.1 vs 13.5 peer median (+42%) (bearish); Growth-adjusted P/E vs peers 0.6 vs 1.0 peer median (-42%) (bullish); EV/EBITDA vs peers 19.6 vs 13.2 peer median (+48%) (bearish); P/E vs own 5-year history 29.5 vs 21.6 5-yr median (+37%) (bearish).",
+  "<b>The call: Building history, with the zone at Buy.</b> 8 of 10 trading days recorded; today reads Buy. Dell closed at $507.93, −11.27% on the day vs −1.11% for the S&P 500; −12.3% over 5 trading days and +30.0% over 3 months. Closest to flipping: <b>Buying vs selling volume</b> (6 points): now 0.78x, scoring neutral. It turns bearish if it crosses +0.77x, measured against volume on up days ÷ down days, last 20 trading days. <b>Fed rate expectations (shared macro)</b> (2 points): now +14.3 pts (towards cuts), scoring neutral. It turns bullish if it crosses +15 pts, measured against net odds (cut minus rise) for the next Fed meeting, 28 days earlier. <b>Relative strength vs peers, 3 months</b> (7 points): now +5.9 pts, scoring bullish. It turns neutral if it crosses +5 pts, measured against equal-weighted average of 7 peers over 63 trading days."
  ],
  "defects": [
   "Staging build, day 6 of history: the call needs 7 of 10 trading days in one zone before it is confirmed.",

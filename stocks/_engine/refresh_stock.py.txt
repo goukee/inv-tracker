@@ -688,6 +688,86 @@ def cash_block(B, fin, asof, fq):
             'cover': cover, 'cover_text': cov_txt}
 
 # ---------------------------------------------------------------- build
+# ---------------------------------------------------------------- bubble gauge (plan v0.7, Kenneth 7 Oct 2026)
+# One market-wide reading shared by every tab, from collector stage X (FRED, FINRA, Yahoo). Not scored into the composite.
+# States: 'No bubble signs' / 'Inflating' (1 excess sign) / 'Late stage' (2+ excess signs) / 'Breaking' (tightening AND credit
+# widening AND (margin debt turning down OR prices up with fear up)). Back-checked on monthly data 1998-2026: Breaking first fired
+# Aug 2000, Oct 2007 and Mar 2022 (each within 0-5 months of the top, before most of the fall); false alarms Aug 2011, Nov 2018,
+# Mar 2023 (markets 14-28% higher a year later). It confirms a top is probably in; it does not call it in advance.
+BUB = {'late_margin_yoy': 30, 'late_ndx_ext': 15, 'late_baa': 1.75, 'tight_y6m': 0.75, 'tight_ff24': 1.0, 'credit_jump': 0.30,
+       'hy_jump': 0.50, 'frag_days': 8, 'stretch_pt1': 29, 'stretch_vl3': 25}
+_MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+def _bd(iso): return f'{int(iso[8:10])} {_MON[int(iso[5:7]) - 1]} {iso[:4]}' if iso and len(iso) >= 10 else (f'{_MON[int(iso[5:7]) - 1]} {iso[:4]}' if iso and len(iso) >= 7 else '?')
+
+def bubble_gauge(X):
+    if not X: return None
+    g1 = lambda k: (X.get(k) or [None])[0]
+    T, Fd, Cr, HY, M, N = g1('XT'), g1('XF'), g1('XC'), g1('XHY'), g1('XM'), g1('XN')
+    sig = []
+    def add(id_, group, name, on, value, rule, measured, source, date):
+        sig.append({'id': id_, 'group': group, 'name': name, 'on': on, 'value': value, 'rule': rule, 'measured': measured, 'source': source, 'date': date})
+    # ---- excess signs (Late stage)
+    if M:
+        yoy = pct(num(M[1]), num(M[3]))
+        add('margin_yoy', 'excess', 'Borrowing to buy shares (margin debt)', yoy is not None and yoy >= BUB['late_margin_yoy'],
+            f"{sgn(yoy)}% (${num(M[1]) / 1e6:.2f}tn in {_bd(M[0])} vs ${num(M[3]) / 1e6:.2f}tn a year earlier)", f"on at +{BUB['late_margin_yoy']}% or more", 'the same month a year earlier', 'FINRA margin statistics (monthly, about 3 weeks late)', M[0])
+    else: add('margin_yoy', 'excess', 'Borrowing to buy shares (margin debt)', None, 'not collected today', '', '', 'FINRA', None)
+    if N:
+        ext = num(N[3])
+        add('ndx_ext', 'excess', 'Nasdaq 100 stretch', ext is not None and ext >= BUB['late_ndx_ext'],
+            f"{sgn(ext)}% ({num(N[1]):,.0f} vs a 200-day average of {num(N[2]):,.0f})", f"on at +{BUB['late_ndx_ext']}% or more", 'its own 200-day average', 'Yahoo Finance (^NDX)', N[0])
+    else: add('ndx_ext', 'excess', 'Nasdaq 100 stretch', None, 'not collected today', '', '', 'Yahoo Finance', None)
+    if Cr:
+        b = num(Cr[1])
+        add('credit_tight', 'excess', 'Corporate borrowing costs very low (credit spread)', b is not None and b <= BUB['late_baa'],
+            f"{b:.2f} pts", f"on at {BUB['late_baa']:.2f} pts or less", 'the 10-year Treasury yield (Moody’s Baa corporate yield minus it)', 'FRED BAA10Y', Cr[0])
+    else: add('credit_tight', 'excess', 'Corporate borrowing costs very low (credit spread)', None, 'not collected today', '', '', 'FRED', None)
+    # ---- breaking signs
+    if T or Fd:
+        mx = num(T[4]) if T else None; ffd = (num(Fd[1]) - num(Fd[3])) if Fd and num(Fd[1]) is not None and num(Fd[3]) is not None else None
+        on = (mx is not None and mx >= BUB['tight_y6m']) or (ffd is not None and ffd >= BUB['tight_ff24'])
+        v = []
+        if T: v.append(f"10-year yield {num(T[1]):.2f}% vs {num(T[3]):.2f}% on {_bd(T[2])} ({sgn(num(T[1]) - num(T[3]), 2)} pts); largest 6-month rise in the last 6 months {sgn(mx, 2)} pts")
+        if Fd: v.append(f"Fed funds {num(Fd[1]):.2f}% vs {num(Fd[3]):.2f}% two years earlier")
+        add('tight', 'breaking', 'Money getting tighter', on, '; '.join(v),
+            f"on if the 10-year yield rose {BUB['tight_y6m']:.2f}+ pts over 6 months at any time in the last 6 months, or Fed funds is {BUB['tight_ff24']:.1f}+ pt above 2 years earlier",
+            '6 months earlier (yield) and 2 years earlier (Fed funds)', 'FRED DGS10, FEDFUNDS', T[0] if T else Fd[0])
+    else: add('tight', 'breaking', 'Money getting tighter', None, 'not collected today', '', '', 'FRED', None)
+    if Cr:
+        j = num(Cr[3]); hy = f"; high-yield (junk) spread {num(HY[1]):.2f} pts vs a 3-month low of {num(HY[2]):.2f} ({sgn(num(HY[1]) - num(HY[2]), 2)} pts, shown for information)" if HY else ''
+        add('credit', 'breaking', 'Credit spreads widening', j is not None and j >= BUB['credit_jump'],
+            f"Baa spread {num(Cr[1]):.2f} pts; largest rise above its 3-month low in the last month {sgn(j, 2)} pts" + hy,
+            f"on at +{BUB['credit_jump']:.2f} pts or more", 'its lowest level over the previous 3 months', 'FRED BAA10Y (BAMLH0A0HYM2 for high yield)', Cr[0])
+    else: add('credit', 'breaking', 'Credit spreads widening', None, 'not collected today', '', '', 'FRED', None)
+    if M:
+        a, b = num(M[4]), num(M[5])
+        add('margin_down', 'breaking', 'Margin debt turning down', a is not None and b is not None and a < b,
+            f"3-month average ${a / 1e6:.2f}tn vs ${b / 1e6:.2f}tn for the 3 months before ({sgn(pct(a, b))}%)", 'on when the latest 3 months average less than the 3 before',
+            'the previous 3 months', 'FINRA margin statistics', M[0])
+    else: add('margin_down', 'breaking', 'Margin debt turning down', None, 'not collected today', '', '', 'FINRA', None)
+    if N:
+        fd = int(num(N[4]) or 0)
+        add('fragile', 'breaking', 'Prices up while fear is up', fd >= BUB['frag_days'],
+            f"{fd} of the last 21 trading days (today: Nasdaq 100 {sgn(num(N[5]))}%, its fear gauge VXN {num(N[6]):.1f}, {sgn(num(N[7]))}%)",
+            f"on at {BUB['frag_days']}+ days with the Nasdaq 100 up AND VXN up 10%+", '20 trading days earlier', 'Yahoo Finance (^NDX, ^VXN)', N[0])
+    else: add('fragile', 'breaking', 'Prices up while fear is up', None, 'not collected today', '', '', 'Yahoo Finance', None)
+    S_ = {s['id']: s['on'] for s in sig}
+    n_ex = sum(1 for s in sig if s['group'] == 'excess' and s['on'])
+    breaking = bool(S_.get('tight') and S_.get('credit') and (S_.get('margin_down') or S_.get('fragile')))
+    state = 'Breaking' if breaking else 'Late stage' if n_ex >= 2 else 'Inflating' if n_ex == 1 else 'No bubble signs'
+    missing = [s['name'] for s in sig if s['on'] is None]
+    need = [s['name'] for s in sig if s['group'] == 'breaking' and not s['on']]
+    hy_note = None
+    if HY and num(HY[1]) is not None and num(HY[2]) is not None and num(HY[1]) - num(HY[2]) >= BUB['hy_jump']:
+        hy_note = f"Early warning: the high-yield (junk) spread is {sgn(num(HY[1]) - num(HY[2]), 2)} pts above its 3-month low ({num(HY[1]):.2f} vs {num(HY[2]):.2f}); in past cycles it turned first, by a median of about 7 months."
+    return {'state': state, 'excess_on': n_ex, 'signals': sig, 'missing': missing, 'hy_note': hy_note,
+            'asof': max((s['date'] or '') for s in sig if s['date']) if any(s['date'] for s in sig) else None,
+            'rule': {'late': f'2 or more of the 3 excess signs', 'breaking': 'Money getting tighter AND credit spreads widening AND (margin debt turning down OR prices up while fear is up)',
+                     'override': f"O7: while Breaking, a Buy or Strong Buy on a stretched stock (price {BUB['stretch_pt1']}%+ above its 200-day average, or P/E {BUB['stretch_vl3']}%+ above its own 5-year median) is capped at Hold"},
+            'history': 'Back-checked on monthly data 1998-2026: Breaking first fired in Aug 2000, Oct 2007 and Mar 2022, each within 0-5 months of the market top and before most of the fall (S&P 500 then fell a further 40%, 53% and 21%). False alarms: Aug 2011, Nov 2018 and Mar 2023, after which the S&P 500 was 14-28% higher a year later. It confirms a top is probably in; it does not call it in advance.',
+            'thresholds': BUB}
+
+
 def build(S, A, B, C, side, prev, D=None, G=None):
     code = S['code']; asof = A['ASOF'][0][0]
     commod = S.get('asset_type') == 'commodity'; cfacts = {}
@@ -1076,6 +1156,23 @@ def build(S, A, B, C, side, prev, D=None, G=None):
             hist[-1]['call'] = 'H'
         elif call['code'] is None and zn in ('SB', 'B'):
             call['detail'] += f" Once confirmed it would be capped at Hold by {' and '.join(caps)}."
+    # O7 bubble gauge (plan v0.7, Kenneth 7 Oct): while the shared gauge reads Breaking, a Buy / Strong Buy on a stretched stock
+    # (PT1 29%+ above its 200-day average, or VL3 P/E 25%+ above its own 5-year median) is capped at Hold. Late stage: flag only.
+    bub = bubble_gauge(S.get('_xraw')) if S.get('_xraw') else S.get('_bubble_in')
+    if bub and not commod:
+        p1 = (I.get('PT1') or {}).get('v'); v3 = (I.get('VL3') or {}).get('v')
+        why = [f'{sgn(p1)}% above its 200-day average' for _ in [0] if p1 is not None and p1 >= BUB['stretch_pt1']] + \
+              [f'P/E {sgn(v3)}% above its own 5-year median' for _ in [0] if v3 is not None and v3 >= BUB['stretch_vl3']]
+        stretched = bool(why); wtxt = ' and '.join(why)
+        if bub['state'] == 'Breaking' and stretched:
+            flags.append({'code': 'O7', 'text': f'Bubble gauge reads Breaking and this stock is stretched ({wtxt}): ' + ('call capped at Hold.' if call['code'] in ('SB', 'B') else 'any Buy call is capped at Hold.')})
+            if call['code'] in ('SB', 'B'):
+                call = {'code': 'H', 'label': ZONES['H'], 'detail': f"Capped at Hold by O7 (bubble breaking; {wtxt}); the indicators alone read {ZONES[call['code']]}.", 'capped': ZONES[call['code']]}
+                hist[-1]['call'] = 'H'
+            elif call['code'] is None and zn in ('SB', 'B'):
+                call['detail'] += ' Once confirmed it would be capped at Hold by O7 (bubble breaking).'
+        elif bub['state'] == 'Late stage' and stretched:
+            flags.append({'code': 'BL', 'text': f'Late-stage bubble signs and this stock is stretched ({wtxt}). No cap yet; a Buy here would be capped at Hold if the gauge turns to Breaking.'})
     # P8 gate (Kenneth, 3 Oct; every stock): a Sell / Strong Sell needs the Demand bucket at or below 0, or Demand deteriorating on
     # its own history, or a structural negative move Kenneth has confirmed; otherwise the weakness is price-led and the call shows
     # 'Hold (price-led weakness)'
@@ -1201,7 +1298,9 @@ def build(S, A, B, C, side, prev, D=None, G=None):
         if not G: data['errors'].append('commodity feeds (FRED, SPDR, CFTC) not collected: run stage G')
     data['changes'] = changes(prev, data)
     data['snapshots'] = snapshots(prev, data)
+    data['bubble'] = bub
     macro_out = {'asof': asof, 'series': macro, 'fed': data['fed'], 'fed_slug': fed[0]}
+    if bub: macro_out['bubble'] = bub
     return data, macro_out
 
 if __name__ == '__main__':
@@ -1211,7 +1310,9 @@ if __name__ == '__main__':
     dpath = sys.argv[sys.argv.index('--mixraw') + 1] if '--mixraw' in sys.argv else None
     mpath = sys.argv[sys.argv.index('--macro-in') + 1] if '--macro-in' in sys.argv else None
     gpath = sys.argv[sys.argv.index('--graw') + 1] if '--graw' in sys.argv else None   # commodity feeds (collector stage G)
-    args = [a for a in args if a not in (out, mout, dpath, mpath, gpath)]
+    xpath = sys.argv[sys.argv.index('--xraw') + 1] if '--xraw' in sys.argv else None   # bubble gauge feeds (collector stage X)
+    bpath = sys.argv[sys.argv.index('--bubble-in') + 1] if '--bubble-in' in sys.argv else None   # reuse the gauge from a published macro.json
+    args = [a for a in args if a not in (out, mout, dpath, mpath, gpath, xpath, bpath)]
     S = json.load(open(args[0])); A = parse(args[1]); B = parse(args[2]); C = parse(args[3]); side = json.load(open(args[4]))
     if mpath:
         if mpath.endswith('.json'):   # the shared macro.json published on staging (written by --macro)
@@ -1221,6 +1322,10 @@ if __name__ == '__main__':
             S['_macro_asof'] = mj.get('asof')
         else:
             S['_macro_in'] = parse(mpath)
+    if xpath: S['_xraw'] = parse(xpath)
+    else:   # no fresh stage X: carry the gauge from a macro.json (--bubble-in, or --macro-in when it is a .json)
+        for bp in (bpath, mpath if mpath and mpath.endswith('.json') else None):
+            if bp and json.load(open(bp)).get('bubble'): S['_bubble_in'] = dict(json.load(open(bp))['bubble'], carried=True); break
     prev = json.load(open(args[5])) if len(args) > 5 else None
     d, m = build(S, A, B, C, side, prev, parse(dpath) if dpath else None, parse(gpath) if gpath else None)
     json.dump(d, open(out, 'w'), separators=(',', ':'))
@@ -1228,4 +1333,5 @@ if __name__ == '__main__':
     print(json.dumps({'wrote': out, 'bytes': len(open(out).read()), 'asof': d['meta']['asof'], 'composite': d['composite'], 'zone': d['zone'],
                       'call': d['call']['label'], 'coverage': d['coverage'], 'buckets': d['buckets'], 'quality_flags': d['quality']['flags'],
                       'history': len(d['history']), 'errors': d['errors'],
+                      'bubble': (d.get('bubble') or {}).get('state'), 'flags': [f['code'] for f in d['flags']],
                       'mix': (d['mix'] or {}).get('error') or ((d['mix'] or {}).get('latest_label') and f"{d['mix']['n']} quarters to {d['mix']['latest_label']}")}, indent=1))

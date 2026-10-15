@@ -112,6 +112,8 @@ ul.bul li b{color:var(--ink)}
 
 .flags{margin-top:14px;display:grid;gap:6px}
 .flag{border:1px solid var(--rule);background:var(--panel);padding:9px 12px;font-size:13px}
+.bub{margin-top:10px;font-size:12.5px;color:var(--ink-2);display:flex;gap:4px 10px;flex-wrap:wrap;align-items:baseline}
+.bub b{color:var(--ink)}.bub a{color:var(--ink-2)}
 .changers{margin:12px 0 0;padding-left:18px;font-size:13.5px;color:var(--ink-2)}
 .changers li{margin-bottom:7px}.changers b{color:var(--ink)}
 
@@ -564,6 +566,7 @@ function render(d){
    </div>
    <div class="buckets">${Object.entries(d.buckets).map(([b,v])=>`<div class="bk"><div class="nm">${BL(b)}</div><div class="wt">${d.bucket_w[b]} of 100 points · score on −100 to +100</div><div class="val ${tone(v)}">${v==null?'n/a':sg(v)}</div>${v==null&&d.bucket_live&&d.bucket_live[b]!=null?`<div class="wt">only ${(d.bucket_live[b]*100).toFixed(0)}% of its weight has live data; needs 50%, so left out</div>`:''}<div class="q">${bq[b]}</div></div>`).join('')}</div>
    ${d.flags.length?`<div class="flags">${d.flags.map(f=>`<div class="flag"><b>${f.code}</b> ${esc(f.text)}</div>`).join('')}</div>`:''}
+   ${d.bubble?`<div class="bub"><span>Market bubble gauge (shared by every tab, not part of the score): <b>${esc(d.bubble.state)}</b></span><span>${d.bubble.excess_on} of 3 excess signs on · Breaking needs money getting tighter AND credit spreads widening AND one more</span><a href="#" onclick="parent!==window&&parent.postMessage({type:'open-tab',id:'summary'},'*');return false">Details on the Summary tab</a></div>`:''}
    ${H('changers','What would change the call','sec-chg')}
    <ol class="changers">${d.changers.map(c=>`<li>${c}</li>`).join('')}</ol>
   </section>

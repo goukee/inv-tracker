@@ -23,8 +23,20 @@
  "move": {
   "class": "Quiet",
   "direction": "down",
-  "headline": "A dip of 2.3% while the S&P 500 slipped, inside AMD's normal daily range",
+  "headline": "A drop of 5.7% while the S&P 500 fell, inside AMD's normal daily range",
   "evidence": [
+   {
+    "d": "14 Oct",
+    "t": "AMD fell 5.73% while the S&P 500 fell 1.11%. Normal daily range for AMD is about 3.9%, so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
+   {
+    "d": "13 Oct",
+    "t": "AMD rose 1.90% while the S&P 500 slipped 0.02%. Normal daily range for AMD is about 4.0%, so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
    {
     "d": "12 Oct",
     "t": "AMD fell 2.3% while the S&P 500 slipped 0.06%. Normal daily range for AMD is about 4.0%, so no classification is triggered.",
@@ -245,7 +257,7 @@
    "d": "2026-10-28",
    "t": "Fed rate decision",
    "link": "C4",
-   "note": "Markets price a 16% chance of a rise vs 37% a month earlier (Polymarket, 9 Oct)."
+   "note": "Markets price a 33% chance of a rise vs 48% a month earlier (Polymarket, 14 Oct)."
   },
   {
    "d": "2026-10-29",
@@ -261,13 +273,13 @@
   }
  ],
  "valuation_plain": [],
- "lead": "AMD is <b>Buy</b>, at <b>+52</b> on a −100 to +100 scale, unchanged at +52 on 9 Oct (scores run as of the 12 Oct close). None of the four bucket scores moved since 9 Oct.",
+ "lead": "AMD is <b>Buy</b>, at <b>+50</b> on a −100 to +100 scale, down from +52 on 13 Oct (scores run as of the 14 Oct close). Bucket scores that moved since 13 Oct: Liquidity down to +40 from +53. The others did not change.",
  "bullets": [
-  "<b>The price trend is up.</b> Price trend scores +100, unchanged from +100 on 9 Oct: Price vs 200-day average +53.5% (bullish); 50-day vs 200-day average +37.2% (bullish); Relative strength vs peers, 3 months +8.1 pts (bullish).",
-  "<b>The money backdrop is supportive.</b> Liquidity scores +53, unchanged from +53 on 9 Oct: Buying vs selling volume 2.10x (bullish); Institutional ownership change +3.83 pts of shares (bullish); Dollar backdrop (shared macro) +3.12 pts (bearish); Fed rate expectations (shared macro) +15.6 pts (towards cuts) (bullish); Short interest trend -5.8% (2.4% of float) (neutral).",
-  "<b>The business signals are strong.</b> Demand scores +100, unchanged from +100 on 9 Oct: Earnings forecast revisions +18.4% ($15.72 vs $13.28) (bullish); Revenue growth trend 50.1% vs 34.8% avg (+15.3 pts) (bullish); Guidance vs expectations guided 40.6% vs 35.6% expected (+5.0 pts) (bullish); Data Center revenue growth +107.3% (Jun 2026 quarter) (bullish); Big-4 cloud capital spending growth +77.0% (Apr-Jun 2026, Amazon + Alphabet + Microsoft + Meta) (bullish).",
-  "<b>It is priced above peers.</b> Valuation vs peers scores −63, unchanged from −63 on 9 Oct: Forward P/E vs peers 42.6 vs 30.0 peer median (+42%) (bearish); EV/EBITDA vs peers 100.5 vs 29.8 peer median (+238%) (bearish); Growth-adjusted P/E vs peers 0.6 vs 0.6 peer median (-4%) (neutral).",
-  "<b>The call is confirmed: Buy.</b> 10 of the last 10 trading days in this zone. AMD closed at $594.24, −2.28% on the day vs −0.06% for the S&P 500; −5.9% over 5 trading days and +8.4% over 3 months. Closest to flipping: <b>Fed rate expectations (shared macro)</b> (2 points): now +15.6 pts (towards cuts), scoring bullish. It turns neutral if it crosses +15 pts, measured against net odds (cut minus rise) for the next Fed meeting, 28 days earlier. <b>Short interest trend</b> (3 points): now -5.8% (2.4% of float), scoring neutral. It turns bullish if it crosses -10%, measured against short interest a month earlier (report 2026-09-30)."
+  "<b>The price trend is up.</b> Price trend scores +100, unchanged from +100 on 13 Oct: Price vs 200-day average +46.0% (bullish); 50-day vs 200-day average +36.8% (bullish); Relative strength vs peers, 3 months +9.8 pts (bullish).",
+  "<b>The money backdrop is supportive.</b> Liquidity scores +40, down from +53 on 13 Oct: Buying vs selling volume 1.68x (bullish); Short interest trend -5.8% (2.4% of float) (neutral); Institutional ownership change +3.82 pts of shares (bullish); Dollar backdrop (shared macro) +2.24 pts (bearish); Fed rate expectations (shared macro) +14.3 pts (towards cuts) (neutral).",
+  "<b>The business signals are strong.</b> Demand scores +100, unchanged from +100 on 13 Oct: Revenue growth trend 50.1% vs 34.8% avg (+15.3 pts) (bullish); Gross margin trend (one-offs removed) 53.2% vs 50.3% (+2.9 pts) (bullish); Earnings forecast revisions +17.9% ($15.72 vs $13.33) (bullish); Guidance vs expectations guided 40.6% vs 35.6% expected (+5.0 pts) (bullish); Data Center revenue growth +107.3% (Jun 2026 quarter) (bullish); Client revenue growth +22.5% (Jun 2026 quarter) (bullish); Big-4 cloud capital spending growth +77.0% (Apr-Jun 2026, Amazon + Alphabet + Microsoft + Meta) (bullish).",
+  "<b>It is priced above peers.</b> Valuation vs peers scores −63, unchanged from −63 on 13 Oct: Forward P/E vs peers 40.8 vs 28.3 peer median (+44%) (bearish); Growth-adjusted P/E vs peers 0.6 vs 0.6 peer median (-2%) (neutral); EV/EBITDA vs peers 96.5 vs 31.6 peer median (+206%) (bearish).",
+  "<b>The call is confirmed: Buy.</b> 10 of the last 10 trading days in this zone. AMD closed at $570.82, −5.73% on the day vs −1.11% for the S&P 500; −11.6% over 5 trading days and +14.0% over 3 months. Closest to flipping: <b>Fed rate expectations (shared macro)</b> (2 points): now +14.3 pts (towards cuts), scoring neutral. It turns bullish if it crosses +15 pts, measured against net odds (cut minus rise) for the next Fed meeting, 28 days earlier. <b>Short interest trend</b> (3 points): now -5.8% (2.4% of float), scoring neutral. It turns bullish if it crosses -10%, measured against short interest a month earlier (report 2026-09-30). <b>Growth-adjusted P/E vs peers</b> (7 points): now 0.6 vs 0.6 peer median (-2%), scoring neutral. It turns bullish if it crosses -15%, measured against median of the peer set."
  ],
  "defects": [
   "Staging build, day of history: the call needs 10 trading days of scores before it can be confirmed.",

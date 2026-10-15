@@ -70,6 +70,17 @@ tbody tr:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}
 .legend{display:flex;gap:6px 16px;flex-wrap:wrap;font-size:12px;color:var(--ink-2);margin:10px 0 0}
 .legend .dot{width:11px;height:11px;margin-right:5px}
 .note{font-size:12px;color:var(--ink-3);margin:10px 0 0}
+.gauge{margin:14px 0 0;border:1px solid var(--rule);background:var(--panel);padding:12px 14px}
+.gauge .hd{display:flex;gap:6px 12px;align-items:baseline;flex-wrap:wrap}
+.gauge .hd b{font-size:14px}
+.gauge .cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px 24px;margin-top:10px}
+@media (max-width:760px){.gauge .cols{grid-template-columns:1fr}}
+.gauge h3{font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-2);margin:0 0 6px}
+.gauge .sg{display:grid;grid-template-columns:14px minmax(0,1fr);gap:2px 8px;padding:6px 0;border-top:1px solid var(--rule-2);font-size:12.5px}
+.gauge .sg .dot{margin-top:3px}.gauge .sg .n{font-weight:600;color:var(--ink)}.gauge .sg .v{color:var(--ink-2)}.gauge .sg .r{color:var(--ink-3);font-size:11.5px}
+.gauge .warn{margin-top:10px;font-size:12.5px;padding:7px 10px;background:var(--hold-bg);box-shadow:inset 3px 0 0 var(--hold);color:var(--ink)}
+.gauge .foot{margin-top:10px;font-size:11.5px;color:var(--ink-3)}
+.dot.off{background:transparent;box-shadow:inset 0 0 0 2px var(--absent)}
 .err{padding:24px 0;color:var(--bear)}
 @media (max-width:620px){
   .main thead{display:none}
@@ -114,7 +125,19 @@ function major(d){
   const callMoved=calls.some(x=>/^Call changed|zone moved/i.test(x));
   return {since:(d.changes||{}).since, first:(d.changes||{}).first, calls, inds, callMoved};
 }
-function render(rows,skipped){
+function gauge(b){
+  if(!b) return '';
+  const tone=b.state==='Breaking'?'bear':b.state==='No bubble signs'?'mute':'hold';
+  const row=s=>`<div class="sg"><span class="dot ${s.on===true?(s.group==='breaking'?'r':'y'):s.on===false?'off':'x'}" role="img" aria-label="${s.on===true?'on':s.on===false?'off':'no data'}">${s.on==null?'–':''}</span><div><span class="n">${esc(s.name)}</span> <span class="v">${esc(s.value)}</span><div class="r">${esc(s.rule)}${s.measured?', measured against '+esc(s.measured):''} · ${esc(s.source)}${s.date?', '+esc(s.date.length===7?dl(s.date+'-01').slice(2):dl(s.date)):''}</div></div></div>`;
+  const ex=b.signals.filter(s=>s.group==='excess'),br=b.signals.filter(s=>s.group==='breaking');
+  return `<h2>Bubble gauge <small>Market-wide, the same for every tab · not part of any score</small></h2>
+  <div class="gauge"><div class="hd"><span class="call ${tone}">${esc(b.state)}</span><b>${b.state==='Breaking'?'The signs that ended past bubbles are all on.':b.state==='Late stage'?'Bubble conditions are present; the signs that ended past bubbles are not all on.':b.state==='Inflating'?'One sign of excess; nothing pointing to an end.':'No signs of a bubble.'}</b>${b.carried?'<span class="none">Carried from the previous refresh (today\'s feeds were not collected).</span>':''}</div>
+  <div class="cols"><div><h3>Excess signs · Late stage at 2 of 3 (${b.excess_on} on)</h3>${ex.map(row).join('')}</div>
+  <div><h3>Breaking signs · tighter money AND wider credit spreads AND one of the other two</h3>${br.map(row).join('')}</div></div>
+  ${b.hy_note?`<div class="warn">${esc(b.hy_note)}</div>`:''}
+  <p class="foot">${esc(b.rule.override)}. ${esc(b.history)}</p></div>`;
+}
+function render(rows,skipped,bubble){
   const asof=rows.map(r=>r.d.meta.asof).sort().at(-1); const built=rows.map(r=>r.d.meta.built||'').sort().at(-1);
   const ch=rows.map(r=>({r,m:major(r.d)}));
   const withCh=ch.filter(x=>x.m.calls.length||x.m.inds.length);
@@ -139,6 +162,7 @@ function render(rows,skipped){
   document.getElementById('app').innerHTML=`
   <header class="mast"><h1>Stocks summary</h1><span>${rows.length} stock${rows.length>1?'s':''} · latest close ${esc(dl(asof))}${upd(built)?' · updated '+esc(upd(built)):''} · click a row to open its tab</span></header>
   ${strip}
+  ${gauge(bubble)}
   <h2>The call <small>Composite runs from −100 to +100 · Buy at +30 or above, Sell at −30 or below</small></h2>
   <div class="tbl"><table class="main"><thead><tr><th>Stock</th><th>Call</th><th>Last price</th><th>Composite</th><th>Since last refresh</th></tr></thead><tbody>${main}</tbody></table></div>
   <h2>Indicators <small>Hover a dot for the reading</small></h2>
@@ -152,7 +176,7 @@ function render(rows,skipped){
 fetch('../tabs.json',{cache:'no-store'}).then(r=>r.json()).then(cfg=>{
   const codes=cfg.tabs.filter(t=>t.template==='stock').map(t=>t.id);
   return Promise.all(codes.map(code=>fetch(`../stocks/${code}/data.json`,{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null).then(d=>({code,d}))));
-}).then(all=>render(all.filter(x=>x.d),all.filter(x=>!x.d).map(x=>x.code)))
+}).then(all=>fetch('../macro.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null).then(m=>render(all.filter(x=>x.d),all.filter(x=>!x.d).map(x=>x.code),m&&m.bubble)))
   .catch(e=>{document.getElementById('app').innerHTML=`<p class="err">Could not load the stocks (${esc(e.message)}).</p>`});
 new ResizeObserver(()=>parent!==window&&parent.postMessage({type:'tab-height',h:document.documentElement.scrollHeight},'*')).observe(document.body);
 </script>

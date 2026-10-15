@@ -10,6 +10,8 @@
                                             and __CFG.axes (regex of dimension axes, default ProductOrService / BusinessSegments).
      G  commodity feeds, one source per run from its own site: FRED (fred.stlouisfed.org), SPDR daily file (www.spdrgoldshares.com),
         CFTC (publicreporting.cftc.gov). See the stage G block. Stage A takes __CFG.ratio=['GC=F','^GSPC'] for commodity tabs.
+     X  bubble gauge feeds (shared, once per refresh), one source per run: FRED (fred.stlouisfed.org), FINRA margin debt
+        (www.finra.org), Nasdaq 100 and VXN (query1.finance.yahoo.com). See the stage X block.
    Each stage runs in the background and leaves a plain-text bundle in window.__TXT.
    Poll window.__SUMMARY, then pull window.__TXT in 880-character chunks. Never base64 it. */
 window.__TXT=null;window.__SUMMARY=null;window.__ERR=null;
@@ -286,6 +288,53 @@ window.__RUN=async function(){
     const vs=H.map(x=>x.v);
     /* CFTC|report|net long % of open interest|percentile (3y)|prev report|value|4 weeks earlier|value|3y max|3y min */
     put('CFTC',P[n].d,+cur.toFixed(2),+pc.toFixed(1),P[n-1].d,+P[n-1].v.toFixed(2),P[n-4].d,+P[n-4].v.toFixed(2),+Math.max(...vs).toFixed(1),+Math.min(...vs).toFixed(1))},null);
+ }
+
+ if(C.stage==='X'){
+  /* Bubble gauge feeds (plan v0.7, Kenneth 7 Oct 2026), shared by every tab, collected ONCE per refresh like stage M.
+     Three runs, each from its own site; join the outputs into rawX.txt; refresh_stock.py --xraw rawX.txt.
+       __CFG={stage:'X',src:'fred',asof:'YYYY-MM-DD'}    from https://fred.stlouisfed.org/
+       __CFG={stage:'X',src:'finra'}                     from https://www.finra.org/
+       __CFG={stage:'X',src:'yahoo',asof:'YYYY-MM-DD'}   from https://query1.finance.yahoo.com/
+     Values are cut at __CFG.asof (the close being scored) when given. */
+  const cut=d=>!C.asof||d<=C.asof;
+  if(C.src==='fred'){
+   const get=async id=>{const r=await fetch(`/graph/fredgraph.csv?id=${id}`);if(!r.ok)throw new Error(r.status);
+     return (await r.text()).trim().split('\n').slice(1).map(l=>l.split(',')).filter(x=>x[1]&&x[1]!=='.'&&!isNaN(+x[1])&&cut(x[0])).map(x=>({d:x[0],v:+x[1]}))};
+   /* XT|date|10y yield|date 126 obs earlier|yield then|largest 126-obs rise seen in the last 126 obs|date of that rise   (tightening, 6-month memory) */
+   await safe('fred DGS10',async()=>{const Y=await get('DGS10');const n=Y.length-1;if(n<260)throw new Error('too few rows');
+     let mx=-99,md='';for(let t=n-125;t<=n;t++){const r=Y[t].v-Y[t-126].v;if(r>mx){mx=r;md=Y[t].d}}
+     put('XT',Y[n].d,Y[n].v,Y[n-126].d,Y[n-126].v,+mx.toFixed(2),md)},null);
+   /* XF|month|Fed funds rate|month 24 earlier|rate then */
+   await safe('fred FEDFUNDS',async()=>{const F=await get('FEDFUNDS');const n=F.length-1;put('XF',F[n].d,F[n].v,F[n-24].d,F[n-24].v)},null);
+   /* XC|date|Baa spread|its low over the previous 63 obs|largest rise above that rolling low in the last 21 obs|date   (credit widening) */
+   await safe('fred BAA10Y',async()=>{const B=await get('BAA10Y');const n=B.length-1;if(n<90)throw new Error('too few rows');
+     let mx=-99,md='';for(let t=n-20;t<=n;t++){const lo=Math.min(...B.slice(t-63,t).map(x=>x.v));const j=B[t].v-lo;if(j>mx){mx=j;md=B[t].d}}
+     put('XC',B[n].d,B[n].v,Math.min(...B.slice(n-63,n).map(x=>x.v)),+mx.toFixed(2),md)},null);
+   /* XHY|date|high-yield spread|low over the previous 63 obs|value 21 obs earlier   (shown for information; FRED keeps 3 years only) */
+   await safe('fred HY',async()=>{const H=await get('BAMLH0A0HYM2');const n=H.length-1;put('XHY',H[n].d,H[n].v,Math.min(...H.slice(n-63,n).map(x=>x.v)),H[n-21].v)},null);
+  }
+  if(C.src==='finra') await safe('finra margin',async()=>{
+   /* XM|month|margin debt $m|month a year earlier|$m then|average of the last 3 months|average of the 3 months before   (FINRA, about 3 weeks late) */
+   let R=[];const tb=document.querySelector('table');
+   if(tb){const M={Jan:'01',Feb:'02',Mar:'03',Apr:'04',May:'05',Jun:'06',Jul:'07',Aug:'08',Sep:'09',Oct:'10',Nov:'11',Dec:'12'};
+     R=[...tb.rows].slice(1).map(r=>[...r.cells].map(c=>c.innerText.trim())).filter(c=>/^[A-Z][a-z]{2}-\d{2}$/.test(c[0])).map(c=>({m:'20'+c[0].slice(4)+'-'+M[c[0].slice(0,3)],v:+c[1].replace(/,/g,'')}))}
+   if(R.length<13){   /* fall back to the full history file */
+     if(!window.XLSX) await new Promise((ok,no)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js';s.onload=ok;s.onerror=()=>no(new Error('SheetJS did not load'));document.head.appendChild(s)});
+     const r=await fetch('/sites/default/files/2021-03/margin-statistics.xlsx');if(!r.ok)throw new Error(r.status);const wb=XLSX.read(await r.arrayBuffer(),{type:'array'});
+     R=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{header:1,raw:true}).filter(x=>/^\d{4}-\d{2}$/.test(x[0])).map(x=>({m:x[0],v:+x[1]}))}
+   R.sort((a,b)=>a.m<b.m?1:-1);if(R.length<13)throw new Error('fewer than 13 months');
+   const a3=R.slice(0,3).reduce((s,x)=>s+x.v,0)/3,b3=R.slice(3,6).reduce((s,x)=>s+x.v,0)/3;
+   put('XM',R[0].m,R[0].v,R[12].m,R[12].v,Math.round(a3),Math.round(b3))},null);
+  if(C.src==='yahoo') await safe('yahoo NDX/VXN',async()=>{
+   const ch=async s=>{const j=await J(`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(s)}?range=2y&interval=1d`);const r=j.chart.result[0],q=r.indicators.quote[0];
+     const o=[];r.timestamp.forEach((t,i)=>{if(q.close[i]!=null)o.push({d:iso(t*1000),c:q.close[i]})});const f=fillLast(s,r,q,(d,c)=>({d,c}));if(f)o.push(f);return o.filter(x=>cut(x.d))};
+   const N=await ch('^NDX'),V=await ch('^VXN');const vm=Object.fromEntries(V.map(x=>[x.d,x.c]));const n=N.length-1;if(n<230)throw new Error('too few rows');
+   const ma=N.slice(n-199,n+1).reduce((s,x)=>s+x.c,0)/200;let fd=0;
+   for(let t=n-20;t<=n;t++){const v0=vm[N[t-20].d],v1=vm[N[t].d];if(v0&&v1&&N[t].c>N[t-20].c&&v1/v0>=1.10)fd++}
+   /* XN|date|Nasdaq 100|200-day average|% above it|days in the last 21 with NDX up AND VXN up 10%+ vs 20 days earlier|NDX % vs 20 days earlier|VXN|VXN % vs 20 days earlier */
+   const v1=vm[N[n].d],v0=vm[N[n-20].d];
+   put('XN',N[n].d,r2(N[n].c),r2(ma),+((N[n].c/ma-1)*100).toFixed(1),fd,+((N[n].c/N[n-20].c-1)*100).toFixed(1),r2(v1),v0&&v1?+((v1/v0-1)*100).toFixed(1):'')},null);
  }
  put('ERRORS',errs.join(' ; '));
  const txt=L.join('\n'); window.__TXT=txt;

@@ -20,8 +20,20 @@
  "move": {
   "class": "Quiet",
   "direction": "down",
-  "headline": "A dip of 0.6% while the S&P 500 slipped, inside Gold (the GLD fund)'s normal daily range",
+  "headline": "A dip of 1.5% while the S&P 500 fell, inside Gold (the GLD fund)'s normal daily range",
   "evidence": [
+   {
+    "d": "14 Oct",
+    "t": "Gold (the GLD fund) fell 1.49% while the S&P 500 fell 1.11%. Normal daily range for Gold (the GLD fund) is about 1.5%, so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
+   {
+    "d": "13 Oct",
+    "t": "Gold (the GLD fund) fell 0.13% while the S&P 500 slipped 0.02%. Normal daily range for Gold (the GLD fund) is about 1.5%, so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
    {
     "d": "12 Oct",
     "t": "Gold (the GLD fund) fell 0.6% while the S&P 500 slipped 0.06%. Normal daily range for Gold (the GLD fund) is about 1.5%, so no classification is triggered.",
@@ -110,7 +122,7 @@
    "evidence": [
     "Real rate 2.87% on 8 Oct vs 2.55% on 10 Sep: +0.32 points vs 20 trading days earlier (FRED DFII10).",
     "Fed raised rates 0.25 points to 3.75-4.00% on 16 Sep, its first rise since 2023 (MUFG recap).",
-    "Markets price a 16% chance of another rise at the 27-28 Oct meeting, vs 37% 28 days earlier (Polymarket, 9 Oct close)."
+    "Markets price a 33% chance of another rise at the 27-28 Oct meeting, vs 48% 28 days earlier (Polymarket, 14 Oct)."
    ]
   },
   {
@@ -129,7 +141,7 @@
    },
    "status": "Building",
    "evidence": [
-    "Dollar index 102.21 on 9 Oct vs 99.12 twenty trading days earlier: +3.1% (+3.09 index points), now over this chain's 2% line (status label not changed by this refresh); the dollar indicator LQ4 uses a 1-point line and scores it bearish.",
+    "Dollar index 102.55 on 14 Oct vs 100.31 twenty trading days earlier: +2.2% (+2.24 index points), now over this chain's 2% line (status label not changed by this refresh); the dollar indicator LQ4 uses a 1-point line and scores it bearish.",
     "The reverse also works: doubts about US debt weakened the dollar in the week of 17 Aug 2026 and GLD rose 5.4% (Kitco)."
    ]
   },
@@ -149,7 +161,7 @@
    },
    "status": "Quiet (oil rising)",
    "evidence": [
-    "Brent $104.72 on 9 Oct vs $104.61 twenty trading days earlier: +0.1%, under the 15% line.",
+    "Brent $105.69 on 13 Oct vs $108.75 twenty trading days earlier: −2.8%, under the 15% line.",
     "Week of 16 Mar 2026: gold's worst week since 1983 (GLD -10.3%) as the Iran war lifted oil and Fed-rise odds (Trading Economics)."
    ]
   },
@@ -210,7 +222,7 @@
    "d": "2026-10-28",
    "t": "Fed decision (27-28 Oct meeting)",
    "link": "C1",
-   "note": "Confirmed: Wed 28 Oct, 2pm ET (2am Thu Singapore). 16% odds of a rise (Polymarket, 9 Oct close)."
+   "note": "Confirmed: Wed 28 Oct, 2pm ET (2am Thu Singapore). 33% odds of a rise (Polymarket, 14 Oct)."
   },
   {
    "d": "2026-10-29",
@@ -226,13 +238,13 @@
   }
  ],
  "valuation_plain": [],
- "lead": "Gold (the GLD fund) is <b>Building history</b> (today's zone: <b>Sell</b>), at <b>−32</b> on a −100 to +100 scale, unchanged at −32 on 9 Oct (scores run as of the 12 Oct close). None of the four bucket scores moved since 9 Oct.",
+ "lead": "Gold (the GLD fund) is <b>Sell</b>, at <b>−34</b> on a −100 to +100 scale, down from −32 on 13 Oct (scores run as of the 14 Oct close). Bucket scores that moved since 13 Oct: Liquidity down to −13 from 0. The others did not change.",
  "bullets": [
-  "<b>The price trend is down.</b> Price trend scores −72, unchanged from −72 on 9 Oct: Price vs 200-day average -8.0% (bearish); 50-day vs 200-day average -4.4% (bearish); GLD vs the S&P 500 (SPY), 3 months -1.1 pts (neutral).",
-  "<b>The money backdrop is neutral to mixed.</b> Liquidity scores 0, unchanged from 0 on 9 Oct: Dollar backdrop (shared macro) +3.12 pts (bearish); Fed rate expectations (shared macro) +15.6 pts (towards cuts) (bullish); Buying vs selling volume 0.92x (neutral); GLD gold held (tonnes), 20-day change +0.8% (neutral); Hedge funds' net long in gold futures, % of open interest (contrarian) 44th percentile (neutral).",
-  "<b>The business signals are weak.</b> Demand scores −41, unchanged from −41 on 9 Oct: 10-year real interest rate, 20-day change +0.32 pts (bearish); Central bank gold buying, last 4 quarters -20.5% (4 quarters to Jun 2026: 780 t vs 981 t) (bearish); Western investor demand: GLD tonnes, 60-day change +5.6% (bullish); Consumer demand: jewellery plus bars and coins -10.1% (Q2 2026: 585 t vs 651 t) (bearish); 10-year inflation expectations (breakeven), 20-day change -0.03 pts (neutral).",
-  "<b>Valuation is roughly in line with peers.</b> Valuation vs peers scores 0, unchanged from 0 on 9 Oct: Gold ÷ S&P 500 ratio +12.8% (neutral); GLD vs its 200-week average +38.7% (neutral).",
-  "<b>The call: Building history, with the zone at Sell.</b> 8 of 10 trading days recorded; today reads Sell. Gold (the GLD fund) closed at $382.15, −0.63% on the day vs −0.06% for the S&P 500; +0.7% over 5 trading days and +2.7% over 3 months. Closest to flipping: <b>Fed rate expectations (shared macro)</b> (2 points): now +15.6 pts (towards cuts), scoring bullish. It turns neutral if it crosses +15 pts, measured against net odds (cut minus rise) for the next Fed meeting, 28 days earlier. <b>Gold ÷ S&P 500 ratio</b> (13 points): now +12.8%, scoring neutral. It turns bearish if it crosses +25%, measured against its own 10-year median."
+  "<b>The price trend is down.</b> Price trend scores −72, unchanged from −72 on 13 Oct: Price vs 200-day average -9.4% (bearish); 50-day vs 200-day average -4.3% (bearish); GLD vs the S&P 500 (SPY), 3 months +0.3 pts (neutral).",
+  "<b>The money backdrop is neutral to mixed.</b> Liquidity scores −13, down from 0 on 13 Oct: Buying vs selling volume 0.84x (neutral); GLD gold held (tonnes), 20-day change +0.4% (neutral); Hedge funds' net long in gold futures, % of open interest (contrarian) 44th percentile (neutral); Dollar backdrop (shared macro) +2.24 pts (bearish); Fed rate expectations (shared macro) +14.3 pts (towards cuts) (neutral).",
+  "<b>The business signals are weak.</b> Demand scores −41, unchanged from −41 on 13 Oct: 10-year real interest rate, 20-day change +0.28 pts (bearish); 10-year inflation expectations (breakeven), 20-day change -0.03 pts (neutral); Central bank gold buying, last 4 quarters -20.5% (4 quarters to Jun 2026: 780 t vs 981 t) (bearish); Consumer demand: jewellery plus bars and coins -10.1% (Q2 2026: 585 t vs 651 t) (bearish); Western investor demand: GLD tonnes, 60-day change +5.0% (bullish).",
+  "<b>Valuation is roughly in line with peers.</b> Valuation vs peers scores 0, unchanged from 0 on 13 Oct: GLD vs its 200-week average +35.9% (neutral); Gold ÷ S&P 500 ratio +13.7% (neutral).",
+  "<b>The call is confirmed: Sell.</b> 10 of the last 10 trading days in this zone. Gold (the GLD fund) closed at $375.99, −1.49% on the day vs −1.11% for the S&P 500; 0.0% over 5 trading days and +3.0% over 3 months. Closest to flipping: <b>Fed rate expectations (shared macro)</b> (2 points): now +14.3 pts (towards cuts), scoring neutral. It turns bullish if it crosses +15 pts, measured against net odds (cut minus rise) for the next Fed meeting, 28 days earlier. <b>Buying vs selling volume</b> (6 points): now 0.84x, scoring neutral. It turns bearish if it crosses +0.77x, measured against volume on up days ÷ down days, last 20 trading days. <b>Western investor demand: GLD tonnes, 60-day change</b> (6 points): now +5.0%, scoring bullish. It turns neutral if it crosses +4%, measured against tonnes 60 trading days earlier."
  ],
  "defects": [
   "Staging build, day 8 of history: a call needs 7 of the last 10 trading days in one zone.",

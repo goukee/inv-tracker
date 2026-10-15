@@ -13,19 +13,31 @@
    "period": "Apr-Jun 2026: CCEP +3.2% (days-adjusted), Coca-Cola HBC +5.8% (underlying), Coca-Cola FEMSA +3.5%"
   }
  },
- "lead": "Coca-Cola is <b>Building history</b> (today's zone: <b>Hold</b>), at <b>+28</b> on a −100 to +100 scale, unchanged at +28 on 9 Oct (scores run as of the 12 Oct close). None of the four bucket scores moved since 9 Oct.",
+ "lead": "Coca-Cola is <b>Building history</b> (today's zone: <b>Buy</b>), at <b>+32</b> on a −100 to +100 scale, up from +28 on 13 Oct (scores run as of the 14 Oct close). Bucket scores that moved since 13 Oct: Liquidity up to +27 from 0. The others did not change.",
  "bullets": [
-  "<b>The price trend is up.</b> Price trend scores +100, unchanged from +100 on 9 Oct: Price vs 200-day average +11.5% (bullish); 50-day vs 200-day average +9.3% (bullish); Relative strength vs peers, 3 months +8.1 pts (bullish).",
-  "<b>The money backdrop is neutral to mixed.</b> Liquidity scores 0, unchanged from 0 on 9 Oct: Dollar backdrop (shared macro) +3.12 pts (bearish); Fed rate expectations (shared macro) +15.6 pts (towards cuts) (bullish); Buying vs selling volume 0.93x (neutral); Short interest trend +35.3% (1.2% of float) (neutral); Institutional ownership change +0.38 pts of shares (neutral).",
-  "<b>The business signals are strong.</b> Demand scores +62, unchanged from +62 on 9 Oct: Revenue growth trend 12.1% vs 1.8% avg (+10.2 pts) (bullish); Organic revenue growth +6.0% (Jun 2026 quarter, Coca-Cola release 28 Jul 2026) (bullish); Coca-Cola bottlers' volume growth (CCEP, Coca-Cola HBC, Coca-Cola FEMSA) +4.2% (bullish); Unit case volume growth +5.0% (Jun 2026 quarter, Coca-Cola release 28 Jul 2026) (bullish); Earnings forecast revisions +1.3% ($3.52 vs $3.48) (neutral).",
-  "<b>It is priced above peers.</b> Valuation vs peers scores −76, unchanged from −76 on 9 Oct: Forward P/E vs peers 25.8 vs 20.2 peer median (+28%) (bearish); Growth-adjusted P/E vs peers 4.0 vs 1.5 peer median (+176%) (bearish); EV/EBITDA vs peers 24.4 vs 16.0 peer median (+52%) (bearish); P/E vs own 5-year history 28.2 vs 26.5 5-yr median (+7%) (neutral).",
-  "<b>The call: Building history, with the zone at Hold.</b> 6 of 10 trading days recorded; today reads Hold. Coca-Cola closed at $89.79, +1.98% on the day vs −0.06% for the S&P 500; +3.8% over 5 trading days and +8.7% over 3 months. Closest to flipping: <b>Fed rate expectations (shared macro)</b> (2 points): now +15.6 pts (towards cuts), scoring bullish. It turns neutral if it crosses +15 pts, measured against net odds (cut minus rise) for the next Fed meeting, 28 days earlier. <b>Forward P/E vs peers</b> (8 points): now 25.8 vs 20.2 peer median (+28%), scoring bearish. It turns neutral if it crosses +25%, measured against median of the peer set (next 12 months, same rule)."
+  "<b>The price trend is up.</b> Price trend scores +100, unchanged from +100 on 13 Oct: Price vs 200-day average +13.7% (bullish); 50-day vs 200-day average +9.2% (bullish); Relative strength vs peers, 3 months +9.6 pts (bullish).",
+  "<b>The money backdrop is supportive.</b> Liquidity scores +27, up from 0 on 13 Oct: Buying vs selling volume 1.36x (bullish); Short interest trend +35.3% (1.2% of float) (neutral); Institutional ownership change +0.39 pts of shares (neutral); Dollar backdrop (shared macro) +2.24 pts (bearish); Fed rate expectations (shared macro) +14.3 pts (towards cuts) (neutral).",
+  "<b>The business signals are strong.</b> Demand scores +62, unchanged from +62 on 13 Oct: Revenue growth trend 12.1% vs 1.8% avg (+10.2 pts) (bullish); Gross margin trend 61.7% vs 61.1% (+0.7 pts) (neutral); Earnings forecast revisions +1.2% ($3.52 vs $3.48) (neutral); Organic revenue growth +6.0% (Jun 2026 quarter, Coca-Cola release 28 Jul 2026) (bullish); Unit case volume growth +5.0% (Jun 2026 quarter, Coca-Cola release 28 Jul 2026) (bullish); Coca-Cola bottlers' volume growth (CCEP, Coca-Cola HBC, Coca-Cola FEMSA) +4.2% (Apr-Jun 2026: CCEP +3.2% (days-adjusted), Coca-Cola HBC +5.8% (underlying), Coca-Cola FEMSA +3.5%) (bullish).",
+  "<b>It is priced above peers.</b> Valuation vs peers scores −76, unchanged from −76 on 13 Oct: Forward P/E vs peers 26.4 vs 20.5 peer median (+29%) (bearish); Growth-adjusted P/E vs peers 4.1 vs 1.5 peer median (+176%) (bearish); EV/EBITDA vs peers 24.9 vs 16.3 peer median (+52%) (bearish); P/E vs own 5-year history 28.9 vs 26.5 5-yr median (+9%) (neutral).",
+  "<b>The call: Building history, with the zone at Buy.</b> 8 of 10 trading days recorded; today reads Buy. Coca-Cola closed at $91.78, +1.85% on the day vs −1.11% for the S&P 500; +6.9% over 5 trading days and +8.7% over 3 months. Closest to flipping: <b>Fed rate expectations (shared macro)</b> (2 points): now +14.3 pts (towards cuts), scoring neutral. It turns bullish if it crosses +15 pts, measured against net odds (cut minus rise) for the next Fed meeting, 28 days earlier. <b>Forward P/E vs peers</b> (8 points): now 26.4 vs 20.5 peer median (+29%), scoring bearish. It turns neutral if it crosses +25%, measured against median of the peer set (next 12 months, same rule). <b>Buying vs selling volume</b> (6 points): now 1.36x, scoring bullish. It turns neutral if it crosses +1.30x, measured against volume on up days ÷ down days, last 20 trading days."
  ],
  "move": {
   "class": "Quiet",
   "direction": "up",
-  "headline": "A gain of 2.0% while the S&P 500 slipped, bigger than a typical day for Coca-Cola but not classed as unusual",
+  "headline": "An unusual move: +1.9% on the day (1.6x a typical day) and +6.9% over 5 days (2.7x), cause not yet researched",
   "evidence": [
+   {
+    "d": "14 Oct",
+    "t": "Coca-Cola rose 1.85% while the S&P 500 fell 1.11%. Normal daily range for Coca-Cola is about 1.1%, so the day is 1.6x a typical day and the 5-day move (+6.9%) is 2.7x a typical 5 days; the engine's line for an unusual move is 2x. Split by the engine (beta-adjusted): market +0.3%, sector +3.1%, company-specific −1.6%. The cause was not researched in this automated refresh, so the classification is left as it was until reviewed.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
+   {
+    "d": "13 Oct",
+    "t": "Coca-Cola rose 0.36% while the S&P 500 slipped 0.02%. Normal daily range for Coca-Cola is about 1.1%, so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
    {
     "d": "12 Oct",
     "t": "Coca-Cola rose 2.0% while the S&P 500 slipped 0.06%. Normal daily range for Coca-Cola is about 1.1%, so no classification is triggered.",
@@ -140,7 +152,7 @@
    },
    "status": "Hurting",
    "evidence": [
-    "Dollar index 101.83 at the 6 Oct close vs 98.84 twenty trading days earlier: +3.0%.",
+    "Dollar index 102.55 at the 14 Oct close vs 100.31 twenty trading days earlier: +2.2%.",
     "2026 EPS guidance (+9-10%) includes about a 3-point currency tailwind (Coca-Cola, 28 Jul); a stronger dollar since then puts that tailwind at risk at the 27 Oct results.",
     "The dollar index is mostly the euro; Coca-Cola's bigger exposures (Mexican peso, Brazilian real and other emerging-market currencies) can move differently. The first read on the actual hit comes at the 27 Oct results."
    ]
@@ -161,8 +173,8 @@
    },
    "status": "Active",
    "evidence": [
-    "10-year yield 5.24% at the 9 Oct close vs 4.98% twenty trading days earlier: +0.27 points.",
-    "KO's dividend yield is about 2.5% of the share price and its earnings yield (inverse of the 24.7x forward P/E) about 4.0%, both below the 5.28% on the 10-year."
+    "10-year yield 5.19% at the 14 Oct close vs 5.01% twenty trading days earlier: +0.18 points, just under the +0.25 line (status label not changed by this refresh).",
+    "KO's dividend yield is about 2.5% of the share price and its earnings yield (inverse of the 24.7x forward P/E) about 4.0%, both below the 5.19% on the 10-year."
    ]
   },
   {
@@ -181,7 +193,7 @@
    },
    "status": "Watch",
    "evidence": [
-    "Brent $100.58 at the 6 Oct close vs $97.92 twenty trading days earlier: +2.7%, under the +10% line. It was $73.74 on 24 Jun 2026, so the rise since mid-year is large.",
+    "Brent $105.69 at the 13 Oct close vs $108.75 twenty trading days earlier: −2.8%, under the +10% line. It was $73.74 on 24 Jun 2026, so the rise since mid-year is large.",
     "US Midwest aluminium premium now over 40% of the all-in aluminium price (Manufacturing Dive, 19 Aug 2026)."
    ]
   },
@@ -222,7 +234,7 @@
    "d": "2026-10-28",
    "t": "Fed rate decision",
    "link": "C2",
-   "note": "Markets price a 16% chance of a rise and 1% of a cut (Polymarket, 9 Oct), vs 37% and 2% a month earlier."
+   "note": "Markets price a 33% chance of a rise and under 1% of a cut (Polymarket, 14 Oct), vs 48% and 1% a month earlier."
   }
  ],
  "defects": [

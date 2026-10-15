@@ -185,7 +185,7 @@
    "d": "2026-10-28",
    "t": "Fed rate decision",
    "link": "C3",
-   "note": "Markets price a 16% chance of a rise (Polymarket, 9 Oct close), vs 37% four weeks earlier."
+   "note": "Markets price a 33% chance of a rise (Polymarket, 14 Oct), vs 48% four weeks earlier."
   },
   {
    "d": "2026-10-29",
@@ -321,8 +321,20 @@
  "move": {
   "class": "Quiet",
   "direction": "down",
-  "headline": "A dip of 1.3% while the S&P 500 slipped, inside Nvidia's normal daily range",
+  "headline": "A drop of 3.2% while the S&P 500 fell, inside Nvidia's normal daily range",
   "evidence": [
+   {
+    "d": "14 Oct",
+    "t": "Nvidia fell 3.16% while the S&P 500 fell 1.11%. Normal daily range for Nvidia is about 2.3%, so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
+   {
+    "d": "13 Oct",
+    "t": "Nvidia rose 0.97% while the S&P 500 slipped 0.02%. Normal daily range for Nvidia is about 2.3%, so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices"
+   },
    {
     "d": "12 Oct",
     "t": "Nvidia fell 1.3% while the S&P 500 slipped 0.06%. Normal daily range for Nvidia is about 2.3%, so no classification is triggered.",
@@ -361,13 +373,13 @@
    }
   ]
  },
- "lead": "Nvidia is <b>Building history</b> (today's zone: <b>Strong Buy</b>), at <b>+86</b> on a −100 to +100 scale, unchanged at +86 on 9 Oct (scores run as of the 12 Oct close). None of the four bucket scores moved since 9 Oct.",
+ "lead": "Nvidia is <b>Building history</b> (today's zone: <b>Strong Buy</b>), at <b>+84</b> on a −100 to +100 scale, down from +86 on 13 Oct (scores run as of the 14 Oct close). Bucket scores that moved since 13 Oct: Liquidity down to +40 from +53. The others did not change.",
  "bullets": [
-  "<b>The price trend is up.</b> Price trend scores +72, unchanged from +72 on 9 Oct: Price vs 200-day average +11.9% (bullish); 50-day vs 200-day average +10.0% (bullish); Relative strength vs peers, 3 months +2.1 pts (neutral).",
-  "<b>The money backdrop is supportive.</b> Liquidity scores +53, unchanged from +53 on 9 Oct: Buying vs selling volume 2.39x (bullish); Institutional ownership change +1.01 pts of shares (bullish); Dollar backdrop (shared macro) +3.12 pts (bearish); Fed rate expectations (shared macro) +15.6 pts (towards cuts) (bullish); Short interest trend +4.4% (1.3% of float) (neutral).",
-  "<b>The business signals are strong.</b> Demand scores +100, unchanged from +100 on 9 Oct: Earnings forecast revisions +25.2% ($15.91 vs $12.71) (bullish); Revenue growth trend 105.9% vs 69.1% avg (+36.7 pts) (bullish); Guidance vs expectations guided 89.5% vs 82.8% expected (+6.7 pts) (bullish); Data Center revenue growth vs the prior quarter +18.3% (bullish); ACIE revenue growth (demand beyond the big clouds) +138.1% (bullish).",
-  "<b>It looks cheap against peers.</b> Valuation vs peers scores +100, unchanged from +100 on 9 Oct: Forward P/E vs peers 16.3 vs 42.4 peer median (-62%) (bullish); Growth-adjusted P/E vs peers 0.3 vs 0.6 peer median (-57%) (bullish); P/E vs own 5-year history 28.6 vs 87.3 5-yr median (-67%) (bullish); EV/EBITDA vs peers 27.0 vs 43.8 peer median (-38%) (bullish).",
-  "<b>The call: Building history, with the zone at Strong Buy.</b> 6 of 10 trading days recorded; today reads Strong Buy. Nvidia closed at $226.32, −1.29% on the day vs −0.06% for the S&P 500; −5.3% over 5 trading days and +7.0% over 3 months. Closest to flipping: <b>Institutional ownership change</b> (2 points): now +1.01 pts of shares, scoring bullish. It turns neutral if it crosses +1.00 pts, measured against shares added minus shares cut by institutions last quarter, as % of shares outstanding. <b>Fed rate expectations (shared macro)</b> (2 points): now +15.6 pts (towards cuts), scoring bullish. It turns neutral if it crosses +15 pts, measured against net odds (cut minus rise) for the next Fed meeting, 28 days earlier."
+  "<b>The price trend is up.</b> Price trend scores +72, unchanged from +72 on 13 Oct: Price vs 200-day average +9.2% (bullish); 50-day vs 200-day average +10.1% (bullish); Relative strength vs peers, 3 months -2.5 pts (neutral).",
+  "<b>The money backdrop is supportive.</b> Liquidity scores +40, down from +53 on 13 Oct: Buying vs selling volume 1.88x (bullish); Short interest trend +4.4% (1.3% of float) (neutral); Institutional ownership change +1.02 pts of shares (bullish); Dollar backdrop (shared macro) +2.24 pts (bearish); Fed rate expectations (shared macro) +14.3 pts (towards cuts) (neutral).",
+  "<b>The business signals are strong.</b> Demand scores +100, unchanged from +100 on 13 Oct: Revenue growth trend 105.9% vs 69.1% avg (+36.7 pts) (bullish); Gross margin trend (one-offs removed) 74.7% vs 72.5% (+2.2 pts) (bullish); Earnings forecast revisions +24.7% ($15.91 vs $12.76) (bullish); Guidance vs expectations guided 89.5% vs 82.8% expected (+6.7 pts) (bullish); Data Center revenue growth vs the prior quarter +18.3% (Jul 2026 quarter (Q2 FY27): Data Center $89.0bn vs $75.2bn in Q1, Nvidia CFO commentary Q2 FY27 (26 Aug 2026)) (bullish); ACIE revenue growth (demand beyond the big clouds) +138.1% (Jul 2026 quarter (Q2 FY27): ACIE $40.3bn vs $16.9bn a year earlier, Nvidia CFO commentary Q2 FY27 (26 Aug 2026) (Q1 and year-earlier figures restated in August for one customer moved to Hyperscale)) (bullish); Big-4 cloud capital spending (Microsoft, Alphabet, Amazon, Meta) +79.0% (Apr-Jun 2026: Microsoft $41.0bn, Alphabet $44.9bn, Amazon $53.1bn, Meta $31.1bn = $170.1bn vs about $95.0bn a year earlier (24.2 + 22.4 + 31.4 + 17.0; companies' Jul 2025 reports). Alphabet counts cash capex only; the others include finance leases (TMT Finance, 18 Aug 2026)) (bullish).",
+  "<b>It is priced below peers.</b> Valuation vs peers scores +100, unchanged from +100 on 13 Oct: Forward P/E vs peers 15.9 vs 39.2 peer median (-60%) (bullish); Growth-adjusted P/E vs peers 0.3 vs 0.6 peer median (-56%) (bullish); EV/EBITDA vs peers 26.4 vs 50.2 peer median (-47%) (bullish); P/E vs own 5-year history 28.0 vs 83.9 5-yr median (-67%) (bullish).",
+  "<b>The call: Building history, with the zone at Strong Buy.</b> 8 of 10 trading days recorded; today reads Strong Buy. Nvidia closed at $221.30, −3.16% on the day vs −1.11% for the S&P 500; −6.8% over 5 trading days and +6.8% over 3 months. Closest to flipping: <b>Institutional ownership change</b> (2 points): now +1.02 pts of shares, scoring bullish. It turns neutral if it crosses +1.00 pts, measured against shares added minus shares cut by institutions last quarter, as % of shares outstanding. <b>Fed rate expectations (shared macro)</b> (2 points): now +14.3 pts (towards cuts), scoring neutral. It turns bullish if it crosses +15 pts, measured against net odds (cut minus rise) for the next Fed meeting, 28 days earlier. <b>Relative strength vs peers, 3 months</b> (7 points): now -2.5 pts, scoring neutral. It turns bearish if it crosses -5 pts, measured against equal-weighted average of 5 peers over 63 trading days."
  ],
  "falsification": {
   "adopted": "Kenneth, 6 Oct 2026",
