@@ -23,8 +23,22 @@
  "move": {
   "class": "Quiet",
   "direction": "down",
-  "headline": "A drop of 5.7% while the S&P 500 fell, inside AMD's normal daily range",
+  "headline": "A drop of 5.9% while the S&P 500 fell, inside AMD's normal daily range",
   "evidence": [
+   {
+    "d": "16 Oct",
+    "t": "AMD fell 5.95% while the S&P 500 fell 1.09%. Normal daily range for AMD is about 4.0%, so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices",
+    "auto16": 1
+   },
+   {
+    "d": "15 Oct",
+    "t": "AMD fell 1.50% while the S&P 500 rose 0.33%. Normal daily range for AMD is about 4.0%, so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices",
+    "auto15": 1
+   },
    {
     "d": "14 Oct",
     "t": "AMD fell 5.73% while the S&P 500 fell 1.11%. Normal daily range for AMD is about 3.9%, so no classification is triggered.",
@@ -257,7 +271,7 @@
    "d": "2026-10-28",
    "t": "Fed rate decision",
    "link": "C4",
-   "note": "Markets price a 33% chance of a rise vs 48% a month earlier (Polymarket, 14 Oct)."
+   "note": "Markets price a 14% chance of a rise and under 1% for a cut (Polymarket, 16 Oct), vs 55% for a rise 28 days earlier."
   },
   {
    "d": "2026-10-29",
@@ -273,16 +287,16 @@
   }
  ],
  "valuation_plain": [],
- "lead": "AMD is <b>Buy</b>, at <b>+46</b> on a −100 to +100 scale, down from +50 on 14 Oct (scores run as of the 15 Oct close). Bucket scores that moved since 14 Oct: Liquidity down to +13 from +40. The others did not change.",
+ "lead": "AMD is <b>Buy</b>, at <b>+46</b> on a −100 to +100 scale, unchanged at +46 since 15 Oct (scores run as of the 16 Oct close). No bucket score changed since 15 Oct.",
  "bullets": [
-  "<b>The price trend is up.</b> Price trend scores +100, unchanged from +100 on 14 Oct: Price vs 200-day average +43.2% (bullish); 50-day vs 200-day average +36.6% (bullish); Relative strength vs peers, 3 months +10.3 pts (bullish).",
-  "<b>The money backdrop is neutral to mixed.</b> Liquidity scores +13, down from +40 on 14 Oct: Buying vs selling volume 1.28x (neutral); Short interest trend -5.8% (2.4% of float) (neutral); Institutional ownership change +3.77 pts of shares (bullish); Dollar backdrop (shared macro) +1.78 pts (bearish); Fed rate expectations (shared macro) +22.8 pts (towards cuts) (bullish).",
-  "<b>The business signals are strong.</b> Demand scores +100, unchanged from +100 on 14 Oct: Revenue growth trend 50.1% vs 34.8% avg (+15.3 pts) (bullish); Gross margin trend (one-offs removed) 53.2% vs 50.3% (+2.9 pts) (bullish); Earnings forecast revisions +17.0% ($15.76 vs $13.46) (bullish); Guidance vs expectations guided 40.6% vs 35.6% expected (+5.0 pts) (bullish); Data Center revenue growth +107.3% (Jun 2026 quarter) (bullish); Client revenue growth +22.5% (Jun 2026 quarter) (bullish); Big-4 cloud capital spending growth +77.0% (Apr-Jun 2026, Amazon + Alphabet + Microsoft + Meta) (bullish).",
-  "<b>It is priced above peers.</b> Valuation vs peers scores −63, unchanged from −63 on 14 Oct: Forward P/E vs peers 40.1 vs 27.0 peer median (+49%) (bearish); Growth-adjusted P/E vs peers 0.6 vs 0.6 peer median (-5%) (neutral); EV/EBITDA vs peers 95.1 vs 30.7 peer median (+209%) (bearish).",
-  "<b>The call is confirmed: Buy.</b> 10 of the last 10 trading days in this zone. AMD closed at $562.23, −1.50% on the day vs +0.33% for the S&P 500; −9.4% over 5 trading days and +13.4% over 3 months. Closest to flipping: <b>Buying vs selling volume</b> (6 points): now 1.28x, scoring neutral. It turns bullish if it crosses +1.30x, measured against volume on up days ÷ down days, last 20 trading days. <b>Short interest trend</b> (3 points): now -5.8% (2.4% of float), scoring neutral. It turns bullish if it crosses -10%, measured against short interest a month earlier (report 2026-09-30). <b>Growth-adjusted P/E vs peers</b> (7 points): now 0.6 vs 0.6 peer median (-5%), scoring neutral. It turns bullish if it crosses -15%, measured against median of the peer set."
+  "<b>The price trend is up.</b> Price trend scores +100, unchanged from +100 on 15 Oct: Price vs 200-day average +34.1% (bullish); 50-day vs 200-day average +36.2% (bullish); Relative strength vs peers, 3 months +7.3 pts (bullish).",
+  "<b>The money backdrop is neutral to mixed.</b> Liquidity scores +13, unchanged from +13 on 15 Oct: Buying vs selling volume 0.99x (neutral); Short interest trend -5.8% (2.4% of float) (neutral); Institutional ownership change +3.76 pts of shares (bullish); Dollar backdrop (shared macro) +1.62 pts (bearish); Fed rate expectations (shared macro) +40.9 pts (towards cuts) (bullish).",
+  "<b>The business signals are strong.</b> Demand scores +100, unchanged from +100 on 15 Oct: Revenue growth trend 50.1% vs 34.8% avg (+15.3 pts) (bullish); Gross margin trend (one-offs removed) 53.2% vs 50.3% (+2.9 pts) (bullish); Earnings forecast revisions +17.0% ($15.76 vs $13.46) (bullish); Guidance vs expectations guided 40.6% vs 35.6% expected (+5.0 pts) (bullish); Data Center revenue growth +107.3% (Jun 2026 quarter) (bullish); Client revenue growth +22.5% (Jun 2026 quarter) (bullish); Big-4 cloud capital spending growth +77.0% (Apr-Jun 2026, Amazon + Alphabet + Microsoft + Meta) (bullish).",
+  "<b>It is priced above peers.</b> Valuation vs peers scores −63, unchanged from −63 on 15 Oct: Forward P/E vs peers 37.6 vs 25.9 peer median (+45%) (bearish); Growth-adjusted P/E vs peers 0.6 vs 0.6 peer median (-4%) (neutral); EV/EBITDA vs peers 89.3 vs 29.1 peer median (+207%) (bearish).",
+  "<b>The call is confirmed: Buy.</b> 10 of the last 10 trading days in this zone. AMD closed at $528.75, −5.95% on the day vs −1.09% for the S&P 500; −13.1% over 5 trading days and +5.0% over 3 months. Closest to flipping: <b>Short interest trend</b> (3 points): now -5.8% (2.4% of float), scoring neutral. It turns bullish if it crosses -10%, measured against short interest a month earlier (report 2026-09-30). <b>Relative strength vs peers, 3 months</b> (7 points): now +7.3 pts, scoring bullish. It turns neutral if it crosses +5 pts, measured against equal-weighted average of 6 peers over 63 trading days. <b>Growth-adjusted P/E vs peers</b> (7 points): now 0.6 vs 0.6 peer median (-4%), scoring neutral. It turns bullish if it crosses -15%, measured against median of the peer set."
  ],
  "defects": [
-  "Staging build, day of history: the call needs 10 trading days of scores before it can be confirmed.",
+  "The call needs 7 of the last 10 trading days in one zone before it is confirmed; 14 trading days of scores are recorded so far.",
   "VL3 (P/E vs own history) is removed for AMD and left out of the score (applied by the shared engine from 30 Sep): trailing P/E is distorted by 2023 losses and Xilinx amortisation.",
   "EV/EBITDA uses last-12-month EBITDA (free source); for a company growing 50% a year this makes AMD look expensive. Debt in EV ($4.3bn) includes leases (Yahoo); AMD reports $3.2bn of borrowings, a 0.1% effect on EV.",
   "Forward P/E uses 2027 earnings forecasts (AMD's next fiscal year), not strictly the next 12 months; peers use their own next fiscal years, which end at different dates.",
