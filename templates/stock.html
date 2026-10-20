@@ -349,14 +349,14 @@ function fcfHover(c){
   const tip=document.getElementById('fcftip'), svg=document.querySelector('#fcfc svg'); if(!svg||!tip)return;
   svg.querySelectorAll('[data-fcfi]').forEach(r=>{r.addEventListener('pointermove',()=>{const q=c.quarters[+r.dataset.fcfi],b=svg.getBoundingClientRect(),vb=svg.viewBox.baseVal;
     const cx=(r.x.baseVal.value+r.width.baseVal.value/2)/vb.width*b.width;
-    tip.innerHTML=`<b>Quarter to ${esc(q.label)}</b><br>Operating cash ${bn(q.ocf,2)}<br>− capital spending ${bn(q.capex,2)}<br>= free cash flow <b>${bn(q.fcf,2)}</b>${q.ttm!=null?'<br>Last 12 months: '+bn(q.ttm):''}`;
+    tip.innerHTML=`<b>Quarter to ${esc(q.label)}</b><br>Operating cash ${bn(q.ocf,2)}<br>− capital spending ${bn(q.capex,2)}<br>= free cash flow <b>${bn(q.fcf,2)}</b>${q.rev?`<br>${(q.fcf/q.rev*100).toFixed(1)}% of the quarter's revenue (${bn(q.rev,2)})`:''}${q.ebitda?(q.ebitda>0?`<br>${(q.fcf/q.ebitda*100).toFixed(0)}% of the quarter's EBITDA (${bn(q.ebitda,2)})`:'<br>EBITDA negative this quarter'):''}${q.ttm!=null?'<br>Last 12 months: '+bn(q.ttm):''}`;
     tip.hidden=false;tip.style.left=Math.max(90,Math.min(b.width-90,cx))+'px';tip.style.top='4px'});r.addEventListener('pointerleave',()=>tip.hidden=true)});
 }
 function fcfSection(c){
   if(!c) return '';
   const Q=c.quarters||[];
   const head=c.ttm==null?'<p class="sub">Free cash flow history not available (no SEC cash-flow data).</p>'
-    :`<p class="sub"><b>Free cash flow = cash from operations − capital spending.</b> ${bn(c.ttm)} (${esc(c.ttm_label)})${c.ttm_year_ago!=null?`, vs ${bn(c.ttm_year_ago)} for the 12 months a year earlier`:''}${c.ttm_rev?`; ${(c.ttm/c.ttm_rev*100).toFixed(0)}% of revenue over the same 12 months`:''}. Source: ${c.source==='SEC'?'SEC 10-Q / 10-K cash-flow statements (quarters derived from year-to-date figures)':'Yahoo Finance (no SEC history)'}.</p>`;
+    :`<p class="sub"><b>Free cash flow = cash from operations − capital spending.</b> ${bn(c.ttm)} (${esc(c.ttm_label)})${c.ttm_year_ago!=null?`, vs ${bn(c.ttm_year_ago)} for the 12 months a year earlier`:''}${c.ttm_rev?`; ${(c.ttm/c.ttm_rev*100).toFixed(1)}% of revenue${c.ttm_ebitda>0?` and ${(c.ttm/c.ttm_ebitda*100).toFixed(0)}% of EBITDA`:''} over the same 12 months`:''}. Source: ${c.source==='SEC'?'SEC 10-Q / 10-K cash-flow statements (quarters derived from year-to-date figures)':'Yahoo Finance (no SEC history)'}.</p>`;
   const per=(c.periods||[]).length?`<div class="tbl"><table><thead><tr><th>Period</th><th>Operating cash</th><th>Capital spending</th><th>Free cash flow</th></tr></thead><tbody>${c.periods.map(p=>`<tr><td>${esc(p.label)}</td><td>${bn(p.ocf)}</td><td>${bn(p.capex)}</td><td class="${p.fcf<0?'neg':'pos'}"><b>${bn(p.fcf)}</b></td></tr>`).join('')}</tbody></table></div><p class="sub">Too few quarterly figures for a timeline yet: the company's filings so far give only these periods.</p>`:'';
   return `<div class="grp" style="margin-top:18px"><span>Free cash flow over time</span><span>bars = each quarter · line = last 12 months</span></div>${head}${fcfChart(c)}${per}`;
 }

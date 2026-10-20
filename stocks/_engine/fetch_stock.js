@@ -198,6 +198,18 @@ window.__RUN=async function(){
     const IE=await periods(['InterestExpense','InterestExpenseNonoperating','InterestExpenseDebt','InterestAndDebtExpense'],'USD');
     for(const k of Object.keys(OI.m).sort()){const [a,b]=k.split('|');put('INTP',a,b,Math.round(OI.m[k].v/1e5)/10,IE.m[k]?Math.round(IE.m[k].v/1e5)/10:'',OI.m[k].filed)}
     put('INTTAGS',OI.tag||'',IE.tag||'')},null);
+  /* Depreciation and amortisation for EBITDA (Kenneth, 19 Oct 2026: FCF/EBITDA over the same period as free cash flow).
+     DAP|start|end|D&A|basis|filed ($m). Per period: a combined total tag if the company files one; otherwise depreciation +
+     amortisation of intangibles (AMD, Alphabet, Microsoft file them separately). basis = total | dep+amort | dep. */
+  await safe('da',async()=>{
+    const TOT=await periods(['DepreciationDepletionAndAmortization','DepreciationAmortizationAndAccretionNet','DepreciationAndAmortization','DepreciationAmortizationAndOther'],'USD');
+    const DEP=await periods(['Depreciation','OtherDepreciationAndAmortization','DepreciationNonproduction'],'USD');
+    const AM=await periods(['AmortizationOfIntangibleAssets','AmortizationOfAcquiredIntangibleAssets'],'USD');
+    const keys=[...new Set([...Object.keys(TOT.m),...Object.keys(DEP.m)])].sort();
+    for(const k of keys){const [a,b]=k.split('|');
+      if(TOT.m[k])put('DAP',a,b,Math.round(TOT.m[k].v/1e5)/10,'total',TOT.m[k].filed);
+      else{const d=DEP.m[k],am=AM.m[k];put('DAP',a,b,Math.round((d.v+(am?am.v:0))/1e5)/10,am?'dep+amort':'dep',am&&am.filed>d.filed?am.filed:d.filed)}}
+    put('DATAGS',TOT.tag||'',DEP.tag||'',AM.tag||'')},null);
   await safe('filings',async()=>{const s=await J(`/submissions/CIK${cik}.json`);const f=s.filings.recent;const cut=iso(Date.now()-730*864e5);
     let a401=0;f.form.forEach((x,i)=>{if(x==='8-K'&&f.filingDate[i]>=cut&&/4\.01/.test(f.items[i]||''))a401++});
     put('AUDITCHG',a401);
