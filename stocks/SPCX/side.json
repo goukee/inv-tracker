@@ -26,9 +26,16 @@
  },
  "move": {
   "class": "Quiet",
-  "direction": "up",
-  "headline": "A gain of 7.8% while the Nasdaq-100 rose, bigger than SpaceX's normal daily range (about 4.5%) but not enough to classify",
+  "direction": "down",
+  "headline": "A fall of 9.1% while the Nasdaq-100 fell, bigger than SpaceX's normal daily range (about 4.6%) but not enough to classify Quiet",
   "evidence": [
+   {
+    "d": "22 Oct",
+    "t": "SpaceX fell 9.14% while the Nasdaq-100 fell 1.80%. Normal daily range for SpaceX is about 4.6%: bigger than usual (2.0x) but not enough to classify.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices",
+    "auto22": 1
+   },
    {
     "d": "21 Oct",
     "t": "SpaceX rose 7.79% while the Nasdaq-100 rose 1.13%. Normal daily range for SpaceX is about 4.5%, so no classification is triggered.",
@@ -316,16 +323,16 @@
   }
  ],
  "valuation_plain": [],
- "lead": "Space Exploration Technologies Corp. is <b>Hold</b> (the score alone reads <b>Buy</b>; capped by O3), at <b>+37</b> on a −100 to +100 scale, unchanged at +37 since 20 Oct (scores run as of the 21 Oct close); no bucket score changed.",
+ "lead": "Space Exploration Technologies Corp. is <b>Hold</b>; a quality warning (O3) caps any Buy at Hold, at <b>+27</b> on a −100 to +100 scale, down from +37 on 21 Oct (scores run as of the 22 Oct close); buckets that moved: Price trend +100 to +60.",
  "bullets": [
-  "<b>The price trend is up.</b> Price trend scores +100, unchanged from +100 on 20 Oct: Price vs average since listing (short-history version) +9.3% (bullish); 20-day vs since-listing average (short-history version) +6.5% (bullish); Relative strength vs peers, 3 months +52.5 pts (bullish).",
-  "<b>The money backdrop is mixed.</b> Liquidity scores +13, unchanged from +13 on 20 Oct: Buying vs selling volume 1.26x (neutral); Short interest trend +4.2% (2.7% of float) (neutral); Institutional ownership change +27.64 pts of shares (bullish); Dollar backdrop (shared macro) +1.13 pts (bearish); Fed rate expectations (shared macro) +52.0 pts (towards cuts) (bullish).",
-  "<b>The business signals are strong.</b> Demand scores +100, unchanged from +100 on 20 Oct: Revenue growth trend n/a (needs 9 consecutive quarters of SEC revenue; 2 filed) (not scored); Gross margin trend n/a (needs 9 consecutive quarters of SEC revenue and gross profit; 2 filed) (not scored); Earnings forecast revisions +388.2% ($3.19 vs $0.65) (bullish); Guidance vs expectations n/a (no guidance to compare) (not scored); Connectivity (Starlink) revenue growth +66.0% (Jun 2026 quarter) (bullish); AI (xAI) revenue growth +247.0% (Jun 2026 quarter) (bullish); Space (launch) revenue growth +29.0% (Jun 2026 quarter) (bullish); Google search interest in 'Starlink' +24.4% (4 weeks to 26 Sep 2026 vs same 4 weeks of 2025 (Google Trends, worldwide: avg 67.5 vs 54.3)) (bullish).",
-  "<b>It is priced above peers.</b> Valuation vs peers scores −100, unchanged from −100 on 20 Oct: Forward P/E vs peers 61.1 vs 24.6 peer median (+148%) (bearish); Growth-adjusted P/E vs peers n/a (not scored); EV/EBITDA vs peers 345.9 vs 8.1 peer median (+4169%) (bearish).",
-  "<b>The call is confirmed: Hold.</b> Capped at Hold by O3; the indicators alone read Buy. Space Exploration Technologies Corp. closed at $159.31, +7.79% on the day vs +1.13% for the Nasdaq-100; +4.7% over 5 trading days and +34.7% over 3 months. Closest to flipping: <b>Dollar backdrop (shared macro)</b> (2 points): now +1.13 pts, scoring bearish. It turns neutral if it crosses +1.00 pts, measured against the dollar index 20 trading days earlier. <b>Buying vs selling volume</b> (6 points): now 1.26x, scoring neutral. It turns bullish if it crosses +1.30x, measured against volume on up days ÷ down days, last 20 trading days. <b>Short interest trend</b> (3 points): now +4.2% (2.7% of float), scoring neutral. It turns bearish if it crosses +10%, measured against short interest a month earlier (report 2026-09-30)."
+  "<b>The price trend is up.</b> Price trend scores +60, down from +100 on 21 Oct: Price vs average since listing (short-history version) -0.7% (neutral); 20-day vs since-listing average (short-history version) +6.4% (bullish); Relative strength vs peers, 3 months +41.8 pts (bullish).",
+  "<b>The money backdrop is mixed.</b> Liquidity scores +13, unchanged from +13 on 21 Oct: Buying vs selling volume 1.10x (neutral); Short interest trend +4.2% (2.7% of float) (neutral); Institutional ownership change +27.64 pts of shares (bullish); Dollar backdrop (shared macro) +1.13 pts (bearish); Fed rate expectations (shared macro) +61.1 pts (towards cuts) (bullish).",
+  "<b>The business signals are strong.</b> Demand scores +100, unchanged from +100 on 21 Oct: Revenue growth trend n/a (needs 9 consecutive quarters of SEC revenue; 4 filed) (not scored); Gross margin trend n/a (needs 9 consecutive quarters of SEC revenue and gross profit; 4 filed) (not scored); Earnings forecast revisions +448.8% ($3.58 vs $0.65) (bullish); Guidance vs expectations n/a (no guidance to compare) (not scored); Connectivity (Starlink) revenue growth +66.0% (Jun 2026 quarter) (bullish); AI (xAI) revenue growth +247.0% (Jun 2026 quarter) (bullish); Space (launch) revenue growth +29.0% (Jun 2026 quarter) (bullish); Google search interest in 'Starlink' +24.4% (4 weeks to 26 Sep 2026 vs same 4 weeks of 2025 (Google Trends, worldwide: avg 67.5 vs 54.3)) (bullish).",
+  "<b>It is priced above peers.</b> Valuation vs peers scores −100, unchanged from −100 on 21 Oct: Forward P/E vs peers 49.1 vs 24.3 peer median (+102%) (bearish); Growth-adjusted P/E vs peers n/a (not scored); EV/EBITDA vs peers 313.3 vs 7.9 peer median (+3858%) (bearish).",
+  "<b>The call is confirmed: Hold.</b> 2 of the last 10 trading days in this zone. The quality warning (O3) caps any Buy at Hold; today the score alone also reads Hold. Space Exploration Technologies Corp. closed at $144.75, −9.14% on the day vs −1.80% for the Nasdaq-100; −2.6% over 5 trading days and +25.8% over 3 months. Closest to flipping: <b>Dollar backdrop (shared macro)</b> (2 points): now +1.13 pts, scoring bearish. It turns neutral if it crosses +1.00 pts, measured against the dollar index 20 trading days earlier. <b>Price vs average since listing (short-history version)</b> (10 points): now -0.7%, scoring neutral. It turns bullish if it crosses 0.00%, measured against the average of all 92 closes since listing ($145.81). <b>Short interest trend</b> (3 points): now +4.2% (2.7% of float), scoring neutral. It turns bearish if it crosses +10%, measured against short interest a month earlier (report 2026-09-30)."
  ],
  "defects": [
-  "Coverage 74% (above the 70% floor); a call is possible once 7 of 10 trading days agree. Forecast revisions (DM2) are live again: the forecast 90 days earlier is now $0.64 a share vs $2.05 today, above the minimum base, though still a small one.",
+  "Coverage 77% (above the 70% floor); a call is possible once 7 of 10 trading days agree. Forecast revisions (DM2) are live again: the forecast 90 days earlier is now $0.64 a share vs $2.05 today, above the minimum base, though still a small one.",
   "Quality override O3: 2 red flags (free cash flow −$25.0bn in the 6 months to Jun 2026; operating loss 1.6x interest), so any call is capped at Hold.",
   "VL3 (P/E vs own history) removed: no earnings history yet. To be reinstated when history allows.",
   "Revenue and margin trends (DM1, DM6) blank: too few quarters filed with the SEC.",

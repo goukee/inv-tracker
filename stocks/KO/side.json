@@ -13,19 +13,26 @@
    "period": "Apr-Jun 2026: CCEP +3.2% (days-adjusted), Coca-Cola HBC +5.8% (underlying), Coca-Cola FEMSA +3.5%"
   }
  },
- "lead": "The Coca-Cola Company is <b>No confirmed call</b> (today's zone: <b>Buy</b>), at <b>+34</b> on a −100 to +100 scale, unchanged at +34 since 20 Oct (scores run as of the 21 Oct close); no bucket score changed.",
+ "lead": "The Coca-Cola Company is <b>Buy</b> (newly confirmed), at <b>+34</b> on a −100 to +100 scale, unchanged at +34 since 21 Oct (scores run as of the 22 Oct close); no bucket score changed.",
  "bullets": [
-  "<b>The price trend is up.</b> Price trend scores +100, unchanged from +100 on 20 Oct: Price vs 200-day average +14.0% (bullish); 50-day vs 200-day average +9.2% (bullish); Relative strength vs peers, 3 months +9.1 pts (bullish).",
-  "<b>The money backdrop is supportive.</b> Liquidity scores +40, unchanged from +40 on 20 Oct: Buying vs selling volume 1.33x (bullish); Short interest trend +35.3% (1.2% of float) (neutral); Institutional ownership change +0.38 pts of shares (neutral); Dollar backdrop (shared macro) +1.13 pts (bearish); Fed rate expectations (shared macro) +52.0 pts (towards cuts) (bullish).",
-  "<b>The business signals are strong.</b> Demand scores +62, unchanged from +62 on 20 Oct: Revenue growth trend 12.1% vs 1.8% avg (+10.2 pts) (bullish); Gross margin trend 61.7% vs 61.1% (+0.7 pts) (neutral); Earnings forecast revisions +1.2% ($3.52 vs $3.48) (neutral); Organic revenue growth +6.0% (Jun 2026 quarter, Coca-Cola release 28 Jul 2026) (bullish); Unit case volume growth +5.0% (Jun 2026 quarter, Coca-Cola release 28 Jul 2026) (bullish); Coca-Cola bottlers' volume growth (CCEP, Coca-Cola HBC, Coca-Cola FEMSA) +4.2% (Apr-Jun 2026: CCEP +3.2% (days-adjusted), Coca-Cola HBC +5.8% (underlying), Coca-Cola FEMSA +3.5%) (bullish).",
-  "<b>It is priced above peers.</b> Valuation vs peers scores −76, unchanged from −76 on 20 Oct: Forward P/E vs peers 26.6 vs 20.5 peer median (+30%) (bearish); Growth-adjusted P/E vs peers 4.2 vs 1.6 peer median (+173%) (bearish); EV/EBITDA vs peers 25.1 vs 16.4 peer median (+53%) (bearish); P/E vs own 5-year history 29.1 vs 26.5 5-yr median (+10%) (neutral).",
-  "<b>No confirmed call.</b> no zone held 7 of the last 10 trading days; today reads Buy. The Coca-Cola Company closed at $92.68, −0.87% on the day vs +0.58% for the S&P 500; +1.0% over 5 trading days and +14.9% over 3 months. Closest to flipping: <b>Buying vs selling volume</b> (6 points): now 1.33x, scoring bullish. It turns neutral if it crosses +1.30x, measured against volume on up days ÷ down days, last 20 trading days. <b>Dollar backdrop (shared macro)</b> (2 points): now +1.13 pts, scoring bearish. It turns neutral if it crosses +1.00 pts, measured against the dollar index 20 trading days earlier. <b>Forward P/E vs peers</b> (8 points): now 26.6 vs 20.5 peer median (+30%), scoring bearish. It turns neutral if it crosses +25%, measured against median of the peer set (next 12 months, same rule)."
+  "<b>The price trend is up.</b> Price trend scores +100, unchanged from +100 on 21 Oct: Price vs 200-day average +17.0% (bullish); 50-day vs 200-day average +9.2% (bullish); Relative strength vs peers, 3 months +7.2 pts (bullish).",
+  "<b>The money backdrop is supportive.</b> Liquidity scores +40, unchanged from +40 on 21 Oct: Buying vs selling volume 1.36x (bullish); Short interest trend +35.3% (1.2% of float) (neutral); Institutional ownership change +0.33 pts of shares (neutral); Dollar backdrop (shared macro) +1.13 pts (bearish); Fed rate expectations (shared macro) +61.1 pts (towards cuts) (bullish).",
+  "<b>The business signals are strong.</b> Demand scores +62, unchanged from +62 on 21 Oct: Revenue growth trend 12.1% vs 1.8% avg (+10.2 pts) (bullish); Gross margin trend 61.7% vs 61.1% (+0.7 pts) (neutral); Earnings forecast revisions +1.2% ($3.52 vs $3.48) (neutral); Organic revenue growth +6.0% (Jun 2026 quarter, Coca-Cola release 28 Jul 2026) (bullish); Unit case volume growth +5.0% (Jun 2026 quarter, Coca-Cola release 28 Jul 2026) (bullish); Coca-Cola bottlers' volume growth (CCEP, Coca-Cola HBC, Coca-Cola FEMSA) +4.2% (Apr-Jun 2026: CCEP +3.2% (days-adjusted), Coca-Cola HBC +5.8% (underlying), Coca-Cola FEMSA +3.5%) (bullish).",
+  "<b>It is priced above peers.</b> Valuation vs peers scores −76, unchanged from −76 on 21 Oct: Forward P/E vs peers 27.4 vs 21.5 peer median (+27%) (bearish); Growth-adjusted P/E vs peers 4.2 vs 1.5 peer median (+172%) (bearish); EV/EBITDA vs peers 25.8 vs 17.0 peer median (+52%) (bearish); P/E vs own 5-year history 30.0 vs 26.5 5-yr median (+13%) (neutral).",
+  "<b>The call is confirmed: Buy.</b> 7 of the last 10 trading days in this zone. The Coca-Cola Company closed at $95.34, +2.87% on the day vs −0.64% for the S&P 500; +3.6% over 5 trading days and +16.6% over 3 months. Closest to flipping: <b>Forward P/E vs peers</b> (8 points): now 27.4 vs 21.5 peer median (+27%), scoring bearish. It turns neutral if it crosses +25%, measured against median of the peer set (next 12 months, same rule). <b>Dollar backdrop (shared macro)</b> (2 points): now +1.13 pts, scoring bearish. It turns neutral if it crosses +1.00 pts, measured against the dollar index 20 trading days earlier. <b>Buying vs selling volume</b> (6 points): now 1.36x, scoring bullish. It turns neutral if it crosses +1.30x, measured against volume on up days ÷ down days, last 20 trading days."
  ],
  "move": {
   "class": "Quiet",
-  "direction": "down",
-  "headline": "A dip of 0.9% while the S&P 500 rose, inside Coca-Cola's normal daily range",
+  "direction": "up",
+  "headline": "A gain of 2.9% while the S&P 500 fell, well outside Coca-Cola's normal daily range (about 1.0%, 2.9x a typical day); classified Quiet, and no company news was identified in this automated run",
   "evidence": [
+   {
+    "d": "22 Oct",
+    "t": "Coca-Cola rose 2.87% while the S&P 500 fell 0.64%. Normal daily range for Coca-Cola is about 1.0%, so this is 2.9x a typical day. Classified Quiet; no company news was identified in this automated run.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices",
+    "auto22": 1
+   },
    {
     "d": "21 Oct",
     "t": "Coca-Cola fell 0.87% while the S&P 500 rose 0.58%. Normal daily range for Coca-Cola is about 0.9%, so no classification is triggered.",
@@ -280,7 +287,7 @@
   }
  ],
  "defects": [
-  "The call needs 7 of the last 10 trading days in one zone before it is confirmed; 11 trading days of scores are recorded so far.",
+  "The call needs 7 of the last 10 trading days in one zone before it is confirmed; 12 trading days of scores are recorded so far.",
   "SEC's data service returned no figures for Coca-Cola on 5 Oct 2026 (Apple's worked); the 6 Oct build now has them, so DM1 (revenue trend), DM6 (gross margin trend), VL3 (P/E vs own history), the quality & cash check and the free cash flow history are scored. Coverage is 100% of the weight left after removing DM3.",
   "When SEC works again, stage B must read Coca-Cola's revenue under the tag 'Revenues' (it does not use the default revenue tag).",
   "DM1 compares reported revenue growth, which bottler sales cut: acquisitions and divestitures (including CCBA) take 2-3 points off 2026 reported revenue growth (Coca-Cola guidance). DM4a (organic growth) carries the clean demand read (Kenneth, 5 Oct 2026).",

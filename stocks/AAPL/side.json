@@ -23,8 +23,15 @@
  "move": {
   "class": "Quiet",
   "direction": "up",
-  "headline": "A gain of 1.3% while the S&P 500 rose, inside Apple's normal daily range",
+  "headline": "A gain of 1.2% while the S&P 500 fell, inside Apple's normal daily range",
   "evidence": [
+   {
+    "d": "22 Oct",
+    "t": "Apple rose 1.23% while the S&P 500 fell 0.64%. Normal daily range for Apple is about 1.5%, so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices",
+    "auto22": 1
+   },
    {
     "d": "21 Oct",
     "t": "Apple rose 1.32% while the S&P 500 rose 0.58%. Normal daily range for Apple is about 1.5%, so no classification is triggered.",
@@ -304,16 +311,16 @@
   }
  ],
  "valuation_plain": [],
- "lead": "Apple Inc. is <b>Hold</b>, at <b>+14</b> on a −100 to +100 scale, unchanged at +14 since 20 Oct (scores run as of the 21 Oct close); buckets that moved: Liquidity 0 to +40, Valuation vs peers −48 to −72.",
+ "lead": "Apple Inc. is <b>Hold</b>, at <b>+14</b> on a −100 to +100 scale, unchanged at +14 since 21 Oct (scores run as of the 22 Oct close); no bucket score changed.",
  "bullets": [
-  "<b>The price trend is up.</b> Price trend scores +44, unchanged from +44 on 20 Oct: Price vs 200-day average +17.2% (bullish); 50-day vs 200-day average +11.6% (bullish); Relative strength vs peers, 3 months -12.5 pts (bearish).",
-  "<b>The money backdrop is supportive.</b> Liquidity scores +40, up from 0 on 20 Oct: Buying vs selling volume 1.35x (bullish); Short interest trend -13.6% (0.8% of float) (neutral); Institutional ownership change +0.65 pts of shares (neutral); Dollar backdrop (shared macro) +1.13 pts (bearish); Fed rate expectations (shared macro) +52.0 pts (towards cuts) (bullish).",
-  "<b>The business signals are strong.</b> Demand scores +43, unchanged from +43 on 20 Oct: Revenue growth trend 16.4% vs 12.5% avg (+3.9 pts) (bullish); Gross margin trend (one-offs removed) 48.2% vs 46.7% (+1.5 pts) (bullish); Earnings forecast revisions -1.5% ($9.56 vs $9.71) (neutral); Guidance vs expectations guided 10% vs 12% expected (-2.0 pts) (bearish); Services revenue growth +12.1% (Jun 2026 quarter) (bullish); iPhone revenue growth +21.7% (Jun 2026 quarter; $54.3bn vs $44.6bn, Apple 8-K) (bullish); Apple smartphone shipments (research firms) +15.3% (Apr-Jun 2026, IDC: 55.8m vs 48.4m units) (bullish).",
-  "<b>It is priced above peers.</b> Valuation vs peers scores −72, down from −48 on 20 Oct: Forward P/E vs peers 36.0 vs 21.3 peer median (+69%) (bearish); Growth-adjusted P/E vs peers 2.7 vs 2.2 peer median (+21%) (neutral); EV/EBITDA vs peers 30.0 vs 21.7 peer median (+39%) (bearish); P/E vs own 5-year history 39.5 vs 31.4 5-yr median (+26%) (bearish).",
-  "<b>The call is confirmed: Hold.</b> 10 of the last 10 trading days in this zone. Apple Inc. closed at $343.99, +1.32% on the day vs +0.58% for the S&P 500; +0.3% over 5 trading days and +7.0% over 3 months. Closest to flipping: <b>P/E vs own 5-year history</b> (6 points): now 39.5 vs 31.4 5-yr median (+26%), scoring bearish. It turns neutral if it crosses +25%, measured against the stock's own median trailing P/E, last 5 years (weekly). <b>Dollar backdrop (shared macro)</b> (2 points): now +1.13 pts, scoring bearish. It turns neutral if it crosses +1.00 pts, measured against the dollar index 20 trading days earlier. <b>Buying vs selling volume</b> (6 points): now 1.35x, scoring bullish. It turns neutral if it crosses +1.30x, measured against volume on up days ÷ down days, last 20 trading days."
+  "<b>The price trend is up.</b> Price trend scores +44, unchanged from +44 on 21 Oct: Price vs 200-day average +18.5% (bullish); 50-day vs 200-day average +11.8% (bullish); Relative strength vs peers, 3 months -16.4 pts (bearish).",
+  "<b>The money backdrop is supportive.</b> Liquidity scores +40, unchanged from +40 on 21 Oct: Buying vs selling volume 1.62x (bullish); Short interest trend -13.6% (0.8% of float) (neutral); Institutional ownership change +0.65 pts of shares (neutral); Dollar backdrop (shared macro) +1.13 pts (bearish); Fed rate expectations (shared macro) +61.1 pts (towards cuts) (bullish).",
+  "<b>The business signals are strong.</b> Demand scores +43, unchanged from +43 on 21 Oct: Revenue growth trend 16.4% vs 12.5% avg (+3.9 pts) (bullish); Gross margin trend (one-offs removed) 48.2% vs 46.7% (+1.5 pts) (bullish); Earnings forecast revisions -1.5% ($9.56 vs $9.71) (neutral); Guidance vs expectations guided 10% vs 12% expected (-2.0 pts) (bearish); Services revenue growth +12.1% (Jun 2026 quarter) (bullish); iPhone revenue growth +21.7% (Jun 2026 quarter; $54.3bn vs $44.6bn, Apple 8-K) (bullish); Apple smartphone shipments (research firms) +15.3% (Apr-Jun 2026, IDC: 55.8m vs 48.4m units) (bullish).",
+  "<b>It is priced above peers.</b> Valuation vs peers scores −72, unchanged from −72 on 21 Oct: Forward P/E vs peers 36.4 vs 20.7 peer median (+76%) (bearish); Growth-adjusted P/E vs peers 2.8 vs 2.2 peer median (+23%) (neutral); EV/EBITDA vs peers 30.4 vs 20.8 peer median (+46%) (bearish); P/E vs own 5-year history 40.0 vs 31.4 5-yr median (+27%) (bearish).",
+  "<b>The call is confirmed: Hold.</b> 10 of the last 10 trading days in this zone. Apple Inc. closed at $348.22, +1.23% on the day vs −0.64% for the S&P 500; +1.8% over 5 trading days and +4.7% over 3 months. Closest to flipping: <b>Growth-adjusted P/E vs peers</b> (7 points): now 2.8 vs 2.2 peer median (+23%), scoring neutral. It turns bearish if it crosses +25%, measured against median of the peer set. <b>P/E vs own 5-year history</b> (6 points): now 40.0 vs 31.4 5-yr median (+27%), scoring bearish. It turns neutral if it crosses +25%, measured against the stock's own median trailing P/E, last 5 years (weekly). <b>Dollar backdrop (shared macro)</b> (2 points): now +1.13 pts, scoring bearish. It turns neutral if it crosses +1.00 pts, measured against the dollar index 20 trading days earlier."
  ],
  "defects": [
-  "The call needs 7 of the last 10 trading days in one zone before it is confirmed; 15 trading days of scores are recorded so far.",
+  "The call needs 7 of the last 10 trading days in one zone before it is confirmed; 16 trading days of scores are recorded so far.",
   "Valuation vs own history (VL3) uses trailing P/E: free forward P/E history is too short.",
   "EV/EBITDA uses last-12-month EBITDA (free source).",
   "Interest-cover check excluded: Apple no longer reports interest expense separately.",

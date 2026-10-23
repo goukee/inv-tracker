@@ -19,9 +19,16 @@
  },
  "move": {
   "class": "Quiet",
-  "direction": "up",
-  "headline": "A gain of 0.3% while the S&P 500 rose, inside Gold (the GLD fund)'s normal daily range",
+  "direction": "down",
+  "headline": "A fall of 2.6% while the S&P 500 fell, bigger than Gold (the GLD fund)'s normal daily range (about 1.5%) but not enough to classify Quiet",
   "evidence": [
+   {
+    "d": "22 Oct",
+    "t": "Gold (the GLD fund) fell 2.63% while the S&P 500 fell 0.64%. Normal daily range for Gold (the GLD fund) is about 1.5%: bigger than usual (1.7x) but not enough to classify.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices",
+    "auto22": 1
+   },
    {
     "d": "21 Oct",
     "t": "Gold (the GLD fund) rose 0.34% while the S&P 500 rose 0.58%. Normal daily range for Gold (the GLD fund) is about 1.5%, so no classification is triggered.",
@@ -273,16 +280,16 @@
   }
  ],
  "valuation_plain": [],
- "lead": "SPDR Gold Shares is <b>Sell</b>, at <b>−33</b> on a −100 to +100 scale, down from −29 on 20 Oct (scores run as of the 21 Oct close); buckets that moved: Demand −14 to −25.",
+ "lead": "SPDR Gold Shares is <b>Sell</b> (today's score reads <b>Hold</b>), at <b>−29</b> on a −100 to +100 scale, up from −33 on 21 Oct (scores run as of the 22 Oct close); buckets that moved: Demand −25 to −14.",
  "bullets": [
-  "<b>The price trend is down.</b> Price trend scores −72, unchanged from −72 on 20 Oct: Price vs 200-day average -8.6% (bearish); 50-day vs 200-day average -4.5% (bearish); GLD vs the S&P 500 (SPY), 3 months -3.0 pts (neutral).",
-  "<b>The money backdrop is weak.</b> Liquidity scores −40, unchanged from −40 on 20 Oct: Buying vs selling volume 0.69x (bearish); GLD gold held (tonnes), 20-day change +0.4% (neutral); Hedge funds' net long in gold futures, % of open interest (contrarian) 39th percentile (neutral); Dollar backdrop (shared macro) +1.13 pts (bearish); Fed rate expectations (shared macro) +52.0 pts (towards cuts) (bullish).",
-  "<b>The business signals are mixed.</b> Demand scores −25, down from −14 on 20 Oct: 10-year real interest rate, 20-day change n/a (not scored); 10-year inflation expectations (breakeven), 20-day change n/a (not scored); Central bank gold buying, last 4 quarters -20.5% (4 quarters to Jun 2026: 780 t vs 981 t) (bearish); Consumer demand: jewellery plus bars and coins -10.1% (Q2 2026: 585 t vs 651 t) (bearish); Western investor demand: GLD tonnes, 60-day change +5.0% (bullish).",
-  "<b>It is priced roughly in line with peers.</b> Valuation vs peers scores 0, unchanged from 0 on 20 Oct: GLD vs its 200-week average +36.5% (neutral); Gold ÷ S&P 500 ratio +13.3% (neutral).",
-  "<b>The call is confirmed: Sell.</b> 7 of the last 10 trading days in this zone. SPDR Gold Shares closed at $378.95, +0.34% on the day vs +0.58% for the S&P 500; +0.8% over 5 trading days and +2.0% over 3 months. Closest to flipping: <b>Dollar backdrop (shared macro)</b> (2 points): now +1.13 pts, scoring bearish. It turns neutral if it crosses +1.00 pts, measured against the dollar index 20 trading days earlier. <b>Buying vs selling volume</b> (6 points): now 0.69x, scoring bearish. It turns neutral if it crosses +0.77x, measured against volume on up days ÷ down days, last 20 trading days. <b>GLD vs the S&P 500 (SPY), 3 months</b> (7 points): now -3.0 pts, scoring neutral. It turns bearish if it crosses -5 pts, measured against SPY over the same 63 trading days."
+  "<b>The price trend is down.</b> Price trend scores −72, unchanged from −72 on 21 Oct: Price vs 200-day average -11.0% (bearish); 50-day vs 200-day average -4.6% (bearish); GLD vs the S&P 500 (SPY), 3 months -4.4 pts (neutral).",
+  "<b>The money backdrop is weak.</b> Liquidity scores −40, unchanged from −40 on 21 Oct: Buying vs selling volume 0.62x (bearish); GLD gold held (tonnes), 20-day change +0.1% (neutral); Hedge funds' net long in gold futures, % of open interest (contrarian) 39th percentile (neutral); Dollar backdrop (shared macro) +1.13 pts (bearish); Fed rate expectations (shared macro) +61.1 pts (towards cuts) (bullish).",
+  "<b>The business signals are mixed.</b> Demand scores −14, up from −25 on 21 Oct: 10-year real interest rate, 20-day change +0.13 pts (neutral); 10-year inflation expectations (breakeven), 20-day change -0.03 pts (neutral); Central bank gold buying, last 4 quarters -20.5% (4 quarters to Jun 2026: 780 t vs 981 t) (bearish); Consumer demand: jewellery plus bars and coins -10.1% (Q2 2026: 585 t vs 651 t) (bearish); Western investor demand: GLD tonnes, 60-day change +4.8% (bullish).",
+  "<b>It is priced roughly in line with peers.</b> Valuation vs peers scores 0, unchanged from 0 on 21 Oct: GLD vs its 200-week average +32.9% (neutral); Gold ÷ S&P 500 ratio +13.1% (neutral).",
+  "<b>The call is confirmed: Sell.</b> 6 of the last 10 trading days in this zone. Today's score reads Hold, but the call only changes once a zone holds 7 of the last 10 trading days. SPDR Gold Shares closed at $369.00, −2.63% on the day vs −0.64% for the S&P 500; −3.6% over 5 trading days and −0.8% over 3 months. Closest to flipping: <b>GLD vs the S&P 500 (SPY), 3 months</b> (7 points): now -4.4 pts, scoring neutral. It turns bearish if it crosses -5 pts, measured against SPY over the same 63 trading days. <b>Dollar backdrop (shared macro)</b> (2 points): now +1.13 pts, scoring bearish. It turns neutral if it crosses +1.00 pts, measured against the dollar index 20 trading days earlier. <b>10-year real interest rate, 20-day change</b> (8 points): now +0.13 pts, scoring neutral. It turns bearish if it crosses +0.15 pts, measured against level 20 trading days earlier."
  ],
  "defects": [
-  "The call needs 7 of the last 10 trading days in one zone before it is confirmed; 13 trading days of scores are recorded so far.",
+  "The call needs 7 of the last 10 trading days in one zone before it is confirmed; 14 trading days of scores are recorded so far.",
   "The day's move breakdown keeps the stock wording: 'Sector' = SPY's move beyond the S&P 500 (near zero), 'Company-specific' = gold's own move.",
   "Today's zone does not turn on one figure alone, but central bank buying (DM4) reads -20.5% mostly because WGC moved 187 t of Q1 2026 into another category. It counts at half weight (6 of 12 points, Kenneth 1 Oct) until WGC's Q3 2026 report (~29 Oct). On WGC's first Q1 figure DM4 is neutral and the composite about -25 (above the -30 Sell line, so the zone would read Hold).",
   "10-year real rate (G-DM1) is published by FRED a day late: latest value 15 Oct.",

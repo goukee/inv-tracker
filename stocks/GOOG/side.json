@@ -16,8 +16,15 @@
  "move": {
   "class": "Quiet",
   "direction": "down",
-  "headline": "A dip of 1.6% while the S&P 500 rose, inside Alphabet's normal daily range",
+  "headline": "A fall of 3.1% while the S&P 500 fell, bigger than Alphabet's normal daily range (about 1.8%) but not enough to classify Quiet",
   "evidence": [
+   {
+    "d": "22 Oct",
+    "t": "Alphabet fell 3.08% while the S&P 500 fell 0.64%. Normal daily range for Alphabet is about 1.8%: bigger than usual (1.7x) but not enough to classify.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices",
+    "auto22": 1
+   },
    {
     "d": "21 Oct",
     "t": "Alphabet fell 1.62% while the S&P 500 rose 0.58%. Normal daily range for Alphabet is about 1.7%, so no classification is triggered.",
@@ -301,16 +308,16 @@
    "note": "Monthly; published in the first days of the month."
   }
  ],
- "lead": "Alphabet Inc. is <b>Buy</b> (today's score reads <b>Hold</b>), at <b>+29</b> on a −100 to +100 scale, up from +16 on 20 Oct (scores run as of the 21 Oct close); buckets that moved: Price trend +4 to +32, Liquidity −7 to +33.",
+ "lead": "Alphabet Inc. is <b>Buy</b> (today's score reads <b>Hold</b>), at <b>+13</b> on a −100 to +100 scale, down from +29 on 21 Oct (scores run as of the 22 Oct close); buckets that moved: Price trend +32 to −8, Liquidity +33 to −7.",
  "bullets": [
-  "<b>The price trend is mixed.</b> Price trend scores +32, up from +4 on 20 Oct: Price vs 200-day average -2.5% (neutral); 50-day vs 200-day average +0.3% (bullish); Relative strength vs peers, 3 months -2.1 pts (neutral).",
-  "<b>The money backdrop is supportive.</b> Liquidity scores +33, up from −7 on 20 Oct: Buying vs selling volume 1.33x (bullish); Short interest trend +14.5% (0.0% of float) (bearish); Institutional ownership change +1.13 pts of shares (bullish); Dollar backdrop (shared macro) +1.13 pts (bearish); Fed rate expectations (shared macro) +52.0 pts (towards cuts) (bullish).",
-  "<b>The business signals are strong.</b> Demand scores +62, unchanged from +62 on 20 Oct: Revenue growth trend 12.0% vs 14.0% avg (-1.9 pts) (neutral); Gross margin trend n/a (gross profit not filed for 8 quarters) (not scored); Earnings forecast revisions +4.0% ($15.35 vs $14.75) (bullish); Search & other revenue growth +16.8% (Apr-Jun 2026: Search & other $63.27bn vs $54.19bn a year earlier (Alphabet 10-Q, 23 Jul 2026)) (bullish); Google Cloud revenue growth +81.8% (Apr-Jun 2026: Google Cloud $24.77bn vs $13.62bn a year earlier (Alphabet 10-Q, 23 Jul 2026)) (bullish); Google worldwide search share (StatCounter) -0.4% (Sep 2026: 89.94% of worldwide searches vs 90.38% in Sep 2025 (StatCounter)) (neutral).",
-  "<b>It is priced roughly in line with peers.</b> Valuation vs peers scores −21, unchanged from −21 on 20 Oct: Forward P/E vs peers 21.7 vs 19.2 peer median (+13%) (neutral); Growth-adjusted P/E vs peers 1.2 vs 1.0 peer median (+16%) (neutral); EV/EBITDA vs peers 22.7 vs 17.0 peer median (+34%) (bearish).",
-  "<b>The call is confirmed: Buy.</b> 7 of the last 10 trading days in this zone. Alphabet Inc. closed at $330.95, −1.62% on the day vs +0.58% for the S&P 500; −3.7% over 5 trading days and +4.0% over 3 months. Closest to flipping: <b>Revenue growth trend</b> (6 points): now 12.0% vs 14.0% avg (-1.9 pts), scoring neutral. It turns bearish if it crosses -2 pts, measured against average growth of the prior 4 quarters, each vs a year earlier. <b>Buying vs selling volume</b> (6 points): now 1.33x, scoring bullish. It turns neutral if it crosses +1.30x, measured against volume on up days ÷ down days, last 20 trading days. <b>Dollar backdrop (shared macro)</b> (2 points): now +1.13 pts, scoring bearish. It turns neutral if it crosses +1.00 pts, measured against the dollar index 20 trading days earlier."
+  "<b>The price trend is mixed.</b> Price trend scores −8, down from +32 on 21 Oct: Price vs 200-day average -5.5% (bearish); 50-day vs 200-day average +0.2% (bullish); Relative strength vs peers, 3 months -3.6 pts (neutral).",
+  "<b>The money backdrop is mixed.</b> Liquidity scores −7, down from +33 on 21 Oct: Buying vs selling volume 1.04x (neutral); Short interest trend +14.5% (0.0% of float) (bearish); Institutional ownership change +1.14 pts of shares (bullish); Dollar backdrop (shared macro) +1.13 pts (bearish); Fed rate expectations (shared macro) +61.1 pts (towards cuts) (bullish).",
+  "<b>The business signals are strong.</b> Demand scores +62, unchanged from +62 on 21 Oct: Revenue growth trend 12.0% vs 14.0% avg (-1.9 pts) (neutral); Gross margin trend n/a (gross profit not filed for 8 quarters) (not scored); Earnings forecast revisions +3.6% ($15.35 vs $14.82) (bullish); Search & other revenue growth +16.8% (Apr-Jun 2026: Search & other $63.27bn vs $54.19bn a year earlier (Alphabet 10-Q, 23 Jul 2026)) (bullish); Google Cloud revenue growth +81.8% (Apr-Jun 2026: Google Cloud $24.77bn vs $13.62bn a year earlier (Alphabet 10-Q, 23 Jul 2026)) (bullish); Google worldwide search share (StatCounter) -0.4% (Sep 2026: 89.94% of worldwide searches vs 90.38% in Sep 2025 (StatCounter)) (neutral).",
+  "<b>It is priced roughly in line with peers.</b> Valuation vs peers scores −21, unchanged from −21 on 21 Oct: Forward P/E vs peers 20.8 vs 18.8 peer median (+11%) (neutral); Growth-adjusted P/E vs peers 1.2 vs 1.0 peer median (+17%) (neutral); EV/EBITDA vs peers 22.0 vs 16.6 peer median (+32%) (bearish).",
+  "<b>The call is confirmed: Buy.</b> 6 of the last 10 trading days in this zone. Today's score reads Hold, but the call only changes once a zone holds 7 of the last 10 trading days. Alphabet Inc. closed at $320.76, −3.08% on the day vs −0.64% for the S&P 500; −7.0% over 5 trading days and +0.6% over 3 months. Closest to flipping: <b>Revenue growth trend</b> (6 points): now 12.0% vs 14.0% avg (-1.9 pts), scoring neutral. It turns bearish if it crosses -2 pts, measured against average growth of the prior 4 quarters, each vs a year earlier. <b>Dollar backdrop (shared macro)</b> (2 points): now +1.13 pts, scoring bearish. It turns neutral if it crosses +1.00 pts, measured against the dollar index 20 trading days earlier. <b>Institutional ownership change</b> (2 points): now +1.14 pts of shares, scoring bullish. It turns neutral if it crosses +1.00 pts, measured against shares added minus shares cut by institutions last quarter, as % of shares outstanding."
  ],
  "defects": [
-  "The call needs 7 of the last 10 trading days in one zone before it is confirmed; 11 trading days of scores are recorded so far.",
+  "The call needs 7 of the last 10 trading days in one zone before it is confirmed; 12 trading days of scores are recorded so far.",
   "DM6 (gross margin trend) is blank: Alphabet files no gross-profit line (not filed for 8 quarters). DM1 (revenue growth trend) was also blank until 6 Oct because Alphabet switched the SEC tag it files revenue under in 2025; it now computes (12.0% vs a 14.0% average, neutral). Fix logged for the Framework chat; until then 3 of Demand's 29 points are missing.",
   "Reported EPS includes large paper gains on equity stakes ($2.35 a share in Q1 2026, $6.26 in Q2). VL3 (trailing P/E vs own history) is removed for this reason; forward P/E uses analysts' forecasts, which exclude the gains.",
   "Cash conversion (operating cash ÷ net profit) will look weak once full-year 2026 is filed, because net profit includes the paper gains. It needs two weak years to flag.",
