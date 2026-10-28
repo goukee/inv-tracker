@@ -1,0 +1,286 @@
+{
+ "_note": "Per-stock settings, schema v0.3. Copy AAPL-US/settings.json as the worked example. Only this stock's chat edits it.",
+ "code": "AVGO",
+ "market": "US",
+ "exchange": "NASDAQ",
+ "name": "Broadcom Inc.",
+ "currency": "USD",
+ "benchmark": {
+  "name": "S&P 500",
+  "symbol": "^GSPC"
+ },
+ "peers": [
+  {
+   "code": "MRVL",
+   "name": "Marvell",
+   "why": "Custom AI chips for Amazon and Microsoft plus data-centre networking and optical chips; same cloud buyers"
+  },
+  {
+   "code": "NVDA",
+   "name": "Nvidia",
+   "why": "The AI-chip leader that Broadcom's custom chips are the alternative to; also competing data-centre Ethernet"
+  },
+  {
+   "code": "AMD",
+   "name": "AMD",
+   "why": "Rival AI accelerators sold to the same cloud buyers"
+  },
+  {
+   "code": "CSCO",
+   "name": "Cisco",
+   "why": "Own switch chips (Silicon One) compete with Tomahawk/Jericho; enterprise infrastructure software"
+  },
+  {
+   "code": "QCOM",
+   "name": "Qualcomm",
+   "why": "Overlaps in phone radio and wi-fi chips (both sell into Apple)"
+  },
+  {
+   "code": "NTNX",
+   "name": "Nutanix",
+   "why": "Direct rival to VMware in private-cloud software (Broadcom's software side)"
+  }
+ ],
+ "valuation": {
+  "metric": "forward_pe",
+  "fallback": "trailing_pe",
+  "vl3_basis": "trailing P/E, 5 years (price / last-12-month SEC diluted EPS, split-adjusted), labelled; GAAP EPS carries VMware intangibles amortisation"
+ },
+ "dm4": [
+  {
+   "id": "DM4a",
+   "name": "AI semiconductor revenue growth vs the prior quarter",
+   "weight": 5,
+   "source": "Broadcom quarterly results release (on results)",
+   "bullish_if": ">= +10%",
+   "bearish_if": "<= +3%",
+   "measured_against": "the prior quarter (written exception to the year-earlier default, Kenneth 24 Oct 2026, as NVDA DM4a)",
+   "latest": "+55% (Q3 FY26: $16.7bn vs $10.8bn in Q2 FY26)",
+   "what": "How fast Broadcom's AI chip sales (custom AI chips plus AI networking) grew from one quarter to the next.",
+   "why": "AI chips are 56% of revenue and nearly all of the growth. At +221% vs a year earlier, year-on-year growth would read strong for quarters after orders peak; quarter-on-quarter growth shows a slowdown two to three quarters sooner.",
+   "bull_means": "AI orders are still growing fast quarter to quarter.",
+   "neutral_means": "AI growth is slowing to single digits per quarter.",
+   "bear_means": "AI chip sales are flat or falling: the sign of a peak."
+  },
+  {
+   "id": "DM4b",
+   "name": "Infrastructure software (VMware) revenue growth",
+   "weight": 3,
+   "source": "Broadcom quarterly results release (on results)",
+   "bullish_if": ">= +10%",
+   "bearish_if": "<= +2%",
+   "measured_against": "same quarter a year earlier",
+   "latest": "+29% (Q3 FY26: $8.75bn vs $6.79bn)",
+   "what": "Growth in Broadcom's software sales, mostly VMware, vs the same quarter last year.",
+   "why": "Software is 30% of revenue and the stable, recurring part. VMware price rises after the 2023 purchase are maturing; this shows whether customers keep renewing.",
+   "bull_means": "Software is still growing.",
+   "neutral_means": "Software growth is fading to low single digits.",
+   "bear_means": "Software is flat or shrinking: customers are leaving VMware."
+  }
+ ],
+ "dm5": {
+  "id": "DM5",
+  "name": "Big-4 cloud capital spending (Microsoft, Alphabet, Amazon, Meta)",
+  "weight": 4,
+  "source": "The four companies' quarterly results and SEC filings",
+  "bullish_if": ">= +30%",
+  "bearish_if": "<= +10%",
+  "measured_against": "same calendar quarter a year earlier",
+  "latest": "about +79% (Apr-Jun 2026: $170.1bn vs about $95.0bn); Meta's Sep quarter +80% (21 Oct); the other three report 28-29 Oct",
+  "what": "Combined capital spending (data centres and equipment) of the four biggest cloud buyers in the latest quarter vs the same quarter a year earlier.",
+  "why": "Google and Meta are Broadcom's largest custom-chip customers; this is their budget, reported by them, and it arrives before Broadcom reports.",
+  "bull_means": "Customer budgets are still growing fast.",
+  "neutral_means": "Budget growth is slowing.",
+  "bear_means": "Budgets are close to flat, which historically comes before chip orders fall."
+ },
+ "overrides": [],
+ "removed_indicators": [],
+ "shareholder_sources": [
+  "Nasdaq institutional holdings (13F)",
+  "Yahoo Finance insiderTransactions (SEC Form 4)",
+  "SEC EDGAR 13D/13G"
+ ],
+ "sec_cik": "0001730168",
+ "splits": [
+  [
+   "2024-07-15",
+   10
+  ]
+ ],
+ "index_holders": [
+  "vanguard",
+  "blackrock",
+  "state street",
+  "geode",
+  "northern trust",
+  "norges",
+  "legal & general",
+  "schwab",
+  "dimensional",
+  "morgan stanley",
+  "jpmorgan",
+  "bank of america",
+  "goldman",
+  "ubs",
+  "royal bank",
+  "wells fargo",
+  "invesco",
+  "bank of new york",
+  "amundi",
+  "deutsche",
+  "swiss national",
+  "hsbc",
+  "mitsubishi",
+  "sumitomo",
+  "ameriprise",
+  "nuveen"
+ ],
+ "status": "live",
+ "version": "0.1",
+ "_peers_status": "approved by Kenneth 24 Oct 2026",
+ "drivers": [
+  {
+   "id": "ai_dc",
+   "name": "AI data-centre spending",
+   "indicators": [
+    "DM1",
+    "DM4a",
+    "DM5"
+   ]
+  }
+ ],
+ "_settings_status": "approved by Kenneth 24 Oct 2026",
+ "_chains_status": "approved by Kenneth 24 Oct 2026; C6 added at his decision after the adversarial pass (24 Oct 2026)",
+ "chains": [
+  {
+   "id": "C1",
+   "trigger": "AI funding squeeze",
+   "what_changes": "higher funding costs or doubt about AI returns; AI labs and cloud buyers slow or stretch orders",
+   "business_hit": "AI chip revenue (56% of total) and the FY27 earnings growth analysts expect",
+   "company_levers": "multi-year contracts; more customers",
+   "watch": {
+    "name": "CoreWeave share price",
+    "source": "Yahoo CRWV (shared macro extraMacro)",
+    "active_if": "down 15%+",
+    "measured_against": "its level one month earlier"
+   },
+   "status": "Hurting"
+  },
+  {
+   "id": "C2",
+   "trigger": "Interest rates",
+   "what_changes": "10-year yield stays high",
+   "business_hit": "valuation multiple; AI data-centre financing costs (feeds C1)",
+   "company_levers": "none on the multiple; net debt mostly fixed-rate",
+   "watch": {
+    "name": "US 10-year Treasury yield",
+    "source": "Yahoo ^TNX",
+    "active_if": "up 0.25 percentage points or more",
+    "measured_against": "its level one month earlier"
+   },
+   "status": "Quiet"
+  },
+  {
+   "id": "C3",
+   "trigger": "Chip supply squeeze",
+   "what_changes": "advanced packaging and high-bandwidth memory shortages; memory prices up",
+   "business_hit": "caps AI chip shipments; AI chips carry lower gross margin",
+   "company_levers": "long-term supply deals with TSMC and memory makers",
+   "watch": {
+    "name": "Micron share price (memory price proxy)",
+    "source": "Yahoo MU",
+    "active_if": "up 10%+",
+    "measured_against": "its level one month earlier"
+   },
+   "status": "Quiet"
+  },
+  {
+   "id": "C4",
+   "trigger": "US-China trade and export rules",
+   "what_changes": "tariffs or chip export limits; retaliation",
+   "business_hit": "revenue billed to China",
+   "company_levers": "supply-chain moves; licences",
+   "watch": {
+    "name": "USD/CNY + news scan",
+    "source": "Yahoo CNY=X",
+    "active_if": "yuan weakens 2%+ or new export / tariff action",
+    "measured_against": "its level one month earlier"
+   },
+   "status": "Quiet"
+  },
+  {
+   "id": "C5",
+   "trigger": "Customers design their own chips",
+   "what_changes": "big buyers move custom-chip work in-house or to cheaper design partners; Apple replaces Broadcom radio chips",
+   "business_hit": "share of custom AI work; wireless revenue",
+   "company_levers": "full systems (networking, packaging); long contracts",
+   "watch": {
+    "name": "news scan only",
+    "source": "web search",
+    "active_if": "credible report of a top customer moving a chip generation away",
+    "measured_against": "-"
+   },
+   "status": "Watching"
+  },
+  {
+   "id": "C6",
+   "trigger": "Broadcom finances its customers",
+   "what_changes": "Broadcom lends to or arranges funding for AI customers (Anthropic, OpenAI) so they can buy its chips",
+   "business_hit": "credit loss and lost sales if a customer's funding fails; cash and balance sheet",
+   "company_levers": "collateral (the chips), convertible terms, third-party lenders",
+   "watch": {
+    "name": "news scan only",
+    "source": "web search; Broadcom 10-K / 10-Q",
+    "active_if": "any new loan, guarantee or financing deal, or a funded customer's financing failing",
+    "measured_against": "-"
+   },
+   "status": "Active"
+  }
+ ],
+ "mix": {
+  "_note": "Revenue mix (plan v0.4, not scored). match = regex on the row label printed in the filing; filings from Q1 FY26 print no label for segment revenue, so the engine falls back to the member words (semiconductor solutions / infrastructure software).",
+  "source": "sec",
+  "basis": "operating",
+  "segments": [
+   {
+    "id": "SEMI",
+    "name": "Semiconductor solutions",
+    "match": [
+     "^semiconductor solutions$"
+    ],
+    "recurring": "partly",
+    "group": "SEMI"
+   },
+   {
+    "id": "SW",
+    "name": "Infrastructure software",
+    "match": [
+     "^infrastructure software$"
+    ],
+    "recurring": "yes",
+    "group": "SW"
+   }
+  ],
+  "groups": [
+   {
+    "id": "SEMI",
+    "name": "Semiconductor solutions",
+    "match": [
+     "^semiconductor solutions$"
+    ]
+   },
+   {
+    "id": "SW",
+    "name": "Infrastructure software",
+    "match": [
+     "^infrastructure software$"
+    ]
+   }
+  ],
+  "note": "Broadcom reports revenue and operating profit for its two segments only. AI chips (56% of revenue in Q3 FY26) sit inside Semiconductor solutions and are given only in the results release, not in the SEC filing; the AI split is tracked in DM4a. Segment operating profit excludes unallocated costs (mainly VMware intangibles amortisation and stock pay), so segment margins are higher than the company's reported operating margin."
+ },
+ "onboard_price": 321.68,
+ "onboard_date": "2026-10-23",
+ "_onboard_note": "Price at the first staging build (23 Oct 2026 close): the reference for O6 winner discipline until a positions feed exists.",
+ "onboarded": "2026-10-27"
+}

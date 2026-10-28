@@ -10,5 +10,6 @@
  {"id": "GOOG", "label": "GOOG", "template": "stock", "src": "templates/stock.html#GOOG", "status": "live", "folder": "03 Stocks/GOOG-US"},
  {"id": "MSFT", "label": "MSFT", "template": "stock", "src": "templates/stock.html#MSFT", "status": "live", "folder": "03 Stocks/MSFT-US"},
  {"id": "DELL", "label": "DELL", "template": "stock", "src": "templates/stock.html#DELL", "status": "live", "folder": "03 Stocks/DELL-US"},
- {"id": "KO", "label": "KO", "template": "stock", "src": "templates/stock.html#KO", "status": "live", "folder": "03 Stocks/KO-US"}
+ {"id": "KO", "label": "KO", "template": "stock", "src": "templates/stock.html#KO", "status": "live", "folder": "03 Stocks/KO-US"},
+ {"id": "AVGO", "label": "AVGO", "template": "stock", "src": "templates/stock.html#AVGO", "status": "live", "folder": "03 Stocks/AVGO-US"}
 ]}
