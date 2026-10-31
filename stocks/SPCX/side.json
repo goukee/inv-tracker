@@ -27,8 +27,15 @@
  "move": {
   "class": "Quiet",
   "direction": "down",
-  "headline": "A fall of 0.4% while the Nasdaq-100 rose, inside SpaceX's normal daily range",
+  "headline": "A fall of 6.4% while the Nasdaq-100 fell 3.5%, bigger than usual for SpaceX (normal daily range about 4.0%, 1.6x a typical day) but not enough to classify",
   "evidence": [
+   {
+    "d": "30 Oct",
+    "t": "SpaceX fell 6.37% while the Nasdaq-100 fell 3.46%. Normal daily range for SpaceX is about 4.0%: bigger than usual (1.6x) but not enough to classify.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices",
+    "auto30": 1
+   },
    {
     "d": "26 Oct",
     "t": "SpaceX fell 0.4% while the Nasdaq-100 rose 1.1%. Normal daily range for SpaceX is about 4.6%, so no classification is triggered.",
@@ -337,13 +344,13 @@
   }
  ],
  "valuation_plain": [],
- "lead": "Space Exploration Technologies Corp. is a <b>Hold</b> at a score of <b>+27</b> on a scale of -100 to +100, unchanged from +27 the day before.",
+ "lead": "Space Exploration Technologies Corp. is <b>Hold</b>, at <b>+11</b> on a −100 to +100 scale, down from +27 on 29 Oct (scores run as of the 30 Oct close); buckets that moved: Price trend +60 to +20, Liquidity +13 to −27.",
  "bullets": [
-  "<b>Demand is the strongest part (+100).</b> Analysts' profit forecast for 2027 is now $3.97 a share vs $0.62 three months ago (+543%). Sales in the June 2026 quarter grew 66% for Starlink, 247% for AI (xAI) and 29% for launch, each vs a year earlier, and Google searches for Starlink are +24.4% vs the same weeks of 2025.",
-  "<b>The shares are expensive next to rivals (-100).</b> Forward P/E (price relative to expected profit over the next 12 months) is 43.3x vs 32.1x for the peer median (+35%), though that rests on just one comparable peer. Value relative to operating profit (EV/EBITDA) is 162.2x vs 9.1x for the peer median.",
-  "<b>Money flows are only so-so (+13).</b> Buying vs selling volume is 0.97x (neutral), short interest is up 3.1% and equals 2.4% of shares available to trade (neutral), while institutions added shares equal to 24.95% of the company (positive, but every fund shows as a new buyer in this first filing quarter).",
-  "<b>The price trend is positive (+60), unchanged from yesterday.</b> The close of $143.89 is 1.3% below the average of all closes since listing (neutral), the 20-day average is 6.0% above that since-listing average (bullish), and the stock is 40.9 points ahead of its peers' average over 3 months. It is up 32.8% over 3 months, but down 0.6% over 5 trading days vs +1.5% for the Nasdaq-100.",
-  "<b>The call is confirmed as Hold.</b> 3 of the last 10 trading days are in this zone, and a quality warning (2 red flags: free cash flow of -$35.0bn over 9 months, and operating profit covering interest only 0.4x) caps any call at Hold. Today the shares closed at $143.89, -0.9% on the day vs -1.4% for the Nasdaq-100."
+  "<b>The price trend is up.</b> Price trend scores +20, down from +60 on 29 Oct: Price vs average since listing (short-history version) -7.6% vs the average of all 98 closes since listing ($145.72) (down from -1.3%, bearish, was neutral); 20-day vs since-listing average (short-history version) +5.2% vs the average of all 98 closes since listing ($145.72); 20-day average $153.36 (down from +6.0%, bullish); Relative strength vs peers, 3 months +33.7 pts vs equal-weighted average of 8 peers over 63 trading days (down from +40.9 pts, bullish).",
+  "<b>The money backdrop is weak.</b> Liquidity scores −27, down from +13 on 29 Oct: Buying vs selling volume 0.76x vs volume on up days ÷ down days, last 20 trading days (down from 0.97x, bearish, was neutral); Short interest trend +3.1% (2.4% of float) vs short interest a month earlier (report 2026-10-15) (neutral); Institutional ownership change +24.96 pts of shares vs shares added minus shares cut by institutions last quarter, as % of shares outstanding (up from +24.95 pts of shares, bullish); Dollar backdrop (shared macro) +0.03 pts vs the dollar index 20 trading days earlier (down from +0.74 pts, neutral); Fed rate expectations (shared macro) +1.3 pts (towards cuts) vs net odds (cut minus rise) for the next Fed meeting, 28 days earlier (up from -8.9 pts (towards rises), neutral).",
+  "<b>The business signals are strong.</b> Demand scores +100, unchanged from +100 on 29 Oct: Revenue growth trend n/a (needs 9 consecutive quarters of SEC revenue; 4 filed) vs average growth of the prior 4 quarters, each vs a year earlier; Gross margin trend n/a (needs 9 consecutive quarters of SEC revenue and gross profit; 4 filed) vs gross margin of the 4 quarters a year earlier; Earnings forecast revisions +607.6% ($4.03 vs $0.57) measured against consensus EPS for the year to 2027-12-31, 90 days earlier (up from +543.0% ($3.97 vs $0.62), bullish); Guidance vs expectations n/a (no guidance to compare) vs -; Connectivity (Starlink) revenue growth +66.0% (Jun 2026 quarter) vs same quarter a year earlier (bullish); AI (xAI) revenue growth +247.0% (Jun 2026 quarter) vs same quarter a year earlier (bullish); Space (launch) revenue growth +29.0% (Jun 2026 quarter) vs same quarter a year earlier (bullish); Google search interest in 'Starlink' +24.4% (4 weeks to 26 Sep 2026 vs same 4 weeks of 2025 (Google Trends, worldwide: avg 67.5 vs 54.3)) measured against same 4 weeks a year earlier (bullish).",
+  "<b>It is priced well above peers.</b> Valuation vs peers scores −100, unchanged from −100 on 29 Oct: Forward P/E vs peers 39.7 vs 31.3 peer median (+27%) measured against median of the peer set (next 12 months, same rule) (down from 43.3 vs 32.1 peer median (+35%), bearish); Growth-adjusted P/E vs peers n/a vs median of the peer set; EV/EBITDA vs peers 151.6 vs 8.9 peer median (+1612%) measured against median of the peer set (down from 162.2 vs 9.1 peer median (+1679%), bearish).",
+  "<b>The call is confirmed: Hold.</b> 4 of the last 10 trading days in this zone. Space Exploration Technologies Corp. closed at $134.72, −6.4% on the day vs −3.5% for the Nasdaq-100; −8.7% over 5 trading days and +17.6% over 3 months. Closest to flipping: <b>Buying vs selling volume</b> (6 points): now 0.76x, scoring bearish. It turns neutral if it crosses +0.77x, measured against volume on up days ÷ down days, last 20 trading days. <b>Forward P/E vs peers</b> (8 points): now 39.7 vs 31.3 peer median (+27%), scoring bearish. It turns neutral if it crosses +25%, measured against median of the peer set (next 12 months, same rule). <b>Short interest trend</b> (3 points): now +3.1% (2.4% of float), scoring neutral. It turns bearish if it crosses +10%, measured against short interest a month earlier (report 2026-10-15)."
  ],
  "defects": [
   "Coverage 77% (above the 70% floor); a call is possible once 7 of 10 trading days agree. Forecast revisions (DM2) are live again: the forecast 90 days earlier is now $0.62 a share vs $3.97 today, above the minimum base, though still a small one.",
