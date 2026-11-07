@@ -23,8 +23,15 @@
  "move": {
   "class": "Quiet",
   "direction": "up",
-  "headline": "A rise of 1.0% while the S&P 500 rose 1.6%, inside Advanced Micro Devices, Inc.'s normal daily range",
+  "headline": "A rise of 11.0% while the S&P 500 rose 0.3%, about 2.4 times Advanced Micro Devices, Inc.'s normal daily range (no company news found in this automated run, so classed Quiet)",
   "evidence": [
+   {
+    "d": "6 Nov",
+    "t": "Advanced Micro Devices, Inc. rose 11.04% while the S&P 500 rose 0.31%. Normal daily range is about 4.6%; this move is 2.4x that, but no dated company news was found in this automated run, so it is classified Quiet.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices",
+    "auto6": 1
+   },
    {
     "d": "4 Nov",
     "t": "Advanced Micro Devices, Inc. rose 1.01% while the S&P 500 rose 1.58%. Normal daily range is about 3.8%, so no classification is triggered.",
@@ -280,7 +287,7 @@
    "path": [
     "Inflation, Fed",
     "higher bond yields",
-    "AMD's ~39x forward P/E gets squeezed; its price moves about 3x as much as the market"
+    "AMD's ~29x forward P/E gets squeezed; its price moves about 3x as much as the market"
    ],
    "watch": "TNX",
    "watch_label": "US 10-year Treasury yield",
@@ -291,7 +298,7 @@
    "status": "Active",
    "evidence": [
     "10-year yield 5.28% vs 4.84% 20 trading days earlier (Yahoo, 7 Oct 2026 close).",
-    "AMD's beta is 3.2 (last 252 trading days vs the S&P 500): on average it has moved about 3x as much as the market, so rate scares hit it harder."
+    "AMD's beta is 3.4 (last 252 trading days vs the S&P 500): on average it has moved about 3x as much as the market, so rate scares hit it harder."
    ]
   },
   {
@@ -350,16 +357,16 @@
   }
  ],
  "valuation_plain": [],
- "lead": "Advanced Micro Devices, Inc. is <b>Buy</b>, at <b>+46</b> on a −100 to +100 scale, up from +40 on 3 Nov (scores run as of the 4 Nov close); buckets that moved: Liquidity −27 to +13.",
+ "lead": "Advanced Micro Devices, Inc. is <b>Buy</b>, at <b>+46</b> on a −100 to +100 scale, unchanged from +46 on 4 Nov (scores run as of the 6 Nov close; 5 Nov was not scored); no bucket moved.",
  "bullets": [
-  "<b>The price trend is strongly up.</b> Price trend scores +100, unchanged from +100 on 3 Nov: Price vs 200-day average +18.0% measured against the stock's own 200-day average (up from +17.2%, bullish); 50-day vs 200-day average +32.5% measured against the stock's own 200-day average (down from +32.9%, bullish); Relative strength vs peers, 3 months +17.4 pts measured against equal-weighted average of 6 peers over 63 trading days (up from +16.6 pts, bullish).",
-  "<b>The money backdrop is only so-so.</b> Liquidity scores +13, up from −27 on 3 Nov: Buying vs selling volume 0.83x measured against volume on up days ÷ down days, last 20 trading days (up from 0.58x, neutral, was bearish); Short interest trend -4.6% (2.3% of float) vs short interest a month earlier (report 2026-10-15) (neutral); Institutional ownership change +3.62 pts of shares vs shares added minus shares cut by institutions last quarter, as % of shares outstanding (down from +3.67 pts of shares, bullish); Dollar backdrop (shared macro) +0.04 pts vs the dollar index 20 trading days earlier (neutral); Fed rate expectations (shared macro) -1.5 pts (towards rises) vs net odds (cut minus rise) for the next Fed meeting, 28 days earlier (down from -0.5 pts (towards rises), neutral).",
-  "<b>The business signals are strong.</b> Demand scores +100, unchanged from +100 on 3 Nov: Revenue growth trend 44.7% vs 39.4% avg (+5.3 pts) measured against average growth of the prior 4 quarters, each vs a year earlier (down from 50.1% vs 34.8% avg (+15.3 pts), bullish); Gross margin trend (one-offs removed) 53.7% vs 50.8% (+3.0 pts) measured against gross margin of the 4 quarters a year earlier (up from 53.2% vs 50.3% (+2.9 pts), bullish); Earnings forecast revisions +6.7% ($16.27 vs $15.25) measured against consensus EPS for the year to 2027-12-31, 90 days earlier (down from +8.0% ($16.07 vs $14.88), bullish); Guidance vs expectations guided 40.6% vs 35.6% expected (+5.0 pts) measured against September-quarter revenue growth vs the Sep 2025 quarter ($9.25bn): AMD's guidance midpoint vs analysts' consensus when guidance was given (4 Aug 2026) (bullish); Data Center revenue growth +107.3% (Jun 2026 quarter) vs same quarter a year earlier (bullish); Client revenue growth +22.5% (Jun 2026 quarter) vs same quarter a year earlier (bullish); Big-4 cloud capital spending growth +77.0% (Apr-Jun 2026, Amazon + Alphabet + Microsoft + Meta) vs same quarter a year earlier (bullish).",
-  "<b>It is priced well above peers.</b> Valuation vs peers scores −63, unchanged from −63 on 3 Nov: Forward P/E vs peers 32.6 vs 20.6 peer median (+58%) measured against median of the peer set (next 12 months, same rule) (up from 32.9 vs 21.6 peer median (+52%), bearish); Growth-adjusted P/E vs peers 0.5 vs 0.5 peer median (-5%) measured against median of the peer set (up from 0.5 vs 0.5 peer median (-9%), neutral); EV/EBITDA vs peers 82.5 vs 23.9 peer median (+246%) measured against median of the peer set (up from 81.7 vs 24.6 peer median (+232%), bearish).",
-  "<b>The call is confirmed: Buy.</b> 10 of the last 10 trading days in this zone. Advanced Micro Devices, Inc. closed at $488.78, +1.0% on the day vs +1.6% for the S&P 500; −15.5% over 5 trading days (the S&P 500: −0.7%) and −0.1% over 3 months. Closest to flipping: <b>Buying vs selling volume</b> (6 points): now 0.83x, scoring neutral. It turns bearish if it crosses +0.77x, measured against volume on up days ÷ down days, last 20 trading days. <b>Growth-adjusted P/E vs peers</b> (7 points): now 0.5 vs 0.5 peer median (-5%), scoring neutral. It turns bullish if it crosses -15%, measured against median of the peer set. <b>Short interest trend</b> (3 points): now -4.6% (2.3% of float), scoring neutral. It turns bullish if it crosses -10%, measured against short interest a month earlier (report 2026-10-15)."
+  "<b>The price trend is strongly up.</b> Price trend scores +100, unchanged from +100 on 4 Nov: the share price is +7.9% above its own 200-day average (down from +18.0%, still bullish); its 50-day average is +31.5% above its own 200-day average (down from +32.5%, bullish); over 3 months it has beaten the equal-weighted average of its 6 peers by +18.1 points (up from +17.4 points, bullish).",
+  "<b>The money backdrop is only so-so.</b> Liquidity scores +13, unchanged from +13 on 4 Nov: volume on up days is 0.89x volume on down days over the last 20 trading days (up from 0.83x, neutral); short interest is −4.6% vs a month earlier (2.3% of float, neutral); institutions added a net +4.22 points of shares outstanding last quarter (up from +3.62, bullish); the dollar index is +0.07 points vs 20 trading days earlier (neutral); Fed rate odds are −1.1 points, towards rises, vs net odds 28 days earlier (up from −1.5, neutral).",
+  "<b>The business signals are strong.</b> Demand scores +100, unchanged from +100 on 4 Nov: revenue growth is 44.7% vs a 39.4% average for the prior 4 quarters (+5.3 points, bullish); gross margin is 53.7% vs 50.8% a year earlier (+3.0 points, one-offs removed, bullish); analysts' EPS forecast for the year to 2027-12-31 is $16.78 vs $15.27 90 days earlier (+9.9%, up from +6.7%, bullish); guidance was 40.6% growth vs 35.6% expected (+5.0 points, bullish); Data Center revenue growth is +107.3% and Client +22.5% (both Jun 2026 quarter vs a year earlier, bullish); big-4 cloud capital spending growth is +77.0% (Apr-Jun 2026 vs a year earlier, bullish).",
+  "<b>It is priced well above peers.</b> Valuation vs peers scores −63, unchanged from −63 on 4 Nov: forward P/E is 29.0x vs 18.7x for the peer median (+55%, premium narrowed from +58%, bearish); growth-adjusted P/E is 0.4 vs 0.5 for the peer median (−13%, from −5%, neutral); EV/EBITDA is 65.5x vs 22.2x for the peer median (+195%, premium narrowed from +246%, bearish).",
+  "<b>The call is confirmed: Buy.</b> 10 of the last 10 trading days in this zone. Advanced Micro Devices, Inc. closed at $449.04, +11.0% on the day vs +0.3% for the S&P 500; about −11% over 5 trading days (the S&P 500: −2.7%) and −4.4% over 3 months. Closest to flipping: <b>Growth-adjusted P/E vs peers</b> (7 points): now 0.4 vs 0.5 for the peer median (−13%), scoring neutral; it turns bullish if the gap reaches −15%. <b>Buying vs selling volume</b> (6 points): now 0.89x, scoring neutral; it turns bearish if it falls to 0.77x, measured against volume on up days ÷ down days over the last 20 trading days. <b>Short interest trend</b> (3 points): now −4.6%, scoring neutral; it turns bullish if it reaches −10% vs a month earlier."
  ],
  "defects": [
-  "The call needs 7 of the last 10 trading days in one zone before it is confirmed; 26 trading days of scores are recorded so far.",
+  "The call needs 7 of the last 10 trading days in one zone before it is confirmed; 27 trading days of scores are recorded so far.",
   "VL3 (P/E vs own history) is removed for AMD and left out of the score (applied by the shared engine from 30 Sep): trailing P/E is distorted by 2023 losses and Xilinx amortisation.",
   "EV/EBITDA uses last-12-month EBITDA (free source); for a company growing 50% a year this makes AMD look expensive. Debt in EV ($4.3bn) includes leases (Yahoo); AMD reports $3.2bn of borrowings, a 0.1% effect on EV.",
   "Forward P/E uses 2027 earnings forecasts (AMD's next fiscal year), not strictly the next 12 months; peers use their own next fiscal years, which end at different dates.",
