@@ -22,9 +22,16 @@
  },
  "move": {
   "class": "Quiet",
-  "direction": "down",
-  "headline": "A fall of 0.5% while the S&P 500 rose 0.3%, inside Apple Inc.'s normal daily range",
+  "direction": "up",
+  "headline": "A rise of 2.4% while the S&P 500 rose 2.3%, about 1.7x Apple Inc.'s typical daily move of 1.4%, below the 2x level that triggers a classification",
   "evidence": [
+   {
+    "d": "9 Nov",
+    "t": "Apple Inc. rose 2.43% while the S&P 500 rose 2.35%, so the stock simply moved with the market. Normal daily range is about 1.4%; this move was 1.7x that, below the 2x level that triggers a classification.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices",
+    "auto9": 1
+   },
    {
     "d": "6 Nov",
     "t": "Apple Inc. fell 0.52% while the S&P 500 rose 0.31%. Normal daily range is about 1.4%, so no classification is triggered.",
@@ -353,16 +360,16 @@
   }
  ],
  "valuation_plain": [],
- "lead": "Apple Inc. is <b>Hold</b>, at <b>+9</b> on a −100 to +100 scale, unchanged from +9 on 4 Nov (scores run as of the 6 Nov close); no bucket moved.",
+ "lead": "Apple Inc. is <b>Hold</b> (confirmed), at <b>+9</b> on a −100 to +100 scale, unchanged from +9 on 6 Nov (scores run as of the 9 Nov close); no bucket moved.",
  "bullets": [
-  "<b>The price trend is strongly up.</b> Price trend scores +100, unchanged from +100 on 4 Nov: Price vs 200-day average +14.6% measured against the stock's own 200-day average (down from +17.3%, bullish); 50-day vs 200-day average +12.5% measured against the stock's own 200-day average (up from +12.4%, bullish); Relative strength vs peers, 3 months +11.3 pts measured against equal-weighted average of 6 peers over 63 trading days (up from +8.6 pts, bullish).",
-  "<b>The money backdrop is only so-so.</b> Liquidity scores 0, unchanged from 0 on 4 Nov: Buying vs selling volume 0.79x measured against volume on up days ÷ down days, last 20 trading days (down from 1.01x, neutral); Short interest trend +2.2% (0.9% of float) vs short interest a month earlier (report 2026-10-15) (neutral); Institutional ownership change +0.65 pts of shares measured against shares added minus shares cut by institutions last quarter, as % of shares outstanding (up from +0.64 pts of shares, neutral); Dollar backdrop (shared macro) +0.07 pts vs the dollar index 20 trading days earlier (up from +0.04 pts, neutral); Fed rate expectations (shared macro) -1.1 pts (towards rises) vs net odds (cut minus rise) for the next Fed meeting, 28 days earlier (up from -1.5 pts (towards rises), neutral).",
-  "<b>The business signals are mixed.</b> Demand scores +9, unchanged from +9 on 4 Nov: Revenue growth trend 11.7% vs 14.1% avg (-2.4 pts) measured against average growth of the prior 4 quarters, each vs a year earlier (bearish); Gross margin trend (one-offs removed) 48.3% vs 46.9% (+1.4 pts) measured against gross margin of the 4 quarters a year earlier (bullish); Earnings forecast revisions -1.8% ($10.54 vs $10.73) measured against consensus EPS for the year to 2027-09-30, 90 days earlier (down from -1.5% ($10.57 vs $10.73), neutral); Guidance vs expectations guided 10% vs 12% expected (-2.0 pts) measured against analysts' consensus revenue growth for the September quarter when guidance was given (30 Jul 2026) (bearish); Services revenue growth +12.1% (Jun 2026 quarter) vs same quarter a year earlier (bullish); iPhone revenue growth +21.7% (Jun 2026 quarter; $54.3bn vs $44.6bn, Apple 8-K) vs same quarter a year earlier (bullish); Apple smartphone shipments (research firms) +15.3% (Apr-Jun 2026, IDC: 55.8m vs 48.4m units) vs same calendar quarter a year earlier (bullish).",
-  "<b>It is priced well above peers.</b> Valuation vs peers scores −76, unchanged from −76 on 4 Nov: Forward P/E vs peers 35.6 vs 21.8 peer median (+63%) measured against median of the peer set (next 12 months, same rule) (down from 36.6 vs 21.6 peer median (+69%), bearish); Growth-adjusted P/E vs peers 2.8 vs 2.0 peer median (+41%) measured against median of the peer set (down from 2.7 vs 1.9 peer median (+42%), bearish); EV/EBITDA vs peers 29.2 vs 19.5 peer median (+50%) measured against median of the peer set (up from 29.8 vs 20.4 peer median (+46%), bearish); P/E vs own 5-year history 38.1 vs 31.4 5-yr median (+21%) measured against the stock's own median trailing P/E, last 5 years (weekly) (down from 38.9 vs 31.4 5-yr median (+24%), neutral).",
-  "<b>The call is confirmed: Hold.</b> 10 of the last 10 trading days in this zone. Apple Inc. closed at $342.37, −0.5% on the day vs +0.3% for the S&P 500; −0.7% over 5 trading days (the S&P 500: −2.7%) and +11.1% over 3 months. Closest to flipping: <b>Buying vs selling volume</b> (6 points): now 0.79x, scoring neutral. It turns bearish if it crosses +0.77x, measured against volume on up days ÷ down days, last 20 trading days. <b>P/E vs own 5-year history</b> (6 points): now 38.1 vs 31.4 5-yr median (+21%), scoring neutral. It turns bearish if it crosses +25%, measured against the stock's own median trailing P/E, last 5 years (weekly). <b>Revenue growth trend</b> (6 points): now 11.7% vs 14.1% avg (-2.4 pts), scoring bearish. It turns neutral if it crosses -2 pts, measured against average growth of the prior 4 quarters, each vs a year earlier."
+  "<b>The price trend is strongly up.</b> Price trend scores +100, unchanged from +100 on 6 Nov. Apple closed at $350.69, which is +17.2% above its own 200-day average (up from +14.6%, bullish); the 50-day average is +12.5% above the 200-day average (unchanged, bullish); and the shares are +13.0 points ahead of the average of 6 rival stocks over 3 months (up from +11.3 points, bullish).",
+  "<b>Demand is mixed, and unchanged.</b> Demand scores +9, unchanged from +9 on 6 Nov. Revenue growth is 11.7% vs a 14.1% average for the prior four quarters, a 2.4-point slowdown (bearish); gross margin is 48.3% vs 46.9% a year earlier once one-offs are removed (bullish); the company guided September-quarter growth of 10% vs 12% expected (bearish); Services grew +12.1% and iPhone +21.7% in the June quarter vs a year earlier (both bullish), and IDC counts iPhone shipments +15.3% (bullish). Analysts' EPS forecast for the year to Sep 2027 is $10.52 vs $10.72 ninety days ago, -1.9% (down from -1.8%, neutral).",
+  "<b>It is priced well above its rivals.</b> Valuation vs peers scores −76, unchanged from −76 on 6 Nov. Forward P/E is 36.8x vs 21.8x for the peer median, +69% (up from 35.6x, +63%, bearish); growth-adjusted P/E is 2.8 vs 2.0 for the peer median, +39% (down from +41%, bearish); EV/EBITDA is 29.9x vs 20.0x for the peer median, +50% (bearish). Against its own history, the trailing P/E is 39.1x vs a 31.4x five-year median, +24% (up from +21%, neutral, but close to the +25% line where it turns bearish).",
+  "<b>Liquidity is neutral.</b> Liquidity scores 0, unchanged from 0 on 6 Nov. Buying vs selling volume is 0.83x, i.e. volume on up days divided by volume on down days over the last 20 days (up from 0.79x, neutral); short interest rose +2.2% on a month earlier and is only 0.9% of the freely traded shares (neutral); institutions added +0.64 points of shares last quarter (down from +0.65, neutral); the dollar backdrop is +0.09 points vs 20 trading days ago (up from +0.07, neutral); and Fed-odds net of cuts minus rises are -3.2 points (towards rises) vs 28 days earlier (down from -1.1, neutral).",
+  "<b>The call is confirmed: Hold.</b> 10 of the last 10 trading days in this zone. Apple closed at $350.69, +2.4% on the day vs +2.3% for the S&P 500; +3.7% over 5 trading days vs +0.1% for the S&P 500; and +15.0% over 3 months. Closest to flipping: <b>P/E vs own 5-year history</b> at 39.1x vs a 31.4x median (+24%), which turns bearish above +25%; <b>Revenue growth trend</b> at 11.7% vs 14.1% (-2.4 points), bearish, which turns neutral at -2 points; and <b>Buying vs selling volume</b> at 0.83x, neutral, which turns bearish at 0.77x."
  ],
  "defects": [
-  "The call needs 7 of the last 10 trading days in one zone before it is confirmed; 27 trading days of scores are recorded so far.",
+  "The call needs 7 of the last 10 trading days in one zone before it is confirmed; 28 trading days of scores are recorded so far.",
   "Valuation vs own history (VL3) uses trailing P/E: free forward P/E history is too short.",
   "EV/EBITDA uses last-12-month EBITDA (free source).",
   "Interest-cover check excluded: Apple no longer reports interest expense separately.",
@@ -372,7 +379,7 @@
   "Institutional change (LQ3) counts changes in existing positions only.",
   "DM5 (iPhone shipments, Apr-Jun 2026 vs a year earlier): research firms disagree. IDC +15.3% (55.8m vs 48.4m units; used, as it publishes unit counts and matches Apple's +21.7% iPhone revenue), Omdia's share rise from 16% to 20% in a market down 4% implies about +20%, Counterpoint says +3%. All but Counterpoint score bullish (line: +5%). The page previously showed +13%, which matched no firm.",
   "DM6 (gross margin, last 4 quarters vs the 4 a year earlier) scores bullish, but the June quarter's 50.1% includes about 2 points of one-off tariff refunds (about 0.5 point on the 4-quarter figure), and Apple guides the September quarter down to 47-48%. The margin rise is likely to reverse.",
-  "EV uses cash plus short-term investments only ($62.4bn). Adding Apple's $84.1bn of long-term marketable securities (8-K, 27 Jun 2026) would lower EV/EBITDA from 30.4x to about 29.9x; still expensive vs peers.",
+  "EV uses cash plus short-term investments only ($56.7bn). Adding Apple's $84.1bn of long-term marketable securities (8-K, 27 Jun 2026) would lower EV/EBITDA from 29.9x to about 29.4x; still expensive vs peers.",
   "Short interest (LQ2) is only 0.9% of freely traded shares, so the latest 2.2% rise is a change of about 0.02 percentage point of float: mostly noise, and it scores neutral."
  ],
  "sources": [

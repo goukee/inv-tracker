@@ -19,9 +19,16 @@
  },
  "move": {
   "class": "Quiet",
-  "direction": "down",
-  "headline": "A fall of 0.8% while the S&P 500 rose 0.3%, inside SPDR Gold Shares's normal daily range",
+  "direction": "up",
+  "headline": "A rise of 1.9% while the S&P 500 rose 2.3%, inside SPDR Gold Shares's normal daily range",
   "evidence": [
+   {
+    "d": "9 Nov",
+    "t": "SPDR Gold Shares rose 1.88% while the S&P 500 rose 2.35%. Normal daily range is about 1.6%, so no classification is triggered.",
+    "kind": "fact",
+    "src": "Yahoo Finance prices",
+    "auto9": 1
+   },
    {
     "d": "6 Nov",
     "t": "SPDR Gold Shares fell 0.79% while the S&P 500 rose 0.31%. Normal daily range is about 1.5%, so no classification is triggered.",
@@ -322,24 +329,24 @@
   }
  ],
  "valuation_plain": [],
- "lead": "SPDR Gold Shares is <b>Hold</b>, at <b>−32</b> on a −100 to +100 scale, up from −35 on 4 Nov (scores run as of the 6 Nov close); buckets that moved: Liquidity −60 to −40.",
+ "lead": "SPDR Gold Shares is <b>Hold</b> (the Sell zone is not yet confirmed: 4 of the last 10 trading days), at <b>−32</b> on a −100 to +100 scale, unchanged from −32 on 6 Nov (scores run as of the 9 Nov close); no bucket moved.",
  "bullets": [
-  "<b>The price trend is strongly down.</b> Price trend scores −72, unchanged from −72 on 4 Nov: Price vs 200-day average -9.4% measured against the stock's own 200-day average (up from -9.6%, bearish); 50-day vs 200-day average -6.4% measured against the stock's own 200-day average (down from -6.1%, bearish); GLD vs the S&P 500 (SPY), 3 months -2.8 pts measured against SPY over the same 63 trading days (up from -4.4 pts, neutral).",
-  "<b>Flows and positioning lean against it.</b> Liquidity scores −40, up from −60 on 4 Nov: Buying vs selling volume 0.64x measured against volume on up days ÷ down days, last 20 trading days (down from 0.73x, bearish); GLD gold held (tonnes), 20-day change -1.4% vs tonnes 20 trading days earlier (up from -2.1%, neutral, was bearish); Hedge funds' net long in gold futures, % of open interest (contrarian) 31st percentile vs its own last 3 years (percentile) (down from 36th percentile, neutral); Dollar backdrop (shared macro) +0.07 pts vs the dollar index 20 trading days earlier (up from +0.04 pts, neutral); Fed rate expectations (shared macro) -1.1 pts (towards rises) vs net odds (cut minus rise) for the next Fed meeting, 28 days earlier (up from -1.5 pts (towards rises), neutral).",
-  "<b>The demand drivers are poor.</b> Demand scores −24, unchanged from −24 on 4 Nov: 10-year real interest rate, 20-day change -0.32 pts vs level 20 trading days earlier (down from -0.30 pts, bullish); 10-year inflation expectations (breakeven), 20-day change -0.12 pts vs level 20 trading days earlier (down from -0.10 pts, bearish); Central bank gold buying, last 4 quarters -20.5% (4 quarters to Jun 2026: 780 t vs 981 t) vs the 4 quarters before, both on WGC's latest published figure for each quarter (bearish); Consumer demand: jewellery plus bars and coins -10.1% (Q2 2026: 585 t vs 651 t) vs same quarter a year earlier, in tonnes (bearish); Western investor demand: GLD tonnes, 60-day change +1.4% vs tonnes 60 trading days earlier (down from +1.6%, neutral).",
-  "<b>Gold looks fairly priced on the stretch measures.</b> Valuation vs peers scores 0, unchanged from 0 on 4 Nov: GLD vs its 200-week average +33.3% measured against own 200-week average (neutral); Gold ÷ S&P 500 ratio +16.2% measured against its own 10-year median (up from +13.1%, neutral).",
-  "<b>The Hold call stands; the Sell zone is not yet confirmed.</b> 5 of the last 10 trading days in this zone. SPDR Gold Shares closed at $372.52, −0.8% on the day vs +0.3% for the S&P 500; +4.7% over 5 trading days (the S&P 500: −2.7%) and −7.5% over 3 months. Closest to flipping: <b>GLD gold held (tonnes), 20-day change</b> (3 points): now -1.4%, scoring neutral. It turns bearish if it crosses -1.50%, measured against tonnes 20 trading days earlier. <b>10-year inflation expectations (breakeven), 20-day change</b> (5 points): now -0.12 pts, scoring bearish. It turns neutral if it crosses -0.10 pts, measured against level 20 trading days earlier. <b>Hedge funds' net long in gold futures, % of open interest (contrarian)</b> (2 points): now 31st percentile, scoring neutral. It turns bullish if it crosses 20th percentile, measured against its own last 3 years (percentile)."
+  "<b>The price trend is strongly down.</b> Price trend scores −72, unchanged from −72 on 6 Nov. GLD closed at $379.53, which is −7.6% below its own 200-day average (up from −9.4%, bearish); its 50-day average is −6.4% below its 200-day average (unchanged, bearish); and over 3 months it trails the S&P 500 (via SPY) by 3.3 points (down from 2.8 points behind, neutral).",
+  "<b>Flows and positioning lean against it.</b> Liquidity scores −40, unchanged from −40 on 6 Nov. Volume on up days is 0.74x volume on down days over the last 20 trading days (up from 0.64x, bearish); the tonnes of gold held by GLD changed −1.1% over 20 trading days (up from −1.4%, neutral); hedge funds' net long in gold futures sits at the 31st percentile of its own last 3 years (unchanged, neutral); the dollar index is +0.09 points vs 20 trading days earlier (up from +0.07, neutral); and Fed rate odds net of cuts minus rises are −3.2 points, towards rises, vs 28 days earlier (down from −1.1, neutral).",
+  "<b>The demand drivers are poor.</b> Demand scores −24, unchanged from −24 on 6 Nov. The 10-year real interest rate fell 0.24 points over 20 trading days (a smaller fall than the 0.32 before, bullish for gold); the 10-year inflation expectation fell 0.11 points (from a 0.12 fall, bearish); central bank gold buying over the last 4 quarters is −20.5% (780 t vs 981 t in the 4 quarters before, bearish); consumer demand for jewellery plus bars and coins is −10.1% (585 t vs 651 t in Q2 2026 vs a year earlier, bearish); and Western investor demand, the 60-day change in GLD tonnes, is +1.8% (up from +1.4%, neutral).",
+  "<b>Gold looks fairly priced on the stretch measures.</b> Valuation vs peers scores 0, unchanged from 0 on 6 Nov. GLD is +36.3% above its own 200-week average ($379.53 vs $278.50, neutral; it turns bearish at +60%), and the gold ÷ S&P 500 ratio is +16.1% above its own 10-year median (0.552 vs 0.476; down from +16.2%, neutral).",
+  "<b>The Hold call stands; the Sell zone is not yet confirmed.</b> 4 of the last 10 trading days in this zone (it needs 7). GLD closed at $379.53, +1.9% on the day vs +2.3% for the S&P 500; +4.9% over 5 trading days (the S&P 500: +0.1%) and −5.3% over 3 months. Closest to flipping: <b>Buying vs selling volume</b> at 0.74x, bearish, which turns neutral at 0.77x; <b>10-year inflation expectations, 20-day change</b> at −0.11 points, bearish, which turns neutral at −0.10; and <b>GLD gold held (tonnes), 20-day change</b> at −1.1%, neutral, which turns bearish at −1.5%."
  ],
  "defects": [
-  "The call needs 7 of the last 10 trading days in one zone before it is confirmed; 25 trading days of scores are recorded so far.",
+  "The call needs 7 of the last 10 trading days in one zone before it is confirmed; 26 trading days of scores are recorded so far.",
   "The day's move breakdown keeps the stock wording: 'Sector' = SPY's move beyond the S&P 500 (near zero), 'Company-specific' = gold's own move.",
   "Today's zone does not turn on one figure alone, but central bank buying (DM4) reads -20.5% mostly because WGC moved 187 t of Q1 2026 into another category. It counts at half weight (6 of 12 points, Kenneth 1 Oct) until WGC's Q3 2026 report (~29 Oct). On WGC's first Q1 figure DM4 is neutral and the composite about -25 (above the -30 Sell line, so the zone would read Hold).",
-  "10-year real rate (G-DM1) is published by FRED a day late: latest value 22 Oct.",
-  "Stretch (G-VL1): the 200-week average counts the current week twice (Yahoo repeats it), so today's +36.4% (vs a 200-week average of $275.53) is slightly off; the corrected figure is not computed here. The score is unaffected (bearish only at 60%+); engine fix pending.",
+  "10-year real rate (G-DM1) is published by FRED a day late: latest value 6 Nov.",
+  "Stretch (G-VL1): the 200-week average counts the current week twice (Yahoo repeats it), so today's +36.3% (vs a 200-week average of $278.50) is slightly off; the corrected figure is not computed here. The score is unaffected (bearish only at 60%+); engine fix pending.",
   "Fed odds (LQ6) use the shared engine's 28-day window and are jumpy: rise odds were 48% on 29 Sep and 34% on 30 Sep; on 29 Sep LQ6 would have read bearish (composite about -36).",
   "GLD flows (G-LQ2, G-DM3) cover GLD only, not all gold funds worldwide.",
-  "Hedge-fund positioning (G-LQ3) is weekly: latest report as of Tue 6 Oct (the one before was 29 Sep).",
-  "Sensitivity to the S&P 500 (0.79x, last 252 trading days) is computed from daily GLD and index moves; gold has been unusually correlated with stocks in 2026.",
+  "Hedge-fund positioning (G-LQ3) is weekly: latest report as of Tue 3 Nov (the one before was 27 Oct).",
+  "Sensitivity to the S&P 500 (0.81x, last 252 trading days) is computed from daily GLD and index moves; gold has been unusually correlated with stocks in 2026.",
   "5-year weekly replay (research/sanity_check.md): Sell readings in 2021-26 were followed by GLD +12.9% over 6 months on average vs +10.8% for all weeks; stretch at extremes was the best input, real rates the weakest."
  ],
  "sources": [
